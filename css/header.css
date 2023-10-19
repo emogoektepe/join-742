@@ -5,3 +5,27 @@
     height: 24px;
     padding-left: 100px;
 }
+.headerRight {
+    display: flex;
+    align-items: center;
+    width: 104px;
+    height: 56px;
+    gap: 16px;
+    padding-right: 24px;
+}
+.headerRight img {
+    height: 32px;
+    width: 32px;
+}
+.initials {
+    border: 3px solid #2A3647;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    color: #29ABE2;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+}
+

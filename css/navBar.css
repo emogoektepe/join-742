@@ -2,10 +2,31 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+.navLogo {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    padding: 50px;
+}
+.navItems {
+    flex: 1;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
-
-.navBarContent button {
+.navItems button {
     padding: 10px;
+}
+.navFooter {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.navFooter a {
+    color: #CDCDCD;
+    text-decoration: none;
 }
