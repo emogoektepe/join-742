@@ -1,3 +1,38 @@
 body {
     margin: 0;
 }
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login button {
+    padding: 100px;
+    font-size: 56px;
+}
+
+.applicationBody {
+    display: flex;
+}
+
+.navBar {
+    width: 232px;
+    background-color: #2A3647;
+    height: 100vh;
+}
+
+.header {
+    height: 96px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1); 
+}
+
+.rightSide {
+    width: 100%;
+}
+
+#content {
+    height: calc(100vh - 100px);
+}

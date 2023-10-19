@@ -10,9 +10,13 @@
     <title>Join</title>
 </head>
 
-<body>
-    <div class="login">
-        <button onclick="window.location.href='application.html'">Guest login</button>
+<body class="applicationBody" onload="includeHTML()">
+    <div class="leftSide">
+        <div w3-include-html="./templates/navBar.html"></div>
+    </div>
+    <div class="rightSide">
+        <div w3-include-html="./templates/header.html"></div>
+        <div id="content"></div>
     </div>
 </body>
 
