@@ -1,0 +1,35 @@
+.addTaskContent {
+    margin-left: 96px;
+}
+
+.addTaskContent h1 {
+    margin-block: 0;
+    font-size: 61px;
+    line-height: 73.2px;
+    font-weight: 700;
+    width: 278px;
+    height: 73px;
+    margin-top: 110px;
+}
+
+.form {
+    height: 424px;
+    display: flex;
+}
+
+.formLeftSide {
+    width: 440px;
+    height: 376px;
+}
+
+.formRightSide{
+    width: 440px;
+    height: 416px;
+}
+
+.formSeparator {
+    width: 0px;
+    border: 1px solid #D1D1D1;
+    margin-left: 48.25px;
+    margin-right: 48.25px;
+}

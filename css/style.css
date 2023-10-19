@@ -1,6 +1,8 @@
 body {
     margin: 0;
     font-family: 'Inter';
+    max-width: 1440px;
+    height: 100vh;
 }
 
 .login {
@@ -19,10 +21,17 @@ body {
     display: flex;
 }
 
+.leftSide {
+    background-color: #2A3647;
+}
+
 .navBar {
     width: 232px;
-    background-color: #2A3647;
-    height: 100vh;
+    height: 100%;
+}
+
+.w3NavBar {
+    height: 100%;
 }
 
 .header {
