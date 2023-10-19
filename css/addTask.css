@@ -9,12 +9,13 @@
     font-weight: 700;
     width: 278px;
     height: 73px;
-    margin-top: 110px;
+    padding-top: 110px;
 }
 
 .form {
     height: 424px;
     display: flex;
+    margin-top: 48px;
 }
 
 .formLeftSide {
@@ -22,7 +23,7 @@
     height: 376px;
 }
 
-.formRightSide{
+.formRightSide {
     width: 440px;
     height: 416px;
 }
@@ -32,4 +33,41 @@
     border: 1px solid #D1D1D1;
     margin-left: 48.25px;
     margin-right: 48.25px;
+}
+
+.formLeftSide span {
+    color: #2A3647;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    display: inline-block;
+    width: 440px;
+}
+
+.formLeftSide span::after {
+    content: attr(data-end);
+    color: #FF8190;
+}
+
+.formLeftSide input {
+    width: calc(440px - 44px);
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: white;
+    padding: 12px 21px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.formLeftSide input::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    width: 398px;
+    color: #D1D1D1;
+}
+
+.formLeftSide input:focus {
+    outline: none;
+    border:1px solid #29ABE2;
 }
