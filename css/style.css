@@ -3,6 +3,13 @@ body {
     font-family: 'Inter';
     max-width: 1440px;
     height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+
+h1 {
+    margin-block: 0;
 }
 
 .login {
@@ -41,6 +48,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .rightSide {
