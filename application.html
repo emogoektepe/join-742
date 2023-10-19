@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/include.js"></script>
     <script src="./js/storage.js"></script>
+    <script src="./js/summary.js"></script>
+    <script src="./js/addTask.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/privacyPolicy.js"></script>
+    <script src="./js/legalNotice.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/navBar.css">
     <link rel="stylesheet" href="./css/header.css">
@@ -13,12 +19,14 @@
     <link rel="stylesheet" href="./css/addTask.css">
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/contacts.css">
+    <link rel="stylesheet" href="./css/privacyPolicy.css">
+    <link rel="stylesheet" href="./css/legalNotice.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="icon" type="image/x-icon" href="./img/logo.svg">
     <title>Join</title>
 </head>
 
-<body class="applicationBody" onload="includeHTML()">
+<body class="applicationBody" onload="includeHTML(), renderSummary()">
     <div class="leftSide">
         <div w3-include-html="./templates/navBar.html"></div>
     </div>
