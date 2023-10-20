@@ -23,7 +23,24 @@ function renderAddTask() {
                 </div>
                 <div class="formSeparator"></div>
                 <div class="formRightSide">
-                    <span data-end="*">Due Date</span>
+                    <div class="dateBlock">
+                        <span data-end="*">Due Date</span>
+                    </div>
+                    <div class="prioBlock">
+                        <span>Prio</span>
+                        <div class="prio">
+                            <div>Urgent<img src="./img/prioUp.svg" alt=""></div>
+                            <div>Medium<img src="./img/prioMid.svg" alt=""></div>
+                            <div>Low<img src="./img/prioLow.svg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="categoryBlock">
+                        <span data-end="*">Category</span>
+                        
+                    </div>
+                    <div class="subtasksBlock">
+                        <span>Subtasks</span>
+                    </div>
                 </div>
             </div>
         </div>
