@@ -6,8 +6,20 @@ function renderAddTask() {
             <h1>Add Task</h1>
             <div class="form">
                 <div class="formLeftSide">
-                    <span data-end="*">Title</span>
-                    <input type="text" name="" id="" placeholder="Enter a title">
+                    <div>
+                        <span data-end="*">Title</span>
+                        <input type="text" name="" id="" placeholder="Enter a title">
+                        <span class="requiredFieldText">This field is required</span>
+                    </div>
+                    <div>
+                        <span data-end="*">Description</span>
+                        <textarea placeholder="Enter a Description"></textarea>
+                        <span class="requiredFieldText">This field is required</span>
+                    </div>
+                    <div>
+                        <span>Assigned to</span>
+                        <input class="dropDown" type="text" name="" id="" placeholder="Select contacts to assign">
+                    </div>
                 </div>
                 <div class="formSeparator"></div>
                 <div class="formRightSide"></div>

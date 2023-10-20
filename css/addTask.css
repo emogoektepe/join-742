@@ -29,7 +29,6 @@
 }
 
 .formSeparator {
-    width: 0px;
     border: 1px solid #D1D1D1;
     margin-left: 48.25px;
     margin-right: 48.25px;
@@ -39,9 +38,8 @@
     color: #2A3647;
     font-weight: 400;
     font-size: 20px;
-    line-height: 24px;
-    display: inline-block;
     width: 440px;
+    display: block;
 }
 
 .formLeftSide span::after {
@@ -51,7 +49,7 @@
 
 .formLeftSide input {
     width: calc(440px - 44px);
-    margin-top: 10px;
+    margin-top: 8px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     background: white;
@@ -69,5 +67,53 @@
 
 .formLeftSide input:focus {
     outline: none;
-    border:1px solid #29ABE2;
+    border: 1px solid #29ABE2;
+}
+
+.requiredFieldText {
+    color: #FF8190 !important;
+    width: 440px;
+    font-family: 'Poppins';
+    font-size: 12px !important;
+    height: 12px !important;
+}
+
+.formLeftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formLeftSide textarea {
+    margin-top: 8px;
+    height: calc(120px - 38px);
+    width: calc(440px - 34px);
+    padding: 18px 16px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    resize: none;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25.2px;
+}
+
+.formLeftSide textarea::placeholder {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    color: #D1D1D1;
+}
+
+.formLeftSide textarea:focus {
+    outline: none;
+    border: 1px solid #29ABE2;
+}
+
+.dropDown::placeholder {
+    color: black !important;
+}
+
+.dropDown:focus::placeholder {
+    color: transparent !important;
 }
