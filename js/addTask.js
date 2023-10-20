@@ -23,7 +23,7 @@ function renderAddTask() {
                 </div>
                 <div class="formSeparator"></div>
                 <div class="formRightSide">
-
+                    <span data-end="*">Due Date</span>
                 </div>
             </div>
         </div>

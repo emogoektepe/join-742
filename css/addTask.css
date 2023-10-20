@@ -34,7 +34,7 @@
     margin-right: 48.25px;
 }
 
-.formLeftSide span {
+.form span {
     color: #2A3647;
     font-weight: 400;
     font-size: 20px;
@@ -42,7 +42,7 @@
     display: block;
 }
 
-.formLeftSide span::after {
+.form span::after {
     content: attr(data-end);
     color: #FF8190;
 }
@@ -125,4 +125,8 @@
 
 .secondBlock {
     height: 168px;
+}
+
+.thirdBlock {
+    height: 80px;
 }
