@@ -47,7 +47,7 @@ function renderAddTask() {
     `;
 }
 
-let selectedElement = null
+let selectedElement = false;
 function changeColor(element, color) {
     if (selectedElement) {
         selectedElement.style = '';
