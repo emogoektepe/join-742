@@ -3,7 +3,7 @@
     font-size: 20px;
     width: 319px;
     height: 24px;
-    padding-left: 100px;
+    padding-left: 116px;
 }
 .headerRight {
     display: flex;
@@ -11,7 +11,7 @@
     width: 104px;
     height: 56px;
     gap: 16px;
-    padding-right: 24px;
+    padding-right: 40px;
 }
 .headerRight img {
     height: 32px;
