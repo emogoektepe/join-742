@@ -76,6 +76,7 @@
     font-family: 'Poppins';
     font-size: 12px !important;
     height: 12px !important;
+    display: none !important;
 }
 
 .formLeftSide {
@@ -116,4 +117,12 @@
 
 .dropDown:focus::placeholder {
     color: transparent !important;
+}
+
+.firstBlock {
+    height: 96px;
+}
+
+.secondBlock {
+    height: 168px;
 }
