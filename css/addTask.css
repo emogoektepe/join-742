@@ -170,11 +170,14 @@
     font-weight: 400;
     color: #000000;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .prio div img {
     padding-left: 8px;
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 .prio div:hover {

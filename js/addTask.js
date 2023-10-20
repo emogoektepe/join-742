@@ -29,9 +29,9 @@ function renderAddTask() {
                     <div class="prioBlock">
                         <span>Prio</span>
                         <div class="prio">
-                            <div>Urgent<img src="./img/prioUp.svg" alt=""></div>
-                            <div>Medium<img src="./img/prioMid.svg" alt=""></div>
-                            <div>Low<img src="./img/prioLow.svg" alt=""></div>
+                            <div onclick="changeColor(this, '#FF3D00')">Urgent<img src="./img/prioUp.svg" alt=""></div>
+                            <div onclick="changeColor(this, '#FFA800')">Medium<img src="./img/prioMid.svg" alt=""></div>
+                            <div onclick="changeColor(this, '#7AE229')">Low<img src="./img/prioLow.svg" alt=""></div>
                         </div>
                     </div>
                     <div class="categoryBlock">
@@ -45,5 +45,19 @@ function renderAddTask() {
             </div>
         </div>
     `;
+}
 
+let selectedElement = null
+function changeColor(element, color) {
+    if (selectedElement) {
+        selectedElement.style = '';
+        selectedElement.lastChild.style = '';
+    }
+    element.style.backgroundColor = color;
+    element.style.boxShadow = 'none';
+    element.style.color = '#ffffff';
+    element.lastChild.style.filter = "brightness(0) invert(1)";
+    element.style.fontWeight = '700';
+    element.style.fontSize = '21px';
+    selectedElement = element;
 }
