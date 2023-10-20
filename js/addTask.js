@@ -49,15 +49,21 @@ function renderAddTask() {
 
 let selectedElement = false;
 function changeColor(element, color) {
-    if (selectedElement) {
-        selectedElement.style = '';
-        selectedElement.lastChild.style = '';
+    if (selectedElement === element) {
+        element.style = '';
+        element.lastChild.style = '';
+        selectedElement = false;
+    } else {
+        if (selectedElement) {
+            selectedElement.style = '';
+            selectedElement.lastChild.style = '';
+        }
+        element.style.backgroundColor = color;
+        element.style.boxShadow = 'none';
+        element.style.color = '#ffffff';
+        element.lastChild.style.filter = "brightness(0) invert(1)";
+        element.style.fontWeight = '700';
+        element.style.fontSize = '21px';
+        selectedElement = element;
     }
-    element.style.backgroundColor = color;
-    element.style.boxShadow = 'none';
-    element.style.color = '#ffffff';
-    element.lastChild.style.filter = "brightness(0) invert(1)";
-    element.style.fontWeight = '700';
-    element.style.fontSize = '21px';
-    selectedElement = element;
 }
