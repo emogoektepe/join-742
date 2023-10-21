@@ -13,10 +13,15 @@ function renderContacts() {
                 <div class="contacts">
                 </div>
             </div>
-            <div class="infoSectionHeader">
-                <h1>Contacts</h1>
-                <div class="separator"></div>
-                <h3>Better with a team</h3>
+            <div>
+                <div class="infoSectionHeader">
+                    <h1>Contacts</h1>
+                    <div class="separator"></div>
+                    <h3>Better with a team</h3>
+                </div>
+                <div class="infoSectionContact">
+                    TODO: Contact Section
+                </div>
             </div>
         </div>
     `;
