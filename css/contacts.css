@@ -1,4 +1,36 @@
 .contactSection {
     height: 100%;
     width: 456px;
+    background-color: white;
+    box-shadow: 4px 0px 6px 0px #00000014;
+    overflow-y: scroll;
+}
+
+.contactSectionHeader {
+    height: 101px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.addNewContactButton {
+    height: 56px;
+    width: 352px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.addNewContactButton img {
+    width: 32px;
+    height: 32px;
+    padding-left: 16px;
+}
+
+.contacts {
 }

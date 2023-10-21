@@ -6,6 +6,7 @@ body {
     margin-right: auto;
     background-color: black;
     overflow-y: hidden;
+    user-select: none;
 }
 
 h1 {
