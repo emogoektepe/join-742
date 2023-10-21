@@ -1,9 +1,14 @@
-.contactSection {
+.contactsContent {
     height: 100%;
+    display: flex;
+}
+
+.contactSection {
     width: 456px;
     background-color: white;
     box-shadow: 4px 0px 6px 0px #00000014;
     overflow-y: scroll;
+    height: 100%;
 }
 
 .contactSectionHeader {
@@ -32,5 +37,35 @@
     padding-left: 16px;
 }
 
-.contacts {
+.contacts {}
+
+.infoSectionHeader {
+    width: 569px;
+    height: 73px;
+    margin-top: 110px;
+    margin-left: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    border-radius: 3px;
+    border: 3px solid #29ABE2;
+    height: 59px;
+}
+
+.infoSectionHeader h1 {
+    margin-right: 30px;
+    font-weight: 700;
+    font-size: 61px;
+    color: #000000;
+}
+
+.infoSectionHeader h3 {
+    margin-block: 0;
+    color: #2A3647;
+    font-size: 27px;
+    font-weight: 400;
+    margin-left: 30px;
+    white-space: nowrap;
 }
