@@ -66,3 +66,40 @@ h1 {
     height: calc(100vh - 96px);
     overflow: auto;
 }
+
+.buttonFilled {
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttonFilled:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.buttonFilled:active {
+    background-color: #091931;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+}
+
+.buttonUnfilled {
+    background-color: transparent;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.buttonUnfilled:hover {
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.buttonUnfilled:active {
+    color: #091931;
+    border: 1px solid #091931;
+}

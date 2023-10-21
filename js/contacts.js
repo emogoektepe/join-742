@@ -2,7 +2,9 @@ function renderContacts() {
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
-        <h1>Contacts</h1>
+        <div class="contactSection">
+            <button style="padding: 50px" class="buttonUnfilled">Test</button>
+        </div>
     `;
 
 }

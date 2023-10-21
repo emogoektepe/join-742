@@ -8,7 +8,7 @@ function renderAddTask() {
                 <div class="formLeftSide">
                     <div class="firstBlock">
                         <span data-end="*">Title</span>
-                        <input required type="text" name="" id="" placeholder="Enter a title">
+                        <input type="text" name="" id="" placeholder="Enter a title">
                         <span class="requiredFieldText">This field is required</span>
                     </div>
                     <div class="secondBlock">
