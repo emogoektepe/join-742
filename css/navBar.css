@@ -1,5 +1,6 @@
 .navBarContent {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -9,25 +10,43 @@
     justify-content: center;
     margin-top: 64px;
 }
+.navLogo:hover {
+    cursor: pointer;
+}
 .navItems {
     flex: 1;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
     color: #CDCDCD;
 }
-.navItems button {
+.navItems div {
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 122px;
+}
+.navItems div:hover {
+    cursor: pointer;
+}
+.navItems div img {
+    padding-right: 8px;
 }
 .navFooter {
-    padding: 50px;
+    margin-bottom: 64px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.navFooter a {
+.navFooter div {
+    margin-top: 8px;
     color: #CDCDCD;
     text-decoration: none;
+}
+.navFooter div:hover {
+    cursor: pointer;
 }
