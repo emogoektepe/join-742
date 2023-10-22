@@ -2,7 +2,9 @@ function renderContacts() {
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
-        <div class="addNewContactForm" id="addNewContactForm"></div>
+        <div class="addNewContactForm" id="addNewContactForm" onclick="closePopup()">
+            <div class="addNewContactFormContent" onclick="doNotClose(event)"></div>
+        </div>
         <div class="contactsContent">
             <div class="contactSection">
                 <div class="contactSectionHeader">
@@ -49,4 +51,13 @@ function renderContacts() {
 
 function addNewContact() {
     document.getElementById('addNewContactForm').style.display = "block"
+}
+
+function closePopup() {
+    let form = document.getElementById('addNewContactForm');
+    form.style.display = "none";
+}
+
+function doNotClose(event) {
+    event.stopPropagation();
 }
