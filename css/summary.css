@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+    margin-left: 68px;
+    margin-top: 68px;
+    margin-bottom: 68px;
 }
 
 .summaryHeader h1 {
@@ -14,11 +17,10 @@
     line-height: 120%;
 }
 
-.seperatorHeader {
+.separatorHeader {
     height: 59px;
-    width: 0px;
-    stroke-width: 3px;
-    stroke: #29ABE2;
+    width: 3px;
+    background-color: #29ABE2;
 }
 
 .summaryHeader h3 {
@@ -33,7 +35,10 @@
 /*summaryContainer*/
 .summaryContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 87px;
+    margin-left: 87px;
+    margin-right: 87px;
 }
 
 .summaryLeftSide {
@@ -49,6 +54,11 @@
     gap: 32px;
 }
 
+.firstRow div:hover{
+    cursor: pointer;
+    background-color: #2A3647;
+}
+
 .toDo {
     display: flex;
     width: 264px;
@@ -61,6 +71,7 @@
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
+
 .toDoRight {
     display: flex;
     flex-direction: column;
@@ -78,12 +89,17 @@
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
+
 .doneRight {
     display: flex;
     flex-direction: column;
 }
 
-/*.secondRow {}*/
+.secondRow div:hover{
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+}
 
 .urgent {
     display: flex;
@@ -98,11 +114,9 @@
 }
 
 .separatorUrgent {
-    width: 0px;
+    width: 2px;
     height: 102.023px;
-    flex-shrink: 0;
-    stroke-width: 2px;
-    stroke: var(--Style, #D1D1D1);
+    background-color: #D1D1D1;
 }
 
 .calendar {
@@ -149,7 +163,11 @@
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
-
+.thirdRow div:hover{
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+}
 .taskNumber {
     color: #000;
     text-align: center;
@@ -187,8 +205,8 @@
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
-    line-height: 120%;
-    /* 56.4px */
+    line-height: 120%; /* 56.4px */
+    margin: 0;
 }
 
 .greetingsBox span {
