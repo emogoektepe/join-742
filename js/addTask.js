@@ -29,9 +29,9 @@ function renderAddTask() {
                     <div class="prioBlock">
                         <span>Prio</span>
                         <div class="prio">
-                            <div onclick="changeColor(this, '#FF3D00')">Urgent<img src="./img/prioUp.svg" alt=""></div>
-                            <div onclick="changeColor(this, '#FFA800')">Medium<img src="./img/prioMid.svg" alt=""></div>
-                            <div onclick="changeColor(this, '#7AE229')">Low<img src="./img/prioLow.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#FF3D00')">Urgent<img src="./img/prioUp.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#FFA800')">Medium<img src="./img/prioMid.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#7AE229')">Low<img src="./img/prioLow.svg" alt=""></div>
                         </div>
                     </div>
                     <div class="categoryBlock">
@@ -48,20 +48,9 @@ function renderAddTask() {
 
     setActiveNav("addTask"); //für Navbar
 }
-// Funktion, um ein anklickbares Element zu markieren
-function setActiveNav(activeId) {
-    const navItems = document.querySelectorAll(".navItems div");
-    navItems.forEach(item => {
-        if (item.id === activeId) {
-            item.style.backgroundColor = "#4a5878";
-        } else {
-            item.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
-        }
-    });
-}
 
 let selectedElement = false;
-function changeColor(element, color) {
+function changePrioColor(element, color) {
     if (selectedElement === element) {
         element.style = '';
         element.lastChild.style = '';

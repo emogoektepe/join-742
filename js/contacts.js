@@ -2,10 +2,11 @@ function renderContacts() {
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
+        <div class="addNewContactForm" id="addNewContactForm"></div>
         <div class="contactsContent">
             <div class="contactSection">
                 <div class="contactSectionHeader">
-                    <div class="buttonFilled addNewContactButton">
+                    <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
                         Add new contact
                         <img src="../img/person_add.svg" alt="">
                     </div>
@@ -20,7 +21,25 @@ function renderContacts() {
                     <h3>Better with a team</h3>
                 </div>
                 <div class="infoSectionContact">
-                    TODO: Contact Section
+                    <div class="infoSectionProfile">
+                        <div class="contactPicture">
+                            AM
+                        </div>
+                        <div class="contactName">
+                            <p>Anton Mayer</p>
+                            <div class="contactButton">
+                                <div><img src="../img/edit.svg" alt="">Edit</div>
+                                <div><img src="../img/delete.svg" alt="">Delete</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contactInformationHeader">Contact Information</div>
+                    <div class="contactInformation">
+                        <p>Email</p>
+                        <a class="contactInformationEmail" href="mailto:antom@gmail.com">antom@gmail.com</a>
+                        <p>Phone</p>
+                        <a class="contactInformationPhone" href="tel: +491111111">0111111</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,13 +47,6 @@ function renderContacts() {
     setActiveNav("contacts"); //für Navbar
 }
 
-function setActiveNav(activeId) {
-    const navItems = document.querySelectorAll(".navItems div");
-    navItems.forEach(item => {
-        if (item.id === activeId) {
-            item.style.backgroundColor = "#4a5878";
-        } else {
-            item.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
-        }
-    });
+function addNewContact() {
+    document.getElementById('addNewContactForm').style.display = "block"
 }
