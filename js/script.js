@@ -1,6 +1,5 @@
 function init() {
-    // renderSummary();
-    renderContacts();
+    renderSummary();
 }
 
 function setActiveNav(activeId) {
