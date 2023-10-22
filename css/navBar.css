@@ -27,9 +27,9 @@
     align-items: center;
     width: 232px;
 }
-.navItems div:hover img{
+/*.navItems div:hover img{
     filter: brightness(0) invert(1);
-}
+}*/
 .navItems div:hover {
     cursor: pointer;
     background-color: #2a3d59;
