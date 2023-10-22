@@ -29,7 +29,7 @@
 }
 .navItems div:hover {
     cursor: pointer;
-    background-color: #4a5878; /*finde die richtige farbe nicht*/
+    background-color: #2a3d59; /*finde die richtige farbe nicht*/
     /*hover geht noch nicht über die volle breite*/
 }
 .navItems div img {
@@ -53,3 +53,4 @@
     font-weight: bold;
     color: #29ABE2;
 }
+
