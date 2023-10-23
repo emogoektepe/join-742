@@ -162,8 +162,8 @@
 }
 
 .addNewContactForm {
-    animation: fadein 1s;
-    display: none;
+    /* animation: fadein 1s; */
+    /* display: none; */
     position: absolute;
     top: 0;
     left: 0;
@@ -174,14 +174,15 @@
 }
 
 .addNewContactFormContent {
+    display: flex;
     height: 592px;
     width: 1212px;
-    background-color: white;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
+    overflow: hidden;
 }
 
 @keyframes fadein {
@@ -192,4 +193,165 @@
     to {
         opacity: 1;
     }
+}
+
+.formLeftSideContact {
+    height: 100%;
+    background-color: #2a3647;
+    width: 467px;
+}
+
+.formRightSideContact {
+    background-color: white;
+    width: 745px;
+    height: 100%;
+    display: flex;
+}
+
+.formLeftSideContact img {
+    width: 55.6px;
+    height: 66.48px;
+    margin-left: 46.9px;
+    margin-top: 154px;
+}
+
+.formLeftSideText {
+    margin-top: 12px;
+    height: 129px;
+    width: 371px;
+    margin-left: 48px;
+}
+
+.formLeftSideText p {
+    margin-block: 0;
+    font-size: 61px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.formLeftSideText span {
+    font-size: 27px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.underlineContact {
+    border: 2px solid #29ABE2;
+    border-radius: 3px;
+    width: 90px;
+    margin-top: 16px;
+}
+
+.formProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    border: 3px;
+    border: 3px solid #FFFFFF;
+    background-color: #D1D1D1;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    margin-top: 204px;
+    margin-left: 83px;
+}
+
+.formCloseImg {
+    position: absolute;
+    right: 48px;
+    top: 48px;
+}
+
+.formCloseImg:hover {
+    background-color: #eeeeee;
+    border-radius: 56px;
+    cursor: pointer;
+}
+
+.formContactDetails {
+    width: 422px;
+    height: 215px;
+    margin-top: 137px;
+    margin-left: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.formInput {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 13px 21px;
+}
+
+.formInput input {
+    all: unset;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.formInput input::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    color: #D1D1D1;
+}
+
+.personGrey {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    right: 17px;
+}
+
+.mailGrey {
+    position: absolute;
+    width: 20px;
+    height: 16px;
+    right: 15px;
+}
+
+.phoneGrey {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 17px;
+}
+
+.formButtons {
+    margin-top: 12px;
+    height: 57px;
+    width: 364px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonCancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 126px;
+    height: 56px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.buttonCheck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 214px;
+    height: 57px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.buttonCheck img {
+    margin-left: 8.26px;
 }
