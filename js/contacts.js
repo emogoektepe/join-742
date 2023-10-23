@@ -2,39 +2,6 @@ function renderContacts() {
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
-        <div class="addNewContactForm" id="addNewContactForm" onclick="closePopup()">
-            <div class="addNewContactFormContent" onclick="doNotClose(event)">
-                <div class="formLeftSideContact">
-                    <img src="../img/logo-white.svg" alt="">
-                    <div class="formLeftSideText">
-                        <p>Add contact</p>
-                        <span>Tasks are better with a team!</span>
-                        <div class="underlineContact"></div>
-                    </div>
-                </div>
-                <div class="formRightSideContact">
-                    <img onclick="closePopup()" class="formCloseImg" src="../img/close.svg" alt="">
-                    <div class="formProfile">
-                        <img src="../img/person.svg" alt="">
-                    </div>
-                    <div class="formContactDetails">
-                        <div class="formInput"><input type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
-                        <div class="formInput"><input type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
-                        <div class="formInput"><input type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
-                        <div class="formButtons">
-                            <div class="buttonUnfilled buttonCancel" onclick="closePopup()">
-                                Cancel
-                                <img src="../img/close.svg" alt="">
-                            </div>
-                            <div class="buttonFilled buttonCheck">
-                                Create contact
-                                <img src="../img/check-white.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="contactsContent">
             <div class="contactSection">
                 <div class="contactSectionHeader">
@@ -60,7 +27,7 @@ function renderContacts() {
                         <div class="contactName">
                             <p>Anton Mayer</p>
                             <div class="contactButton">
-                                <div><img src="../img/edit.svg" alt="">Edit</div>
+                                <div onclick="renderEditForm()"><img src="../img/edit.svg" alt="">Edit</div>
                                 <div><img src="../img/delete.svg" alt="">Delete</div>
                             </div>
                         </div>
@@ -76,6 +43,8 @@ function renderContacts() {
             </div>
         </div>
     `;
+    content.innerHTML += tempAddContactForm();
+    content.innerHTML += tempEditForm();
     setActiveNav("contacts"); //für Navbar
 }
 
@@ -85,9 +54,17 @@ function addNewContact() {
 
 function closePopup() {
     let form = document.getElementById('addNewContactForm');
+    let formEdit = document.getElementById('editForm');
     form.style.display = "none";
+    formEdit.style.display = "none";
 }
 
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+function renderEditForm() {
+    let content = document.getElementById('content');
+    document.getElementById('editForm').style.display = "block"
+    content.innerHTML += tempEditForm();
 }
