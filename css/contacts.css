@@ -287,7 +287,10 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 13px 21px;
+}
+
+.formInput:focus-within {
+    border: 1px solid #29ABE2;
 }
 
 .formInput input {
@@ -295,6 +298,8 @@
     font-size: 20px;
     font-weight: 400;
     color: #000000;
+    padding: 13px 21px;
+    width: 100%;
 }
 
 .formInput input::placeholder {
@@ -342,6 +347,10 @@
     font-weight: 400;
 }
 
+.buttonCancel:hover img{
+    filter: invert(55%) sepia(67%) saturate(1154%) hue-rotate(164deg) brightness(97%) contrast(83%);
+}
+
 .buttonCheck {
     display: flex;
     justify-content: center;
@@ -384,6 +393,6 @@
     font-weight: 400;
 }
 
-.buttonSave img{
+.buttonSave img {
     margin-left: 8px;
 }

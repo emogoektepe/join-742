@@ -11,6 +11,7 @@ function renderContacts() {
                     </div>
                 </div>
                 <div class="contacts">
+                    <!-- TODO: Cotacts in List -->
                 </div>
             </div>
             <div>
