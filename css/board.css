@@ -146,8 +146,13 @@
     align-items: center;
     gap: 25px;
     align-self: stretch;
+    
+}
+
+.grey{
     color: #42526E;
 }
+
 .editCard{
     height: 24px;
     width: 24px;
@@ -232,21 +237,46 @@
 
 .subtask{
     display: flex;
-    align-self: center;
+    align-items: center;
     justify-content: flex-start;
+    padding-top:4px;
+    padding-right: 16px; 
+
+}
+
+.subtask:hover{
+    background-color: #e5e5e5;
+    border-radius: 8px;
 }
 
 .checkIcon{
     padding-left: 16px;
     padding-right: 16px;
+    cursor: pointer;
 }   
 
+.notCheckedIcon{
+    padding-left: 13px;
+    padding-right: 13px;
+    cursor: pointer;
+}   
 .closeSection{
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
+}
+
+.closeSectionItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 16px;
+    cursor: pointer;
+}
+
+.closeSectionItem:hover{
+   font-weight: bold;
 }
 
 
@@ -264,6 +294,11 @@
     padding-bottom: 8px;
     margin: 32px;
     cursor: pointer;
+}
+
+.addTaskBtn:hover{
+    background: rgb(46, 185, 255);
+   border: 1px solid rgb(46, 185, 255);
 }
 
 .addTaskHeader{
@@ -329,3 +364,10 @@ progress::-webkit-progress-bar {
 .avatars img{
     padding: -10px;
 }
+
+.filterBlue:hover{
+    filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
+}
+
+
+/*filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);

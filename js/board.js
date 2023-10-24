@@ -37,18 +37,18 @@ function renderBoard() {
                     </span>
                    
                     <div class="dueDate"> 
-                        <span>Due date:</span>
+                        <span class="grey">Due date:</span>
                         <span>DD/MM/YYYY</span>
                     </div>
       
         
                         
                     <div class="dueDate">
-                        Priority:  
+                       <span class="grey">Priority: </span>  
                         <div class="cardPrio">Medium <img src="img/prio.svg"></div>
                      </div>
                        
-                        Assigned to:
+                       <p class="grey">Assigned to:</p> 
                     <div class="cardContact">
                         <img src="img/ellipse0.svg">Emmanuel Bauer
                     </div>
@@ -61,12 +61,12 @@ function renderBoard() {
                         <div><img class="checkIcon" src="img/checked.svg"></div>The first Subtask
                     </div>
                     <div class="subtask">
-                        <div><img class="checkIcon" src="img/notChecked.svg"></div>The second Subtask
+                        <div><img class="notCheckedIcon" src="img/notChecked.svg"></div>The second Subtask
                     </div>
                         
                     <div class="closeSection">
-                        Delete <img src="./img/delete.svg">
-                        Edit <img src="./img/edit.svg">
+                        <div class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
+                        <div class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
                     </div>
                         
 
@@ -77,19 +77,19 @@ function renderBoard() {
         <div class="statusHeader">
             <div class="statusHeadline">
                 <h3 class="h3">to do</h3>
-                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>In progress</h3>
-                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Await feedback</h3>
-                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Done</h3>
-                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
         </div>
 
