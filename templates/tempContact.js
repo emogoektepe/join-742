@@ -15,9 +15,9 @@ function tempAddContactForm() {
                                     <img src="../img/person.svg" alt="">
                                 </div>
                                 <div class="formContactDetails">
-                                    <div class="formInput"><input type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
-                                    <div class="formInput"><input type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
-                                    <div class="formInput"><input type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputEmail" type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputPhone" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                                     <div class="formButtons">
                                         <div class="buttonUnfilled buttonCancel" onclick="closePopup()">
                                             Cancel
@@ -50,9 +50,9 @@ function tempEditForm() {
                                     <img src="../img/person.svg" alt="">
                                 </div>
                                 <div class="formContactDetails">
-                                    <div class="formInput"><input type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
-                                    <div class="formInput"><input type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
-                                    <div class="formInput"><input type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputNameEdit" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputEmailEdit" type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
+                                    <div class="formInput"><input id="inputPhoneEdit" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                                     <div class="formButtonsEdit">
                                         <div class="buttonUnfilled buttonDelete">
                                             Delete

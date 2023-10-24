@@ -69,6 +69,7 @@ function closePopup() {
     let formEdit = document.getElementById('editForm');
     form.style.display = "none";
     formEdit.style.display = "none";
+
 }
 
 function doNotClose(event) {
@@ -76,9 +77,7 @@ function doNotClose(event) {
 }
 
 function renderEditForm() {
-    let content = document.getElementById('content');
     document.getElementById('editForm').style.display = "block"
-    content.innerHTML += tempEditForm();
 }
 
 function getFirstLetter() {
