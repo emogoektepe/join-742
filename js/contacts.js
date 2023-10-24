@@ -13,11 +13,6 @@ let testContacts = [
         fullName: 'Simon Brost',
         email: 'simon@gmx.de',
         phone: '+49 123139123'
-    },
-    {
-        fullName: 'Simon Brost',
-        email: 'simon@gmx.de',
-        phone: '+49 123139123'
     }
 ];
 
@@ -61,7 +56,7 @@ function renderContacts() {
 
 function addNewContact() {
     document.getElementById('addNewContactForm').style.display = "block";
-    
+
 }
 
 function closePopup() {

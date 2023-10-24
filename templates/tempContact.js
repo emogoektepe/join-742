@@ -54,7 +54,7 @@ function tempEditForm() {
                                     <div class="formInput"><input type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
                                     <div class="formInput"><input type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                                     <div class="formButtonsEdit">
-                                        <div class="buttonUnfilled buttonDelete" onclick="closePopup()">
+                                        <div class="buttonUnfilled buttonDelete">
                                             Delete
                                         </div>
                                         <div class="buttonFilled buttonSave">
