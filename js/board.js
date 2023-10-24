@@ -5,11 +5,11 @@ function renderBoard() {
         <header id="headerContent">
       <div class="headline"><h1>Board</h1></div>
         <div class="headBar">
-            <div class="inputArea">
-                <input type="text" placeholder="Find Task">
-                <img src="./img/borderDash.svg">
-                <img src="./img/search.svg">
-            </div>
+            <form class="formArea">
+                <input class="inputArea" type="text"  placeholder="Find Task">
+               <div><img src="./img/borderDash.svg"></div> 
+                <button class="buttonBoard"><img class="searchBoard" src="./img/search.svg"></button> 
+                </form>
             <div class="addTaskBtn" onclick="openDialog()">
                 Add Task
                 <img src="./img/add.svg">
