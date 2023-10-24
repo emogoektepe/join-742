@@ -23,7 +23,7 @@ function tempAddContactForm() {
                                             Cancel
                                             <img src="../img/close.svg" alt="">
                                         </div>
-                                        <div class="buttonFilled buttonCheck">
+                                        <div class="buttonFilled buttonCheck" onclick="createContact()">
                                             Create contact
                                             <img src="../img/check-white.svg" alt="">
                                         </div>

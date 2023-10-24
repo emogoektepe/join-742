@@ -69,7 +69,12 @@ function closePopup() {
     let formEdit = document.getElementById('editForm');
     form.style.display = "none";
     formEdit.style.display = "none";
-
+    let inputName = document.getElementById('inputName');
+    let inputEmail = document.getElementById('inputEmail');
+    let inputPhone = document.getElementById('inputPhone');
+    inputName.value = '';
+    inputEmail.value = '';
+    inputPhone.value = '';
 }
 
 function doNotClose(event) {
@@ -121,9 +126,9 @@ function fillContactWithHeader(i) {
 
 function getInitials(i) {
     if (testContacts[i].fullName.split(' ').length > 1) {
-        return testContacts[i].fullName.split(' ')[0].charAt(0) + testContacts[i].fullName.split(' ')[1].charAt(0);
+        return testContacts[i].fullName.split(' ')[0].charAt(0).toUpperCase() + testContacts[i].fullName.split(' ')[1].charAt(0).toUpperCase();
     } else {
-        return testContacts[i].fullName.split(' ')[0].charAt(0);
+        return testContacts[i].fullName.split(' ')[0].charAt(0).toUpperCase();
     }
 }
 
@@ -158,4 +163,23 @@ function setActive(element) {
     element.classList.remove('contactInListHover');
     element.children[1].children[0].style.color = "#fff";
     activeElement = element;
+}
+
+function createContact() {
+    let inputName = document.getElementById('inputName');
+    let inputEmail = document.getElementById('inputEmail');
+    let inputPhone = document.getElementById('inputPhone');
+
+    let obj = {
+        fullName: inputName.value,
+        email: inputEmail.value,
+        phone: inputPhone.value
+    }
+
+    testContacts.push(obj)
+    renderContacts();
+    inputName.value = '';
+    inputEmail.value = '';
+    inputPhone.value = '';
+    closePopup();
 }
