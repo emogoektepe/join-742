@@ -13,6 +13,11 @@ let testContacts = [
         fullName: 'Simon Brost',
         email: 'simon@gmx.de',
         phone: '+49 123139123'
+    },
+    {
+        fullName: 'Aimon Brost',
+        email: 'simon@gmx.de',
+        phone: '+49 123139123'
     }
 ];
 
@@ -103,7 +108,7 @@ function fillContactWithHeader(i) {
         const contact = testContacts[i];
         if (contactsUnderHeader.id.slice(-1) == contact.fullName.charAt(0)) {
             contactsUnderHeader.innerHTML +=
-                `<div class="contactInList" onclick="renderContact(${i})">
+                `<div class="contactInList contactInListHover" onclick="renderContact(${i}), setActive(this)">
                     <div class="contactInListImg" id="contactInListImg${i}">${getInitials(i)}</div>
                     <div class="contactInListInfo">
                         <div class="contactInListName">${contact.fullName}</div>
@@ -134,4 +139,24 @@ function renderContact(i) {
     let infoSectionContact = document.getElementById('infoSectionContact');
     let imgColor = document.getElementById(`contactInListImg${i}`);
     infoSectionContact.innerHTML = tempRenderContact(i, imgColor);
+}
+
+let activeElement = false;
+function setActive(element) {
+    if (activeElement === element) {
+        element.style.backgroundColor = '';
+        element.classList.add('contactInListHover');
+        element.children[1].children[0].style.color = '';
+        activeElement = false;
+    } else {
+        if (activeElement) {
+            activeElement.style.backgroundColor = '';
+            activeElement.classList.add('contactInListHover');
+            activeElement.children[1].children[0].style.color = '';
+        }
+    }
+    element.style.backgroundColor = "#2A3647";
+    element.classList.remove('contactInListHover');
+    element.children[1].children[0].style.color = "#fff";
+    activeElement = element;
 }
