@@ -10,7 +10,7 @@ function renderBoard() {
                <div><img src="./img/borderDash.svg"></div> 
                 <button class="buttonBoard"><img class="searchBoard" src="./img/search.svg"></button> 
                 </form>
-            <div class="addTaskBtn" onclick="openDialog()">
+            <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard')">
                 Add Task
                 <img src="./img/add.svg">
             </div>
@@ -18,35 +18,85 @@ function renderBoard() {
         </div>
     </header>
 
-    <div id="dialogBoard" class="dialog-bgBoard d-none" onclick="closeDialog()">
-                <div class="dialogBoard" onclick="doNotClose(event)">
+    <div id="dialogAddTaskBoard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogAddTaskBoard')">
+                <div class="dialogAddTaskBoard" onclick="doNotClose(event)">
 
                 </div>
-        </div>
+    </div>
+
+    <div id="dialogShowCard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogShowCard')">
+                <div class="dialogShowCard" onclick="doNotClose(event)">
+                
+                    <div class="cardHead">
+                       <p class="category">Category</p> 
+                        <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">
+                    </div>
+                    <h1 class="headline">This is a really big title</h1>
+                    <span>
+                        <p>Here comes the description of this Card</p>
+                    </span>
+                   
+                    <div class="dueDate"> 
+                        <span>Due date:</span>
+                        <span>DD/MM/YYYY</span>
+                    </div>
+      
+        
+                        
+                    <div class="dueDate">
+                        Priority:  
+                        <div class="cardPrio">Medium <img src="img/prio.svg"></div>
+                     </div>
+                       
+                        Assigned to:
+                    <div class="cardContact">
+                        <img src="img/ellipse0.svg">Emmanuel Bauer
+                    </div>
+                    <div class="cardContact">
+                        <img src="img/ellipse1.svg">    Marcel Bauer   
+                    </div>
+                                 
+                    <h3>Subtasks</h3>
+                    <div class="subtask">
+                        <div><img class="checkIcon" src="img/checked.svg"></div>The first Subtask
+                    </div>
+                    <div class="subtask">
+                        <div><img class="checkIcon" src="img/notChecked.svg"></div>The second Subtask
+                    </div>
+                        
+                    <div class="closeSection">
+                        Delete <img src="./img/delete.svg">
+                        Edit <img src="./img/edit.svg">
+                    </div>
+                        
+
+                </div>
+    </div>
+
 
         <div class="statusHeader">
             <div class="statusHeadline">
                 <h3 class="h3">to do</h3>
-                <div class="addTaskHeader" onclick="openDialog()"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>In progress</h3>
-                <div class="addTaskHeader" onclick="openDialog()"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Await feedback</h3>
-                <div class="addTaskHeader" onclick="openDialog()"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Done</h3>
-                <div class="addTaskHeader" onclick="openDialog()"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
         </div>
 
 
         <div class="board">
             <div class="todos">
-                <div class="card" draggable="true" class="todos">
+                <div onclick="openDialog('dialogShowCard')" class="card" draggable="true" class="todos">
                     <div class="cardContent">
                         <div class="category">
                             Category
@@ -117,12 +167,12 @@ function renderBoard() {
     setActiveNav("board"); //für Navbar
 }
 
-function openDialog(){
-    document.getElementById('dialogBoard').classList.remove('d-none')
+function openDialog(id){
+    document.getElementById(id).classList.remove('d-none')
 }
 
-function closeDialog(){
-    document.getElementById('dialogBoard').classList.add('d-none')
+function closeDialog(id){
+    document.getElementById(id).classList.add('d-none')
 }
 
 function doNotClose(event){

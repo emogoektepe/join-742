@@ -90,7 +90,7 @@
 .dialog-bgBoard{
 
         background-color: rgba(0, 0, 0, 0.2);
-        z-index: 2;
+        z-index: 1000;
         position: fixed;
         left: 0px;
         right: 0px;
@@ -102,14 +102,23 @@
     
     }
 
-.dialogBoard {
+.dialogAddTaskBoard {
         border-radius: 24px;
         width: 70vw;
         height: 70vh;
-        z-index: 999;
         background-color: white;
-        border-radius: 24px;
+     
     }
+
+.dialogShowCard {
+    border-radius: 24px;
+    background-color: white;
+    height: 80vh;
+    width: 33vw;
+    padding: 32px 24px;
+    border-radius: 24px;
+    overflow-y: hidden;
+}
 
 .d-none {
     display: none;
@@ -129,10 +138,49 @@
 
 .cardContent{
     padding: 16px;
+    cursor: pointer;
+}
+
+.dueDate{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    align-self: stretch;
+    color: #42526E;
+}
+.editCard{
+    height: 24px;
+    width: 24px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.editCard:hover{
+    background-color: #e4e4e4;
+    border-radius: 50%;
 }
 
 .cardContent p{
     color: #A8A8A8;
+}
+
+.cardPrio{
+    display: flex;
+    padding: 4px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.cardContact{
+    display: flex;
+    padding: 7px 16px;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: stretch;
+    gap: 16px;
 }
 
 .formArea {
@@ -182,6 +230,26 @@
     border-radius: 50%;
 }
 
+.subtask{
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+}
+
+.checkIcon{
+    padding-left: 16px;
+    padding-right: 16px;
+}   
+
+.closeSection{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+
 .addTaskBtn{
     border-radius: 10px;
     border: 1px solid #2A3647;
@@ -201,18 +269,24 @@
 .addTaskHeader{
     border-radius: 8px;
     border: 2px solid  #2A3647;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
 }
 
 
 .category{
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 4px 16px;
     border-radius: 4px;
     background-color: #0938ff;
     color: white;
     width: auto;
+}
+
+.cardHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 progress{
