@@ -12,13 +12,13 @@
 }
 
 .contactSectionHeader {
-    height: 101px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: sticky;
     top: 0;
     background-color: white;
+    height: 101px;
 }
 
 .addNewContactButton {
@@ -71,14 +71,12 @@
 .infoSectionContact {
     margin-top: 32px;
     margin-left: 62px;
-    width: 461px;
     height: 364px;
 }
 
 .infoSectionProfile {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .contactPicture {
@@ -93,7 +91,10 @@
     font-size: 47px;
     font-weight: 500;
     color: white;
-    background-color: #FF7A00;
+}
+
+.contactName {
+    margin-left: 54px;
 }
 
 .contactName p {
@@ -347,7 +348,7 @@
     font-weight: 400;
 }
 
-.buttonCancel:hover img{
+.buttonCancel:hover img {
     filter: invert(55%) sepia(67%) saturate(1154%) hue-rotate(164deg) brightness(97%) contrast(83%);
 }
 
@@ -395,4 +396,81 @@
 
 .buttonSave img {
     margin-left: 8px;
+}
+
+.contacts {
+    width: 352px;
+}
+
+.contactsHeader {
+    padding: 17px 36px;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.contactsHeader span {
+    padding-bottom: 10px;
+}
+
+.contactInList {
+    height: 78px;
+    display: flex;
+    align-items: center;
+}
+
+.contactInListImg {
+    width: 42px;
+    height: 42px;
+    border-radius: 45px;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    margin-left: 18px;
+}
+
+.contactInListInfo {
+    margin-left: 35px;
+}
+
+.contactInListName {
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.contactInListMail {
+    font-size: 16px;
+    font-weight: 400;
+    color: #007CEE;
+}
+
+.contactsUnderButton {
+    display: flex;
+    justify-content: center;
+}
+
+.contactInList {
+    border-radius: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.contactInList:hover {
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+}
+
+.contactInList:active {
+    background: #2A3647;
+}
+
+.contactInList:active div {
+    color: white;
 }
