@@ -67,3 +67,23 @@ function tempEditForm() {
                         </div>
                     </div>`;
 }
+
+function tempRenderContact(i, imgColor) {
+    return /*html*/`<div class="infoSectionProfile">
+                        <div class="contactPicture" style="background: ${imgColor.style.backgroundColor}">${getInitials(i)}</div>
+                        <div class="contactName">
+                            <p>${testContacts[i].fullName}</p>
+                            <div class="contactButton">
+                                <div onclick="renderEditForm()"><img src="../img/edit.svg" alt="">Edit</div>
+                                <div><img src="../img/delete.svg" alt="">Delete</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contactInformationHeader">Contact Information</div>
+                    <div class="contactInformation">
+                        <p>Email</p>
+                        <a class="contactInformationEmail" href="mailto:${testContacts[i].email}">${testContacts[i].email}</a>
+                        <p>Phone</p>
+                        <a class="contactInformationPhone" href="tel:${testContacts[i].phone}">${testContacts[i].phone}</a>
+                    </div>`;
+}
