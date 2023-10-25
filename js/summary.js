@@ -59,7 +59,7 @@ function renderSummary() {
 
             <div class="summaryRightSide">
                 <div class="greetingsBox">
-                    <h2>Good morning,</h2>
+                    <h2 id="greetingMessage"></h2>
                     <span>Sofia Müller</span>
                 </div>
             </div>
@@ -69,4 +69,5 @@ function renderSummary() {
     `;
 
     setActiveNav("summary"); //für navbar
+    renderGreetingMessage(); //Begrüßung
 }
