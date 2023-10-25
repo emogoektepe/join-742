@@ -59,6 +59,10 @@
     background-color: #2A3647;
 }
 
+.firstRow div:hover span{
+    color: white;
+}
+
 .toDo {
     display: flex;
     width: 264px;
@@ -95,10 +99,13 @@
     flex-direction: column;
 }
 
-.secondRow div:hover{
+.secondRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
-    color: white !important;
+}
+
+.secondRow div:hover span {
+    color: white;
 }
 
 .urgent {
@@ -170,6 +177,7 @@
 .thirdRow div:hover span{
     color: white;
 }
+
 .taskNumber {
     color: #000;
     text-align: center;
