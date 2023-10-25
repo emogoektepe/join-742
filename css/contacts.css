@@ -256,6 +256,9 @@
     box-shadow: 0px 0px 4px 0px #0000001A;
     margin-top: 204px;
     margin-left: 83px;
+    font-size: 47px;
+    font-weight: 500;
+    color: white;
 }
 
 .formCloseImg {

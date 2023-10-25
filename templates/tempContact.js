@@ -15,7 +15,7 @@ function tempAddContactForm() {
                                     <img src="../img/person.svg" alt="">
                                 </div>
                                 <div class="formContactDetails">
-                                    <div class="formInput"><input id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                                    <div class="formInput"><input style="text-transform: capitalize;" id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
                                     <div class="formInput"><input id="inputEmail" type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
                                     <div class="formInput"><input id="inputPhone" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                                     <div class="formButtons">
@@ -46,18 +46,16 @@ function tempEditForm() {
                             </div>
                             <div class="formRightSideContact">
                                 <img onclick="closePopup()" class="formCloseImg" src="../img/close.svg" alt="">
-                                <div class="formProfile">
-                                    <img src="../img/person.svg" alt="">
-                                </div>
+                                <div class="formProfile" id="formProfile"></div>
                                 <div class="formContactDetails">
-                                    <div class="formInput"><input id="inputNameEdit" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                                    <div class="formInput"><input style="text-transform: capitalize;" id="inputNameEdit" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
                                     <div class="formInput"><input id="inputEmailEdit" type="text" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
                                     <div class="formInput"><input id="inputPhoneEdit" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                                     <div class="formButtonsEdit">
                                         <div class="buttonUnfilled buttonDelete">
                                             Delete
                                         </div>
-                                        <div class="buttonFilled buttonSave">
+                                        <div class="buttonFilled buttonSave" onclick="saveEdit()">
                                             Save
                                             <img src="../img/check-white.svg" alt="">
                                         </div>
@@ -72,9 +70,9 @@ function tempRenderContact(i, imgColor) {
     return /*html*/`<div class="infoSectionProfile">
                         <div class="contactPicture" style="background: ${imgColor.style.backgroundColor}">${getInitials(i)}</div>
                         <div class="contactName">
-                            <p>${testContacts[i].fullName}</p>
+                            <p style="text-transform: capitalize;">${testContacts[i].fullName}</p>
                             <div class="contactButton">
-                                <div onclick="renderEditForm()"><img src="../img/edit.svg" alt="">Edit</div>
+                                <div onclick="renderEditForm(${i})"><img src="../img/edit.svg" alt="">Edit</div>
                                 <div><img src="../img/delete.svg" alt="">Delete</div>
                             </div>
                         </div>

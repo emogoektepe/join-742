@@ -21,7 +21,7 @@ let testContacts = [
     }
 ];
 
-let contactsFirstLetter = [];
+const contactsFirstLetter = [];
 
 function renderContacts() {
     let content = document.getElementById('content');
@@ -61,7 +61,6 @@ function renderContacts() {
 
 function addNewContact() {
     document.getElementById('addNewContactForm').style.display = "block";
-
 }
 
 function closePopup() {
@@ -81,14 +80,28 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
-function renderEditForm() {
+function renderEditForm(i) {
     document.getElementById('editForm').style.display = "block"
+    let inputNameEdit = document.getElementById('inputNameEdit');
+    let inputEmailEdit = document.getElementById('inputEmailEdit');
+    let inputPhoneEdit = document.getElementById('inputPhoneEdit');
+    let formProfile = document.getElementById('formProfile');
+    let contactListImg = document.getElementById(`contactInListImg${i}`);
+    formProfile.innerHTML = getInitials(i);
+    formProfile.style.backgroundColor = contactListImg.style.backgroundColor;
+    inputNameEdit.value = testContacts[i].fullName;
+    inputEmailEdit.value = testContacts[i].email;
+    inputPhoneEdit.value = testContacts[i].phone;
+}
+
+function saveEdit() {
+
 }
 
 function getFirstLetter() {
     for (let i = 0; i < testContacts.length; i++) {
-        if (contactsFirstLetter.indexOf(testContacts[i].fullName.charAt(0)) == -1) {
-            contactsFirstLetter.push(testContacts[i].fullName.charAt(0));
+        if (contactsFirstLetter.indexOf(testContacts[i].fullName.charAt(0).toUpperCase()) == -1) {
+            contactsFirstLetter.push(testContacts[i].fullName.charAt(0).toUpperCase());
             contactsFirstLetter.sort();
         }
     }
@@ -110,12 +123,12 @@ function fillContactWithHeader(i) {
     let contactsUnderHeader = document.getElementById(`contactsUnderHeader${i}`);
     for (let i = 0; i < testContacts.length; i++) {
         const contact = testContacts[i];
-        if (contactsUnderHeader.id.slice(-1) == contact.fullName.charAt(0)) {
+        if (contactsUnderHeader.id.slice(-1) == contact.fullName.charAt(0).toUpperCase()) {
             contactsUnderHeader.innerHTML +=
                 `<div class="contactInList contactInListHover" onclick="renderContact(${i}), setActive(this)">
                     <div class="contactInListImg" id="contactInListImg${i}">${getInitials(i)}</div>
                     <div class="contactInListInfo">
-                        <div class="contactInListName">${contact.fullName}</div>
+                        <div class="contactInListName">${contact.fullName.charAt(0).toUpperCase() + contact.fullName.substring(1)}</div>
                         <span class="contactInListMail">${contact.email}</span>
                     </div>
                 </div>`;
@@ -175,11 +188,16 @@ function createContact() {
         email: inputEmail.value,
         phone: inputPhone.value
     }
-
     testContacts.push(obj)
     renderContacts();
+    resetInputFields();
+    let infoSectionContact = document.getElementById('infoSectionContact');
+    infoSectionContact.innerHTML = tempRenderContact(testContacts.length - 1, document.getElementById(`contactInListImg${testContacts.length - 1}`));
+    closePopup();
+}
+
+function resetInputFields() {
     inputName.value = '';
     inputEmail.value = '';
     inputPhone.value = '';
-    closePopup();
 }
