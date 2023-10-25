@@ -1,6 +1,6 @@
  let testTodos = [{  'id': 0,
                      'title': 'Build Drag and Drop',
-                     'category': 'inProgress',
+                     'category': 'todo',
                      'description': 'using turtorial an js to build it'
                     },
                     {  'id': 1,
@@ -41,7 +41,7 @@ function updateBoardHtml(){
 function renderTodoContent(){
     let todos = testTodos.filter(t => t['category']== 'todo');
 
-    document.getElementById('todo').innerHTML = ``;
+    document.getElementById('todo').innerHTML = '';
 
     if (todos.length != 0 ) {
         for (let i = 0; i < todos.length; i++) {
@@ -192,8 +192,14 @@ function renderBoard() {
 
 
         <div class="statusHeader">
-            
-            
+            <div class="statusHeadline">
+                <h3 class="h3">to do</h3>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+            </div>
+            <div class="statusHeadline">
+                <h3>In progress</h3>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+            </div>
             <div class="statusHeadline">
                 <h3>Await feedback</h3>
                 <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
@@ -208,10 +214,6 @@ function renderBoard() {
     <div class="board">
 
         <div id="todo" ondrop="moveTo('todo')"ondragover="allowDrop(event)" class="todos">
-        <div class="statusHeadline">
-                <h3 class="h3">to do</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
-            </div>
             <div class="noTasks">
                 No Tasks to do
             </div>
