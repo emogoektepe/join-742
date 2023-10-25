@@ -1,4 +1,94 @@
+ let testTodos = [{  'id': 0,
+                     'title': 'Build Drag and Drop',
+                     'category': 'todo',
+                     'description': 'using turtorial an js to build it'
+                    },
+                    {  'id': 1,
+                     'title': 'Set variables',
+                     'category': 'inProgress',
+                     'description': 'gets the Html Code dynamic'
+                    },
+                    {  'id': 2,
+                    'title': 'Ready CV',
+                    'category': 'awaitFeedback',
+                    'description':'write a CV an import projects'
+                    },
+                    { 'id': 3,
+                    'title': 'layout',
+                    'category': 'done',
+                    'description': 'use CSS to build a layout for the Project'
+                    }
+        
+
+        
+        
+        ]
+
+let currentDraggedElement;
+
+/**
+ * render Board content
+ */
+
+function updateBoardHtml(){
+    
+    renderTodoContent();
+    renderInProgressContent();
+    renderAwaitFeedbackContent();
+    renderDoneContent();
+}
+
+function renderTodoContent(){
+    let todos = testTodos.filter(t => t['category']== 'todo');
+
+    document.getElementById('todo').innerHTML = '';
+
+    for (let i = 0; i < todos.length; i++) {
+        const todo = todos[i];
+          document.getElementById('todo').innerHTML += `${generateCard(todo)} ` 
+    }
+}
+
+function renderInProgressContent(){
+    document.getElementById('inProgress').innerHTML = '';
+
+    let progressTodos = testTodos.filter(p => p['category']== 'inProgress')
+
+    for (let i = 0; i < progressTodos.length; i++) {
+        const progressTodo = progressTodos[i];
+
+        document.getElementById('inProgress').innerHTML += `${generateCard(progressTodo)}`;
+    }
+}
+
+function renderAwaitFeedbackContent(){
+    document.getElementById('awaitFeedback').innerHTML = '';
+
+    let feedbackTodos = testTodos.filter(f => f['category']== 'awaitFeedback')
+
+    for (let i = 0; i < feedbackTodos.length; i++) {
+        const feedbackTodo = feedbackTodos[i];
+
+        document.getElementById('awaitFeedback').innerHTML += `${generateCard(feedbackTodo)}`
+   
+    }
+}
+
+function renderDoneContent(){
+    document.getElementById('done').innerHTML = '';
+
+    let doneTodos = testTodos.filter(d => d['category'] == 'done')
+
+    for (let i = 0; i < doneTodos.length; i++) {
+        const doneTodo = doneTodos[i];
+        
+        document.getElementById('done').innerHTML += `${generateCard(doneTodo)}`
+    }
+    
+}
+
 function renderBoard() {
+ 
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
@@ -31,7 +121,7 @@ function renderBoard() {
                        <p class="category">Category</p> 
                         <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">
                     </div>
-                    <h1 class="headline">This is a really big title</h1>
+                    <h1 class="headline">${testTodos[0]['title']}</h1>
                     <span>
                         <p>Here comes the description of this Card</p>
                     </span>
@@ -94,77 +184,35 @@ function renderBoard() {
         </div>
 
 
-        <div class="board">
-            <div class="todos">
-                <div onclick="openDialog('dialogShowCard')" class="card" draggable="true" class="todos">
-                    <div class="cardContent">
-                        <div class="category">
-                            Category
-                        </div>
-                        <h4>This is a the Title</h4>
-                        <p>Here comes the description of this Card</p>
+    <div class="board">
 
-                        <div class="progressBar">
-                            <progress id="file" max="100" value="50"></progress>
-                            1/2 Subtasks
-                        </div>
-                        <div class="endSection">
-                            <div class="avatars">
-                                <img src="img/ellipse0.svg">
-                                <img src="img/ellipse1.svg">
-                                <img src="img/ellipse2.svg">
-                            </div>
-                            <div>
-                                <img src="img/prio.svg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="todos">
-                <div class="card" draggable="true" class="todos">
-                    <div class="cardContent">
-                        <div class="category">
-                            Category
-                        </div>
-                        <h4>This is a the Title</h4>
-                        <p>Here comes the description of this Card</p>
-
-                        <div class="progressBar">
-                            <progress id="file" max="100" value="50"></progress>
-                            1/2 Subtasks
-                        </div>
-                        <div class="endSection">
-                            <div class="avatars">
-                                <img src="img/ellipse0.svg">
-                                <img src="img/ellipse1.svg">
-                                <img src="img/ellipse2.svg">
-                            </div>
-                            <div>
-                                <img src="img/prio.svg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="todos">
-                <div class="noTasks">
-                    No Tasks to do
-                </div>
-            </div>
-            <div class="todos">
-                <div class="noTasks">
-                    No Tasks to do
-                </div>
+        <div id="todo" ondrop="moveTo('todo')"ondragover="allowDrop(event)" class="todos">
+            <div class="noTasks">
+                No Tasks to do
             </div>
         </div>
+
+        <div id="inProgress" ondrop="moveTo('inProgress')" class="todos" ondragover="allowDrop(event)">
+            <div class="noTasks">
+                No Tasks to do
+            </div>
+        </div>
+
+        <div id="awaitFeedback" ondrop="moveTo('awaitFeedback')" class="todos" ondragover="allowDrop(event)">
+            <div class="noTasks">
+                No Tasks to do
+            </div>
+        </div>
+        <div id="done" class="todos" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+            <div class="noTasks">
+                No Tasks to do
+            </div>
+        </div>
+    </div>
     `;
     setActiveNav("board"); //für Navbar
+    updateBoardHtml()
+
 }
 
 function openDialog(id){
@@ -178,3 +226,54 @@ function closeDialog(id){
 function doNotClose(event){
     event.stopPropagation();
 }
+
+function startDragging(id){
+
+    currentDraggedElement = id;
+
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+function moveTo(category){
+    testTodos[currentDraggedElement]['category'] = category
+    renderBoard()
+
+}
+
+function generateCard(todo){
+
+return /*html*/`
+
+<div class="card" draggable="true" ondragstart="startDragging(${todo['id']})">
+    <div onclick="openDialog('dialogShowCard')">
+        <div class="cardContent">
+            <div class="category">
+                Category
+            </div>
+            <h4>${todo['title']}</h4>
+            <p>${todo['description']}</p>
+
+            <div class="progressBar">
+                <progress id="file" max="100" value="50"></progress>
+                1/2 Subtasks
+            </div>
+            <div class="endSection">
+                <div class="avatars">
+                    <img src="img/ellipse0.svg">
+                    <img src="img/ellipse1.svg">
+                    <img src="img/ellipse2.svg">
+                </div>
+                <div>
+                    <img src="img/prio.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+
+
+}
+
