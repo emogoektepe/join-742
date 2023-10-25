@@ -1,6 +1,6 @@
  let testTodos = [{  'id': 0,
                      'title': 'Build Drag and Drop',
-                     'category': 'todo',
+                     'category': 'inProgress',
                      'description': 'using turtorial an js to build it'
                     },
                     {  'id': 1,
@@ -41,11 +41,17 @@ function updateBoardHtml(){
 function renderTodoContent(){
     let todos = testTodos.filter(t => t['category']== 'todo');
 
-    document.getElementById('todo').innerHTML = '';
+    document.getElementById('todo').innerHTML = ``;
 
-    for (let i = 0; i < todos.length; i++) {
-        const todo = todos[i];
-          document.getElementById('todo').innerHTML += `${generateCard(todo)} ` 
+    if (todos.length != 0 ) {
+        for (let i = 0; i < todos.length; i++) {
+            const todo = todos[i];
+              document.getElementById('todo').innerHTML += `${generateCard(todo)} ` 
+        }
+    } else {
+        document.getElementById('todo').innerHTML = `<div class="noTasks">
+                                                         No Tasks to do
+                                                      </div>` 
     }
 }
 
@@ -53,11 +59,18 @@ function renderInProgressContent(){
     document.getElementById('inProgress').innerHTML = '';
 
     let progressTodos = testTodos.filter(p => p['category']== 'inProgress')
+    
+    if(progressTodos.length != 0){
+        for (let i = 0; i < progressTodos.length; i++) {
+            const progressTodo = progressTodos[i];
 
-    for (let i = 0; i < progressTodos.length; i++) {
-        const progressTodo = progressTodos[i];
+            document.getElementById('inProgress').innerHTML += `${generateCard(progressTodo)}`;
+        }
+    }else{
+        document.getElementById('inProgress').innerHTML = `<div class="noTasks">
+                                                                No Tasks to do
+                                                           </div>` 
 
-        document.getElementById('inProgress').innerHTML += `${generateCard(progressTodo)}`;
     }
 }
 
@@ -66,12 +79,19 @@ function renderAwaitFeedbackContent(){
 
     let feedbackTodos = testTodos.filter(f => f['category']== 'awaitFeedback')
 
-    for (let i = 0; i < feedbackTodos.length; i++) {
-        const feedbackTodo = feedbackTodos[i];
+    if(feedbackTodos.length != 0){
 
-        document.getElementById('awaitFeedback').innerHTML += `${generateCard(feedbackTodo)}`
-   
-    }
+        for (let i = 0; i < feedbackTodos.length; i++) {
+            const feedbackTodo = feedbackTodos[i];
+
+            document.getElementById('awaitFeedback').innerHTML += `${generateCard(feedbackTodo)}`
+        
+            }
+        }else{
+            document.getElementById('awaitFeedback').innerHTML = `<div class="noTasks">
+                                                                    No Tasks to do
+                                                                  </div>` 
+        }
 }
 
 function renderDoneContent(){
@@ -79,11 +99,18 @@ function renderDoneContent(){
 
     let doneTodos = testTodos.filter(d => d['category'] == 'done')
 
-    for (let i = 0; i < doneTodos.length; i++) {
-        const doneTodo = doneTodos[i];
-        
-        document.getElementById('done').innerHTML += `${generateCard(doneTodo)}`
+    if (doneTodos.length != 0) {
+        for (let i = 0; i < doneTodos.length; i++) {
+            const doneTodo = doneTodos[i];
+            
+            document.getElementById('done').innerHTML += `${generateCard(doneTodo)}`
+        }
+    } else {
+        document.getElementById('done').innerHTML = `<div class="noTasks">
+                                                                    No Tasks to do
+                                                               </div>` 
     }
+    
     
 }
 
@@ -165,14 +192,8 @@ function renderBoard() {
 
 
         <div class="statusHeader">
-            <div class="statusHeadline">
-                <h3 class="h3">to do</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
-            </div>
-            <div class="statusHeadline">
-                <h3>In progress</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
-            </div>
+            
+            
             <div class="statusHeadline">
                 <h3>Await feedback</h3>
                 <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
@@ -187,6 +208,10 @@ function renderBoard() {
     <div class="board">
 
         <div id="todo" ondrop="moveTo('todo')"ondragover="allowDrop(event)" class="todos">
+        <div class="statusHeadline">
+                <h3 class="h3">to do</h3>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+            </div>
             <div class="noTasks">
                 No Tasks to do
             </div>
