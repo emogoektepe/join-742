@@ -1,57 +1,10 @@
-let testContacts = [
-    {
-        fullName: 'Emre Göktepe',
-        email: 'test@gmx.de',
-        phone: '+49 91239199123'
-    },
-    {
-        fullName: 'Johannes Braun',
-        email: 'jo@gmx.de',
-        phone: '+49 241241413'
-    },
-    {
-        fullName: 'Simon Brost',
-        email: 'simon@gmx.de',
-        phone: '+49 123139123'
-    },
-    {
-        fullName: 'Aimon Brost',
-        email: 'simon@gmx.de',
-        phone: '+49 123139123'
-    }
-];
-
-const contactsFirstLetter = [];
+let contactsJson = [];
+let contactsFirstLetter = [];
+let contactPosition = 0;
 
 function renderContacts() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/ `
-        <div class="contactsContent">
-            <div class="contactSection">
-                <div class="contactSectionHeader">
-                    <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
-                        Add new contact
-                        <img src="../img/person_add.svg" alt="">
-                    </div>
-                </div>
-                <div class="contactsUnderButton">
-                    <div class="contacts" id="contactsList">
-                        <!-- TODO: Cotacts in List -->
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="infoSectionHeader">
-                    <h1>Contacts</h1>
-                    <div class="separator"></div>
-                    <h3>Better with a team</h3>
-                </div>
-                <div class="infoSectionContact" id="infoSectionContact">
-                    
-                </div>
-            </div>
-        </div>
-    `;
+    content.innerHTML = tempRenderContactContent();
     getFirstLetter();
     fillContactListHeader();
     content.innerHTML += tempAddContactForm();
@@ -68,12 +21,7 @@ function closePopup() {
     let formEdit = document.getElementById('editForm');
     form.style.display = "none";
     formEdit.style.display = "none";
-    let inputName = document.getElementById('inputName');
-    let inputEmail = document.getElementById('inputEmail');
-    let inputPhone = document.getElementById('inputPhone');
-    inputName.value = '';
-    inputEmail.value = '';
-    inputPhone.value = '';
+    resetInputFields();
 }
 
 function doNotClose(event) {
@@ -81,6 +29,7 @@ function doNotClose(event) {
 }
 
 function renderEditForm(i) {
+    contactPosition = i;
     document.getElementById('editForm').style.display = "block"
     let inputNameEdit = document.getElementById('inputNameEdit');
     let inputEmailEdit = document.getElementById('inputEmailEdit');
@@ -89,19 +38,30 @@ function renderEditForm(i) {
     let contactListImg = document.getElementById(`contactInListImg${i}`);
     formProfile.innerHTML = getInitials(i);
     formProfile.style.backgroundColor = contactListImg.style.backgroundColor;
-    inputNameEdit.value = testContacts[i].fullName;
-    inputEmailEdit.value = testContacts[i].email;
-    inputPhoneEdit.value = testContacts[i].phone;
+    inputNameEdit.value = contactsJson[i].fullName;
+    inputEmailEdit.value = contactsJson[i].email;
+    inputPhoneEdit.value = contactsJson[i].phone;
 }
 
 function saveEdit() {
-
+    let inputNameEdit = document.getElementById('inputNameEdit').value;
+    let inputEmailEdit = document.getElementById('inputEmailEdit').value;
+    let inputPhoneEdit = document.getElementById('inputPhoneEdit').value;
+    contactsJson[contactPosition].fullName = inputNameEdit;
+    contactsJson[contactPosition].email = inputEmailEdit;
+    contactsJson[contactPosition].phone = inputPhoneEdit;
+    getFirstLetter();
+    setContactsStorage();
+    renderContacts();
+    setActualContact(contactPosition);
+    closePopup();
 }
 
 function getFirstLetter() {
-    for (let i = 0; i < testContacts.length; i++) {
-        if (contactsFirstLetter.indexOf(testContacts[i].fullName.charAt(0).toUpperCase()) == -1) {
-            contactsFirstLetter.push(testContacts[i].fullName.charAt(0).toUpperCase());
+    contactsFirstLetter = [];
+    for (let i = 0; i < contactsJson.length; i++) {
+        if (contactsFirstLetter.indexOf(contactsJson[i].fullName.charAt(0).toUpperCase()) == -1) {
+            contactsFirstLetter.push(contactsJson[i].fullName.charAt(0).toUpperCase());
             contactsFirstLetter.sort();
         }
     }
@@ -110,38 +70,26 @@ function getFirstLetter() {
 function fillContactListHeader() {
     let contactsList = document.getElementById('contactsList');
     for (let i = 0; i < contactsFirstLetter.length; i++) {
-        contactsList.innerHTML += /*html*/ `
-            <div class="contactsHeader">
-                <span>${contactsFirstLetter[i]}</span>
-            </div>
-            <div class="contactsUnderHeader" id="contactsUnderHeader${contactsFirstLetter[i]}"></div>`;
+        contactsList.innerHTML += tempRenderContactsList(i);
         fillContactWithHeader(contactsFirstLetter[i]);
     }
 }
 
 function fillContactWithHeader(i) {
     let contactsUnderHeader = document.getElementById(`contactsUnderHeader${i}`);
-    for (let i = 0; i < testContacts.length; i++) {
-        const contact = testContacts[i];
-        if (contactsUnderHeader.id.slice(-1) == contact.fullName.charAt(0).toUpperCase()) {
-            contactsUnderHeader.innerHTML +=
-                `<div class="contactInList contactInListHover" onclick="renderContact(${i}), setActive(this)">
-                    <div class="contactInListImg" id="contactInListImg${i}">${getInitials(i)}</div>
-                    <div class="contactInListInfo">
-                        <div class="contactInListName">${contact.fullName.charAt(0).toUpperCase() + contact.fullName.substring(1)}</div>
-                        <span class="contactInListMail">${contact.email}</span>
-                    </div>
-                </div>`;
+    for (let i = 0; i < contactsJson.length; i++) {
+        if (contactsUnderHeader.id.slice(-1) == contactsJson[i].fullName.charAt(0).toUpperCase()) {
+            contactsUnderHeader.innerHTML += tempRenderContactsUnderHeader(i);
             setContactListImgColor(i);
         }
     }
 }
 
 function getInitials(i) {
-    if (testContacts[i].fullName.split(' ').length > 1) {
-        return testContacts[i].fullName.split(' ')[0].charAt(0).toUpperCase() + testContacts[i].fullName.split(' ')[1].charAt(0).toUpperCase();
+    if (contactsJson[i].fullName.split(' ').length > 1) {
+        return contactsJson[i].fullName.split(' ')[0].charAt(0).toUpperCase() + contactsJson[i].fullName.split(' ')[1].charAt(0).toUpperCase();
     } else {
-        return testContacts[i].fullName.split(' ')[0].charAt(0).toUpperCase();
+        return contactsJson[i].fullName.split(' ')[0].charAt(0).toUpperCase();
     }
 }
 
@@ -152,14 +100,14 @@ function setContactListImgColor(i) {
     imgColor.style.backgroundColor = color[i];
 }
 
-function renderContact(i) {
+function renderContactInfoSection(i) {
     let infoSectionContact = document.getElementById('infoSectionContact');
     let imgColor = document.getElementById(`contactInListImg${i}`);
     infoSectionContact.innerHTML = tempRenderContact(i, imgColor);
 }
 
 let activeElement = false;
-function setActive(element) {
+function setActiveBackgroundColor(element) {
     if (activeElement === element) {
         element.style.backgroundColor = '';
         element.classList.add('contactInListHover');
@@ -179,20 +127,15 @@ function setActive(element) {
 }
 
 function createContact() {
-    let inputName = document.getElementById('inputName');
-    let inputEmail = document.getElementById('inputEmail');
-    let inputPhone = document.getElementById('inputPhone');
-
-    let obj = {
-        fullName: inputName.value,
-        email: inputEmail.value,
-        phone: inputPhone.value
-    }
-    testContacts.push(obj)
+    let inputName = document.getElementById('inputName').value;
+    let inputEmail = document.getElementById('inputEmail').value;
+    let inputPhone = document.getElementById('inputPhone').value;
+    let newContact = { fullName: inputName, email: inputEmail, phone: inputPhone };
+    contactsJson.push(newContact)
+    setContactsStorage();
     renderContacts();
-    resetInputFields();
-    let infoSectionContact = document.getElementById('infoSectionContact');
-    infoSectionContact.innerHTML = tempRenderContact(testContacts.length - 1, document.getElementById(`contactInListImg${testContacts.length - 1}`));
+    const lastIndex = contactsJson.length - 1;
+    setActualContact(lastIndex);
     closePopup();
 }
 
@@ -200,4 +143,34 @@ function resetInputFields() {
     inputName.value = '';
     inputEmail.value = '';
     inputPhone.value = '';
+}
+
+function deleteContact(i) {
+    contactsJson.splice(i, 1);
+    setContactsStorage();
+    renderContacts();
+}
+
+function deleteContactInForm() {
+    contactsJson.splice(contactPosition, 1);
+    setContactsStorage();
+    closePopup();
+    renderContacts();
+}
+
+function setActualContact(position) {
+    document.getElementById('infoSectionContact').innerHTML = tempRenderContact(position, document.getElementById(`contactInListImg${position}`));
+    setActiveBackgroundColor(document.getElementById(`contactInList${position}`));
+    document.getElementById(`contactInList${position}`).scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+async function loadContactsFromStorage() {
+    let storageParse = await getItem('contacts');
+    contactsJson = JSON.parse(storageParse.data.value);
+    renderContacts();
+}
+
+function setContactsStorage() {
+    let contactAsString = JSON.stringify(contactsJson);
+    setItem('contacts', contactAsString);
 }
