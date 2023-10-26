@@ -178,6 +178,11 @@ h1 {
     margin: 40px 8px;
 }
 
+.mainDivThree a:hover{
+    font-weight: bold;
+    color: rgb(46, 185, 255);
+}
+
 
 
 .applicationBody {
