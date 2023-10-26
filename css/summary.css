@@ -54,9 +54,17 @@
     gap: 32px;
 }
 
-.firstRow div:hover{
+.firstRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
+}
+.toDo:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+}
+.done:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 
 .firstRow div:hover span{
@@ -77,6 +85,8 @@
     border-radius: 30px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    position: relative;
 }
 
 .toDoRight {
@@ -95,6 +105,8 @@
     border-radius: 30px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    position: relative;
 }
 
 .doneRight {
@@ -110,6 +122,11 @@
     color: white;
 }
 
+.urgent:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+}
+
 .urgent {
     display: flex;
     width: 560px;
@@ -120,6 +137,8 @@
     border-radius: 30px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    position: relative;
 }
 .urgentLeft {
     display: flex;
@@ -201,6 +220,8 @@
     border-radius: 30px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    position: relative;
 }
 .thirdRow div:hover{
     cursor: pointer;
@@ -227,6 +248,18 @@
     font-weight: 400;
     line-height: 120%;
     width: 83px;
+}
+.tasksInBoard:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+}
+.tasksInProgress:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+}
+.awaitingFeedback:hover {
+    transform: scale(1.1);
+    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 
 .summaryRightSide {
