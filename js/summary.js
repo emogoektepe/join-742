@@ -33,7 +33,15 @@ function renderSummary() {
                 </div>
                 <div class="secondRow">
                     <div class="urgent">
-                        <img src="../img/summaryUrgent.svg" alt="">
+                        <div class="urgentLeft">
+                            <div class="urgentImg">
+                                <img src="../img/summaryUrgent.svg" alt="">
+                            </div>
+                            <div class="urgentCount"> 
+                                <span class="urgentNumber">1</span>
+                                <span class="urgentText">Urgent</span>
+                            </div>
+                        </div>
                         <div class="separatorUrgent"></div>
                         <div class="calendar">
                             <span class="calendarDate">Oktober 16, 2022</span>
