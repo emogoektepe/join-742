@@ -4,7 +4,6 @@ body {
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    background-color: black;
     overflow-y: hidden;
     user-select: none;
     position: relative;
@@ -14,16 +13,97 @@ h1 {
     margin-block: 0;
 }
 
+.startPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color:#f6f7f8;
+}
+
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    z-index: 2;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
-.login button {
-    padding: 100px;
-    font-size: 56px;
+.login h1{
+    margin-top: 48px;
+    font-size: 61px;
+}
+
+.login input{
+    border: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.login form img{
+    width: 24px;
+    height: 24px;
+}
+
+.login input:focus{
+    outline: none;
+}
+
+.login form {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 21px;
+    width: 422px;
+    gap: 10px;  
+    border: 1px solid  #D1D1D1;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.login form:focus-within{
+    border: 1px solid rgb(255, 255, 255);
+    outline: 1px solid rgb(46, 185, 255) 
+}
+
+.login div{
+    display: flex;
+    width: 422px;
+    padding-left: 39px;
+    justify-content: flex-start;
+    gap: 35px;
+}
+
+
+#loginUnderline{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.loginBtn{
+    background-color: #2a3646;
+    color: white;
+    border-radius: 8px;
+    padding: 15px 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginGuestBtn {
+    color:#2a3646;
+    padding: 15px 24px;
+    background-color: white;
+    border-color:#2a3646;
+    border-radius: 8px;
+
 }
 
 .applicationBody {
