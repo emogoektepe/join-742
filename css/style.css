@@ -29,14 +29,21 @@ h1 {
     flex-direction: column;
     width: 50%;
     height: 50%;
-    z-index: 2;
-    border-radius: 30px;
     background-color: white;
+    
+}
+
+.loginBox{
+    padding: 48px 115px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
 }
 
 .login h1{
-    margin-top: 48px;
     font-size: 61px;
 }
 
@@ -44,6 +51,7 @@ h1 {
     border: none;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 
 }
 
@@ -80,6 +88,7 @@ h1 {
     padding-left: 39px;
     justify-content: flex-start;
     gap: 35px;
+    margin-bottom: 16px;
 }
 
 
@@ -95,16 +104,21 @@ h1 {
     padding: 15px 24px;
     justify-content: center;
     align-items: center;
+    border: none;
+    cursor: pointer;
 }
 
 .loginGuestBtn {
     color:#2a3646;
     padding: 15px 24px;
     background-color: white;
-    border-color:#2a3646;
+    border:  1px solid #2a3646;
     border-radius: 8px;
+    cursor: pointer;
 
 }
+
+
 
 .applicationBody {
     display: flex;

@@ -373,3 +373,4 @@ progress::-webkit-progress-bar {
 .filterBlue:hover{
     filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
 }
+
