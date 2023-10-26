@@ -10,7 +10,7 @@ function setActiveNav(activeId) {
             item.lastElementChild.style.filter= "brightness(0) invert(1)";
             item.style.color= "#ffffff";
         } else {
-            item.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
+            item.style.backgroundColor = "#2A3647"; // Setzt die Hintergrundfarbe zurück
             item.lastElementChild.style.filter= "";
             item.style.color= "";
         }
