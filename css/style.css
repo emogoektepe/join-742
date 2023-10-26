@@ -14,12 +14,34 @@ h1 {
 }
 
 .startPage{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 100vh;
     background-color:#f6f7f8;
+}
+
+.mainDivOne{
+    height: 25vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 77px;
+    padding-right: 122px;
+}
+
+.signUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+
+.mainDivTwo{
+    height: 50vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login {
@@ -27,8 +49,6 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50%;
-    height: 50%;
     background-color: white;
     
 }
@@ -47,12 +67,12 @@ h1 {
     font-size: 61px;
 }
 
-.login input{
+.loginInput{
     border: none;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-
+    width: 422px;
 }
 
 .login form img{
@@ -82,19 +102,28 @@ h1 {
     outline: 1px solid rgb(46, 185, 255) 
 }
 
-.login div{
+.checkBox{
+    width: 100%;
     display: flex;
-    width: 422px;
     padding-left: 39px;
     justify-content: flex-start;
-    gap: 35px;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 16px;
+    cursor: pointer;
 }
 
 
 #loginUnderline{
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.logBtns{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .loginBtn{
@@ -106,6 +135,14 @@ h1 {
     align-items: center;
     border: none;
     cursor: pointer;
+    font-style: normal;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.loginBtn:hover{
+    background: rgb(46, 185, 255);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .loginGuestBtn {
@@ -115,7 +152,30 @@ h1 {
     border:  1px solid #2a3646;
     border-radius: 8px;
     cursor: pointer;
+    font-style: normal;
+    font-size: 21px;
+    font-weight: 700;
 
+}
+
+.loginGuestBtn:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    color: rgb(46, 185, 255);
+    border: 1px solid rgb(46, 185, 255);
+}
+
+.mainDivThree{
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.mainDivThree a{
+    text-decoration: none;
+    color: #a8a8a8;
+    padding: 8px;
+    margin: 40px 8px;
 }
 
 
