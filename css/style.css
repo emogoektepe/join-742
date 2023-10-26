@@ -183,7 +183,50 @@ h1 {
     color: rgb(46, 185, 255);
 }
 
+.SignUpBox{
+    padding: 48px 88px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+}
 
+.backArrow{
+    position: absolute;
+    margin-top: -450px;
+    margin-left: -500px;
+    cursor: pointer;
+}
+
+.backArrow:hover{
+    background-color: #e7e7e7;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.acceptBox{
+    width: 100%;
+    display: flex;
+    padding-left: 39px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    color: #a8a8a8;
+}
+
+.acceptBox a{
+    text-decoration: none;
+    color: rgb(46, 185, 255);
+}
+
+.acceptBox a:hover{
+    text-decoration: underline;
+}
 
 .applicationBody {
     display: flex;
