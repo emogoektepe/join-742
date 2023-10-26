@@ -28,4 +28,10 @@
     font-weight: bold;
     line-height: 50px;
 }
+.headerRight img:hover {
+    cursor: pointer;
+}
+.headerRight div:hover {
+    cursor: pointer;
+}
 
