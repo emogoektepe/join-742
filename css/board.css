@@ -66,9 +66,12 @@
     padding-right: 13px;
     padding-left: 13px;
     min-height: 300px;
-    max-width: 25%;
     width: 25%;
+}
 
+.dragAreaHighlight{
+    border-style: dotted;
+    border-radius: 24px ;
 }
 
 .noTasks{
@@ -82,6 +85,8 @@
     height: 48px;
     border-radius: 10px;
     margin-top: 15.5px;
+    margin-right: 13px;
+    margin-left: 13px;
 
 }
 
@@ -368,6 +373,3 @@ progress::-webkit-progress-bar {
 .filterBlue:hover{
     filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
 }
-
-
-/*filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
