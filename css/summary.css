@@ -59,11 +59,11 @@
     background-color: #2A3647;
 }
 .toDo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 .done:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 
@@ -123,7 +123,7 @@
 }
 
 .urgent:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 
@@ -250,15 +250,15 @@
     width: 83px;
 }
 .tasksInBoard:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 .tasksInProgress:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 .awaitingFeedback:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
 }
 
