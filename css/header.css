@@ -30,8 +30,10 @@
 }
 .headerRight img:hover {
     cursor: pointer;
+    transform: scale(1.1);
 }
 .headerRight div:hover {
     cursor: pointer;
+    background-color: rgb(226, 226, 226);
 }
 
