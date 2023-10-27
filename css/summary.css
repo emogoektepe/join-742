@@ -60,11 +60,11 @@
 }
 .toDo:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s; 
 }
 .done:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s;
 }
 
 .firstRow div:hover span{
@@ -124,7 +124,7 @@
 
 .urgent:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s; 
 }
 
 .urgent {
@@ -251,15 +251,15 @@
 }
 .tasksInBoard:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s; 
 }
 .tasksInProgress:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s; 
 }
 .awaitingFeedback:hover {
     transform: scale(1.05);
-    transition: all 0.2s; /* Übergangseffekt für eine sanfte Animation */
+    transition: all 0.2s; 
 }
 
 .summaryRightSide {

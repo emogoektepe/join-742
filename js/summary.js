@@ -12,7 +12,7 @@ function renderSummary() {
         <section class="summaryContainer">
             <div class="summaryLeftSide">
                 <div class="firstRow">
-                    <div class="toDo">
+                    <div class="toDo" onclick="renderBoard()">
                         <div class="toDoLeft">
                             <img class="summaryIcons" src="../img/summaryPencil.svg" alt="">
                         </div>
@@ -21,7 +21,7 @@ function renderSummary() {
                             <span class="taskText">To-do</span>
                         </div>
                     </div>
-                    <div class="done">
+                    <div class="done" onclick="renderBoard()">
                         <div class="doneLeft">
                             <img class="summaryIcons" src="../img/summaryCheck.svg" alt="">
                         </div>
@@ -32,7 +32,7 @@ function renderSummary() {
                     </div>
                 </div>
                 <div class="secondRow">
-                    <div class="urgent">
+                    <div class="urgent" onclick="renderBoard()">
                         <div class="urgentLeft">
                             <div class="urgentImg">
                                 <img src="../img/summaryUrgent.svg" alt="">
@@ -50,15 +50,15 @@ function renderSummary() {
                     </div>
                 </div>
                 <div class="thirdRow">
-                    <div class="tasksInBoard">
+                    <div class="tasksInBoard" onclick="renderBoard()">
                         <span class="taskNumber">5</span>
                         <span class="taskText">Tasks in Board</span>
                     </div>
-                    <div class="tasksInProgress">
+                    <div class="tasksInProgress" onclick="renderBoard()">
                         <span class="taskNumber">2</span>
                         <span class="taskText">Tasks in Progress</span>
                     </div>
-                    <div class="awaitingFeedback">
+                    <div class="awaitingFeedback" onclick="renderBoard()">
                         <span class="taskNumber">2</span>
                         <span class="taskText">Awaiting Feedback</span>
                     </div>
