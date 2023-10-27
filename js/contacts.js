@@ -174,3 +174,13 @@ function setContactsStorage() {
     let contactAsString = JSON.stringify(contactsJson);
     setItem('contacts', contactAsString);
 }
+
+function validateInputChars(input) {
+    input.value = input.value.replace(/[^a-zA-ZäöüÄÖÜ\s]+/g, ''); // Alle unerwünschten Zeichen entfernen
+    input.value = input.value.replace(/^[\s]+/, ''); // Leerzeichen am Anfang entfernen
+}
+
+function validateInputNumbers(input) {
+    input.value = input.value.replace(/[^0-9\s]+/g, ''); // Nur Zahlen und Leerzeichen erlauben
+    input.value = input.value.replace(/^[\s]+/, ''); // Leerzeichen am Anfang entfernen
+}

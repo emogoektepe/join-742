@@ -15,9 +15,9 @@ function tempAddContactForm() {
                             <img src="../img/person.svg" alt="">
                         </div>
                         <form onsubmit="event.preventDefault(), createContact()" class="formContactDetails">
-                            <div class="formInput"><input required autocomplete="off" style="text-transform: capitalize;" id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                            <div class="formInput"><input oninput="validateInputChars(this)" required autocomplete="off" style="text-transform: capitalize;" id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
                             <div class="formInput"><input required autocomplete="off" id="inputEmail" type="email" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
-                            <div class="formInput"><input minlength="7" required autocomplete="off" id="inputPhone" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
+                            <div class="formInput"><input oninput="validateInputNumbers(this)" title="min. 8 characters" pattern=".{8,}" maxlength="20" required autocomplete="off" id="inputPhone" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                             <div class="formButtons">
                                 <div class="buttonUnfilled buttonCancel" onclick="closePopup()">
                                     Cancel
@@ -47,20 +47,20 @@ function tempEditForm() {
                     <div class="formRightSideContact">
                         <img onclick="closePopup()" class="formCloseImg" src="../img/close.svg" alt="">
                         <div class="formProfile" id="formProfile"></div>
-                        <div class="formContactDetails">
-                            <div class="formInput"><input autocomplete="off" style="text-transform: capitalize;" id="inputNameEdit" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
-                            <div class="formInput"><input autocomplete="off" id="inputEmailEdit" type="email" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
-                            <div class="formInput"><input autocomplete="off" id="inputPhoneEdit" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
+                        <form onsubmit="event.preventDefault(), saveEdit()" class="formContactDetails">
+                            <div class="formInput"><input required oninput="validateInputChars(this)" autocomplete="off" style="text-transform: capitalize;" id="inputNameEdit" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
+                            <div class="formInput"><input required autocomplete="off" id="inputEmailEdit" type="email" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
+                            <div class="formInput"><input required oninput="validateInputNumbers(this)" title="min. 8 characters" pattern=".{8,}" maxlength="20" maxlength="20" autocomplete="off" id="inputPhoneEdit" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>
                             <div class="formButtonsEdit">
                                 <div class="buttonUnfilled buttonDelete" onclick="deleteContactInForm()">
                                     Delete
                                 </div>
-                                <div class="buttonFilled buttonSave" onclick="saveEdit()">
+                                <button class="buttonFilled buttonSave">
                                     Save
                                     <img src="../img/check-white.svg" alt="">
-                                </div>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>`;
