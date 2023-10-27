@@ -88,10 +88,13 @@
     overflow: hidden;
     position: relative;
 }
-
+.toDoLeft {
+    pointer-events: none;
+}
 .toDoRight {
     display: flex;
     flex-direction: column;
+    pointer-events: none;
 }
 
 .done {
@@ -108,10 +111,13 @@
     overflow: hidden;
     position: relative;
 }
-
+.doneLeft {
+    pointer-events: none;
+}
 .doneRight {
     display: flex;
     flex-direction: column;
+    pointer-events: none;
 }
 .secondRow div:hover {
     cursor: pointer;
@@ -143,6 +149,7 @@
 .urgentLeft {
     display: flex;
     gap: 18px;
+    pointer-events: none;
 }
 .urgentImg {
     display: flex;
@@ -182,6 +189,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 13px;
+    pointer-events: none;
 }
 .calendarDate {
     color: #2A3647;
