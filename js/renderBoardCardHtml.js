@@ -1,7 +1,7 @@
 function renderCardHtml(todo,i){
     return /*html*/`
 
-    <div class="card"  ondragstart="startDragging(${todo['id']})">
+    <div class="card" id="${currentDraggedElement}" ondragstart="startDragging(${todo['id']}); rotateCard(${currentDraggedElement})">
         <div onclick="renderBoardTaskOverlay(${i}); openDialog('dialogShowCard')">
             <div draggable="true" class="cardContent">
                 <div class="category">

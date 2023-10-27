@@ -153,3 +153,12 @@ function moveTo(category){
     testTodos[currentDraggedElement]['category'] = category
     renderBoard()
 }
+
+function rotateCard(id){
+
+    document.getElementById(id).classList.remove('card');
+    document.getElementById(id).classList.add('rotateCard');
+
+}
+
+
