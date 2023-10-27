@@ -20,6 +20,14 @@
                     }
         
 ]
+// testTask
+// title: 'test',
+// description: 'test',
+// assignedTo : ['Emre Göktepe', 'Simon Brsot', 'Johannes Braun'],
+// dueDate: 14.05.2023,
+// prio: 'urgent',
+// category: 'User Stroy',
+// subtasks: ['Aufgabe1', 'Aufgabe2']
 
 let tasksToBoard = [];
 
