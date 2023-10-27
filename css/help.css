@@ -1,4 +1,85 @@
-/*h1{}
-/*h2{}
-/*h3{}
-/*p{}
+.container {
+    margin-left: 96px;
+    margin-right: 98px;
+    margin-top: 110px;
+}
+
+.backButton {
+    height: 32px;
+    width: 32px;
+    position: sticky;
+    border: none;
+    background-color: unset;
+    top: 132px;
+    right: 98.5px;
+    left: 1077.5px;
+    padding: 0px;
+}
+
+.backButton:hover {
+    background-color: rgb(225,230,236);
+    border-radius: 50%;
+}
+.headline {
+    margin-bottom: 32px;
+}
+.paragraphContainer {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.paragraph {
+    display: flex;
+    justify-content: center;
+    
+}
+.paragraphNumber {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-right: 35px;
+    color: var(--black, #000);
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 32.4px */
+}
+.paragraphText {
+    display: flex;
+    flex-direction: column;
+}
+p {
+    color: var(--black, #000);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0;
+}
+h1 {
+    color: #000;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 56.4px */
+}
+h2 {
+    color: var(--black, #000);
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 32.4px */
+}
+h3 {
+    color: var(--black, #000);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0;
+    /* 24px */
+}
