@@ -1,4 +1,4 @@
- let testTodos = [{  'id': 0,
+/* let testTodos = [{  'id': 0,
                      'title': 'Build Drag and Drop',
                      'category': 'todo',
                      'description': 'using turtorial an js to build it'
@@ -19,17 +19,52 @@
                     'description': 'use CSS to build a layout for the Project'
                     }
         
-]
-// testTask
-// title: 'test',
-// description: 'test',
-// assignedTo : ['Emre Göktepe', 'Simon Brsot', 'Johannes Braun'],
-// dueDate: 14.05.2023,
-// prio: 'urgent',
-// category: 'User Stroy',
-// subtasks: ['Aufgabe1', 'Aufgabe2']
+]*/
 
-let tasksToBoard = [];
+
+
+let task = [{   'id': 0,
+                'status': 'todo',
+                'title': 'Build Drag and Drop',
+                'description': 'using turtorial an js to build it',
+                'assignedTo' : ['Emre Göktepe', 'Simon Brsot', 'Johannes Braun'],
+                'dueDate': 14.05,
+                'prio': ['urgent','<img src="img/prioUp.svg">'], 
+                'category': ['User Stroy'],
+                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+                
+                {'id': 1,
+                'status': 'todo',
+                'title': 'Set variables',
+                'description': 'gets the Html Code dynamic',
+                'assignedTo' : ['Simon Brsot', 'Johannes Braun'],
+                'dueDate': 15.05,
+                'prio':['medium','<img src="img/prioMid.svg">'], 
+                'category': 'User Stroy',
+                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+                
+                {'id': 2,
+                'status': 'todo',
+                'title': 'Ready CV',
+                'description': 'write a CV an import projects',
+                'assignedTo' : ['Emre Göktepe', 'Simon Brsot',],
+                'dueDate': 16.05,
+                'prio': ['low','<img src="img/prioLow.svg">'], 
+                'category': 'User Stroy',
+                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+
+                {'id': 3,
+                'status': 'todo',
+                'title': 'layout',
+                'description': 'use CSS to build a layout for the Project',
+                'assignedTo' : ['Emre Göktepe', 'Johannes Braun'],
+                'dueDate': 17.05,
+                'prio': ['urgent','<img src="img/prioUp.svg">'], 
+                'category': 'User Stroy',
+                'subtasks': ['Aufgabe1', 'Aufgabe2']}
+]
+
+
 
 let currentDraggedElement;
 
@@ -46,7 +81,7 @@ function updateBoardHtml(){
 }
 
 function renderTodoContent(){
-    let todos = testTodos.filter(t => t['category']== 'todo');
+    let todos = task.filter(t => t['status']== 'todo');
     let searchingFor = document.getElementById('searchBoard').value
     document.getElementById('todo').innerHTML = '';
 
@@ -62,7 +97,7 @@ function renderTodoContent(){
 }
 
 function renderInProgressContent(){
-    let progressTodos = testTodos.filter(p => p['category']== 'inProgress');
+    let progressTodos = task.filter(p => p['status']== 'inProgress');
     let searchingFor = document.getElementById('searchBoard').value
     document.getElementById('inProgress').innerHTML = '';
     
@@ -79,9 +114,10 @@ function renderInProgressContent(){
 }
 
 function renderAwaitFeedbackContent(){
+    let feedbackTodos = task.filter(f => f['status']== 'awaitFeedback')
     document.getElementById('awaitFeedback').innerHTML = '';
     let searchingFor = document.getElementById('searchBoard').value
-    let feedbackTodos = testTodos.filter(f => f['category']== 'awaitFeedback')
+
 
     if(feedbackTodos.length != 0){
 
@@ -96,10 +132,10 @@ function renderAwaitFeedbackContent(){
 }
 
 function renderDoneContent(){
+    let doneTodos = task.filter(d => d['status'] == 'done')
     document.getElementById('done').innerHTML = '';
     let searchingFor = document.getElementById('searchBoard').value
-    let doneTodos = testTodos.filter(d => d['category'] == 'done')
-
+    
     if (doneTodos.length != 0) {
         for (let i = 0; i < doneTodos.length; i++) {
             const doneTodo = doneTodos[i];
@@ -117,7 +153,7 @@ function renderEmptyCategory(){
 function shouldRender(todo,searchingFor,i){
 
     let shouldRender = todo['title'].includes(searchingFor) || todo['category'].includes(searchingFor) || todo['description'].includes(searchingFor);
-     document.getElementById(todo['category']).innerHTML+= shouldRender ? `${renderCardHtml(todo, i)} ` : ``
+     document.getElementById(todo['status']).innerHTML+= shouldRender ? `${renderCardHtml(todo, i)} ` : ``
 }
 
 function renderBoard() {
@@ -158,7 +194,7 @@ function allowDrop(ev) {
   }
 
 function moveTo(category){
-    testTodos[currentDraggedElement]['category'] = category
+    task[currentDraggedElement]['status'] = category
     renderBoard()
 }
 

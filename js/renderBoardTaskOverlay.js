@@ -8,29 +8,28 @@ function renderBoardTaskOverlay(i){
            <p class="category">Category</p> 
             <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">
         </div>
-        <h1 class="headline">${testTodos[i]['title']}</h1>
+        <h1 class="headline">${task[i]['title']}</h1>
         <span>
-            <p>${testTodos[i]['description']}</p>
+            <p>${task[i]['description']}</p>
         </span>
        
         <div class="dueDate"> 
             <span class="grey">Due date:</span>
-            <span>DD/MM/YYYY</span>
+            <span>${task[i]['dueDate']}</span>
         </div>
 
 
             
         <div class="dueDate">
            <span class="grey">Priority: </span>  
-            <div class="cardPrio">Medium <img src="img/prio.svg"></div>
+            <div class="cardPrio">${task[i]['prio'][0]} ${task[i]['prio'][1]}</div>
          </div>
            
            <p class="grey">Assigned to:</p> 
-        <div class="cardContact">
-            <img src="img/ellipse0.svg">Emmanuel Bauer
-        </div>
-        <div class="cardContact">
-            <img src="img/ellipse1.svg">    Marcel Bauer   
+         
+        
+        <div id="assignedUser" class="cardContact">
+         
         </div>
                      
         <h3>Subtasks</h3>
@@ -48,4 +47,23 @@ function renderBoardTaskOverlay(i){
             
 
     </div>`
+      renderAssignedTo(i)
 }
+
+function renderAssignedTo(i){
+
+    let assigned = task[i]['assignedTo']
+
+    for (let j = 0; j < assigned.length; j++) {
+        const assignedContact = assigned[j]
+
+        let assignedCharcter = assignedContact.charAt()
+
+        document.getElementById('assignedUser').innerHTML += /*html*/`
+        <div class="assignedContact">
+            <div class="avatar">${assignedCharcter}</div> ${assignedContact}
+        </div>`
+    }
+}
+
+

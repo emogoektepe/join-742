@@ -140,11 +140,7 @@
     align-items: center;
     justify-content: center;
 }
-
-.card:hover{
-    transform: rotate(5deg);
-    cursor: pointer;
-}
+ 
 
 .rotateCard{
     height: auto;
@@ -206,10 +202,28 @@
 .cardContact{
     display: flex;
     padding: 7px 16px;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     align-self: stretch;
     gap: 16px;
+    flex-direction: column;
+}
+
+.assignedContact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgb(253, 91, 91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .formArea {
