@@ -1,4 +1,4 @@
-function tempAddContactForm() {
+function tempAddContactForm(page) {
     return /*html*/`<div class="addNewContactForm" id="addNewContactForm" onclick="closePopup()">
                 <div class="addNewContactFormContent" onclick="doNotClose(event)">
                     <div class="formLeftSideContact">
@@ -14,7 +14,7 @@ function tempAddContactForm() {
                         <div class="formProfile">
                             <img src="../img/person.svg" alt="">
                         </div>
-                        <form onsubmit="event.preventDefault(), createContact()" class="formContactDetails">
+                        <form onsubmit="event.preventDefault(), createContact(${page})" class="formContactDetails">
                             <div class="formInput"><input oninput="validateInputChars(this)" required autocomplete="off" style="text-transform: capitalize;" id="inputName" type="text" placeholder="Name"><img class="personGrey" src="../img/person-grey.svg" alt=""></div>
                             <div class="formInput"><input required autocomplete="off" id="inputEmail" type="email" placeholder="Email"><img class="mailGrey" src="../img/mail-grey.svg" alt=""></div>
                             <div class="formInput"><input oninput="validateInputNumbers(this)" title="min. 8 characters" pattern=".{8,}" maxlength="20" required autocomplete="off" id="inputPhone" type="text" placeholder="Phone"><img class="phoneGrey" src="../img/phone-grey.svg" alt=""></div>

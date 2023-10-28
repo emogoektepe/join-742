@@ -7,7 +7,7 @@ function renderContacts() {
     content.innerHTML = tempRenderContactContent();
     getFirstLetter();
     fillContactListHeader();
-    content.innerHTML += tempAddContactForm();
+    content.innerHTML += tempAddContactForm('contacts');
     content.innerHTML += tempEditForm();
     setActiveNav("contacts"); //für Navbar
 }
@@ -19,7 +19,7 @@ function addNewContact() {
 function closePopup() {
     let form = document.getElementById('addNewContactForm');
     let formEdit = document.getElementById('editForm');
-    if(formEdit) {
+    if (formEdit) {
         formEdit.style.display = "none";
     }
     form.style.display = "none";
@@ -128,16 +128,20 @@ function setActiveBackgroundColor(element) {
     activeElement = element;
 }
 
-function createContact() {
+function createContact(page) {
     let inputName = document.getElementById('inputName').value;
     let inputEmail = document.getElementById('inputEmail').value;
     let inputPhone = document.getElementById('inputPhone').value;
     let newContact = { fullName: inputName, email: inputEmail, phone: inputPhone };
     contactsJson.push(newContact)
     setContactsStorage();
-    renderContacts();
-    const lastIndex = contactsJson.length - 1;
-    setActualContact(lastIndex);
+    if (page.innerText == 'AddTask') {
+        renderDropDownContacts();
+    } else if (page.innerText == 'Contacts') {
+        renderContacts();
+        const lastIndex = contactsJson.length - 1;
+        setActualContact(lastIndex);
+    }
     closePopup();
 }
 

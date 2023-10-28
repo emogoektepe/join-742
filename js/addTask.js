@@ -57,7 +57,7 @@ function renderAddTask() {
             </div>
         </div>
     `;
-    content.innerHTML += tempAddContactForm();
+    content.innerHTML += tempAddContactForm('addTask');
     setActiveNav("addTask"); //für Navbar
 }
 
@@ -104,11 +104,12 @@ function openContactDropDown() {
 
 function renderDropDownContacts() {
     let dropDownSection = document.getElementById('dropDownSection');
+    dropDownSection.innerHTML = '';
     for (let i = 0; i < contactsJson.length; i++) {
         dropDownSection.innerHTML += /*html*/ `
             <div class="contactsInMenu">
                 <div class="imgAndName">
-                    <div class="contactsInMenuimg">
+                    <div class="contactsInMenuimg" id="contactInListImg${i}">
                         ${getInitials(i)}
                     </div>
                     <p>${contactsJson[i].fullName}</p>
@@ -118,5 +119,6 @@ function renderDropDownContacts() {
                 </div>
             </div>
         `;
+        setContactListImgColor(i);
     }
 }
