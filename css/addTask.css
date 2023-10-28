@@ -270,3 +270,9 @@
     justify-content: center;
     padding: 12px 16px;
 }
+
+.imgAndName p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+}
