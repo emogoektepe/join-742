@@ -19,8 +19,10 @@ function addNewContact() {
 function closePopup() {
     let form = document.getElementById('addNewContactForm');
     let formEdit = document.getElementById('editForm');
+    if(formEdit) {
+        formEdit.style.display = "none";
+    }
     form.style.display = "none";
-    formEdit.style.display = "none";
     resetInputFields();
 }
 
@@ -167,7 +169,6 @@ function setActualContact(position) {
 async function loadContactsFromStorage() {
     let storageParse = await getItem('contacts');
     contactsJson = JSON.parse(storageParse.data.value);
-    renderContacts();
 }
 
 function setContactsStorage() {

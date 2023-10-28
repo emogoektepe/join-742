@@ -1,3 +1,5 @@
+let selectedElement = false;
+
 function renderAddTask() {
 
     let content = document.getElementById('content');
@@ -18,7 +20,17 @@ function renderAddTask() {
                     </div>
                     <div class="thirdBlock">
                         <span>Assigned to</span>
-                        <input class="dropDown" type="text" name="" id="" placeholder="Select contacts to assign">
+                        <div class="dropDownWithInput">
+                            <div class="assignedTo">
+                                <input type="text" value="Select contacts to assign">
+                                <div onclick="openContactDropDown()" class="dropDownArrow">
+                                    <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
+                                </div>
+                            </div>
+                            <div>Image With Color and initials</div>
+                            <div id="dropDownContact">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="formSeparator"></div>
@@ -45,11 +57,10 @@ function renderAddTask() {
             </div>
         </div>
     `;
-
+    content.innerHTML += tempAddContactForm();
     setActiveNav("addTask"); //für Navbar
 }
 
-let selectedElement = false;
 function changePrioColor(element, color) {
     if (selectedElement === element) {
         element.style = '';
@@ -67,5 +78,45 @@ function changePrioColor(element, color) {
         element.style.fontWeight = '700';
         element.style.fontSize = '21px';
         selectedElement = element;
+    }
+}
+
+function openContactDropDown() {
+    let dropDownImage = document.getElementById('dropDownImage');
+    let dropDownContact = document.getElementById('dropDownContact');
+    if (dropDownImage.src.includes('down_down')) {
+        dropDownImage.src = './img/arrow_drop_down_up.svg';
+        dropDownContact.innerHTML = /*html*/ `
+            <div class="dropDownSection" id="dropDownSection"></div>
+            <div class="addContactButtonDropDown">
+                <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
+                    Add new contact
+                    <img src="../img/person_add.svg" alt="">
+                </div>
+            </div>
+                `;
+        renderDropDownContacts();
+    } else {
+        dropDownImage.src = './img/arrow_drop_down_down.svg';
+        dropDownContact.innerHTML = '';
+    }
+}
+
+function renderDropDownContacts() {
+    let dropDownSection = document.getElementById('dropDownSection');
+    for (let i = 0; i < contactsJson.length; i++) {
+        dropDownSection.innerHTML += /*html*/ `
+            <div class="contactsInMenu">
+                <div class="imgAndName">
+                    <div class="contactsInMenuimg">
+                        ${getInitials(i)}
+                    </div>
+                    <p>${contactsJson[i].fullName}</p>
+                </div>
+                <div>
+                    checkbox
+                </div>
+            </div>
+        `;
     }
 }
