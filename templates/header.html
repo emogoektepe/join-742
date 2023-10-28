@@ -2,7 +2,11 @@
         <span>Kanban Project Management Tool</span>
         <div class="headerRight">
             <img onclick="renderHelp()" src="../img/help.svg" alt="help">
-            <div class="initials">G</div>
-            <!-- onclick zum login fehlt noch auf diese initials div -->
+            <div class="initials" onclick="toggleDropdown()">G</div>
+            <div class="dropdown" id="dropdown">
+                <button class="headerDropDownButton" onclick="render(legalNotice)">Legal Notice</button>
+                <button class="headerDropDownButton" onclick="render(privacyPolicy)">Privacy Policy</button>
+                <button class="headerDropDownButton" onclick="render()">Log out</button>
+            </div>
         </div>
 </div>
