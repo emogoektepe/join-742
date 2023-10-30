@@ -224,7 +224,7 @@ function renderAssignedTo(i,idOfContainer){
     }
 }
 
-function renderCardAssignedTo(idOfContainer){
+function renderCardAssignedTo(idOfContainer,todo){
 
     let assigned = todo['assignedTo']
 
@@ -242,4 +242,28 @@ function renderCardAssignedTo(idOfContainer){
         </div>`
     }
 }
+
+/*
+let offsetX, offsetY;
+
+document.querySelector('.draggable-element').addEventListener('dragstart', (e) => {
+  // Speichere den Anfangsversatz, um später die Rotation zu berechnen
+  offsetX = e.clientX - e.target.getBoundingClientRect().left;
+  offsetY = e.clientY - e.target.getBoundingClientRect().top;
+});
+
+document.querySelector('.draggable-element').addEventListener('drag', (e) => {
+  // Berechne die Rotation basierend auf der Mausverschiebung
+  const rotation = Math.atan2(e.clientY - offsetY - e.target.getBoundingClientRect().top, e.clientX - offsetX - e.target.getBoundingClientRect().left);
+  
+  // Drehe das Element um den berechneten Winkel
+  e.target.style.transform = `rotate(${rotation}rad)`;
+});
+
+document.querySelector('.draggable-element').addEventListener('dragend', (e) => {
+  // Setze die Rotation zurück, wenn das Ziehen beendet ist
+  e.target.style.transform = 'rotate(0)';
+});*/
+
+
 
