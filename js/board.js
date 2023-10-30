@@ -1,28 +1,3 @@
-/* let testTodos = [{  'id': 0,
-                     'title': 'Build Drag and Drop',
-                     'category': 'todo',
-                     'description': 'using turtorial an js to build it'
-                    },
-                    {  'id': 1,
-                     'title': 'Set variables',
-                     'category': 'inProgress',
-                     'description': 'gets the Html Code dynamic'
-                    },
-                    {  'id': 2,
-                    'title': 'Ready CV',
-                    'category': 'awaitFeedback',
-                    'description':'write a CV an import projects'
-                    },
-                    { 'id': 3,
-                    'title': 'layout',
-                    'category': 'done',
-                    'description': 'use CSS to build a layout for the Project'
-                    }
-        
-]*/
-
-
-
 let task = [{   'id': 0,
                 'status': 'todo',
                 'title': 'Build Drag and Drop',
@@ -31,7 +6,7 @@ let task = [{   'id': 0,
                 'dueDate': 14.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
                 'category': ['User Stroy'],
-                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+                'subtasks': ['Aufgabe 1', 'Aufgabe 2','Aufgabe 3','Aufgabe 4']},
                 
                 {'id': 1,
                 'status': 'todo',
@@ -41,7 +16,7 @@ let task = [{   'id': 0,
                 'dueDate': 15.05,
                 'prio':['medium','<img src="img/prioMid.svg">'], 
                 'category': 'User Stroy',
-                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+                'subtasks': ['Aufgabe1']},
                 
                 {'id': 2,
                 'status': 'todo',
@@ -51,7 +26,7 @@ let task = [{   'id': 0,
                 'dueDate': 16.05,
                 'prio': ['low','<img src="img/prioLow.svg">'], 
                 'category': 'User Stroy',
-                'subtasks': ['Aufgabe1', 'Aufgabe2']},
+                'subtasks': ['Aufgabe1', 'Aufgabe2','Aufgabe 3']},
 
                 {'id': 3,
                 'status': 'todo',
@@ -153,7 +128,7 @@ function renderEmptyCategory(){
 function shouldRender(todo,searchingFor,i){
 
     let shouldRender = todo['title'].includes(searchingFor) || todo['category'].includes(searchingFor) || todo['description'].includes(searchingFor);
-    shouldRender ? `${renderCardHtml(todo, i)} ` : ``
+   return shouldRender ? `${renderCardHtml(todo, i)} ` : ``
 }
 
 function renderBoard() {
@@ -243,5 +218,27 @@ function renderCardAssignedTo(idOfContainer,todo){
     }
 }
 
+function renderSubtasks(i){
+      
+    let subtasks = task[i]['subtasks']
+    let id = task[i]['id']
 
+    for (let k = 0; k < subtasks.length; k++) {
+        const subtask = subtasks[k];
+        
+        document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
+        <div class="subConti"> <img id="notChecked${k}" onclick="changeCheckbox(${k})" src="img/notChecked.svg">
+                             <img id="checked${k}" onclick="changeCheckbox(${k})" class="d-none" src="img/checked.svg" >
+                ${subtask}
+        
+        </div>`
 
+    }
+}
+
+function changeCheckbox(k){
+
+    document.getElementById(`notChecked${k}`).classList.toggle('d-none')
+    document.getElementById(`checked${k}`).classList.toggle('d-none')
+
+}

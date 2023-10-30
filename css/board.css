@@ -103,7 +103,7 @@
         top: 0px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; 
     
     }
 
@@ -122,7 +122,7 @@
     width: 33vw;
     padding: 32px 24px;
     border-radius: 24px;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .d-none {
@@ -279,8 +279,9 @@
 
 .subtask{
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
     padding-top:4px;
     padding-right: 16px; 
 
@@ -289,6 +290,13 @@
 .subtask:hover{
     background-color: #e5e5e5;
     border-radius: 8px;
+}
+
+.subConti{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
 }
 
 .checkIcon{

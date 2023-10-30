@@ -2,7 +2,7 @@ function renderBoardTaskOverlay(i){
     document.getElementById('dialogShowCard').innerHTML =  /*html*/ `
     
     
-    <div class="dialogShowCard" onclick="doNotClose(event)">
+     <div class="dialogShowCard" onclick="doNotClose(event)">
     
         <div class="cardHead">
            <p class="category">Category</p> 
@@ -33,12 +33,10 @@ function renderBoardTaskOverlay(i){
         </div>
                      
         <h3>Subtasks</h3>
-        <div class="subtask">
-            <div><img class="checkIcon" src="img/checked.svg"></div>The first Subtask
+        <div id="subtask${task[i]['id']}" class="subtask">
+           
         </div>
-        <div class="subtask">
-            <div><img class="notCheckedIcon" src="img/notChecked.svg"></div>The second Subtask
-        </div>
+
             
         <div class="closeSection">
             <div class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
@@ -48,8 +46,6 @@ function renderBoardTaskOverlay(i){
 
     </div>`
       renderAssignedTo(i,'assignedUser')
+      renderSubtasks(i)
 }
-
-
-
 

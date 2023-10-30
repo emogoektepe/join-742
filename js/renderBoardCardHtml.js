@@ -1,4 +1,4 @@
-function renderCardHtml(todo,i){
+function renderCardHtml(todo){
 
     document.getElementById(todo['status']).innerHTML+= /*html*/`
 
@@ -20,7 +20,7 @@ function renderCardHtml(todo,i){
 
                     </div>
                     <div>
-                        <img src="img/prio.svg">
+                        ${todo['prio'][1]}
                     </div>
                 </div>
             </div>
