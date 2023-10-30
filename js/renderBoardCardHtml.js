@@ -1,5 +1,6 @@
 function renderCardHtml(todo,i){
-    return /*html*/`
+
+    document.getElementById(todo['status']).innerHTML+= /*html*/`
 
     <div class="card" id="${currentDraggedElement}" ondragstart="startDragging(${todo['id']}); rotateCard(${currentDraggedElement})">
         <div onclick="renderBoardTaskOverlay(${i}); openDialog('dialogShowCard')">
@@ -15,10 +16,8 @@ function renderCardHtml(todo,i){
                     1/2 Subtasks
                 </div>
                 <div class="endSection">
-                    <div class="avatars">
-                        <img src="img/ellipse0.svg">
-                        <img src="img/ellipse1.svg">
-                        <img src="img/ellipse2.svg">
+                    <div id="assignedBox${todo['id']}" class="avatars">
+
                     </div>
                     <div>
                         <img src="img/prio.svg">
@@ -27,4 +26,5 @@ function renderCardHtml(todo,i){
             </div>
         </div>
     </div>`
+    renderCardAssignedTo(`assignedBox${todo['id']}`,todo);
 }

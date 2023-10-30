@@ -47,23 +47,9 @@ function renderBoardTaskOverlay(i){
             
 
     </div>`
-      renderAssignedTo(i)
+      renderAssignedTo(i,'assignedUser')
 }
 
-function renderAssignedTo(i){
 
-    let assigned = task[i]['assignedTo']
-
-    for (let j = 0; j < assigned.length; j++) {
-        const assignedContact = assigned[j]
-
-        let assignedCharcter = assignedContact.charAt()
-
-        document.getElementById('assignedUser').innerHTML += /*html*/`
-        <div class="assignedContact">
-            <div class="avatar">${assignedCharcter}</div> ${assignedContact}
-        </div>`
-    }
-}
 
 

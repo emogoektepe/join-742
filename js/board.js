@@ -153,7 +153,7 @@ function renderEmptyCategory(){
 function shouldRender(todo,searchingFor,i){
 
     let shouldRender = todo['title'].includes(searchingFor) || todo['category'].includes(searchingFor) || todo['description'].includes(searchingFor);
-     document.getElementById(todo['status']).innerHTML+= shouldRender ? `${renderCardHtml(todo, i)} ` : ``
+    shouldRender ? `${renderCardHtml(todo, i)} ` : ``
 }
 
 function renderBoard() {
@@ -200,9 +200,46 @@ function moveTo(category){
 
 function rotateCard(id){
 
-    document.getElementById(id).classList.remove('card');
+   document.getElementById(id).classList.remove('card');
     document.getElementById(id).classList.add('rotateCard');
 
 }
 
+function renderAssignedTo(i,idOfContainer){
+
+    let assigned = task[i]['assignedTo']
+
+    for (let j = 0; j < assigned.length; j++) {
+        const fullname = assigned[j]
+
+        let names = fullname.split(" ")
+        
+        let firstNameCharacter = names[0].charAt(0)
+        let secondNameCharacter = names[1].charAt(0)
+
+        document.getElementById(idOfContainer).innerHTML += /*html*/`
+        <div class="assignedContact">
+            <div class="avatar">${firstNameCharacter}${secondNameCharacter}</div> ${fullname}
+        </div>`
+    }
+}
+
+function renderCardAssignedTo(idOfContainer){
+
+    let assigned = todo['assignedTo']
+
+    for (let j = 0; j < assigned.length; j++) {
+        const fullname = assigned[j]
+
+        let names = fullname.split(" ")
+        
+        let firstNameCharacter = names[0].charAt(0)
+        let secondNameCharacter = names[1].charAt(0)
+
+        document.getElementById(idOfContainer).innerHTML += /*html*/`
+        <div class="assignedContact">
+            <div class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
+        </div>`
+    }
+}
 

@@ -140,6 +140,8 @@
     align-items: center;
     justify-content: center;
 }
+
+
  
 
 .rotateCard{
@@ -221,9 +223,11 @@
     width: 32px;
     border-radius: 50%;
     background-color: rgb(253, 91, 91);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: -7px;
 }
 
 .formArea {
@@ -401,6 +405,12 @@ progress::-webkit-progress-bar {
     height: 32px;
     margin-top: 24px;
   }
+
+.avatars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .avatars img{
     padding: -10px;
