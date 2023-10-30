@@ -2,8 +2,8 @@ function renderCardHtml(todo,i){
 
     document.getElementById(todo['status']).innerHTML+= /*html*/`
 
-    <div class="card" id="${currentDraggedElement}" ondragstart="startDragging(${todo['id']}); rotateCard(${currentDraggedElement})">
-        <div onclick="renderBoardTaskOverlay(${i}); openDialog('dialogShowCard')">
+    <div class="card" id="${todo['id']}" ondragstart="startDragging(${todo['id']}); rotateCard(${todo['id']})">
+        <div onclick="renderBoardTaskOverlay(${todo['id']}); openDialog('dialogShowCard')">
             <div draggable="true" class="cardContent">
                 <div class="category">
                     Category
