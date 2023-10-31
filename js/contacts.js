@@ -137,6 +137,7 @@ function createContact(page) {
     setContactsStorage();
     if (page.innerText == 'AddTask') {
         renderDropDownContacts();
+        document.getElementById(`contactInListImg${contactsJson.length - 1}`).scrollIntoView({ behavior: "smooth", block: "center" });
     } else if (page.innerText == 'Contacts') {
         renderContacts();
         const lastIndex = contactsJson.length - 1;
