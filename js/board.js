@@ -1,4 +1,4 @@
-let task = [{   'id': 0,
+let TASK_Template = [{   'id': 0,
                 'status': 'todo',
                 'title': 'Build Drag and Drop',
                 'description': 'using turtorial an js to build it',
@@ -43,6 +43,7 @@ let task = [{   'id': 0,
                 }
 ]
 
+let task = TASK_Template
 
 
 let currentDraggedElement;
@@ -287,8 +288,11 @@ function save(){
 function load(){
     
    let taskAsString = localStorage.getItem('task')
-
+   if(taskAsString){
     task = JSON.parse(taskAsString)
+   }else(TASK_Template)
+
+   
 }
 
 
