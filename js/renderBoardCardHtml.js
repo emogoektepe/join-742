@@ -49,7 +49,7 @@ function renderProgressbar(todo,id){
     document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
     
     <progress id="file" max="100" value="${result}"></progress>
-    1/${todo['subtasks'].length} Subtasks`
+    ${readySubtask}/${todo['subtasks'].length} Subtasks`
 
 
 }
