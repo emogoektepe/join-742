@@ -4,15 +4,18 @@
     display: flex;
     flex-direction: column;
 }
+
 .navLogo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 64px;
 }
+
 .navLogo:hover {
     cursor: pointer;
 }
+
 .navItems {
     flex: 1;
     display: flex;
@@ -22,19 +25,23 @@
     gap: 15px;
     color: #CDCDCD;
 }
+
 .navItems div {
     display: flex;
     align-items: center;
     width: 232px;
 }
+
 .navItems div:hover {
     cursor: pointer;
     background-color: #2a3d59;
 }
+
 .navItems div img {
     padding-right: 8px;
     padding-left: 60px;
 }
+
 .navFooter {
     margin-bottom: 64px;
     display: flex;
@@ -42,13 +49,24 @@
     justify-content: center;
     align-items: center;
 }
+
 .navFooter div {
     margin-top: 8px;
     color: #CDCDCD;
     text-decoration: none;
 }
+
 .navFooter div:hover {
     cursor: pointer;
     font-weight: bold;
     color: #29ABE2;
+}
+
+.navSummary {
+    background-color: #091931;
+    color: white;
+}
+
+.navSummary img {
+    filter: brightness(0) invert(1);
 }
