@@ -1,5 +1,3 @@
-function renderHelp() {
-}
 function toggleDropdown() {
     let dropdown = document.getElementById("dropdown");
     if (dropdown.style.display === "block") {
@@ -9,5 +7,11 @@ function toggleDropdown() {
     }
 }
 
-// Funktion, um das Dropdown-Menü zu schließen, wenn außerhalb des Dropdown-DIVs geklickt wird.
+function closeDropdown(event) {
+    let dropdown = document.getElementById("dropdown");
+    let initials = document.getElementById("initials");
 
+    if (event.target !== dropdown && event.target !== initials) {
+        dropdown.style.display = "none";
+    }
+}
