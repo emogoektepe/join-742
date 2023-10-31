@@ -6,7 +6,8 @@ let task = [{   'id': 0,
                 'dueDate': 14.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
                 'category': ['User Stroy'],
-                'subtasks': ['Aufgabe 1', 'Aufgabe 2','Aufgabe 3','Aufgabe 4']},
+                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false} ,{'name':'Aufgabe 4','done':false} ],
+               },
                 
                 {'id': 1,
                 'status': 'todo',
@@ -16,7 +17,8 @@ let task = [{   'id': 0,
                 'dueDate': 15.05,
                 'prio':['medium','<img src="img/prioMid.svg">'], 
                 'category': 'User Stroy',
-                'subtasks': ['Aufgabe1']},
+                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false}],
+                },
                 
                 {'id': 2,
                 'status': 'todo',
@@ -26,7 +28,8 @@ let task = [{   'id': 0,
                 'dueDate': 16.05,
                 'prio': ['low','<img src="img/prioLow.svg">'], 
                 'category': 'User Stroy',
-                'subtasks': ['Aufgabe1', 'Aufgabe2','Aufgabe 3']},
+                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false}],
+                },
 
                 {'id': 3,
                 'status': 'todo',
@@ -36,7 +39,8 @@ let task = [{   'id': 0,
                 'dueDate': 17.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
                 'category': 'User Stroy',
-                'subtasks': ['Aufgabe1', 'Aufgabe2']}
+                'subtasks': [{'name':'Aufgabe 1','done':false}],
+                }
 ]
 
 
@@ -47,12 +51,16 @@ let currentDraggedElement;
  * render Board content
  */
 
+load();
+
 function updateBoardHtml(){
     
     renderTodoContent();
     renderInProgressContent();
     renderAwaitFeedbackContent();
     renderDoneContent();
+
+    save();
 }
 
 function renderTodoContent(){
@@ -154,6 +162,7 @@ function openDialog(id){
 
 function closeDialog(id){
     document.getElementById(id).classList.add('d-none')
+    updateBoardHtml();
 }
 
 function doNotClose(event){
@@ -170,7 +179,9 @@ function allowDrop(ev) {
 
 function moveTo(category){
     task[currentDraggedElement]['status'] = category
+    save();
     renderBoard()
+
 }
 
 function rotateCard(id){
@@ -218,6 +229,8 @@ function renderCardAssignedTo(idOfContainer,todo){
     }
 }
 
+
+
 function renderSubtasks(i){
       
     let subtasks = task[i]['subtasks']
@@ -226,19 +239,57 @@ function renderSubtasks(i){
     for (let k = 0; k < subtasks.length; k++) {
         const subtask = subtasks[k];
         
-        document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-        <div class="subConti"> <img id="notChecked${k}" onclick="changeCheckbox(${k})" src="img/notChecked.svg">
-                             <img id="checked${k}" onclick="changeCheckbox(${k})" class="d-none" src="img/checked.svg" >
-                ${subtask}
-        
-        </div>`
 
+        if(subtask['done'] == false){
+        document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
+        <div id="box${id,k}" class="subConti"><img onclick="checkBox(${id},${k})" src="img/notChecked.svg">${subtask['name']}</div>`}
+        else{
+            document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
+            <div id="box${id,k}" class="subConti"><img onclick="checkBox(${id},${k})" src="img/checked.svg">${subtask['name']}</div>`
+        }
+     
+        
     }
 }
 
-function changeCheckbox(k){
+function checkBox(id,k){
 
-    document.getElementById(`notChecked${k}`).classList.toggle('d-none')
-    document.getElementById(`checked${k}`).classList.toggle('d-none')
+    let subtask = task[id]['subtasks'][k]
 
+    subtask['done'] = !subtask['done']
+    save();
+    changeBox(subtask,id,k)
+
+   
 }
+ 
+
+function changeBox(subtask,id,k){
+
+    if(subtask['done']){
+        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `<img onclick="checkBox(${id},${k})" src="img/checked.svg">${subtask['name']}`
+    } else {
+        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `<img onclick="checkBox(${id},${k})" src="img/notChecked.svg">${subtask['name']}`
+    }
+
+    updateBoardHtml();
+}    
+
+
+//test functions
+
+function save(){
+
+    let taskAsString = JSON.stringify(task);
+    localStorage.setItem('task',taskAsString);
+}
+
+function load(){
+    
+   let taskAsString = localStorage.getItem('task')
+
+    task = JSON.parse(taskAsString)
+}
+
+
+

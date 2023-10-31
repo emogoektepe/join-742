@@ -70,4 +70,5 @@ function renderBoardHtml(){
             </div>
         </div>
     </div>`
+
 }

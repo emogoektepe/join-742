@@ -11,9 +11,8 @@ function renderCardHtml(todo){
                 <h4>${todo['title']}</h4>
                 <p>${todo['description']}</p>
 
-                <div class="progressBar">
-                    <progress id="file" max="100" value="50"></progress>
-                    1/2 Subtasks
+                <div id="progressBar${todo['id']}" class="progressBar">
+                   
                 </div>
                 <div class="endSection">
                     <div id="assignedBox${todo['id']}" class="avatars">
@@ -27,4 +26,30 @@ function renderCardHtml(todo){
         </div>
     </div>`
     renderCardAssignedTo(`assignedBox${todo['id']}`,todo);
+    renderProgressbar(todo,todo['id'])
+}
+
+function renderProgressbar(todo,id){
+
+    let subtasks = todo['subtasks']
+
+    let readySubtask = 0
+
+    for (let l = 0; l < subtasks.length; l++) {
+
+        let SbTask = subtasks[l]
+        SbTask['done']? readySubtask++ : ''
+        
+    }
+ 
+    let percent = subtasks.length / readySubtask 
+    result = 100 / percent
+
+
+    document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
+    
+    <progress id="file" max="100" value="${result}"></progress>
+    1/${todo['subtasks'].length} Subtasks`
+
+
 }

@@ -287,16 +287,18 @@
 
 }
 
-.subtask:hover{
-    background-color: #e5e5e5;
-    border-radius: 8px;
-}
 
 .subConti{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
+}
+
+.subConti:hover{
+    background-color: #e5e5e5;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .checkIcon{
