@@ -1,8 +1,7 @@
 function init() {
     includeHTML();
     loadContactsFromStorage();
-    // renderSummary();
-    renderAddTask();
+    renderSummary();
 }
 
 function setActiveNav(activeId) {
