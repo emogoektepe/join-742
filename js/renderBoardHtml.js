@@ -4,9 +4,9 @@ function renderBoardHtml(){
       <div class="headline"><h1>Board</h1></div>
         <div class="headBar">
             <form class="formArea" action="false">
-                <input onkeydown="updateBoardHtml()" id="searchBoard" class="inputArea" type="text" placeholder="Find Task">
+                <input id="searchBoard" class="inputArea" type="text" placeholder="Find Task">
                <div><img src="./img/borderDash.svg"></div> 
-                    <img class="searchBoard" src="./img/search.svg">
+                    <img class="searchBoard" onclick="updateBoardHtml()" src="./img/search.svg">
                 </form>
             <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard')">
                 Add Task
@@ -27,7 +27,7 @@ function renderBoardHtml(){
 
         <div class="statusHeader">
             <div class="statusHeadline">
-                <h3 class="h3">to do</h3>
+                <h3 class="h3">To do</h3>
                 <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">

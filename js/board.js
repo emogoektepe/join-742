@@ -2,10 +2,10 @@ let TASK_Template = [{   'id': 0,
                 'status': 'todo',
                 'title': 'Build Drag and Drop',
                 'description': 'using turtorial an js to build it',
-                'assignedTo' : ['Emre Göktepe', 'Simon Brsot', 'Johannes Braun'],
+                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}, {'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
                 'dueDate': 14.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
-                'category': ['User Stroy'],
+                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false} ,{'name':'Aufgabe 4','done':false} ],
                },
                 
@@ -13,10 +13,10 @@ let TASK_Template = [{   'id': 0,
                 'status': 'todo',
                 'title': 'Set variables',
                 'description': 'gets the Html Code dynamic',
-                'assignedTo' : ['Simon Brsot', 'Johannes Braun'],
+                'assignedTo' : [{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}, {'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
                 'dueDate': 15.05,
                 'prio':['medium','<img src="img/prioMid.svg">'], 
-                'category': 'User Stroy',
+                'category': [{'name':'Technical Task', 'bg-color':"#1ed7c1"}],
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false}],
                 },
                 
@@ -24,10 +24,10 @@ let TASK_Template = [{   'id': 0,
                 'status': 'todo',
                 'title': 'Ready CV',
                 'description': 'write a CV an import projects',
-                'assignedTo' : ['Emre Göktepe', 'Simon Brsot',],
+                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
                 'dueDate': 16.05,
                 'prio': ['low','<img src="img/prioLow.svg">'], 
-                'category': 'User Stroy',
+                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false}],
                 },
 
@@ -35,10 +35,10 @@ let TASK_Template = [{   'id': 0,
                 'status': 'todo',
                 'title': 'layout',
                 'description': 'use CSS to build a layout for the Project',
-                'assignedTo' : ['Emre Göktepe', 'Johannes Braun'],
+                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}],
                 'dueDate': 17.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
-                'category': 'User Stroy',
+                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
                 'subtasks': [{'name':'Aufgabe 1','done':false}],
                 }
 ]
@@ -72,8 +72,9 @@ function renderTodoContent(){
     if (todos.length != 0) {
         for (let i = 0; i < todos.length; i++) {
             const todo = todos[i];
-            searchingFor.toLowerCase(); 
-            shouldRender(todo,searchingFor,i);
+
+            searchTask(todo,searchingFor,i)
+            
         }
     } else{
         document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
@@ -90,7 +91,7 @@ function renderInProgressContent(){
             const progressTodo = progressTodos[i];
             searchingFor.toLowerCase();
 
-            shouldRender(progressTodo,searchingFor,i);
+            searchTask(progressTodo,searchingFor,i)
         }
     }else{
         document.getElementById('inProgress').innerHTML = `${renderEmptyCategory()}`
@@ -107,8 +108,8 @@ function renderAwaitFeedbackContent(){
 
         for (let i = 0; i < feedbackTodos.length; i++) {
             const feedbackTodo = feedbackTodos[i];
-        
-                shouldRender(feedbackTodo,searchingFor,i);
+            searchTask(feedbackTodo,searchingFor,i)
+            
             }
     } else{
         document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
@@ -123,7 +124,9 @@ function renderDoneContent(){
     if (doneTodos.length != 0) {
         for (let i = 0; i < doneTodos.length; i++) {
             const doneTodo = doneTodos[i];
-            shouldRender(doneTodo,searchingFor,i);
+            
+            searchTask(doneTodo,searchingFor,i)
+        
         }
     }else{
         document.getElementById('done').innerHTML = `${renderEmptyCategory()}`
@@ -134,11 +137,29 @@ function renderEmptyCategory(){
   return /*html*/`<div class="noTasks">No Tasks to do</div>` 
 }
 
+
+function searchTask(todo,searchingFor,i){
+    if (
+        todo.title.toLowerCase().includes(searchingFor) || 
+        todo.description.toLowerCase().includes(searchingFor) ||
+        todo.assignedTo.some(name => name.toLowerCase().includes(searchingFor)) ||
+        todo.dueDate.toString().includes(searchingFor) ||
+        todo.prio.some(value => value.toLowerCase().includes(searchingFor)) ||
+        todo.category.toLowerCase().includes(searchingFor) ||
+        todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(searchingFor))
+    ){
+        renderCardHtml(todo,i)
+
+    }
+}
+
 function shouldRender(todo,searchingFor,i){
 
-    let shouldRender = todo['title'].includes(searchingFor) || todo['category'].includes(searchingFor) || todo['description'].includes(searchingFor);
-   return shouldRender ? `${renderCardHtml(todo, i)} ` : ``
+    let shouldRender = todo.title.toLowerCase().includes(searchingFor) || todo.category.toLowerCase().includes(searchingFor) || todo.description.toLowerCase().includes(searchingFor);
+    return shouldRender ? `${renderCardHtml(todo, i)} ` : ``
+
 }
+
 
 function renderBoard() {
  
@@ -197,26 +218,31 @@ function renderAssignedTo(i,idOfContainer){
     let assigned = task[i]['assignedTo']
 
     for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
+        const fullname = assigned[j]['name']
+        const bgColor = assigned[j]['avatar-bg']
 
         let names = fullname.split(" ")
         
         let firstNameCharacter = names[0].charAt(0)
         let secondNameCharacter = names[1].charAt(0)
 
-        document.getElementById(idOfContainer).innerHTML += /*html*/`
+        document.getElementById(idOfContainer).innerHTML +=`
         <div class="assignedContact">
-            <div class="avatar">${firstNameCharacter}${secondNameCharacter}</div> ${fullname}
+            <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> ${fullname}
         </div>`
+
+        document.getElementById(`assignedContact${j}`).style.backgroundColor = `${bgColor}`
     }
 }
 
 function renderCardAssignedTo(idOfContainer,todo){
 
     let assigned = todo['assignedTo']
+    let id = todo['id']
 
     for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
+        const fullname = assigned[j]['name']
+        const bgColor = assigned[j]['avatar-bg']
 
         let names = fullname.split(" ")
         
@@ -225,12 +251,13 @@ function renderCardAssignedTo(idOfContainer,todo){
 
         document.getElementById(idOfContainer).innerHTML += /*html*/`
         <div class="assignedContact">
-            <div class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
+            <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
         </div>`
-    }
+
+        document.getElementById(`avatar${id}pic${j}`).style.backgroundColor = `${bgColor}`
+
+    }    
 }
-
-
 
 function renderSubtasks(i){
       
@@ -276,6 +303,38 @@ function changeBox(subtask,id,k){
     updateBoardHtml();
 }    
 
+function renderCategory(todo){
+    let category = todo['category']
+    let bgColor = category[0]['bg-color']
+
+    document.getElementById(`category${todo['id']}`).style.backgroundColor = `${bgColor}`
+}
+
+function renderProgressbar(todo,id){
+
+    let subtasks = todo['subtasks']
+
+    let readySubtask = 0
+
+    for (let l = 0; l < subtasks.length; l++) {
+
+        let SbTask = subtasks[l]
+        SbTask['done']? readySubtask++ : ''
+        
+    }
+ 
+    let percent = subtasks.length / readySubtask 
+    result = 100 / percent
+
+
+    document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
+    
+    <progress id="file" max="100" value="${result}"></progress>
+    ${readySubtask}/${todo['subtasks'].length} Subtasks`
+
+
+}
+
 
 //test functions
 
@@ -294,6 +353,7 @@ function load(){
 
    
 }
+
 
 
 

@@ -5,8 +5,8 @@ function renderCardHtml(todo){
     <div class="card" id="${todo['id']}" ondragstart="startDragging(${todo['id']}); rotateCard(${todo['id']})">
         <div onclick="renderBoardTaskOverlay(${todo['id']}); openDialog('dialogShowCard')">
             <div draggable="true" class="cardContent">
-                <div class="category">
-                    Category
+                <div id="category${todo['id']}" class="category">
+                    ${todo['category'][0]['name']}
                 </div>
                 <h4>${todo['title']}</h4>
                 <p>${todo['description']}</p>
@@ -25,31 +25,7 @@ function renderCardHtml(todo){
             </div>
         </div>
     </div>`
+    renderCategory(todo);
     renderCardAssignedTo(`assignedBox${todo['id']}`,todo);
-    renderProgressbar(todo,todo['id'])
-}
-
-function renderProgressbar(todo,id){
-
-    let subtasks = todo['subtasks']
-
-    let readySubtask = 0
-
-    for (let l = 0; l < subtasks.length; l++) {
-
-        let SbTask = subtasks[l]
-        SbTask['done']? readySubtask++ : ''
-        
-    }
- 
-    let percent = subtasks.length / readySubtask 
-    result = 100 / percent
-
-
-    document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
-    
-    <progress id="file" max="100" value="${result}"></progress>
-    ${readySubtask}/${todo['subtasks'].length} Subtasks`
-
-
+    renderProgressbar(todo,todo['id']);
 }

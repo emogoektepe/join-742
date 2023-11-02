@@ -209,6 +209,7 @@
     align-self: stretch;
     gap: 16px;
     flex-direction: column;
+    
 }
 
 .assignedContact{
@@ -222,7 +223,6 @@
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    background-color: rgb(253, 91, 91);
     color: white;
     display: flex;
     align-items: center;
@@ -368,7 +368,6 @@
 .category{
     padding: 4px 16px;
     border-radius: 4px;
-    background-color: #0938ff;
     color: white;
     width: auto;
 }
