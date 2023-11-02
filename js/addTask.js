@@ -1,7 +1,8 @@
 let selectedElement = false;
+let selectedContacts = [];
+let searchValue = "";
 
 function renderAddTask() {
-
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
         <div class="addTaskContent">
@@ -21,13 +22,13 @@ function renderAddTask() {
                     <div class="thirdBlock">
                         <span>Assigned to</span>
                         <div class="dropDownWithInput">
-                            <div class="assignedTo">
-                                <input type="text" value="Select contacts to assign">
-                                <div onclick="openContactDropDown()" class="dropDownArrow">
+                            <div class="assignedTo" onclick="openContactDropDown()">
+                                <input type="text" value="Select contacts to assign" id="assignedToInput" onkeyup="searchContactInDropDown()">
+                                <div class="dropDownArrow" onclick="getFocus()">
                                     <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
                                 </div>
                             </div>
-                            <div>Image With Color and initials</div>
+                            <div id="imageFromDropDown">Image With Color and initials</div>
                             <div id="dropDownContact">
                             </div>
                         </div>
@@ -61,6 +62,10 @@ function renderAddTask() {
     setActiveNav("addTask"); //für Navbar
 }
 
+function getFocus() {
+    document.getElementById("assignedToInput").focus();
+}
+
 function changePrioColor(element, color) {
     if (selectedElement === element) {
         element.style = '';
@@ -82,6 +87,7 @@ function changePrioColor(element, color) {
 }
 
 function openContactDropDown() {
+    document.getElementById('assignedToInput').value = "";
     let dropDownImage = document.getElementById('dropDownImage');
     let dropDownContact = document.getElementById('dropDownContact');
     if (dropDownImage.src.includes('down_down')) {
@@ -96,9 +102,11 @@ function openContactDropDown() {
             </div>
                 `;
         renderDropDownContacts();
+        dropDownContact.style.display = "block";
     } else {
         dropDownImage.src = './img/arrow_drop_down_down.svg';
-        dropDownContact.innerHTML = '';
+        dropDownContact.style.display = "none";
+        document.getElementById('assignedToInput').value = "Select contacts to assign";
     }
 }
 
@@ -106,19 +114,48 @@ function renderDropDownContacts() {
     let dropDownSection = document.getElementById('dropDownSection');
     dropDownSection.innerHTML = '';
     for (let i = 0; i < contactsJson.length; i++) {
-        dropDownSection.innerHTML += /*html*/ `
-            <div class="contactsInMenu">
+        if (contactsJson[i].fullName.toLowerCase().includes(searchValue.toLowerCase())) {
+            dropDownSection.innerHTML += /*html*/ `
+            <div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
                 <div class="imgAndName">
                     <div class="contactsInMenuimg" id="contactInListImg${i}">
                         ${getInitials(i)}
                     </div>
                     <p>${contactsJson[i].fullName}</p>
                 </div>
-                <div>
-                    checkbox
-                </div>
+                <img src="./img/checkboxEmpty.svg" alt="checkbox">
             </div>
         `;
-        setContactListImgColor(i);
+            let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
+            if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) > -1) {
+                selectContactInDropDown(i);
+            }
+            setContactListImgColor(i);
+        }
     }
+}
+
+function selectContactInDropDown(i) {
+    let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
+    let isSelected = contactsInMenu.classList.contains('selected');
+
+    if (isSelected) {
+        selectedContacts.splice(selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML), 1);
+        contactsInMenu.children[0].children[1].style.color = '';
+        contactsInMenu.style.backgroundColor = '';
+        contactsInMenu.lastElementChild.src = './img/checkboxEmpty.svg';
+    } else {
+        if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) == -1) {
+            selectedContacts.push(contactsInMenu.children[0].children[1].innerHTML);
+        }
+        contactsInMenu.children[0].children[1].style.color = '#fff';
+        contactsInMenu.style.backgroundColor = '#2a3647';
+        contactsInMenu.lastElementChild.src = './img/checkboxChecked.svg';
+    }
+    contactsInMenu.classList.toggle('selected');
+}
+
+function searchContactInDropDown() {
+    searchValue = document.getElementById('assignedToInput').value;
+    renderDropDownContacts();
 }
