@@ -6,7 +6,7 @@ let TASK_Template = [{   'id': 0,
                 'dueDate': 14.05,
                 'prio': ['urgent','<img src="img/prioUp.svg">'], 
                 'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
-                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false} ,{'name':'Aufgabe 4','done':false} ],
+                'subtasks': [],
                },
                 
                 {'id': 1,
@@ -33,7 +33,7 @@ let TASK_Template = [{   'id': 0,
 
                 {'id': 3,
                 'status': 'todo',
-                'title': 'layout',
+                'title': 'Layout',
                 'description': 'use CSS to build a layout for the Project',
                 'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}],
                 'dueDate': 17.05,
@@ -72,6 +72,7 @@ function renderTodoContent(){
     if (todos.length != 0) {
         for (let i = 0; i < todos.length; i++) {
             const todo = todos[i];
+            searchingFor.toLowerCase();
 
             searchTask(todo,searchingFor,i)
             
@@ -108,7 +109,9 @@ function renderAwaitFeedbackContent(){
 
         for (let i = 0; i < feedbackTodos.length; i++) {
             const feedbackTodo = feedbackTodos[i];
+            searchingFor.toLowerCase();
             searchTask(feedbackTodo,searchingFor,i)
+            
             
             }
     } else{
@@ -124,7 +127,7 @@ function renderDoneContent(){
     if (doneTodos.length != 0) {
         for (let i = 0; i < doneTodos.length; i++) {
             const doneTodo = doneTodos[i];
-            
+            searchingFor.toLowerCase();
             searchTask(doneTodo,searchingFor,i)
         
         }
@@ -142,22 +145,15 @@ function searchTask(todo,searchingFor,i){
     if (
         todo.title.toLowerCase().includes(searchingFor) || 
         todo.description.toLowerCase().includes(searchingFor) ||
-        todo.assignedTo.some(name => name.toLowerCase().includes(searchingFor)) ||
+        todo.assignedTo.some(name => name.toString().toLowerCase().includes(searchingFor)) ||
         todo.dueDate.toString().includes(searchingFor) ||
         todo.prio.some(value => value.toLowerCase().includes(searchingFor)) ||
-        todo.category.toLowerCase().includes(searchingFor) ||
+        todo.category.toString().toLowerCase().includes(searchingFor) ||
         todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(searchingFor))
     ){
         renderCardHtml(todo,i)
 
     }
-}
-
-function shouldRender(todo,searchingFor,i){
-
-    let shouldRender = todo.title.toLowerCase().includes(searchingFor) || todo.category.toLowerCase().includes(searchingFor) || todo.description.toLowerCase().includes(searchingFor);
-    return shouldRender ? `${renderCardHtml(todo, i)} ` : ``
-
 }
 
 
@@ -260,7 +256,6 @@ function renderCardAssignedTo(idOfContainer,todo){
 }
 
 function renderSubtasks(i){
-      
     let subtasks = task[i]['subtasks']
     let id = task[i]['id']
 
@@ -270,10 +265,18 @@ function renderSubtasks(i){
 
         if(subtask['done'] == false){
         document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-        <div id="box${id,k}" class="subConti"><img onclick="checkBox(${id},${k})" src="img/notChecked.svg">${subtask['name']}</div>`}
+        <div id="box${id,k}" class="subConti">
+            <div class="checkBg">
+                <img onclick="checkBox(${id},${k})" class="notChecked" src="img/checkButton.svg">
+            </div>
+            ${subtask['name']}
+        </div>`}
         else{
             document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-            <div id="box${id,k}" class="subConti"><img onclick="checkBox(${id},${k})" src="img/checked.svg">${subtask['name']}</div>`
+            <div id="box${id,k}" class="subConti">
+            <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
+            ${subtask['name']}
+            </div>`
         }
      
         
@@ -295,9 +298,21 @@ function checkBox(id,k){
 function changeBox(subtask,id,k){
 
     if(subtask['done']){
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `<img onclick="checkBox(${id},${k})" src="img/checked.svg">${subtask['name']}`
+        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
+
+       
+            <div class="checkBg">
+                <img onclick="checkBox(${id},${k})" src="img/boxChecked.svg">
+            </div>
+            ${subtask['name']}`  
+            
     } else {
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `<img onclick="checkBox(${id},${k})" src="img/notChecked.svg">${subtask['name']}`
+        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
+    
+            <div class="checkBg">
+                <img class="notChecked" onclick="checkBox(${id},${k})" src="img/checkButton.svg">
+            </div>    
+                ${subtask['name']} `
     }
 
     updateBoardHtml();
@@ -326,11 +341,13 @@ function renderProgressbar(todo,id){
     let percent = subtasks.length / readySubtask 
     result = 100 / percent
 
+    if(subtasks.length > 0){
 
     document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
     
     <progress id="file" max="100" value="${result}"></progress>
     ${readySubtask}/${todo['subtasks'].length} Subtasks`
+    }
 
 
 }

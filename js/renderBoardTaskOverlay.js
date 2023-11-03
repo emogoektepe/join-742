@@ -5,7 +5,7 @@ function renderBoardTaskOverlay(i){
      <div class="dialogShowCard" onclick="doNotClose(event)">
     
         <div class="cardHead">
-           <p class="category">Category</p> 
+           <p id="ctgry${i}" class="category">${task[i]['category'][0]['name']}</p> 
             <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">
         </div>
         <h1 class="headline">${task[i]['title']}</h1>
@@ -45,7 +45,10 @@ function renderBoardTaskOverlay(i){
             
 
     </div>`
-      renderAssignedTo(i,'assignedUser')
+
+    document.getElementById(`ctgry${i}`).style.backgroundColor = `${task[i]['category'][0]['bg-color']}`
+      
+    renderAssignedTo(i,'assignedUser')
       renderSubtasks(i)
 }
 

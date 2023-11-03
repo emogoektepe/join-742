@@ -3,10 +3,10 @@ function renderBoardHtml(){
      <header id="headerContent">
       <div class="headline"><h1>Board</h1></div>
         <div class="headBar">
-            <form class="formArea" action="false">
-                <input id="searchBoard" class="inputArea" type="text" placeholder="Find Task">
+            <form class="formArea" action="#">
+                <input id="searchBoard" class="inputArea"  type="text" placeholder="Find Task">
                <div><img src="./img/borderDash.svg"></div> 
-                    <img class="searchBoard" onclick="updateBoardHtml()" src="./img/search.svg">
+                    <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
                 </form>
             <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard')">
                 Add Task

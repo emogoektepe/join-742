@@ -293,6 +293,8 @@
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
+    padding: 4px;
+
 }
 
 .subConti:hover{
@@ -301,17 +303,19 @@
     cursor: pointer;
 }
 
-.checkIcon{
-    padding-left: 16px;
-    padding-right: 16px;
-    cursor: pointer;
-}   
+.checkBg{
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.notCheckedIcon{
-    padding-left: 13px;
-    padding-right: 13px;
-    cursor: pointer;
-}   
+.checkBg:hover{
+    background-color: #d1d1d1;
+    border-radius: 16px;
+}
+ 
 .closeSection{
     display: flex;
     justify-content: flex-end;
@@ -366,8 +370,9 @@
 
 
 .category{
+    display: inline;
     padding: 4px 16px;
-    border-radius: 4px;
+    border-radius: 8px;
     color: white;
     width: auto;
 }
@@ -405,6 +410,11 @@ progress::-webkit-progress-bar {
     justify-content: space-between;
     align-items: center;
 
+  }
+
+  .notChecked{
+    height: 18px;
+    width: 19px;
   }
 
   .endSection{
