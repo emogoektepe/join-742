@@ -8,7 +8,6 @@
     margin-top: 68px;
     margin-bottom: 68px;
 }
-
 .summaryHeader h1 {
     color: #000;
     font-size: 61px;
@@ -16,13 +15,11 @@
     font-weight: 700;
     line-height: 120%;
 }
-
 .separatorHeader {
     height: 59px;
     width: 3px;
     background-color: #29ABE2;
 }
-
 .summaryHeader h3 {
     color: #2A3647;
     font-size: 27px;
@@ -31,7 +28,6 @@
     line-height: 120%;
     /* 32.4px */
 }
-
 /*summaryContainer*/
 .summaryContainer {
     display: flex;
@@ -40,20 +36,17 @@
     margin-left: 87px;
     margin-right: 87px;
 }
-
 .summaryLeftSide {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 28px;
 }
-
 .firstRow {
     display: flex;
     justify-content: center;
     gap: 32px;
 }
-
 .firstRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
@@ -66,14 +59,12 @@
     transform: scale(1.05);
     transition: all 0.2s;
 }
-
 .firstRow div:hover span{
     color: #ffffff;
 }
 .firstRow div:hover img {
     filter: invert(100%) sepia(10%) saturate(0%) hue-rotate(236deg) brightness(117%) contrast(102%);
 }
-
 .toDo {
     display: flex;
     width: 264px;
@@ -96,7 +87,6 @@
     flex-direction: column;
     pointer-events: none;
 }
-
 .done {
     display: flex;
     width: 264px;
@@ -123,16 +113,13 @@
     cursor: pointer;
     background-color: #2A3647;
 }
-
 .secondRow div:hover span {
     color: white;
 }
-
 .urgent:hover {
     transform: scale(1.05);
     transition: all 0.2s; 
 }
-
 .urgent {
     display: flex;
     width: 560px;
@@ -177,13 +164,11 @@
     line-height: 120%;
     width: 83px;
 }
-
 .separatorUrgent {
     width: 2px;
     height: 102.023px;
     background-color: #D1D1D1;
 }
-
 .calendar {
     display: flex;
     flex-direction: column;
@@ -205,7 +190,6 @@
     font-weight: 400;
     line-height: 120%; /* 19.2px */
 }
-
 .thirdRow {
     display: flex;
     width: 560px;
@@ -215,7 +199,6 @@
     align-items: flex-start;
     gap: 28px;
 }
-
 .thirdRow div {
     display: flex;
     width: 168px;
@@ -238,7 +221,6 @@
 .thirdRow div:hover span{
     color: white;
 }
-
 .taskNumber {
     color: #000;
     text-align: center;
@@ -247,7 +229,6 @@
     font-weight: 600;
     line-height: 120%;
 }
-
 .taskText {
     color: #2A3647;
     text-align: center;
@@ -269,13 +250,11 @@
     transform: scale(1.05);
     transition: all 0.2s; 
 }
-
 .summaryRightSide {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .greetingsBox {
     display: inline-flex;
     flex-direction: column;
@@ -283,7 +262,6 @@
     align-items: flex-start;
     gap: 3px;
 }
-
 .greetingsBox h2 {
     color: #2A3647;
     font-size: 47px;
@@ -292,12 +270,32 @@
     line-height: 120%; /* 56.4px */
     margin: 0;
 }
-
 .greetingsBox span {
     color: var(--Ligth-blue, #29ABE2);
     font-size: 64px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%;
-    /* 76.8px */
+    line-height: 120%; /* 76.8px */
+}
+/*RESPONSIVENESS*/
+@media(max-width: 1430px) {
+    .summaryContainer {
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media(max-width: 1253px) {
+    .summaryRightSide {
+        display: none;
+    }
+    .summaryHeader {
+        margin-left: 0;
+    }
+    #content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

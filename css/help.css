@@ -1,7 +1,7 @@
 .helpContainer {
     margin-left: 96px;
     margin-right: 98px;
-    margin-top: 110px;
+    margin-top: 90px;
 }
 
 .backButton {
@@ -10,7 +10,7 @@
     position: sticky;
     border: none;
     background-color: unset;
-    top: 132px;
+    top: 142px;
     right: 98.5px;
     left: 1077.5px;
     padding: 0px;
