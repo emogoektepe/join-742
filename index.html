@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/script.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/login.js"></script>
     <script src="./js/include.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/board.js"></script>
@@ -30,19 +32,19 @@
             <div class="login">
                 <h1>Log in</h1>
                 <img id="loginUnderline" src="img/loginUnderline.svg">
-                <form action="">
+                <div>
                     <input class="loginInput" placeholder="Email" type="text">
                     <img src="img/mail-grey.svg">
-                </form>
-                <form action="">
+                </div>
+                <div>
                     <input class="loginInput" placeholder="Password" type="text">
                     <img src="img/lock.svg">
-                </form>
+                </div>
                 <div class="checkBox notChecked">
                   <img src="img/checkboxEmpty.svg" alt=""> Remember me
                 </div>
                 <div class="logBtns">
-                    <button class="loginBtn" onclick="window.location.href='application.html'">Log in</button>
+                    <button class="loginBtn" onclick="login(); return false;">Log in</button>
                     <button class="loginGuestBtn"onclick="window.location.href='application.html'">Guest Log in</button>
                 </div>
         

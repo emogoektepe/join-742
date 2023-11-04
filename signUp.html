@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/script.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/login.js"></script>
     <script src="./js/include.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/board.js"></script>
@@ -16,53 +18,55 @@
 
 <body>
 
-   <div class="startPage">
-    <div class="mainDivOne">
-        <img class="capa2" src="img/Capa 2.svg">
-    </div>
+    <div class="startPage">
+        <div class="mainDivOne">
+            <img class="capa2" src="img/Capa 2.svg">
+        </div>
 
 
-    <div class="mainDivTwo">
-        <img class="backArrow"  onclick="window.location.href='index.html' "src="img/arrow-left-line.svg">
-        <div class="SignUpBox">
-           
-            <div class="login">
-                <h1>Sign Up</h1>
-                <img id="loginUnderline" src="img/loginUnderline.svg">
+        <div class="mainDivTwo">
+            <img class="backArrow" onclick="window.location.href='index.html' " src="img/arrow-left-line.svg">
+            <div class="SignUpBox">
 
-                <form action="">
-                    <input class="loginInput" placeholder="Name" type="text">
-                    <img src="img/person-grey.svg">
-                </form>
-                <form action="">
-                    <input class="loginInput" placeholder="Email" type="text">
-                    <img src="img/mail-grey.svg">
-                </form>
-                <form action="">
-                    <input class="loginInput" placeholder="Password" type="text">
-                    <img src="img/lock.svg">
-                </form>
-                <form action="">
-                    <input class="loginInput" placeholder="Confirm Password" type="text">
-                    <img src="img/lock.svg">
-                </form>
-                <div class="acceptBox">
-                    <img src="img/checkboxEmpty.svg" alt=""> Remember me
-                    I accept the the <a href="">Privacy policy</a>
+                <div class="login">
+                    <h1>Sign Up</h1>
+                    <img id="loginUnderline" src="img/loginUnderline.svg">
+
+                    <form onsubmit="addUser(); return false;">
+                        <div>
+                            <input id="userNameInput" class="loginInput" placeholder="Name" type="text" required>
+                            <img src="img/person-grey.svg">
+                        </div>
+                        <div>
+                            <input id="userEmailInput" class="loginInput" placeholder="Email" type="text" required>
+                            <img src="img/mail-grey.svg">
+                        </div>
+                        <div>
+                            <input id="userPasswordInput" class="loginInput" placeholder="Password" type="text" required>
+                            <img src="img/lock.svg">
+                        </div>
+                        <div>
+                            <input class="loginInput" placeholder="Confirm Password" type="text" required>
+                            <img src="img/lock.svg">
+                        </div>
+                        <div class="acceptBox">
+                            <img src="img/checkboxEmpty.svg" alt=""> Remember me
+                            I accept the the <a href="">Privacy policy</a>
+                        </div>
+                        <div class="logBtns">
+                            <button class="loginBtn">Sign Up</button>
+                        </div>
+                    </form>
+
                 </div>
-                <div class="logBtns">
-                    <button class="loginBtn" onclick="window.location.href='application.html'">Sign Up</button>
-                </div>
-        
             </div>
         </div>
-    </div>
 
-    <div class="mainDivThree">
-        <a href="">Privacy Policy</a>
-        <a href="">Legal Notice</a>
-    </div>
-  
-</body> 
+        <div class="mainDivThree">
+            <a href="">Privacy Policy</a>
+            <a href="">Legal Notice</a>
+        </div>
+
+</body>
 
 </html>

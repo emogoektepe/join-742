@@ -74,7 +74,7 @@ h1 {
     width: 422px;
 }
 
-.login form img{
+.login div img{
     width: 24px;
     height: 24px;
 }
@@ -83,7 +83,7 @@ h1 {
     outline: none;
 }
 
-.login form {
+.login div {
     border-radius: 10px;
     display: flex;
     align-items: center;
