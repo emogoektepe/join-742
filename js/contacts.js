@@ -1,6 +1,7 @@
 let contactsJson = [];
 let contactsFirstLetter = [];
 let contactPosition = 0;
+let contactColorsMap = new Map();
 
 function renderContacts() {
     let content = document.getElementById('content');
@@ -96,10 +97,12 @@ function getInitials(i) {
 }
 
 function setContactListImgColor(i) {
-    let imgColor = document.getElementById(`contactInListImg${i}`);
     const color = ["#ff7a00", "#ff5eb3", "#6e52ff", "#9327ff", "#00bee8", "#1fd7c1", "#ff745e", "#ffa35e", "#fc71ff", "#ffc701", "#0038ff", "#c3ff2b", "#ffe62b", "#ff4646", "#ffbb2b"];
     i = i % color.length;
-    imgColor.style.backgroundColor = color[i];
+    const contactColor = color[i];
+    let imgColor = document.getElementById(`contactInListImg${i}`);
+    imgColor.style.backgroundColor = contactColor;
+    contactColorsMap.set(contactsJson[i].fullName, contactColor);
 }
 
 function renderContactInfoSection(i) {

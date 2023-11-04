@@ -260,11 +260,11 @@
     width: 42px;
     border-radius: 45px;
     border: 2px solid #FFFFFF;
-    background-color: #FF8190;
     margin-right: 16px;
     font-size: 12px;
     font-weight: 400;
     color: white;
+    background-color: #2A3647;
 }
 
 .addContactButtonDropDown {
@@ -279,4 +279,13 @@
     color: #000000;
     margin-block: 0;
     text-transform: capitalize;
+}
+
+#imageFromDropDown {
+    display: flex;
+    margin-top: 8px;
+}
+
+.marginRight8px {
+    margin-right: 8px !important;
 }

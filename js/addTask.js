@@ -23,12 +23,12 @@ function renderAddTask() {
                         <span>Assigned to</span>
                         <div class="dropDownWithInput">
                             <div class="assignedTo" onclick="openContactDropDown()">
-                                <input type="text" value="Select contacts to assign" id="assignedToInput" onkeyup="searchContactInDropDown()">
-                                <div class="dropDownArrow" onclick="getFocus()">
+                                <input type="text" placeholder="Select contacts to assign" id="assignedToInput" onkeyup="searchContactInDropDown()">
+                                <div class="dropDownArrow">
                                     <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
                                 </div>
                             </div>
-                            <div id="imageFromDropDown">Image With Color and initials</div>
+                            <div id="imageFromDropDown"></div>
                             <div id="dropDownContact">
                             </div>
                         </div>
@@ -106,8 +106,9 @@ function openContactDropDown() {
     } else {
         dropDownImage.src = './img/arrow_drop_down_down.svg';
         dropDownContact.style.display = "none";
-        document.getElementById('assignedToInput').value = "Select contacts to assign";
+        searchValue = "";
     }
+    renderAssignedToImages();
 }
 
 function renderDropDownContacts() {
@@ -158,4 +159,26 @@ function selectContactInDropDown(i) {
 function searchContactInDropDown() {
     searchValue = document.getElementById('assignedToInput').value;
     renderDropDownContacts();
+}
+
+function renderAssignedToImages() {
+    let imageFromDropDown = document.getElementById('imageFromDropDown');
+    imageFromDropDown.innerHTML = "";
+    for (let i = 0; i < selectedContacts.length; i++) {
+        let contactName = selectedContacts[i];
+        let imgColor = contactColorsMap.get(contactName);
+        if (imgColor) {
+            imageFromDropDown.innerHTML += /*html*/ `
+                <div class="contactsInMenuimg marginRight8px" style="background-color: ${imgColor}">${getInitialsTaskSection(i)}</div>
+            `;
+        }
+    }
+}
+
+function getInitialsTaskSection(i) {
+    if (selectedContacts[i].split(' ').length > 1) {
+        return selectedContacts[i].split(' ')[0].charAt(0).toUpperCase() + selectedContacts[i].split(' ')[1].charAt(0).toUpperCase();
+    } else {
+        return selectedContacts[i].split(' ')[0].charAt(0).toUpperCase();
+    }
 }
