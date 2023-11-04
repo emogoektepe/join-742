@@ -54,6 +54,15 @@ let currentDraggedElement;
 
 load();
 
+function renderBoard() {
+ 
+    let content = document.getElementById('content');
+    content.innerHTML = /*html*/ `${renderBoardHtml()}`;
+    setActiveNav("board"); //für Navbar
+    updateBoardHtml()
+
+}
+
 function updateBoardHtml(){
     
     renderTodoContent();
@@ -73,9 +82,7 @@ function renderTodoContent(){
         for (let i = 0; i < todos.length; i++) {
             const todo = todos[i];
             searchingFor.toLowerCase();
-
             searchTask(todo,searchingFor,i)
-            
         }
     } else{
         document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
@@ -91,7 +98,6 @@ function renderInProgressContent(){
         for (let i = 0; i < progressTodos.length; i++) {
             const progressTodo = progressTodos[i];
             searchingFor.toLowerCase();
-
             searchTask(progressTodo,searchingFor,i)
         }
     }else{
@@ -101,9 +107,8 @@ function renderInProgressContent(){
 
 function renderAwaitFeedbackContent(){
     let feedbackTodos = task.filter(f => f['status']== 'awaitFeedback')
-    document.getElementById('awaitFeedback').innerHTML = '';
     let searchingFor = document.getElementById('searchBoard').value
-
+    document.getElementById('awaitFeedback').innerHTML = '';
 
     if(feedbackTodos.length != 0){
 
@@ -111,8 +116,6 @@ function renderAwaitFeedbackContent(){
             const feedbackTodo = feedbackTodos[i];
             searchingFor.toLowerCase();
             searchTask(feedbackTodo,searchingFor,i)
-            
-            
             }
     } else{
         document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
@@ -121,8 +124,8 @@ function renderAwaitFeedbackContent(){
 
 function renderDoneContent(){
     let doneTodos = task.filter(d => d['status'] == 'done')
-    document.getElementById('done').innerHTML = '';
     let searchingFor = document.getElementById('searchBoard').value
+    document.getElementById('done').innerHTML = '';
     
     if (doneTodos.length != 0) {
         for (let i = 0; i < doneTodos.length; i++) {
@@ -154,16 +157,6 @@ function searchTask(todo,searchingFor,i){
         renderCardHtml(todo,i)
 
     }
-}
-
-
-function renderBoard() {
- 
-    let content = document.getElementById('content');
-    content.innerHTML = /*html*/ `${renderBoardHtml()}`;
-    setActiveNav("board"); //für Navbar
-    updateBoardHtml()
-
 }
 
 function highlight(id){
@@ -216,9 +209,7 @@ function renderAssignedTo(i,idOfContainer){
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]['name']
         const bgColor = assigned[j]['avatar-bg']
-
         let names = fullname.split(" ")
-        
         let firstNameCharacter = names[0].charAt(0)
         let secondNameCharacter = names[1].charAt(0)
 
@@ -239,9 +230,7 @@ function renderCardAssignedTo(idOfContainer,todo){
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]['name']
         const bgColor = assigned[j]['avatar-bg']
-
         let names = fullname.split(" ")
-        
         let firstNameCharacter = names[0].charAt(0)
         let secondNameCharacter = names[1].charAt(0)
 
@@ -251,7 +240,6 @@ function renderCardAssignedTo(idOfContainer,todo){
         </div>`
 
         document.getElementById(`avatar${id}pic${j}`).style.backgroundColor = `${bgColor}`
-
     }    
 }
 
@@ -274,12 +262,10 @@ function renderSubtasks(i){
         else{
             document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
             <div id="box${id,k}" class="subConti">
-            <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
-            ${subtask['name']}
+                <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
+                ${subtask['name']}
             </div>`
         }
-     
-        
     }
 }
 
@@ -289,9 +275,7 @@ function checkBox(id,k){
 
     subtask['done'] = !subtask['done']
     save();
-    changeBox(subtask,id,k)
-
-   
+    changeBox(subtask,id,k);
 }
  
 
@@ -299,22 +283,17 @@ function changeBox(subtask,id,k){
 
     if(subtask['done']){
         document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
-
-       
-            <div class="checkBg">
-                <img onclick="checkBox(${id},${k})" src="img/boxChecked.svg">
-            </div>
-            ${subtask['name']}`  
-            
+        <div class="checkBg">
+            <img onclick="checkBox(${id},${k})" src="img/boxChecked.svg">
+        </div>
+        ${subtask['name']}`  
     } else {
         document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
-    
             <div class="checkBg">
                 <img class="notChecked" onclick="checkBox(${id},${k})" src="img/checkButton.svg">
             </div>    
-                ${subtask['name']} `
+            ${subtask['name']} `
     }
-
     updateBoardHtml();
 }    
 
@@ -328,14 +307,11 @@ function renderCategory(todo){
 function renderProgressbar(todo,id){
 
     let subtasks = todo['subtasks']
-
     let readySubtask = 0
 
     for (let l = 0; l < subtasks.length; l++) {
-
         let SbTask = subtasks[l]
         SbTask['done']? readySubtask++ : ''
-        
     }
  
     let percent = subtasks.length / readySubtask 
@@ -344,12 +320,9 @@ function renderProgressbar(todo,id){
     if(subtasks.length > 0){
 
     document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
-    
-    <progress id="file" max="100" value="${result}"></progress>
-    ${readySubtask}/${todo['subtasks'].length} Subtasks`
+        <progress id="file" max="100" value="${result}"></progress>
+        ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
-
-
 }
 
 
@@ -357,18 +330,16 @@ function renderProgressbar(todo,id){
 
 function save(){
 
-    let taskAsString = JSON.stringify(task);
+    let taskAsString = JSON.stringify(task)
     localStorage.setItem('task',taskAsString);
 }
 
 function load(){
     
-   let taskAsString = localStorage.getItem('task')
-   if(taskAsString){
-    task = JSON.parse(taskAsString)
-   }else(TASK_Template)
-
-   
+    let taskAsString = localStorage.getItem('task')
+    if(taskAsString){
+        task = JSON.parse(taskAsString)
+    }else(TASK_Template)
 }
 
 
