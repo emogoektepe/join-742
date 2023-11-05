@@ -9,10 +9,8 @@ function addUser() {
     users.push(newUser);
     console.log(inputName);
     
-    // Rufen Sie die Erfolgsmeldung auf
     successfulRegistration();
 
-    // window.location.href = 'index.html';
     return false; // neuladen hindern 
 }
 
@@ -23,6 +21,5 @@ function successfulRegistration() {
     setTimeout(function () {
         overlay.style.display = "none";
         window.location.href = 'index.html'; //weiterleitung//
-    }, 700);
-    
+    }, 700); 
 }
