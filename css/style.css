@@ -13,6 +13,51 @@ h1 {
     margin-block: 0;
 }
 
+/*overlay for SignUp*/
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#successMessage {
+    display: flex;
+    height: 74px;
+    padding: 0px 25px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FFFFFF;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.5s, slideOut 1s 2s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(0, 100%);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(0, 100%);
+    }
+}
+
 .startPage{
     height: 100vh;
     background-color:#f6f7f8;
@@ -74,7 +119,7 @@ h1 {
     width: 422px;
 }
 
-.login div img{
+.inputContainer img{
     width: 24px;
     height: 24px;
 }
@@ -83,7 +128,7 @@ h1 {
     outline: none;
 }
 
-.login div {
+.inputContainer {
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -102,13 +147,11 @@ h1 {
 }
 
 .checkBox{
-    width: 100%;
     display: flex;
-    padding-left: 39px;
     justify-content: flex-start;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin: 32px;
     cursor: pointer;
 }
 
@@ -207,13 +250,11 @@ h1 {
 }
 
 .acceptBox{
-    width: 100%;
     display: flex;
-    padding-left: 39px;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin: 32px;
     cursor: pointer;
     color: #a8a8a8;
 }

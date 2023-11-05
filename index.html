@@ -28,28 +28,30 @@
 
 
    <div class="mainDivTwo">
-        <div class="loginBox">
-            <div class="login">
-                <h1>Log in</h1>
-                <img id="loginUnderline" src="img/loginUnderline.svg">
-                <div>
-                    <input class="loginInput" placeholder="Email" type="text">
+    <div class="loginBox">
+        <div class="login">
+            <h1>Log in</h1>
+            <img id="loginUnderline" src="img/loginUnderline.svg">
+            <form id="loginForm" onsubmit="login(); return false;">
+                <div class="inputContainer">
+                    <input id="loginMailInput" class="loginInput" placeholder="Email" type="text" name="email">
                     <img src="img/mail-grey.svg">
                 </div>
-                <div>
-                    <input class="loginInput" placeholder="Password" type="text">
+                <div class="inputContainer">
+                    <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password" name="password">
                     <img src="img/lock.svg">
                 </div>
                 <div class="checkBox notChecked">
-                  <img src="img/checkboxEmpty.svg" alt=""> Remember me
+                    <img src="img/checkboxEmpty.svg" alt=""> Remember me
                 </div>
                 <div class="logBtns">
-                    <button class="loginBtn" onclick="login(); return false;">Log in</button>
-                    <button class="loginGuestBtn"onclick="window.location.href='application.html'">Guest Log in</button>
+                    <button class="loginBtn">Log in</button>
+                    <button class="loginGuestBtn" onclick="window.location.href='application.html'">Guest Log in</button>
                 </div>
-        
-            </div>
+            </form>
         </div>
+    </div>
+    
     </div>
 
 

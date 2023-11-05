@@ -33,24 +33,24 @@
                     <img id="loginUnderline" src="img/loginUnderline.svg">
 
                     <form onsubmit="addUser(); return false;">
-                        <div>
+                        <div class="inputContainer">
                             <input id="userNameInput" class="loginInput" placeholder="Name" type="text" required>
                             <img src="img/person-grey.svg">
                         </div>
-                        <div>
+                        <div class="inputContainer">
                             <input id="userEmailInput" class="loginInput" placeholder="Email" type="text" required>
                             <img src="img/mail-grey.svg">
                         </div>
-                        <div>
+                        <div class="inputContainer">
                             <input id="userPasswordInput" class="loginInput" placeholder="Password" type="text" required>
                             <img src="img/lock.svg">
                         </div>
-                        <div>
+                        <div class="inputContainer">
                             <input class="loginInput" placeholder="Confirm Password" type="text" required>
                             <img src="img/lock.svg">
                         </div>
                         <div class="acceptBox">
-                            <img src="img/checkboxEmpty.svg" alt=""> Remember me
+                            <img src="img/checkboxEmpty.svg" alt="">
                             I accept the the <a href="">Privacy policy</a>
                         </div>
                         <div class="logBtns">
@@ -58,6 +58,12 @@
                         </div>
                     </form>
 
+                </div>
+
+                <div id="overlay">
+                    <div id="successMessage">
+                        You signed up successfully
+                    </div>
                 </div>
             </div>
         </div>
