@@ -1,4 +1,4 @@
-let users = [{name: 'test', email: 'test', password: 'test'}]
+let users = [{name: 'test', email: 'test@test.de', password: 'test123'}]
 
 function addUser() {
     let inputName = document.getElementById("userNameInput").value;

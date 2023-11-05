@@ -44,6 +44,7 @@ h1 {
     from {
         transform: translate(0, 100%);
     }
+
     to {
         transform: translate(0, 0);
     }
@@ -53,17 +54,18 @@ h1 {
     from {
         transform: translate(0, 0);
     }
+
     to {
         transform: translate(0, 100%);
     }
 }
 
-.startPage{
+.startPage {
     height: 100vh;
-    background-color:#f6f7f8;
+    background-color: #f6f7f8;
 }
 
-.mainDivOne{
+.mainDivOne {
     height: 25vh;
     display: flex;
     justify-content: space-between;
@@ -72,7 +74,7 @@ h1 {
     padding-right: 122px;
 }
 
-.signUp{
+.signUp {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +82,7 @@ h1 {
 }
 
 
-.mainDivTwo{
+.mainDivTwo {
     height: 50vh;
     position: relative;
     display: flex;
@@ -94,10 +96,10 @@ h1 {
     align-items: center;
     flex-direction: column;
     background-color: white;
-    
+
 }
 
-.loginBox{
+.loginBox {
     padding: 48px 115px;
     background-color: white;
     display: flex;
@@ -107,11 +109,11 @@ h1 {
     border-radius: 30px;
 }
 
-.login h1{
+.login h1 {
     font-size: 61px;
 }
 
-.loginInput{
+.loginInput {
     border: none;
     display: flex;
     justify-content: space-between;
@@ -119,12 +121,30 @@ h1 {
     width: 422px;
 }
 
-.inputContainer img{
+.loginMailInputMsg {
+    color: #FF8190;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: none;
+}
+
+.loginPasswordInputMsg {
+    color: #FF8190;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: none;
+}
+
+.inputContainer img {
     width: 24px;
     height: 24px;
 }
 
-.login input:focus{
+.login input:focus {
     outline: none;
 }
 
@@ -135,18 +155,18 @@ h1 {
     justify-content: space-between;
     padding: 12px 21px;
     width: 422px;
-    gap: 10px;  
-    border: 1px solid  #D1D1D1;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
-.login form:focus-within{
+/* .login form:focus-within {
     border: 1px solid rgb(255, 255, 255);
-    outline: 1px solid rgb(46, 185, 255) 
-}
+    outline: 1px solid rgb(46, 185, 255)
+} */
 
-.checkBox{
+.checkBox {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -156,19 +176,19 @@ h1 {
 }
 
 
-#loginUnderline{
+#loginUnderline {
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
-.logBtns{
+.logBtns {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.loginBtn{
+.loginBtn {
     background-color: #2a3646;
     color: white;
     border-radius: 8px;
@@ -182,16 +202,16 @@ h1 {
     font-weight: 700;
 }
 
-.loginBtn:hover{
+.loginBtn:hover {
     background: rgb(46, 185, 255);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .loginGuestBtn {
-    color:#2a3646;
+    color: #2a3646;
     padding: 15px 24px;
     background-color: white;
-    border:  1px solid #2a3646;
+    border: 1px solid #2a3646;
     border-radius: 8px;
     cursor: pointer;
     font-style: normal;
@@ -200,32 +220,32 @@ h1 {
 
 }
 
-.loginGuestBtn:hover{
+.loginGuestBtn:hover {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     color: rgb(46, 185, 255);
     border: 1px solid rgb(46, 185, 255);
 }
 
-.mainDivThree{
+.mainDivThree {
     height: 25vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-.mainDivThree a{
+.mainDivThree a {
     text-decoration: none;
     color: #a8a8a8;
     padding: 8px;
     margin: 40px 8px;
 }
 
-.mainDivThree a:hover{
+.mainDivThree a:hover {
     font-weight: bold;
     color: rgb(46, 185, 255);
 }
 
-.SignUpBox{
+.SignUpBox {
     padding: 48px 88px;
     background-color: white;
     display: flex;
@@ -235,21 +255,21 @@ h1 {
     border-radius: 30px;
 }
 
-.backArrow{
+.backArrow {
     position: absolute;
     margin-top: -450px;
     margin-left: -500px;
     cursor: pointer;
 }
 
-.backArrow:hover{
+.backArrow:hover {
     background-color: #e7e7e7;
     border-radius: 50%;
     width: 35px;
     height: 35px;
 }
 
-.acceptBox{
+.acceptBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,12 +279,12 @@ h1 {
     color: #a8a8a8;
 }
 
-.acceptBox a{
+.acceptBox a {
     text-decoration: none;
     color: rgb(46, 185, 255);
 }
 
-.acceptBox a:hover{
+.acceptBox a:hover {
     text-decoration: underline;
 }
 

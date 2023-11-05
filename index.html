@@ -33,13 +33,19 @@
             <h1>Log in</h1>
             <img id="loginUnderline" src="img/loginUnderline.svg">
             <form id="loginForm" onsubmit="login(); return false;">
-                <div class="inputContainer">
+                <div id="loginMailInputContainer" class="inputContainer">
                     <input id="loginMailInput" class="loginInput" placeholder="Email" type="text" name="email">
                     <img src="img/mail-grey.svg">
                 </div>
-                <div class="inputContainer">
+                <div id="loginMailInputMsg" class="loginMailInputMsg">
+                    Wrong email Ups! Try again.
+                </div>
+                <div id="loginPasswordInputContainer" class="inputContainer">
                     <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password" name="password">
                     <img src="img/lock.svg">
+                </div>
+                <div id="loginPasswordInputMsg" class="loginPasswordInputMsg">
+                    Wrong password Ups! Try again.
                 </div>
                 <div class="checkBox notChecked">
                     <img src="img/checkboxEmpty.svg" alt=""> Remember me
