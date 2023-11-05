@@ -22,9 +22,9 @@ function renderAddTask() {
                     <div class="thirdBlock">
                         <span>Assigned to</span>
                         <div class="dropDownWithInput">
-                            <div class="assignedTo" onclick="openContactDropDown()">
-                                <input type="text" placeholder="Select contacts to assign" id="assignedToInput" onkeyup="searchContactInDropDown()">
-                                <div class="dropDownArrow">
+                            <div class="assignedTo">
+                                <input type="text" onclick="openContactDropDown()" placeholder="Select contacts to assign" id="assignedToInput" onkeyup="searchContactInDropDown()">
+                                <div class="dropDownArrow" onclick="toggleDropDown()">
                                     <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
                                 </div>
                             </div>
@@ -59,11 +59,25 @@ function renderAddTask() {
         </div>
     `;
     content.innerHTML += tempAddContactForm('addTask');
-    setActiveNav("addTask"); //für Navbar
+    setActiveNav("addTask");
 }
 
-function getFocus() {
-    document.getElementById("assignedToInput").focus();
+document.addEventListener('click', function (event) {
+    const thirdBlock = document.querySelector('.dropDownWithInput');
+    if (thirdBlock && !thirdBlock.contains(event.target)) {
+        closeDropDown();
+    }
+});
+
+function toggleDropDown() {
+    let dropDownImage = document.getElementById('dropDownImage');
+
+    if (dropDownImage.src.includes('down_down')) {
+        document.getElementById('assignedToInput').focus();
+        openContactDropDown();
+    } else {
+        closeDropDown();
+    }
 }
 
 function changePrioColor(element, color) {
@@ -87,7 +101,7 @@ function changePrioColor(element, color) {
 }
 
 function openContactDropDown() {
-    document.getElementById('assignedToInput').value = "";
+    document.getElementById('assignedToInput').placeholder = "";
     let dropDownImage = document.getElementById('dropDownImage');
     let dropDownContact = document.getElementById('dropDownContact');
     if (dropDownImage.src.includes('down_down')) {
@@ -103,11 +117,15 @@ function openContactDropDown() {
                 `;
         renderDropDownContacts();
         dropDownContact.style.display = "block";
-    } else {
-        dropDownImage.src = './img/arrow_drop_down_down.svg';
-        dropDownContact.style.display = "none";
-        searchValue = "";
     }
+}
+
+function closeDropDown() {
+    dropDownImage.src = './img/arrow_drop_down_down.svg';
+    dropDownContact.style.display = "none";
+    searchValue = "";
+    document.getElementById('assignedToInput').value = '';
+    document.getElementById('assignedToInput').placeholder = "Select contacts to assign";
     renderAssignedToImages();
 }
 

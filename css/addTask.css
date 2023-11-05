@@ -289,3 +289,7 @@
 .marginRight8px {
     margin-right: 8px !important;
 }
+
+#assignedToInput::placeholder {
+    color: black;
+}
