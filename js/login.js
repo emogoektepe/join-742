@@ -32,18 +32,7 @@ function validatePassword() {
     }
 }
 
-function login() {
-    // Überprüfung der E-Mail und des Passworts mit den Validierungsfunktionen
-    if (!validateEmail() || !validatePassword()) {
-        return false; // Das Formular wird nicht gesendet, wenn die Validierung fehlschlägt
-    }
-
-    let email = document.getElementById("loginMailInput").value;
-    let password = document.getElementById("loginPasswordInput").value;
-
-    // Hier sollte ich eine sichere Passwortüberprüfung implementieren, z.B. Hashing und Salting.
-
-    // Überprüfung der Übereinstimmung
+function checkUser(email, password) {
     let user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
@@ -53,4 +42,17 @@ function login() {
         console.log('Benutzer nicht gefunden');
         return false; // Das Formular wird nicht gesendet
     }
+}
+
+function login() {
+    // Überprüfung der E-Mail und des Passworts mit den Validierungsfunktionen
+    if (!validateEmail() || !validatePassword()) {
+        return false; // Das Formular wird nicht gesendet, wenn die Validierung fehlschlägt
+    }
+
+    let email = document.getElementById("loginMailInput").value;
+    let password = document.getElementById("loginPasswordInput").value;
+
+    // Benutzerüberprüfung
+    return checkUser(email, password);
 }
