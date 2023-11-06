@@ -271,6 +271,7 @@
     margin: 0;
 }
 .greetingsBox span {
+    display: none;
     color: var(--Ligth-blue, #29ABE2);
     font-size: 64px;
     font-style: normal;

@@ -68,7 +68,7 @@ function renderSummary() {
             <div class="summaryRightSide">
                 <div class="greetingsBox">
                     <h2 id="greetingMessage"></h2>
-                    <span>Sofia Müller</span>
+                    <span id="userName" class="userName"></span>
                 </div>
             </div>
             

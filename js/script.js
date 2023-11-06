@@ -25,13 +25,13 @@ function renderGreetingMessage() {
     let greeting = "";
 
     if (currentHour >= 6 && currentHour < 12) {
-        greeting = "Good morning,";
+        greeting = "Good morning";
     } else if (currentHour >= 12 && currentHour < 17) {
-        greeting = "Good afternoon,";
+        greeting = "Good afternoon";
     } else if (currentHour >= 17 && currentHour < 21) {
-        greeting = "Good evening,";
+        greeting = "Good evening";
     } else {
-        greeting = "Hello,";
+        greeting = "Hello";
     }
 
     document.getElementById('greetingMessage').innerHTML = greeting;
