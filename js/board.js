@@ -1,4 +1,4 @@
-let TASK_Template = [{   'id': 0,
+let TASK_Template = [{   'id': '',
                 'status': 'todo',
                 'title': 'Build Drag and Drop',
                 'description': 'using turtorial an js to build it',
@@ -9,7 +9,7 @@ let TASK_Template = [{   'id': 0,
                 'subtasks': [],
                },
                 
-                {'id': 1,
+                {'id': '',
                 'status': 'todo',
                 'title': 'Set variables',
                 'description': 'gets the Html Code dynamic',
@@ -20,7 +20,7 @@ let TASK_Template = [{   'id': 0,
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false}],
                 },
                 
-                {'id': 2,
+                {'id': '',
                 'status': 'todo',
                 'title': 'Ready CV',
                 'description': 'write a CV an import projects',
@@ -31,7 +31,7 @@ let TASK_Template = [{   'id': 0,
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false}],
                 },
 
-                {'id': 3,
+                {'id': '',
                 'status': 'todo',
                 'title': 'Layout',
                 'description': 'use CSS to build a layout for the Project',
@@ -44,7 +44,10 @@ let TASK_Template = [{   'id': 0,
 ]
 
 let task = TASK_Template
-
+let todo = []
+let inProgress = []
+let awaitFeedback = []
+let done = []
 
 let currentDraggedElement;
 
@@ -54,12 +57,31 @@ let currentDraggedElement;
 
 load();
 
+function generateIDs(){
+    for (let x = 0; x < task.length; x++) {
+        const tsk = task[x];
+
+        tsk['id'] = x
+        save();  
+    }
+}
+
+function filter(){
+    todo = task.filter(t => t['status']== 'todo');
+    inProgress = task.filter(p => p['status']== 'inProgress');
+    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback')
+    done = task.filter(d => d['status'] == 'done')
+
+}
+
 function renderBoard() {
  
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
+    generateIDs();
     setActiveNav("board"); //für Navbar
-    updateBoardHtml()
+    filter();
+    updateBoardHtml();
 
 }
 
@@ -69,20 +91,18 @@ function updateBoardHtml(){
     renderInProgressContent();
     renderAwaitFeedbackContent();
     renderDoneContent();
-
     save();
 }
 
 function renderTodoContent(){
-    let todos = task.filter(t => t['status']== 'todo');
     let searchingFor = document.getElementById('searchBoard').value
+    let array = 'todo'
     document.getElementById('todo').innerHTML = '';
 
-    if (todos.length != 0) {
-        for (let i = 0; i < todos.length; i++) {
-            const todo = todos[i];
-            searchingFor.toLowerCase();
-            searchTask(todo,searchingFor,i)
+    if (todo.length != 0) {
+        for (let i = 0; i < todo.length; i++) {
+            const todos = todo[i];
+            searchTask(todos,searchingFor,array,i)
         }
     } else{
         document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
@@ -90,15 +110,14 @@ function renderTodoContent(){
 }
 
 function renderInProgressContent(){
-    let progressTodos = task.filter(p => p['status']== 'inProgress');
     let searchingFor = document.getElementById('searchBoard').value
+    let array = 'inProgress'
     document.getElementById('inProgress').innerHTML = '';
     
-    if(progressTodos.length != 0){
-        for (let i = 0; i < progressTodos.length; i++) {
-            const progressTodo = progressTodos[i];
-            searchingFor.toLowerCase();
-            searchTask(progressTodo,searchingFor,i)
+    if(inProgress.length != 0){
+        for (let i = 0; i < inProgress.length; i++) {
+            const progressTodo = inProgress[i];
+            searchTask(progressTodo,searchingFor,array,i)
         }
     }else{
         document.getElementById('inProgress').innerHTML = `${renderEmptyCategory()}`
@@ -106,16 +125,15 @@ function renderInProgressContent(){
 }
 
 function renderAwaitFeedbackContent(){
-    let feedbackTodos = task.filter(f => f['status']== 'awaitFeedback')
     let searchingFor = document.getElementById('searchBoard').value
+    let array = 'awaitFeedback'
     document.getElementById('awaitFeedback').innerHTML = '';
 
-    if(feedbackTodos.length != 0){
+    if(awaitFeedback.length != 0){
 
-        for (let i = 0; i < feedbackTodos.length; i++) {
-            const feedbackTodo = feedbackTodos[i];
-            searchingFor.toLowerCase();
-            searchTask(feedbackTodo,searchingFor,i)
+        for (let i = 0; i < awaitFeedback.length; i++) {
+            const feedbackTodo = awaitFeedback[i];
+            searchTask(feedbackTodo,searchingFor,array,i)
             }
     } else{
         document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
@@ -123,16 +141,14 @@ function renderAwaitFeedbackContent(){
 }
 
 function renderDoneContent(){
-    let doneTodos = task.filter(d => d['status'] == 'done')
     let searchingFor = document.getElementById('searchBoard').value
+    let array = 'done'
     document.getElementById('done').innerHTML = '';
     
-    if (doneTodos.length != 0) {
-        for (let i = 0; i < doneTodos.length; i++) {
-            const doneTodo = doneTodos[i];
-            searchingFor.toLowerCase();
-            searchTask(doneTodo,searchingFor,i)
-        
+    if (done.length != 0) {
+        for (let i = 0; i < done.length; i++) {
+            const doneTodo = done[i];
+            searchTask(doneTodo,searchingFor,array,i)
         }
     }else{
         document.getElementById('done').innerHTML = `${renderEmptyCategory()}`
@@ -144,7 +160,9 @@ function renderEmptyCategory(){
 }
 
 
-function searchTask(todo,searchingFor,i){
+function searchTask(todo,searchingFor,array,i){
+    searchingFor.toLowerCase();
+
     if (
         todo.title.toLowerCase().includes(searchingFor) || 
         todo.description.toLowerCase().includes(searchingFor) ||
@@ -154,8 +172,7 @@ function searchTask(todo,searchingFor,i){
         todo.category.toString().toLowerCase().includes(searchingFor) ||
         todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(searchingFor))
     ){
-        renderCardHtml(todo,i)
-
+        renderCardHtml(todo,array,i)
     }
 }
 
@@ -243,9 +260,9 @@ function renderCardAssignedTo(idOfContainer,todo){
     }    
 }
 
-function renderSubtasks(i){
-    let subtasks = task[i]['subtasks']
-    let id = task[i]['id']
+function renderSubtasks(array,i){
+    let subtasks = array[i]['subtasks']
+    let id = array[i]['id']
 
     for (let k = 0; k < subtasks.length; k++) {
         const subtask = subtasks[k];
@@ -323,6 +340,11 @@ function renderProgressbar(todo,id){
         <progress id="file" max="100" value="${result}"></progress>
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
+}
+
+function deleteTask(id){
+    task.splice(id,1);
+    renderBoard();
 }
 
 
