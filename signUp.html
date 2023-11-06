@@ -49,8 +49,9 @@
                             <input class="loginInput" placeholder="Confirm Password" type="text" required>
                             <img src="img/lock.svg">
                         </div>
-                        <div class="acceptBox">
-                            <img src="img/checkboxEmpty.svg" alt="">
+                        <div class="acceptBox" onclick="toggleAcceptCheckbox()">
+                            <img id="acceptBoxUnchecked" class="acceptBoxUnchecked" src="img/checkboxEmpty.svg" alt="">
+                            <img id="acceptBoxChecked" class="acceptBoxChecked" src="img/checkboxChecked.svg" alt="">
                             I accept the the <a href="">Privacy policy</a>
                         </div>
                         <div class="logBtns">

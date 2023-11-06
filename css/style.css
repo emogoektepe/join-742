@@ -290,7 +290,16 @@ h1 {
     cursor: pointer;
     color: #a8a8a8;
 }
-
+.acceptBoxUnchecked {
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+.acceptBoxChecked {
+    height: 24px;
+    width: 24px;
+    display: none;
+}
 .acceptBox a {
     text-decoration: none;
     color: rgb(46, 185, 255);
