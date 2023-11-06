@@ -9,7 +9,7 @@ function validateEmail() {
         emailMsg.style.display = "block"; // Fehlermeldung anzeigen
         return false;
     } else {
-        emailInput.style.borderColor = "";
+        emailContainer.style.borderColor = "";
         emailMsg.style.display = "none"; // Fehlermeldung ausblenden
         return true;
     }
@@ -26,7 +26,7 @@ function validatePassword() {
         passwordMsg.style.display = "block"; // Fehlermeldung anzeigen
         return false;
     } else {
-        passwordInput.style.borderColor = "";
+        passwordContainer.style.borderColor = "";
         passwordMsg.style.display = "none"; // Fehlermeldung ausblenden
         return true;
     }
