@@ -56,3 +56,16 @@ function login() {
     // Benutzerüberprüfung
     return checkUser(email, password);
 }
+
+function toggleCheckBoxRememberMe() {
+    let checkedBox = document.getElementById('checkBoxChecked');
+    let uncheckedBox = document.getElementById('checkBoxUnchecked');
+
+    if(checkedBox.style.display === "none"){
+    checkedBox.style.display = "block";
+    uncheckedBox.style.display = "none";
+    }else{
+    checkedBox.style.display = "none";
+    uncheckedBox.style.display = "block";
+    }
+}

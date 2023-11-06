@@ -47,8 +47,10 @@
                 <div id="loginPasswordInputMsg" class="loginPasswordInputMsg">
                     Wrong password Ups! Try again.
                 </div>
-                <div class="checkBox notChecked">
-                    <img src="img/checkboxEmpty.svg" alt=""> Remember me
+                <div class="checkBox" onclick="toggleCheckBoxRememberMe()">
+                    <img id="checkBoxUnchecked" class="checkBoxUnchecked" src="img/checkboxEmpty.svg" alt="">
+                    <img id="checkBoxChecked" class="checkBoxChecked" src="img/checkboxChecked.svg" alt="">
+                    Remember me
                 </div>
                 <div class="logBtns">
                     <button class="loginBtn">Log in</button>

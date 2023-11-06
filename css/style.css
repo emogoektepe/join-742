@@ -172,9 +172,21 @@ h1 {
     align-items: center;
     gap: 8px;
     margin: 32px;
+    margin-right: 280px;
     cursor: pointer;
 }
 
+.checkBoxUnchecked {
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+
+.checkBoxChecked {
+    height: 24px;
+    width: 24px;
+    display: none;
+}
 
 #loginUnderline {
     margin-top: 16px;
