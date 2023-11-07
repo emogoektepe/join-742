@@ -29,7 +29,7 @@ function renderBoardTaskOverlay(array,i){
 
         </div>
                      
-        <h3>Subtasks</h3>
+        <h3 id="subHeadline${i}">Subtasks</h3>
         <div id="subtask${array[i]['id']}" class="subtask">
            
         </div>

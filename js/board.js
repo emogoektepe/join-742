@@ -285,10 +285,15 @@ function renderSubtasks(array,i){
     let subtasks = array[i]['subtasks']
     let id = array[i]['id']
 
-    for (let k = 0; k < subtasks.length; k++) {
+
+    if(subtasks.length == 0){
+        document.getElementById(`subHeadline${i}`).classList.add('d-none')}
+    
+    else{
+
+        for (let k = 0; k < subtasks.length; k++) {
         const subtask = subtasks[k];
         
-
         if(subtask['done'] == false){
         document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
         <div id="box${id,k}" class="subConti">
@@ -304,6 +309,9 @@ function renderSubtasks(array,i){
                 ${subtask['name']}
             </div>`
         }
+    }
+
+
     }
 }
 
