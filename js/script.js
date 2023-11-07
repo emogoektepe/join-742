@@ -8,13 +8,9 @@ function setActiveNav(activeId) {
     const navItems = document.querySelectorAll(".navItems div");
     navItems.forEach(item => {
         if (item.id === activeId) {
-            item.style.backgroundColor = "#091931";
-            item.lastElementChild.style.filter= "brightness(0) invert(1)";
-            item.style.color= "#ffffff";
+            item.classList.add("active"); // Füge die "active"-Klasse hinzu
         } else {
-            item.style.backgroundColor = "#2a3647"; // Setzt die Hintergrundfarbe zurück
-            item.lastElementChild.style.filter= "none";
-            item.style.color= "#cdcdcd";
+            item.classList.remove("active"); // Entferne die "active"-Klasse
         }
     });
 }

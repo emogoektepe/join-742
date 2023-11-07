@@ -62,11 +62,13 @@
     color: #29ABE2;
 }
 
-.navSummary {
-    background-color: #091931;
-    color: white;
+.navItems div:hover,
+.navItems div.active {
+    cursor: pointer;
+    background-color: #2a3d59; /* Standard-Hover-Hintergrundfarbe */
 }
 
-.navSummary img {
-    filter: brightness(0) invert(1);
+.navItems div.active {
+    background-color: #091931; /* Hintergrundfarbe im aktiven Zustand */
+    color: #fff; /* Textfarbe im aktiven Zustand */
 }
