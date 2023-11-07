@@ -2,10 +2,10 @@ let TASK_Template = [{   'id': '',
                 'status': 'todo',
                 'title': 'Build Drag and Drop',
                 'description': 'using turtorial an js to build it',
-                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}, {'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
+                'assignedTo' : ['Johannes Braun','Emre','Simon','Jo'],
                 'dueDate': 14.05,
-                'prio': ['urgent','<img src="img/prioUp.svg">'], 
-                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
+                'prio': 'urgent',
+                'category': 'User Story',
                 'subtasks': [],
                },
                 
@@ -13,10 +13,10 @@ let TASK_Template = [{   'id': '',
                 'status': 'todo',
                 'title': 'Set variables',
                 'description': 'gets the Html Code dynamic',
-                'assignedTo' : [{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}, {'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
+                'assignedTo' : ['Emre','Simon'],
                 'dueDate': 15.05,
-                'prio':['medium','<img src="img/prioMid.svg">'], 
-                'category': [{'name':'Technical Task', 'bg-color':"#1ed7c1"}],
+                'prio':'medium',
+                'category': 'Technical Task',
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false}],
                 },
                 
@@ -24,10 +24,10 @@ let TASK_Template = [{   'id': '',
                 'status': 'todo',
                 'title': 'Ready CV',
                 'description': 'write a CV an import projects',
-                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Johannes Braun ','avatar-bg': "#6e52ff"}],
+                'assignedTo' : ['Emre','Jo'],
                 'dueDate': 16.05,
-                'prio': ['low','<img src="img/prioLow.svg">'], 
-                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
+                'prio': 'low', 
+                'category': 'User Story',
                 'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false}],
                 },
 
@@ -35,10 +35,10 @@ let TASK_Template = [{   'id': '',
                 'status': 'todo',
                 'title': 'Layout',
                 'description': 'use CSS to build a layout for the Project',
-                'assignedTo' : [{'name':'Emre Göktepe','avatar-bg':"#ff7a00"},{'name':'Simon Brost ','avatar-bg':"#ff5eb3"}],
+                'assignedTo' :['Simon','Jo'],
                 'dueDate': 17.05,
-                'prio': ['urgent','<img src="img/prioUp.svg">'], 
-                'category': [{'name':'User Story', 'bg-color':"#0938ff"}],
+                'prio': 'urgent',
+                'category': 'Technical Task',
                 'subtasks': [{'name':'Aufgabe 1','done':false}],
                 }
 ]
@@ -57,23 +57,6 @@ let currentDraggedElement;
 
 load();
 
-function generateIDs(){
-    for (let x = 0; x < task.length; x++) {
-        const tsk = task[x];
-
-        tsk['id'] = x
-        save();  
-    }
-}
-
-function filter(){
-    todo = task.filter(t => t['status']== 'todo');
-    inProgress = task.filter(p => p['status']== 'inProgress');
-    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback')
-    done = task.filter(d => d['status'] == 'done')
-
-}
-
 function renderBoard() {
  
     let content = document.getElementById('content');
@@ -85,6 +68,15 @@ function renderBoard() {
 
 }
 
+function generateIDs(){
+    for (let x = 0; x < task.length; x++) {
+        const tsk = task[x];
+
+        tsk['id'] = x
+        save();  
+    }
+}
+
 function updateBoardHtml(){
     
     renderTodoContent();
@@ -92,6 +84,13 @@ function updateBoardHtml(){
     renderAwaitFeedbackContent();
     renderDoneContent();
     save();
+}
+
+function filter(){
+    todo = task.filter(t => t['status']== 'todo');
+    inProgress = task.filter(p => p['status']== 'inProgress');
+    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback')
+    done = task.filter(d => d['status'] == 'done')
 }
 
 function renderTodoContent(){
@@ -208,55 +207,77 @@ function allowDrop(ev) {
 function moveTo(category){
     task[currentDraggedElement]['status'] = category
     save();
-    renderBoard()
-
+    renderBoard();
 }
 
 function rotateCard(id){
-
-   document.getElementById(id).classList.remove('card');
+    document.getElementById(id).classList.remove('card');
     document.getElementById(id).classList.add('rotateCard');
-
 }
 
 function renderAssignedTo(i,idOfContainer){
-
+    
     let assigned = task[i]['assignedTo']
 
     for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]['name']
-        const bgColor = assigned[j]['avatar-bg']
+        const fullname = assigned[j]
         let names = fullname.split(" ")
         let firstNameCharacter = names[0].charAt(0)
-        let secondNameCharacter = names[1].charAt(0)
-
-        document.getElementById(idOfContainer).innerHTML +=`
-        <div class="assignedContact">
-            <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> ${fullname}
-        </div>`
-
-        document.getElementById(`assignedContact${j}`).style.backgroundColor = `${bgColor}`
+        if(names.length > 1){
+            let secondNameCharacter = names[1].charAt(0)
+            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            <div class="assignedContact">
+                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div>${fullname}
+            </div>`
+            renderCardContacts(fullname,`assignedContact${j}`);
+        }else{
+            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            <div class="assignedContact">
+                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}</div>${fullname}
+            </div>`
+            renderCardContacts(fullname,`assignedContact${j}`);
+        }
     }
 }
 
-function renderCardAssignedTo(idOfContainer,todo){
 
+function renderCardContacts(name,idName){
+
+    for (let i = 0; i < contactsJson.length; i++) {
+        const color = ["#ff7a00", "#ff5eb3", "#6e52ff", "#9327ff", "#00bee8", "#1fd7c1", "#ff745e", "#ffa35e", "#fc71ff", "#ffc701", "#0038ff", "#c3ff2b", "#ffe62b", "#ff4646", "#ffbb2b"];
+        i = i % color.length;
+        const avatarBg = color[i]
+        contactColorsMap.set(contactsJson[i].fullName, avatarBg);
+    }
+
+    let bgColor = contactColorsMap.get(name)
+
+    document.getElementById(idName).style.backgroundColor = `${bgColor}`
+    
+}
+
+function renderCardAssignedTo(idOfContainer,todo){
     let assigned = todo['assignedTo']
     let id = todo['id']
 
     for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]['name']
-        const bgColor = assigned[j]['avatar-bg']
+        const fullname = assigned[j]
         let names = fullname.split(" ")
         let firstNameCharacter = names[0].charAt(0)
-        let secondNameCharacter = names[1].charAt(0)
-
-        document.getElementById(idOfContainer).innerHTML += /*html*/`
-        <div class="assignedContact">
-            <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
-        </div>`
-
-        document.getElementById(`avatar${id}pic${j}`).style.backgroundColor = `${bgColor}`
+        if(names.length > 1){
+            let secondNameCharacter = names[1].charAt(0)
+            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            <div class="assignedContact">
+                <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
+            </div>`
+            renderCardContacts(fullname,`avatar${id}pic${j}`);
+        }else{
+            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            <div class="assignedContact">
+                <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}</div> 
+            </div>`
+            renderCardContacts(fullname,`avatar${id}pic${j}`);
+        }
     }    
 }
 
@@ -314,11 +335,60 @@ function changeBox(subtask,id,k){
     updateBoardHtml();
 }    
 
-function renderCategory(todo){
-    let category = todo['category']
-    let bgColor = category[0]['bg-color']
+function renderCategory(category,id){
 
-    document.getElementById(`category${todo['id']}`).style.backgroundColor = `${bgColor}`
+    switch (category) {
+        case 'User Story':
+        document.getElementById(id).style.backgroundColor = `#0938ff`
+        break;
+    
+        case 'Technical Task': 
+        document.getElementById(id).style.backgroundColor = `#1ed7c1`
+        break;
+    }
+}
+
+function renderPrio(prio,id,array,i){
+
+    let img, string;
+
+    switch (prio) {
+        case 'low':
+            string = array[i]['prio']
+            img = '<img src="img/prioLow.svg"></img>'
+            break;
+        
+        case 'medium': 
+            string = array[i]['prio']
+            img = '<img src="img/prioMid.svg"></img>'
+            break;
+
+        case 'urgent':
+            string = array[i]['prio']
+            img = '<img src="img/prioUp.svg"></img>'
+            break;
+    }
+    document.getElementById(id).innerHTML = `${string} ${img}` 
+}
+
+function renderCardPrio(prio,id){
+
+    let img;
+
+    switch (prio) {
+        case 'low':
+            img = '<img src="img/prioLow.svg"></img>'
+            break;
+        
+        case 'medium': 
+            img = '<img src="img/prioMid.svg"></img>'
+            break;
+
+        case 'urgent':
+            img = '<img src="img/prioUp.svg"></img>'
+            break;
+    }
+    document.getElementById(id).innerHTML = `${img}` 
 }
 
 function renderProgressbar(todo,id){
@@ -335,8 +405,7 @@ function renderProgressbar(todo,id){
     result = 100 / percent
 
     if(subtasks.length > 0){
-
-    document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
+        document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
         <progress id="file" max="100" value="${result}"></progress>
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
@@ -351,13 +420,11 @@ function deleteTask(id){
 //test functions
 
 function save(){
-
     let taskAsString = JSON.stringify(task)
     localStorage.setItem('task',taskAsString);
 }
 
 function load(){
-    
     let taskAsString = localStorage.getItem('task')
     if(taskAsString){
         task = JSON.parse(taskAsString)
