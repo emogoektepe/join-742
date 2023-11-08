@@ -8,7 +8,7 @@ function renderBoardHtml(){
                <div><img src="./img/borderDash.svg"></div> 
                     <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
                 </form>
-            <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard')">
+            <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
                 Add Task
                 <img src="./img/add.svg">
             </div>
@@ -16,13 +16,13 @@ function renderBoardHtml(){
         </div>
     </header>
 
-    <div id="dialogAddTaskBoard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogAddTaskBoard')">
-                <div class="dialogAddTaskBoard" onclick="doNotClose(event)">
+    <div id="dialogAddTaskBoard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogAddTaskBoard','addTaskWindow')">
+                <div id="addTaskWindow" style="transform: translateX(200%);" class="dialogAddTaskBoard" onclick="doNotClose(event)">
 
                 </div>
     </div>
 
-    <div id="dialogShowCard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogShowCard')">
+    <div id="dialogShowCard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogShowCard','taskOverlay')">
 
     </div>
 

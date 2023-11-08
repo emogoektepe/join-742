@@ -5,7 +5,7 @@ function renderBoardTaskOverlay(array,i){
     <div id="taskOverlay" style="transform: translateX(200%);"  class="dialogShowCard" onclick="doNotClose(event);">
         <div class="cardHead">
             <p id="ctgry${i}" class="category">${array[i]['category']}</p> 
-            <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">
+            <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">
         </div>
         <h1 class="headline">${array[i]['title']}</h1>
         <span>

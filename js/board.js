@@ -174,16 +174,16 @@ function searchTask(todo,searchingFor,array,i){
     }
 }
 
-function slideIn(){
+function slideIn(idOfSlideConti){
 
     setTimeout( () => {
-        document.getElementById('taskOverlay').style = 'transform: translateX(0%)';
+        document.getElementById(idOfSlideConti).style = 'transform: translateX(0%)';
     },5)
     
 }
 
-function slideOut(){
-    document.getElementById('taskOverlay').style = 'transform: translateX(200%)';
+function slideOut(idOfSlideConti){
+    document.getElementById(idOfSlideConti).style = 'transform: translateX(200%)';
 }
 
 function highlight(id){
@@ -195,16 +195,16 @@ function removeHighlight(id){
 }
 
 
-function openDialog(id){
+function openDialog(id,idOfSlideConti){
     document.getElementById(id).classList.remove('d-none');
-    slideIn();
+    slideIn(idOfSlideConti);
 }
 
-function closeDialog(id){
+function closeDialog(id,idOfSlideConti){
     setTimeout(()=> {
         document.getElementById(id).classList.add('d-none')
     }, 225)
-    slideOut();
+    slideOut(idOfSlideConti);
     updateBoardHtml();
 }
 

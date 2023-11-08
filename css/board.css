@@ -112,6 +112,7 @@
         width: 70vw;
         height: 70vh;
         background-color: white;
+        transition: transform 250ms ease-in-out;
      
     }
 
@@ -370,23 +371,25 @@
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
-    animation: changeColor 1s ease-in-out;
+    
 }
 
 .addTaskBtn:hover{
     background: rgb(46, 185, 255);
    border: 1px solid rgb(46, 185, 255);
-   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+   animation: changeColor 150ms ease-in-out;
 }
 
-/*@keyframes changeColor{
+@keyframes changeColor{
     from{
         background-color: #2A3647;;
     }
     to{
        background-color:  rgb(46, 185, 255);
+       border: 1px solid rgb(46, 185, 255);
     }
-}*/
+}
 
 .addTaskHeader{
     border-radius: 8px;
@@ -466,4 +469,3 @@ progress::-webkit-progress-bar {
 .filterBlue:hover{
     filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
 }
-
