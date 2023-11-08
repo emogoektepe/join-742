@@ -30,19 +30,19 @@ function renderBoardHtml(){
         <div class="statusHeader">
             <div class="statusHeadline">
                 <h3 class="h3">To do</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>In progress</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Await feedback</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue"  onclick="openDialog('dialogAddTaskBoard','addTaskWindow')"><img src="img/plusB.svg"></div>
             </div>
             <div class="statusHeadline">
                 <h3>Done</h3>
-                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard')"><img src="img/plusB.svg"></div>
+                <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')"><img src="img/plusB.svg"></div>
             </div>
         </div>
 

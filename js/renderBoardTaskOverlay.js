@@ -42,7 +42,7 @@ function renderBoardTaskOverlay(array,i){
 
     
     renderCategory(array[i]['category'],`ctgry${i}`);
-    renderAssignedTo(i,'assignedUser');
+    renderAssignedTo(array,i,'assignedUser');
     renderSubtasks(array,i);
     renderPrio(array[i]['prio'],`prio${array[i]['id']}`,array,i);
 }

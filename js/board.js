@@ -166,13 +166,16 @@ function searchTask(todo,searchingFor,array,i){
         todo.description.toLowerCase().includes(searchingFor) ||
         todo.assignedTo.some(name => name.toString().toLowerCase().includes(searchingFor)) ||
         todo.dueDate.toString().includes(searchingFor) ||
-        todo.prio.some(value => value.toLowerCase().includes(searchingFor)) ||
+        todo.prio.toLowerCase().includes(searchingFor) ||
         todo.category.toString().toLowerCase().includes(searchingFor) ||
         todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(searchingFor))
     ){
         renderCardHtml(todo,array,i)
+    }else{
+        document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
     }
 }
+
 
 function slideIn(idOfSlideConti){
 
@@ -231,9 +234,9 @@ function rotateCard(id){
     document.getElementById(id).classList.add('rotateCard');
 }
 
-function renderAssignedTo(i,idOfContainer){
+function renderAssignedTo(array,i,idOfContainer){
     
-    let assigned = task[i]['assignedTo']
+    let assigned = array[i]['assignedTo']
 
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]
