@@ -1,8 +1,8 @@
 function renderBoardTaskOverlay(array,i){
-
+ 
     document.getElementById('dialogShowCard').innerHTML =  /*html*/ `
     
-    <div class="dialogShowCard" onclick="doNotClose(event)">
+    <div id="taskOverlay" style="transform: translateX(200%);"  class="dialogShowCard" onclick="doNotClose(event);">
         <div class="cardHead">
             <p id="ctgry${i}" class="category">${array[i]['category']}</p> 
             <img onclick="closeDialog('dialogShowCard')" class="editCard" src="img/close.svg">

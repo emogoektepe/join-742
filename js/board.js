@@ -48,7 +48,6 @@ let todo = []
 let inProgress = []
 let awaitFeedback = []
 let done = []
-
 let currentDraggedElement;
 
 /**
@@ -175,6 +174,18 @@ function searchTask(todo,searchingFor,array,i){
     }
 }
 
+function slideIn(){
+
+    setTimeout( () => {
+        document.getElementById('taskOverlay').style = 'transform: translateX(0%)';
+    },5)
+    
+}
+
+function slideOut(){
+    document.getElementById('taskOverlay').style = 'transform: translateX(200%)';
+}
+
 function highlight(id){
     document.getElementById(id).classList.add('dragAreaHighlight')
 }
@@ -183,12 +194,17 @@ function removeHighlight(id){
     document.getElementById(id).classList.remove('dragAreaHighlight')
 }
 
+
 function openDialog(id){
-    document.getElementById(id).classList.remove('d-none')
+    document.getElementById(id).classList.remove('d-none');
+    slideIn();
 }
 
 function closeDialog(id){
-    document.getElementById(id).classList.add('d-none')
+    setTimeout(()=> {
+        document.getElementById(id).classList.add('d-none')
+    }, 225)
+    slideOut();
     updateBoardHtml();
 }
 
