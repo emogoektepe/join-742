@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/script.js"></script>
-    <script src="./js/register.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/include.js"></script>
     <script src="./js/storage.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/register.js"></script>
     <script src="./js/board.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/fonts.css">
@@ -16,7 +16,7 @@
     <title>Join</title>
 </head>
 
-<body>
+<body onload="initRegister()">
 
     <div class="startPage">
         <div class="mainDivOne">
@@ -32,17 +32,17 @@
                     <h1>Sign Up</h1>
                     <img id="loginUnderline" src="img/loginUnderline.svg">
 
-                    <form onsubmit="addUser(); return false;">
+                    <form onsubmit="register(); return false;">
                         <div class="inputContainer">
                             <input id="userNameInput" class="loginInput" placeholder="Name" type="text" required>
                             <img src="img/person-grey.svg">
                         </div>
                         <div class="inputContainer">
-                            <input id="userEmailInput" class="loginInput" placeholder="Email" type="text" required>
+                            <input id="userEmailInput" class="loginInput" placeholder="Email" type="email" required>
                             <img src="img/mail-grey.svg">
                         </div>
                         <div class="inputContainer">
-                            <input id="userPasswordInput" class="loginInput" placeholder="Password" type="text" required>
+                            <input id="userPasswordInput" class="loginInput" placeholder="Password" type="password" required>
                             <img src="img/lock.svg">
                         </div>
                         <div class="inputContainer">
@@ -55,7 +55,7 @@
                             I accept the the <a href="">Privacy policy</a>
                         </div>
                         <div class="logBtns">
-                            <button class="loginBtn">Sign Up</button>
+                            <button id="registerBtn" class="loginBtn">Sign Up</button>
                         </div>
                     </form>
 

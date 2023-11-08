@@ -1,17 +1,39 @@
-let users = [{name: 'test', email: 'test@test.de', password: 'test123'}]
+let users = []
 
-function addUser() {
-    let inputName = document.getElementById("userNameInput").value;
-    let inputEmail = document.getElementById("userEmailInput").value;
-    let inputPassword = document.getElementById("userPasswordInput").value;
-    let newUser = {name: inputName, email: inputEmail, password: inputPassword};
+async function initRegister() {
+    loadUsers();
+}
 
-    users.push(newUser);
-    console.log(inputName);
+async function loadUsers(){
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch(e){
+        console.log('Loading error:', e);
+    }
+}
+
+// async function addUser() {
+//     let inputName = document.getElementById("userNameInput").value;
+//     let inputEmail = document.getElementById("userEmailInput").value;
+//     let inputPassword = document.getElementById("userPasswordInput").value;
+//     let newUser = {name: inputName, email: inputEmail, password: inputPassword};
+
+//     users.push(newUser);
     
-    successfulRegistration();
+//     await setItem('users', JSON.stringify(users));
+//     successfulRegistration();
+//     resetForm();
+//     //return false; // neuladen hindern 
+// }
 
-    return false; // neuladen hindern 
+async function register() {
+    users.push({
+        email: userEmailInput.value,
+        password: userPasswordInput.value,
+    });
+    await setItem('users', JSON.stringify(users));
+    resetForm();
+    successfulRegistration();
 }
 
 function successfulRegistration() {
@@ -35,3 +57,7 @@ function toggleAcceptCheckbox() {
     uncheckedBox.style.display = "block";
     }
 }
+ function resetForm() {
+    userEmailInput.value = '';
+    userPasswordInput.value = '';
+ }
