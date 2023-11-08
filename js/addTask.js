@@ -49,10 +49,29 @@ function renderAddTask() {
                     </div>
                     <div class="categoryBlock">
                         <span data-end="*">Category</span>
-                        
+                        <div class="categoryBlockDropDown">
+                            <div class="selectTaskCategory" onclick="openCategoryDropDown()">
+                                <span id="selectTaskCategory">Select task category</span>
+                                <div class="dropDownArrow mgTop0">
+                                    <img id="dropDownImageCategory" src="./img/arrow_drop_down_down.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="categoryDropDown" id="categoryDropDown">
+                                <div class="categorysInDropDown">
+                                    <div onclick="getCategory('Technical Task')">Technical Task</div>
+                                    <div onclick="getCategory('User Story')">User Story</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="subtasksBlock">
                         <span>Subtasks</span>
+                        <div class="taskSubtasksContainer">
+                            <input type="text" name="" id="taskSubtasks" class="taskSubtasks" placeholder="Add new subtask">
+                        </div>
+                        <div class="newSubtaskAdded" id="newSubtaskAdded">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,16 +81,43 @@ function renderAddTask() {
     setActiveNav("addTask");
 }
 
+function getCategory(category) {
+    let selectTaskCategory = document.getElementById('selectTaskCategory');
+    selectTaskCategory.innerText = category;
+    closeCategoryDropDown();
+}
+
+function openCategoryDropDown() {
+    let categoryDropDown = document.getElementById('categoryDropDown');
+    let dropDownImageCategory = document.getElementById('dropDownImageCategory');
+    if (dropDownImageCategory.src.includes('down_down')) {
+        dropDownImageCategory.src = './img/arrow_drop_down_up.svg';
+        categoryDropDown.style.display = "block";
+    } else {
+        closeCategoryDropDown()
+    }
+}
+
+function closeCategoryDropDown() {
+    let categoryDropDown = document.getElementById('categoryDropDown');
+    let dropDownImageCategory = document.getElementById('dropDownImageCategory');
+    dropDownImageCategory.src = './img/arrow_drop_down_down.svg';
+    categoryDropDown.style.display = "none";
+}
+
 document.addEventListener('click', function (event) {
     const thirdBlock = document.querySelector('.dropDownWithInput');
+    const categoryBlockDropDown = document.querySelector('.categoryBlockDropDown');
     if (thirdBlock && !thirdBlock.contains(event.target)) {
         closeDropDown();
+    }
+    if (categoryBlockDropDown && !categoryBlockDropDown.contains(event.target)) {
+        closeCategoryDropDown();
     }
 });
 
 function toggleDropDown() {
     let dropDownImage = document.getElementById('dropDownImage');
-
     if (dropDownImage.src.includes('down_down')) {
         document.getElementById('assignedToInput').focus();
         openContactDropDown();

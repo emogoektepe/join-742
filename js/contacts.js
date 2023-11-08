@@ -132,10 +132,10 @@ function setActiveBackgroundColor(element) {
 }
 
 function createContact(page) {
-    let inputName = document.getElementById('inputName').value;
-    let inputEmail = document.getElementById('inputEmail').value;
-    let inputPhone = document.getElementById('inputPhone').value;
-    let newContact = { fullName: inputName, email: inputEmail, phone: inputPhone };
+    const inputName = document.getElementById('inputName').value;
+    const inputEmail = document.getElementById('inputEmail').value;
+    const inputPhone = document.getElementById('inputPhone').value;
+    const newContact = { fullName: inputName, email: inputEmail, phone: inputPhone };
     contactsJson.push(newContact)
     setContactsStorage();
     if (page.innerText == 'AddTask') {
