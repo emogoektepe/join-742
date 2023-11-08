@@ -22,7 +22,9 @@ function renderBoardHtml(){
                 </div>
     </div>
 
-    <div id="dialogShowCard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogShowCard')"></div>
+    <div id="dialogShowCard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogShowCard')">
+
+    </div>
 
 
         <div class="statusHeader">
