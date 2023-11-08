@@ -9,23 +9,9 @@ async function loadUsers(){
         let parseStorage = await getItem('users'); 
         users = JSON.parse(parseStorage.data.value);
     } catch(e){
-        console.log('Loading error:', e);
+        console.warning('Loading error:', e);
     }
 }
-
-// async function addUser() {
-//     let inputName = document.getElementById("userNameInput").value;
-//     let inputEmail = document.getElementById("userEmailInput").value;
-//     let inputPassword = document.getElementById("userPasswordInput").value;
-//     let newUser = {name: inputName, email: inputEmail, password: inputPassword};
-
-//     users.push(newUser);
-    
-//     await setItem('users', JSON.stringify(users));
-//     successfulRegistration();
-//     resetForm();
-//     //return false; // neuladen hindern 
-// }
 
 async function register() {
     users.push({
