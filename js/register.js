@@ -1,12 +1,13 @@
 let users = []
 
-async function initRegister() {
+function initRegister() {
     loadUsers();
 }
 
 async function loadUsers(){
     try {
-        users = JSON.parse(await getItem('users'));
+        let parseStorage = await getItem('users'); 
+        users = JSON.parse(parseStorage.data.value);
     } catch(e){
         console.log('Loading error:', e);
     }

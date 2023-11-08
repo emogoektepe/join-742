@@ -1,6 +1,7 @@
 function init() {
     includeHTML();
     loadContactsFromStorage();
+    initRegister();
     renderSummary();
 }
 

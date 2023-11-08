@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/script.js"></script>
-    <script src="./js/include.js"></script>
     <script src="./js/storage.js"></script>
+    <script src="./js/include.js"></script>
     <script src="./js/register.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/board.js"></script>
@@ -17,7 +17,7 @@
     <title>Join</title>
 </head>
 
-<body>
+<body onload="initRegister()">
    <div class="startPage"> 
     <div class="mainDivOne">
         <img class="capa2" src="img/Capa 2.svg">
@@ -35,14 +35,14 @@
             <img id="loginUnderline" src="img/loginUnderline.svg">
             <form id="loginForm" onsubmit="login(); return false;">
                 <div id="loginMailInputContainer" class="inputContainer">
-                    <input id="loginMailInput" class="loginInput" placeholder="Email" type="email" name="email">
+                    <input id="loginMailInput" class="loginInput" placeholder="Email" type="email" name="email" required>
                     <img src="img/mail-grey.svg">
                 </div>
                 <div id="loginMailInputMsg" class="loginMailInputMsg">
                     Wrong email Ups! Try again.
                 </div>
                 <div id="loginPasswordInputContainer" class="inputContainer">
-                    <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password" name="password">
+                    <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password" name="password" required>
                     <img src="img/lock.svg">
                 </div>
                 <div id="loginPasswordInputMsg" class="loginPasswordInputMsg">
