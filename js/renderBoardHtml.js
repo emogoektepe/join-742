@@ -1,18 +1,21 @@
 function renderBoardHtml(){
     return /*html*/`
-     <header id="headerContent">
-      <div class="headline"><h1>Board</h1></div>
+    <header class="boardHeaderContent" id="headerContent">
+        <div class="boardHeadline">
+           <h1>Board</h1> 
+        </div>
         <div class="headBar">
             <form class="formArea" action="#">
                 <input id="searchBoard" class="inputArea"  type="text" placeholder="Find Task">
-               <div><img src="./img/borderDash.svg"></div> 
-                    <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
-                </form>
+                <div>
+                    <img src="./img/borderDash.svg">
+                </div> 
+                <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
+            </form>
             <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
                 Add Task
                 <img src="./img/add.svg">
             </div>
-            
         </div>
     </header>
 
