@@ -218,6 +218,28 @@
     margin-top: 10px;
     overflow-y: scroll;
     height: 150px;
+
+}
+
+.dropDownSection::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+.dropDownSection::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 2px grey; */
+    border-radius: 10px;
+}
+
+/* Handle */
+.dropDownSection::-webkit-scrollbar-thumb {
+    background: rgb(7, 7, 7);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.dropDownSection::-webkit-scrollbar-thumb:hover {
+    background: #009eb3;
 }
 
 .dropDownWithInput {

@@ -161,11 +161,6 @@ h1 {
     margin-bottom: 16px;
 }
 
-/* .login form:focus-within {
-    border: 1px solid rgb(255, 255, 255);
-    outline: 1px solid rgb(46, 185, 255)
-} */
-
 .checkBox {
     display: flex;
     justify-content: flex-start;
@@ -349,8 +344,7 @@ h1 {
 
 #content {
     background-color: #F6F7F8;
-    /* height: calc(100vh - 96px); */
-    height: 100vh;
+    height: calc(100vh - 96px);
     overflow: auto;
 }
 
