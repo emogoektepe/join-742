@@ -1,0 +1,35 @@
+.lnHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 110px;
+    margin-left: 98.5px;
+    margin-right: 98.5px;
+    margin-bottom: 32px;
+}
+
+.lnHeader img{
+    cursor: pointer;
+}
+
+.lnHeader img:hover{
+    background-color: #ecedee;
+    border-radius: 50%;
+}
+
+.lnContent{
+    margin-left:98.5px;
+    margin-right: 98.5px;
+}
+
+.lnContent a {
+    text-decoration: none;
+    color: #00afef;
+}
+
+.lnContent a:hover{
+    text-decoration: underline;
+}
