@@ -262,6 +262,15 @@ h1 {
     border-radius: 30px;
 }
 
+.confirmMsg {
+    color: #FF8190;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: none;
+}
+
 .backArrow {
     position: absolute;
     margin-top: -450px;

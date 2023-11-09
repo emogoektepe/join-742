@@ -45,9 +45,12 @@
                             <input id="userPasswordInput" class="loginInput" placeholder="Password" type="password" required>
                             <img src="img/lock.svg">
                         </div>
-                        <div class="inputContainer">
-                            <input class="loginInput" placeholder="Confirm Password" type="password" required>
+                        <div id="confirmPasswordContainer" class="inputContainer">
+                            <input id="confirmPasswordInput" class="loginInput" placeholder="Confirm Password" type="password" required>
                             <img src="img/lock.svg">
+                        </div>
+                        <div id="confirmMsg" class="confirmMsg">
+                            Ups! yor password don't match
                         </div>
                         <div class="acceptBox" onclick="toggleAcceptCheckbox()">
                             <img id="acceptBoxUnchecked" class="acceptBoxUnchecked" src="img/checkboxEmpty.svg" alt="">
