@@ -16,7 +16,7 @@
     <title>Join</title>
 </head>
 
-<body onload="initRegister()">
+<body onload="initRegister(); checkAcceptance();">
 
     <div class="startPage">
         <div class="mainDivOne">
@@ -32,7 +32,7 @@
                     <h1>Sign Up</h1>
                     <img id="loginUnderline" src="img/loginUnderline.svg">
 
-                    <form onsubmit="register(); return false;">
+                    <form autocomplete="off" onsubmit="register(); return false;">
                         <div class="inputContainer">
                             <input id="userNameInput" class="loginInput" placeholder="Name" type="text" required>
                             <img src="img/person-grey.svg">

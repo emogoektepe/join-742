@@ -35,6 +35,19 @@ function successfulRegistration() {
         window.location.href = 'index.html'; //weiterleitung//
     }, 700);
 }
+
+function checkAcceptance() {
+    let registerBtn = document.getElementById('registerBtn');
+    let acceptBoxChecked = document.getElementById('acceptBoxChecked');
+
+    if (acceptBoxChecked.style.display === "block") {
+        registerBtn.disabled = false;
+    } else {
+        registerBtn.disabled = true;
+    }
+}
+
+
 function passwordMatching() {
     let userPasswordInput = document.getElementById("userPasswordInput");
     let confirmPasswordInput = document.getElementById("confirmPasswordInput");
@@ -64,6 +77,8 @@ function toggleAcceptCheckbox() {
         checkedBox.style.display = "none";
         uncheckedBox.style.display = "block";
     }
+
+    checkAcceptance();
 }
 function resetForm() {
     userEmailInput.value = '';
