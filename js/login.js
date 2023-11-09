@@ -34,12 +34,16 @@ function validatePassword() {
 
 function checkUser(email, password) {
     let user = users.find(u => u.email === email && u.password === password);
+    let passwordContainer = document.getElementById("loginPasswordInputContainer");
+    let passwordMsg = document.getElementById("loginPasswordInputMsg");
 
     if (user) {
         console.log('Benutzer gefunden');
         window.location.href = 'application.html'; // Weiterleitung
     } else {
         console.log('Benutzer nicht gefunden');
+        passwordContainer.style.borderColor = "red";
+        passwordMsg.style.display = "block"; // Fehlermeldung anzeigen
         return false; // Das Formular wird nicht gesendet
     }
 }
