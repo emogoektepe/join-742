@@ -36,7 +36,7 @@ function toggleAcceptCheckbox() {
     let checkedBox = document.getElementById('acceptBoxChecked');
     let uncheckedBox = document.getElementById('acceptBoxUnchecked');
 
-    if(checkedBox.style.display === "none"){
+    if(checkedBox.style.display === "" || checkedBox.style.display === "none") {
     checkedBox.style.display = "block";
     uncheckedBox.style.display = "none";
     }else{

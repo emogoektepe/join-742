@@ -61,7 +61,7 @@ function toggleCheckBoxRememberMe() {
     let checkedBox = document.getElementById('checkBoxChecked');
     let uncheckedBox = document.getElementById('checkBoxUnchecked');
 
-    if(checkedBox.style.display === "none"){
+    if (checkedBox.style.display === "" || checkedBox.style.display === "none") {
     checkedBox.style.display = "block";
     uncheckedBox.style.display = "none";
     }else{
