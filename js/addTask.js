@@ -50,7 +50,7 @@ function renderAddTask() {
                     <div class="categoryBlock">
                         <span data-end="*">Category</span>
                         <div class="categoryBlockDropDown">
-                            <div class="selectTaskCategory" onclick="openCategoryDropDown()">
+                            <div class="selectTaskCategory" id="selectTaskCategory" onclick="openCategoryDropDown()">
                                 <span id="selectTaskCategory">Select task category</span>
                                 <div class="dropDownArrow mgTop0">
                                     <img id="dropDownImageCategory" src="./img/arrow_drop_down_down.svg" alt="">
@@ -66,8 +66,11 @@ function renderAddTask() {
                     </div>
                     <div class="subtasksBlock">
                         <span>Subtasks</span>
-                        <div class="taskSubtasksContainer">
+                        <div class="taskSubtasksContainer" onclick="createSubTask()">
                             <input type="text" name="" id="taskSubtasks" class="taskSubtasks" placeholder="Add new subtask">
+                            <div class="dropDownArrow mgTop0" id="dropDownArrow">
+                                <img class="addImg" src="./img/addIconBlue.svg" alt="">
+                            </div>
                         </div>
                         <div class="newSubtaskAdded" id="newSubtaskAdded">
 
@@ -81,18 +84,37 @@ function renderAddTask() {
     setActiveNav("addTask");
 }
 
+function createSubTask() {
+    let dropDownArrow = document.getElementById('dropDownArrow');
+    dropDownArrow.outerHTML = /*html*/`
+        <div class="deleteAndCheck">
+            <div>
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div>
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>
+        </div>
+    `;
+}
+
 function getCategory(category) {
     let selectTaskCategory = document.getElementById('selectTaskCategory');
-    selectTaskCategory.innerText = category;
+    selectTaskCategory.children[0].innerText = category;
     closeCategoryDropDown();
 }
 
 function openCategoryDropDown() {
     let categoryDropDown = document.getElementById('categoryDropDown');
     let dropDownImageCategory = document.getElementById('dropDownImageCategory');
+    let selectTaskCategory = document.getElementById('selectTaskCategory');
     if (dropDownImageCategory.src.includes('down_down')) {
         dropDownImageCategory.src = './img/arrow_drop_down_up.svg';
-        categoryDropDown.style.display = "block";
+        categoryDropDown.style.display = 'block';
+        selectTaskCategory.style.border = '1px solid #29ABE2';
     } else {
         closeCategoryDropDown()
     }
@@ -101,8 +123,10 @@ function openCategoryDropDown() {
 function closeCategoryDropDown() {
     let categoryDropDown = document.getElementById('categoryDropDown');
     let dropDownImageCategory = document.getElementById('dropDownImageCategory');
+    let selectTaskCategory = document.getElementById('selectTaskCategory');
     dropDownImageCategory.src = './img/arrow_drop_down_down.svg';
-    categoryDropDown.style.display = "none";
+    categoryDropDown.style.display = 'none';
+    selectTaskCategory.style.border = '';
 }
 
 document.addEventListener('click', function (event) {
@@ -215,7 +239,7 @@ function selectContactInDropDown(i) {
         }
         contactsInMenu.children[0].children[1].style.color = '#fff';
         contactsInMenu.style.backgroundColor = '#2a3647';
-        contactsInMenu.lastElementChild.src = './img/checkboxChecked.svg';
+        contactsInMenu.lastElementChild.src = './img/checkboxCheckedWhite.svg';
     }
     contactsInMenu.classList.toggle('selected');
 }

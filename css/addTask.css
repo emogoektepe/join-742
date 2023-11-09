@@ -344,6 +344,7 @@
     height: 100px;
     display: none;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .categoryBlockDropDown {
@@ -371,10 +372,14 @@
 }
 
 .taskSubtasksContainer {
+    position: relative;
     background-color: white;
     margin-top: 8px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .taskSubtasks {
@@ -383,6 +388,7 @@
     font-size: 20px;
     font-weight: 400;
     color: #000000;
+    width: 100%;
 }
 
 .taskSubtasks::placeholder {
@@ -391,4 +397,20 @@
 
 .newSubtaskAdded {
     margin-top: 8px;
+}
+
+.addImg {
+    height: 14px !important;
+    width: 14px !important;
+}
+
+.deleteAndCheck {
+    display: flex;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.delNCheckHover:hover {
+    background-color: #eeeeee;
+    border-radius: 30px;
 }
