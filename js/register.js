@@ -13,18 +13,20 @@ async function loadUsers() {
     }
 }
 
-async function register() {
+function register() {
     passwordMatching();
-    // // Passwort-Validierung erfolgreich, Sie können den Registrierungsprozess fortsetzen
+    usersPush();
+    resetForm();
+    successfulRegistration();
+}
+
+async function usersPush() {
     users.push({
         email: userEmailInput.value,
         password: userPasswordInput.value,
     });
     await setItem('users', JSON.stringify(users));
-    resetForm();
-    successfulRegistration();
 }
-
 
 function successfulRegistration() {
     const overlay = document.getElementById("overlay");
@@ -47,7 +49,6 @@ function checkAcceptance() {
     }
 }
 
-
 function passwordMatching() {
     let userPasswordInput = document.getElementById("userPasswordInput");
     let confirmPasswordInput = document.getElementById("confirmPasswordInput");
@@ -66,6 +67,7 @@ function passwordMatching() {
         return true;
     }
 }
+
 function toggleAcceptCheckbox() {
     let checkedBox = document.getElementById('acceptBoxChecked');
     let uncheckedBox = document.getElementById('acceptBoxUnchecked');
@@ -80,6 +82,7 @@ function toggleAcceptCheckbox() {
 
     checkAcceptance();
 }
+
 function resetForm() {
     userEmailInput.value = '';
     userPasswordInput.value = '';
