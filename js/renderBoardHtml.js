@@ -25,7 +25,7 @@ function renderBoardHtml(){
     </header>
 
     <form class="respFormArea" action="#">
-        <input id="searchBoard" class="inputArea" onkeydown="updateBoardHtml()"  type="text" placeholder="Find Task">
+        <input id="respSearchBoard" class="inputArea" onkeydown="updateBoardHtml()"  type="text" placeholder="Find Task">
         <div>
             <img src="./img/borderDash.svg">
         </div> 

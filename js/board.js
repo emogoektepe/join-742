@@ -94,13 +94,18 @@ function filter(){
 
 function renderTodoContent(){
     let searchingFor = document.getElementById('searchBoard').value
+    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
     let array = 'todo'
     document.getElementById('todo').innerHTML = '';
 
     if (todo.length != 0) {
         for (let i = 0; i < todo.length; i++) {
             const todos = todo[i];
-            searchTask(todos,searchingFor,array,i)
+            if(window.innerWidth < 1000 ){
+            rearchResponsiveTask(todos,responsiveSearchingFor,array,i);
+            }else{
+                searchTask(todos,searchingFor,array,i);
+            }
         }
     } else{
         document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
@@ -109,13 +114,18 @@ function renderTodoContent(){
 
 function renderInProgressContent(){
     let searchingFor = document.getElementById('searchBoard').value
+    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
     let array = 'inProgress'
     document.getElementById('inProgress').innerHTML = '';
     
     if(inProgress.length != 0){
         for (let i = 0; i < inProgress.length; i++) {
             const progressTodo = inProgress[i];
-            searchTask(progressTodo,searchingFor,array,i)
+            if(window.innerWidth < 1000 ){
+                rearchResponsiveTask(progressTodo,responsiveSearchingFor,array,i);
+                }else{
+                    searchTask(progressTodo,searchingFor,array,i);
+                }
         }
     }else{
         document.getElementById('inProgress').innerHTML = `${renderEmptyCategory()}`
@@ -124,6 +134,7 @@ function renderInProgressContent(){
 
 function renderAwaitFeedbackContent(){
     let searchingFor = document.getElementById('searchBoard').value
+    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
     let array = 'awaitFeedback'
     document.getElementById('awaitFeedback').innerHTML = '';
 
@@ -131,7 +142,11 @@ function renderAwaitFeedbackContent(){
 
         for (let i = 0; i < awaitFeedback.length; i++) {
             const feedbackTodo = awaitFeedback[i];
-            searchTask(feedbackTodo,searchingFor,array,i)
+            if(window.innerWidth < 1000 ){
+                rearchResponsiveTask(feedbackTodo,responsiveSearchingFor,array,i);
+                }else{
+                    searchTask(feedbackTodo,searchingFor,array,i);
+                }
             }
     } else{
         document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
@@ -140,13 +155,18 @@ function renderAwaitFeedbackContent(){
 
 function renderDoneContent(){
     let searchingFor = document.getElementById('searchBoard').value
+    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
     let array = 'done'
     document.getElementById('done').innerHTML = '';
     
     if (done.length != 0) {
         for (let i = 0; i < done.length; i++) {
             const doneTodo = done[i];
-            searchTask(doneTodo,searchingFor,array,i)
+            if(window.innerWidth < 1000 ){
+                rearchResponsiveTask(doneTodo,responsiveSearchingFor,array,i);
+                }else{
+                    searchTask(doneTodo,searchingFor,array,i);
+                }
         }
     }else{
         document.getElementById('done').innerHTML = `${renderEmptyCategory()}`
@@ -157,7 +177,24 @@ function renderEmptyCategory(){
   return /*html*/`<div class="noTasks">No Tasks to do</div>` 
 }
 
+function rearchResponsiveTask(todo,responsiveSearchingFor,array,i){
+    responsiveSearchingFor.toLowerCase();
 
+    if (
+        todo.title.toLowerCase().includes(responsiveSearchingFor) || 
+        todo.description.toLowerCase().includes(responsiveSearchingFor) ||
+        todo.assignedTo.some(name => name.toString().toLowerCase().includes(responsiveSearchingFor)) ||
+        todo.dueDate.toString().includes(responsiveSearchingFor) ||
+        todo.prio.toLowerCase().includes(responsiveSearchingFor) ||
+        todo.category.toString().toLowerCase().includes(responsiveSearchingFor) ||
+        todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(responsiveSearchingFor))
+    ){
+        renderCardHtml(todo,array,i)
+    }else{
+        document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
+    }
+
+}
 function searchTask(todo,searchingFor,array,i){
     searchingFor.toLowerCase();
 
