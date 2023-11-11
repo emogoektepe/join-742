@@ -50,23 +50,25 @@ let awaitFeedback = []
 let done = []
 let currentDraggedElement;
 
-/**
- * render Board content
+/** 
+ * loads and renders the content of the Board
+ * 
  */
-
-load();
-
 function renderBoard() {
- 
+    load();
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
     generateIDs();
-    setActiveNav("board"); //für Navbar
-    filter();
+    setActiveNav("board");
+    filterTodos();
     updateBoardHtml();
 
 }
 
+/**
+ * generates id's for the task array 
+ * 
+ */
 function generateIDs(){
     for (let x = 0; x < task.length; x++) {
         const tsk = task[x];
@@ -75,7 +77,10 @@ function generateIDs(){
         save();  
     }
 }
-
+/**
+ * upadtes the Content of the Board
+ * 
+ */
 function updateBoardHtml(){
     
     renderTodoContent();
@@ -84,14 +89,20 @@ function updateBoardHtml(){
     renderDoneContent();
     save();
 }
-
-function filter(){
+/**
+ * filters the tasks into the individually arrays
+ * 
+ */
+function filterTodos(){
     todo = task.filter(t => t['status']== 'todo');
     inProgress = task.filter(p => p['status']== 'inProgress');
-    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback')
-    done = task.filter(d => d['status'] == 'done')
+    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback');
+    done = task.filter(d => d['status'] == 'done');
 }
-
+/**
+ * renders the todos with the status "todo" into the array 'todo' 
+ * 
+ */
 function renderTodoContent(){
     let searchingFor = document.getElementById('searchBoard').value
     let responsiveSearchingFor = document.getElementById('respSearchBoard').value
@@ -111,7 +122,10 @@ function renderTodoContent(){
         document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
     } 
 }
-
+/**
+ * renders the todos with the status "inProgress" into the array 'inProgress' 
+ * 
+ */
 function renderInProgressContent(){
     let searchingFor = document.getElementById('searchBoard').value
     let responsiveSearchingFor = document.getElementById('respSearchBoard').value
@@ -131,7 +145,10 @@ function renderInProgressContent(){
         document.getElementById('inProgress').innerHTML = `${renderEmptyCategory()}`
     }
 }
-
+/**
+ * renders the todos with the status "awaitFeedback" into the array 'awaitFeedback' 
+ * 
+ */
 function renderAwaitFeedbackContent(){
     let searchingFor = document.getElementById('searchBoard').value
     let responsiveSearchingFor = document.getElementById('respSearchBoard').value
@@ -152,7 +169,10 @@ function renderAwaitFeedbackContent(){
         document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
     }
 }
-
+/**
+ * renders the todos with the status "done" into the array 'done' 
+ * 
+ */
 function renderDoneContent(){
     let searchingFor = document.getElementById('searchBoard').value
     let responsiveSearchingFor = document.getElementById('respSearchBoard').value
@@ -172,11 +192,19 @@ function renderDoneContent(){
         document.getElementById('done').innerHTML = `${renderEmptyCategory()}`
     } 
 }
-
+/**
+ * @returns the HTML if the filter array is empty
+ */
 function renderEmptyCategory(){
   return /*html*/`<div class="noTasks">No Tasks to do</div>` 
 }
-
+/**
+ * searchs for the value of the input field  and renders the accordingly content
+ * @param {Object} todo 
+ * @param {string} responsiveSearchingFor 
+ * @param {Object} array 
+ * @param {integer} i 
+ */
 function rearchResponsiveTask(todo,responsiveSearchingFor,array,i){
     responsiveSearchingFor.toLowerCase();
 
@@ -189,12 +217,18 @@ function rearchResponsiveTask(todo,responsiveSearchingFor,array,i){
         todo.category.toString().toLowerCase().includes(responsiveSearchingFor) ||
         todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(responsiveSearchingFor))
     ){
-        renderCardHtml(todo,array,i)
+        renderCardHtml(todo,array,i);
     }else{
         document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
     }
-
 }
+/**
+ * searchs for the value of the input field and renders the accordingly content
+ * @param {Object} todo 
+ * @param {string} searchingFor 
+ * @param {Object} array 
+ * @param {integer} i 
+ */
 function searchTask(todo,searchingFor,array,i){
     searchingFor.toLowerCase();
 
@@ -212,34 +246,51 @@ function searchTask(todo,searchingFor,array,i){
         document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
     }
 }
-
-
+/**
+ * changes the position of the taskoverlay with an animation at opening the overlay
+ * @param {string} idOfSlideConti 
+ */
 function slideIn(idOfSlideConti){
 
     setTimeout( () => {
         document.getElementById(idOfSlideConti).style = 'transform: translateX(0%)';
     },5)
-    
 }
-
+/**
+ * changes the position of the taskoverlay with an animation at closing the overlay
+ * @param {string} idOfSlideConti 
+ */
 function slideOut(idOfSlideConti){
     document.getElementById(idOfSlideConti).style = 'transform: translateX(200%)';
 }
-
+/**
+ * highlights the container where the todo cards are dragged over
+ * @param {string} id 
+ */
 function highlight(id){
     document.getElementById(id).classList.add('dragAreaHighlight')
 }
-
+/**
+ * removes the highlight from container
+ * @param {string} id 
+ */
 function removeHighlight(id){
     document.getElementById(id).classList.remove('dragAreaHighlight')
 }
-
-
+/**
+ * opens the dialog window 
+ * @param {string} id 
+ * @param {string} idOfSlideConti 
+ */
 function openDialog(id,idOfSlideConti){
     document.getElementById(id).classList.remove('d-none');
     slideIn(idOfSlideConti);
 }
-
+/**
+ * closes the dialog window
+ * @param {string} id 
+ * @param {string} idOfSlideConti 
+ */
 function closeDialog(id,idOfSlideConti){
     setTimeout(()=> {
         document.getElementById(id).classList.add('d-none')
@@ -247,30 +298,50 @@ function closeDialog(id,idOfSlideConti){
     slideOut(idOfSlideConti);
     updateBoardHtml();
 }
-
+/**
+ * Prevents the event from being propagated in the event phase and stops propagation
+ * @param {Event} event 
+ */
 function doNotClose(event){
     event.stopPropagation();
 }
-
+/**
+ * gets the id of the dragged element
+ * @param {integer} id 
+ */
 function startDragging(id){
-     currentDraggedElement = id;
+       currentDraggedElement = id;
 }
-
+/**
+ * changes the default behaivour of the browser for the drag and drop event
+ * @param {*} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
-  }
-
+}
+/**
+ * changes the category of a task, so it can change the array 
+ * @param {string} category 
+ */
 function moveTo(category){
     task[currentDraggedElement]['status'] = category
     save();
     renderBoard();
 }
-
+/**
+ * at dragging the element, a class is added to the element so that the card rotates 
+ * @param {integer} id 
+ */
 function rotateCard(id){
     document.getElementById(id).classList.remove('card');
     document.getElementById(id).classList.add('rotateCard');
 }
-
+/**
+ * renders the contacts which are assigned to the task into the taskoverlay 
+ * @param {Object} array 
+ * @param {integer} i 
+ * @param {string} idOfContainer 
+ */
 function renderAssignedTo(array,i,idOfContainer){
     
     let assigned = array[i]['assignedTo']
@@ -295,8 +366,11 @@ function renderAssignedTo(array,i,idOfContainer){
         }
     }
 }
-
-
+/**
+ * gets the right color for the avatars 
+ * @param {string} name 
+ * @param {string} idName 
+ */
 function renderCardContacts(name,idName){
 
     for (let i = 0; i < contactsJson.length; i++) {
@@ -307,11 +381,13 @@ function renderCardContacts(name,idName){
     }
 
     let bgColor = contactColorsMap.get(name)
-
-    document.getElementById(idName).style.backgroundColor = `${bgColor}`
-    
+    document.getElementById(idName).style.backgroundColor = `${bgColor}`;
 }
-
+/**
+ * renders the contacts which are assigned to the task into the todo cards 
+ * @param {string} idOfContainer 
+ * @param {string} todo 
+ */
 function renderCardAssignedTo(idOfContainer,todo){
     let assigned = todo['assignedTo']
     let id = todo['id']
@@ -336,41 +412,44 @@ function renderCardAssignedTo(idOfContainer,todo){
         }
     }    
 }
-
+/**
+ * renders the current subtaks into the taskoverlay
+ * @param {Object} array 
+ * @param {integer} i 
+ */
 function renderSubtasks(array,i){
     let subtasks = array[i]['subtasks']
     let id = array[i]['id']
 
-
     if(subtasks.length == 0){
         document.getElementById(`subHeadline${i}`).classList.add('d-none')}
-    
     else{
-
         for (let k = 0; k < subtasks.length; k++) {
         const subtask = subtasks[k];
         
-        if(subtask['done'] == false){
-        document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-        <div id="box${id,k}" class="subConti">
-            <div class="checkBg">
-                <img onclick="checkBox(${id},${k})" class="notChecked" src="img/checkButton.svg">
-            </div>
-            ${subtask['name']}
-        </div>`}
-        else{
+            if(subtask['done'] == false){
             document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
             <div id="box${id,k}" class="subConti">
-                <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
+                <div class="checkBg">
+                    <img onclick="checkBox(${id},${k})" class="notChecked" src="img/checkButton.svg">
+                </div>
                 ${subtask['name']}
-            </div>`
+            </div>`}
+            else{
+                document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
+                <div id="box${id,k}" class="subConti">
+                    <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
+                    ${subtask['name']}
+                </div>`
+            }
         }
     }
-
-
-    }
 }
-
+/**
+ * onlick the clicked checkbox changes its boolean and renders the accordingly checked box
+ * @param {integer} id 
+ * @param {integer} k 
+ */
 function checkBox(id,k){
 
     let subtask = task[id]['subtasks'][k]
@@ -379,8 +458,12 @@ function checkBox(id,k){
     save();
     changeBox(subtask,id,k);
 }
- 
-
+/**
+ * gets the status of the checkbox from the task array and renders the accordingly checkbox
+ * @param {Object} subtask 
+ * @param {integer} id 
+ * @param {integer} k 
+ */
 function changeBox(subtask,id,k){
 
     if(subtask['done']){
@@ -398,7 +481,11 @@ function changeBox(subtask,id,k){
     }
     updateBoardHtml();
 }    
-
+/**
+ * renders the right backgroundcolor for the category
+ * @param {string} category 
+ * @param {string} id 
+ */
 function renderCategory(category,id){
 
     switch (category) {
@@ -411,7 +498,13 @@ function renderCategory(category,id){
         break;
     }
 }
-
+/**
+ * renders the accordingly prio to the tasks
+ * @param {string} prio
+ * @param {string} id 
+ * @param {Object} array 
+ * @param {integer} i 
+ */
 function renderPrio(prio,id,array,i){
 
     let img, string;
@@ -434,7 +527,11 @@ function renderPrio(prio,id,array,i){
     }
     document.getElementById(id).innerHTML = `${string} ${img}` 
 }
-
+/**
+ * renders the accordingly prio to todo cards
+ * @param {string} prio 
+ * @param {string} id 
+ */
 function renderCardPrio(prio,id){
 
     let img;
@@ -454,7 +551,11 @@ function renderCardPrio(prio,id){
     }
     document.getElementById(id).innerHTML = `${img}` 
 }
-
+/**
+ * calculates the value for the progress bar
+ * @param {Object} todo 
+ * @param {integer} id 
+ */
 function renderProgressbar(todo,id){
 
     let subtasks = todo['subtasks']
@@ -474,12 +575,14 @@ function renderProgressbar(todo,id){
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
 }
-
+/**
+ * deletes the current task
+ * @param {integer} id 
+ */
 function deleteTask(id){
     task.splice(id,1);
     renderBoard();
 }
-
 
 //test functions
 

@@ -601,6 +601,7 @@ progress::-webkit-progress-bar {
         display: flex;
         margin-left: 16px;
         margin-right: 16px;
+        margin-top: 40px;
     }
 
     .headBar{
@@ -609,6 +610,10 @@ progress::-webkit-progress-bar {
 
     .respBtn{
         margin: 0;
+    }
+
+    .dialogShowCard{
+        width: 66vw;
     }
 }
 
