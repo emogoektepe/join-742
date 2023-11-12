@@ -40,6 +40,7 @@ function renderAddTask() {
                 <div class="formRightSide">
                     <div class="dateBlock">
                         <span data-end="*">Due Date</span>
+                        <span class="requiredFieldText">This field is required</span>
                     </div>
                     <div class="prioBlock">
                         <span>Prio</span>
@@ -144,27 +145,29 @@ function renderSubtasksInTask() {
 function editSubtasks(position) {
     let li = document.getElementById(`li${position}`);
     let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
-    li.parentNode.classList.remove('liContainerHover')
-    li.parentNode.style.backgroundColor = 'white';
-    li.parentNode.style.borderBottom = '1px solid #005DFF';
-    li.style.display = "flex";
-    li.style.paddingLeft = "16px !important";
-    li.contentEditable = "true";
-    li.outline = "none";
-    li.focus();
-    getCursorToEndEdittable(li)
-    editDeleteContainer.classList.remove('dNoneDnC');
-    editDeleteContainer.innerHTML =/*html*/`
-        <div onclick="deleteSubtask(${position})">
-            <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
-        </div>
-        <div>
-            <img style="height: 24px" src="./img/borderdash.svg" alt="">
-        </div>
-        <div onclick="confirmEditSubtask(${position})">
-            <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-        </div>
-    `;
+    if (li) {
+        li.parentElement.classList.remove('liContainerHover')
+        li.parentElement.style.backgroundColor = 'white';
+        li.parentElement.style.borderBottom = '1px solid #005DFF';
+        li.style.display = "flex";
+        li.style.paddingLeft = "16px !important";
+        li.contentEditable = "true";
+        li.outline = "none";
+        li.focus();
+        getCursorToEndEdittable(li)
+        editDeleteContainer.classList.remove('dNoneDnC');
+        editDeleteContainer.innerHTML =/*html*/`
+            <div onclick="deleteSubtask(${position})">
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div onclick="confirmEditSubtask(${position})">
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>
+        `;
+    }
 }
 
 function confirmEditSubtask(position) {
