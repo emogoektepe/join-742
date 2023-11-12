@@ -10,7 +10,7 @@ function renderContacts() {
     fillContactListHeader();
     content.innerHTML += tempAddContactForm('contacts');
     content.innerHTML += tempEditForm();
-    setActiveNav("contacts"); //für Navbar
+    setActiveNavItem("contacts"); //für Navbar
 }
 
 function addNewContact() {

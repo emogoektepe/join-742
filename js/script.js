@@ -5,8 +5,19 @@ function init() {
     renderSummary();
 }
 
-function setActiveNav(activeId) {
+function setActiveNavItem(activeId) {
     const navItems = document.querySelectorAll(".navItems div");
+    navItems.forEach(item => {
+        if (item.id === activeId) {
+            item.classList.add("active"); // Füge die "active"-Klasse hinzu
+        } else {
+            item.classList.remove("active"); // Entferne die "active"-Klasse
+        }
+    });
+}
+
+function setActiveNavFooter(activeId) {
+    const navItems = document.querySelectorAll(".navFooter div");
     navItems.forEach(item => {
         if (item.id === activeId) {
             item.classList.add("active"); // Füge die "active"-Klasse hinzu

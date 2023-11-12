@@ -42,11 +42,8 @@ function renderLegalNotice() {
         <p>Should we update, amend or make any changes to this document, those changes will be prominently posted here.</p>
 
     </div> 
-            
-           
-        
-    `;
-
+        `;
+    setActiveNavFooter("legalNotice");
 }
 
 function loadJoinSummery(){
