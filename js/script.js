@@ -6,23 +6,12 @@ function init() {
 }
 
 function setActiveNavItem(activeId) {
-    const navItems = document.querySelectorAll(".navItems div");
+    const navItems = document.querySelectorAll(".navItem");
     navItems.forEach(item => {
         if (item.id === activeId) {
-            item.classList.add("active"); // Füge die "active"-Klasse hinzu
+            item.classList.add("active");
         } else {
-            item.classList.remove("active"); // Entferne die "active"-Klasse
-        }
-    });
-}
-
-function setActiveNavFooter(activeId) {
-    const navItems = document.querySelectorAll(".navFooter div");
-    navItems.forEach(item => {
-        if (item.id === activeId) {
-            item.classList.add("active"); // Füge die "active"-Klasse hinzu
-        } else {
-            item.classList.remove("active"); // Entferne die "active"-Klasse
+            item.classList.remove("active");
         }
     });
 }

@@ -43,5 +43,5 @@ function renderPrivacyPolicy() {
         <p>Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a></p>
     </div>
     `;
-    setActiveNavFooter("privacyPolicy");
+    setActiveNavItem("privacyPolicy");
 }

@@ -10,5 +10,5 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     };
-    setActiveNav("summary");
+    setActiveNavItem("summary");
 }

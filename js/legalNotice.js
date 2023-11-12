@@ -43,7 +43,7 @@ function renderLegalNotice() {
 
     </div> 
         `;
-    setActiveNavFooter("legalNotice");
+    setActiveNavItem("legalNotice");
 }
 
 function loadJoinSummery(){
