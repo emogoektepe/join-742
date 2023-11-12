@@ -237,24 +237,28 @@
 }
 
 /* width */
-.dropDownSection::-webkit-scrollbar {
+.dropDownSection::-webkit-scrollbar,
+.newSubtaskAdded::-webkit-scrollbar {
     width: 5px;
 }
 
 /* Track */
-.dropDownSection::-webkit-scrollbar-track {
+.dropDownSection::-webkit-scrollbar-track,
+.newSubtaskAdded::-webkit-scrollbar-track {
     box-shadow: inset 0 0 2px grey;
     border-radius: 20px;
 }
 
 /* Handle */
-.dropDownSection::-webkit-scrollbar-thumb {
+.dropDownSection::-webkit-scrollbar-thumb,
+.newSubtaskAdded::-webkit-scrollbar-thumb {
     background: #2a3647;
     border-radius: 10px;
 }
 
 /* Handle on hover */
-.dropDownSection::-webkit-scrollbar-thumb:hover {
+.dropDownSection::-webkit-scrollbar-thumb:hover,
+.newSubtaskAdded::-webkit-scrollbar-thumb:hover {
     background: #8f8f8f;
 }
 
@@ -397,6 +401,8 @@
 
 .newSubtaskAdded {
     margin-top: 8px;
+    height: 150px;
+    overflow-y: auto;
 }
 
 .addImg {
@@ -413,4 +419,50 @@
 .delNCheckHover:hover {
     background-color: #eeeeee;
     border-radius: 30px;
+    cursor: pointer;
+}
+
+.subtaskLi {
+    padding-left: 32px;
+    width: 100%;
+}
+
+.liContainer {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.liContainerHover:hover {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.liContainer:hover .dNoneDnC {
+    display: flex;
+}
+
+.addSubTaskBackground {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.addSubTaskBackground:hover {
+    background-color: #eeeeee;
+    border-radius: 30px;
+}
+
+.dNoneDnC {
+    display: none;
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
 }
