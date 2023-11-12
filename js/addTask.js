@@ -82,7 +82,7 @@ function renderAddTask() {
         </div>
     `;
     content.innerHTML += tempAddContactForm('addTask');
-    setActiveNav("addTask");
+    setActiveNavItem("addTask");
 }
 
 function focusSubtasksInput() {

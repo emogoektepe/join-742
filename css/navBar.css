@@ -51,6 +51,7 @@
 }
 
 .navFooter div {
+    padding: 5px 0px;
     margin-top: 8px;
     color: #CDCDCD;
     text-decoration: none;
@@ -65,10 +66,25 @@
 .navItems div:hover,
 .navItems div.active {
     cursor: pointer;
-    background-color: #2a3d59; /* Standard-Hover-Hintergrundfarbe */
+    background-color: #2a3d59;
 }
 
 .navItems div.active {
-    background-color: #091931; /* Hintergrundfarbe im aktiven Zustand */
-    color: #fff; /* Textfarbe im aktiven Zustand */
+    background-color: #091931;
+    color: #fff;
+}
+
+.navFooter div.active {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #091931;
+    color: #CDCDCD;
+}
+
+.navFooter div.active:hover {
+    cursor: pointer;
+    font-weight: normal;
+    background-color: #091931;
 }

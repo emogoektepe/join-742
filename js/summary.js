@@ -76,6 +76,6 @@ function renderSummary() {
     
     `;
 
-    setActiveNav("summary");
+    setActiveNavItem("summary");
     renderGreetingMessage();
 }
