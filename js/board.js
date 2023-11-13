@@ -70,9 +70,9 @@ function renderBoard() {
  * 
  */
 function generateIDs(){
-    for (let x = 0; x < task.length; x++) {
+   
+    for (let x = 0; x < task.length; x++){
         const tsk = task[x];
-
         tsk['id'] = x
         save();  
     }
@@ -104,93 +104,56 @@ function filterTodos(){
  * 
  */
 function renderTodoContent(){
-    let searchingFor = document.getElementById('searchBoard').value
-    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
+    let statusArray = todo;
     let array = 'todo'
-    document.getElementById('todo').innerHTML = '';
+    renderStatusArray(statusArray,array);
+}
+/**
+ * renders the acccordingly content into the indivudually array
+ * @param {Object} statusArray 
+ * @param {string} array 
+ */
+function renderStatusArray(statusArray, array) {
+    
+    let foundMatchingElement = false;
+    document.getElementById(array).innerHTML = '';
 
-    if (todo.length != 0) {
-        for (let i = 0; i < todo.length; i++) {
-            const todos = todo[i];
-            if(window.innerWidth < 1000 ){
-            rearchResponsiveTask(todos,responsiveSearchingFor,array,i);
-            }else{
-                searchTask(todos,searchingFor,array,i);
+    if (statusArray.length !== 0) {
+        for (let i = 0; i < statusArray.length; i++) {
+            const todo = statusArray[i];
+            if (searchTask(todo, array, i)) {
+                foundMatchingElement = true;
             }
         }
-    } else{
-        document.getElementById('todo').innerHTML = `${renderEmptyCategory()}`
-    } 
+    }
+    emptyCategory(foundMatchingElement,array)
 }
 /**
  * renders the todos with the status "inProgress" into the array 'inProgress' 
  * 
  */
 function renderInProgressContent(){
-    let searchingFor = document.getElementById('searchBoard').value
-    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
+    let statusArray = inProgress
     let array = 'inProgress'
-    document.getElementById('inProgress').innerHTML = '';
-    
-    if(inProgress.length != 0){
-        for (let i = 0; i < inProgress.length; i++) {
-            const progressTodo = inProgress[i];
-            if(window.innerWidth < 1000 ){
-                rearchResponsiveTask(progressTodo,responsiveSearchingFor,array,i);
-                }else{
-                    searchTask(progressTodo,searchingFor,array,i);
-                }
-        }
-    }else{
-        document.getElementById('inProgress').innerHTML = `${renderEmptyCategory()}`
-    }
+    renderStatusArray(statusArray,array);
 }
 /**
  * renders the todos with the status "awaitFeedback" into the array 'awaitFeedback' 
  * 
  */
 function renderAwaitFeedbackContent(){
-    let searchingFor = document.getElementById('searchBoard').value
-    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
+    let statusArray = awaitFeedback
     let array = 'awaitFeedback'
-    document.getElementById('awaitFeedback').innerHTML = '';
-
-    if(awaitFeedback.length != 0){
-
-        for (let i = 0; i < awaitFeedback.length; i++) {
-            const feedbackTodo = awaitFeedback[i];
-            if(window.innerWidth < 1000 ){
-                rearchResponsiveTask(feedbackTodo,responsiveSearchingFor,array,i);
-                }else{
-                    searchTask(feedbackTodo,searchingFor,array,i);
-                }
-            }
-    } else{
-        document.getElementById('awaitFeedback').innerHTML = `${renderEmptyCategory()}`
-    }
+    renderStatusArray(statusArray,array);
 }
 /**
  * renders the todos with the status "done" into the array 'done' 
  * 
  */
 function renderDoneContent(){
-    let searchingFor = document.getElementById('searchBoard').value
-    let responsiveSearchingFor = document.getElementById('respSearchBoard').value
+    let statusArray = done
     let array = 'done'
-    document.getElementById('done').innerHTML = '';
-    
-    if (done.length != 0) {
-        for (let i = 0; i < done.length; i++) {
-            const doneTodo = done[i];
-            if(window.innerWidth < 1000 ){
-                rearchResponsiveTask(doneTodo,responsiveSearchingFor,array,i);
-                }else{
-                    searchTask(doneTodo,searchingFor,array,i);
-                }
-        }
-    }else{
-        document.getElementById('done').innerHTML = `${renderEmptyCategory()}`
-    } 
+    renderStatusArray(statusArray,array);
 }
 /**
  * @returns the HTML if the filter array is empty
@@ -199,53 +162,46 @@ function renderEmptyCategory(){
   return /*html*/`<div class="noTasks">No Tasks to do</div>` 
 }
 /**
- * searchs for the value of the input field  and renders the accordingly content
- * @param {Object} todo 
- * @param {string} responsiveSearchingFor 
- * @param {Object} array 
- * @param {integer} i 
+ * renders the accordingly content if the boolean is true
+ * @param {Boolean} foundMatchingElement 
+ * @param {string} array 
  */
-function rearchResponsiveTask(todo,responsiveSearchingFor,array,i){
-    responsiveSearchingFor.toLowerCase();
-
-    if (
-        todo.title.toLowerCase().includes(responsiveSearchingFor) || 
-        todo.description.toLowerCase().includes(responsiveSearchingFor) ||
-        todo.assignedTo.some(name => name.toString().toLowerCase().includes(responsiveSearchingFor)) ||
-        todo.dueDate.toString().includes(responsiveSearchingFor) ||
-        todo.prio.toLowerCase().includes(responsiveSearchingFor) ||
-        todo.category.toString().toLowerCase().includes(responsiveSearchingFor) ||
-        todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(responsiveSearchingFor))
-    ){
-        renderCardHtml(todo,array,i);
-    }else{
-        document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
+function emptyCategory(foundMatchingElement,array){
+    if (!foundMatchingElement) {
+        document.getElementById(array).innerHTML = renderEmptyCategory();
     }
 }
+
 /**
  * searchs for the value of the input field and renders the accordingly content
  * @param {Object} todo 
- * @param {string} searchingFor 
+ * @param {string} serachCommand 
  * @param {Object} array 
  * @param {integer} i 
  */
-function searchTask(todo,searchingFor,array,i){
-    searchingFor.toLowerCase();
-
-    if (
-        todo.title.toLowerCase().includes(searchingFor) || 
-        todo.description.toLowerCase().includes(searchingFor) ||
-        todo.assignedTo.some(name => name.toString().toLowerCase().includes(searchingFor)) ||
-        todo.dueDate.toString().includes(searchingFor) ||
-        todo.prio.toLowerCase().includes(searchingFor) ||
-        todo.category.toString().toLowerCase().includes(searchingFor) ||
-        todo.subtasks.some(subtask => subtask.name.toLowerCase().includes(searchingFor))
-    ){
-        renderCardHtml(todo,array,i)
-    }else{
-        document.getElementById(todo['status']).innerHTML = `${renderEmptyCategory()}`
+function searchTask(todo, array, i) {
+    let searchingFor = document.getElementById('searchBoard').value;
+    let responsiveSearchingFor = document.getElementById('respSearchBoard').value;
+    let searchCommand = window.innerWidth < 1000 ? responsiveSearchingFor : searchingFor;
+    searchCommand = searchCommand.toLowerCase();
+    if (serachCommandIsFound(todo,searchCommand)) {
+        renderCardHtml(todo, array, i);
+        return true; 
+    } else {
+        return false; 
     }
 }
+
+function serachCommandIsFound(todo,searchCommand){
+    return(todo.title.toLowerCase().includes(searchCommand) ||
+    todo.description.toLowerCase().includes(searchCommand) ||
+    todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
+    todo.dueDate.toString().includes(searchCommand) ||
+    todo.prio.toLowerCase().includes(searchCommand) ||
+    todo.category.toString().toLowerCase().includes(searchCommand) ||
+    todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
+}
+
 /**
  * changes the position of the taskoverlay with an animation at opening the overlay
  * @param {string} idOfSlideConti 
@@ -337,12 +293,59 @@ function rotateCard(id){
     document.getElementById(id).classList.add('rotateCard');
 }
 /**
+ * renders the contacts which are assigned to the task into the todo cards 
+ * @param {string} idOfContainer 
+ * @param {string} todo 
+ */
+function renderCardAssignedTo(idOfContainer,todo){
+    let assigned = todo['assignedTo']
+    let id = todo['id']
+
+    for (let j = 0; j < assigned.length; j++) {
+        const fullname = assigned[j]
+        let names = fullname.split(" ")
+        let firstNameCharacter = names[0].charAt(0)
+        let avatarId = `avatar${id}pic${j}`
+        renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
+        renderCardContacts(fullname,avatarId);
+    }    
+}
+
+function renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter){
+    
+        let secondNameCharacter = names[1].charAt(0)
+        document.getElementById(idOfContainer).innerHTML += /*html*/`
+        <div class="assignedContact">
+            <div id=${avatarId} class="avatar">${firstNameCharacter}${secondNameCharacter}</div>
+        </div>`
+}
+
+function renderOneCharacter(idOfContainer,avatarId,firstNameCharacter){
+    document.getElementById(idOfContainer).innerHTML += /*html*/`
+    <div class="assignedContact">
+        <div id=${avatarId} class="avatar">${firstNameCharacter}</div>
+    </div>`
+}
+
+function renderCharacters(names,idOfContainer,avatarId,firstNameCharacter){
+    if(names.length > 1){
+        renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter)
+    }else{
+        renderOneCharacter(idOfContainer,avatarId,firstNameCharacter)
+    }
+}
+
+
+function renderFullName(){
+    document.getElementById().innerHTML = `${fullname}`
+}
+/**
  * renders the contacts which are assigned to the task into the taskoverlay 
  * @param {Object} array 
  * @param {integer} i 
  * @param {string} idOfContainer 
  */
-function renderAssignedTo(array,i,idOfContainer){
+function renderAssignedTo(array,i,idOfContainer,avatarConti){
     
     let assigned = array[i]['assignedTo']
 
@@ -352,15 +355,15 @@ function renderAssignedTo(array,i,idOfContainer){
         let firstNameCharacter = names[0].charAt(0)
         if(names.length > 1){
             let secondNameCharacter = names[1].charAt(0)
-            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            document.getElementById(idOfContainer).innerHTML += `
             <div class="assignedContact">
-                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div>${fullname}
+                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div><span>${fullname} 
             </div>`
             renderCardContacts(fullname,`assignedContact${j}`);
         }else{
-            document.getElementById(idOfContainer).innerHTML += /*html*/`
+            document.getElementById(idOfContainer).innerHTML += `
             <div class="assignedContact">
-                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}</div>${fullname}
+                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}</div><span>${fullname}</span> 
             </div>`
             renderCardContacts(fullname,`assignedContact${j}`);
         }
@@ -383,35 +386,7 @@ function renderCardContacts(name,idName){
     let bgColor = contactColorsMap.get(name)
     document.getElementById(idName).style.backgroundColor = `${bgColor}`;
 }
-/**
- * renders the contacts which are assigned to the task into the todo cards 
- * @param {string} idOfContainer 
- * @param {string} todo 
- */
-function renderCardAssignedTo(idOfContainer,todo){
-    let assigned = todo['assignedTo']
-    let id = todo['id']
 
-    for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
-        let names = fullname.split(" ")
-        let firstNameCharacter = names[0].charAt(0)
-        if(names.length > 1){
-            let secondNameCharacter = names[1].charAt(0)
-            document.getElementById(idOfContainer).innerHTML += /*html*/`
-            <div class="assignedContact">
-                <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div> 
-            </div>`
-            renderCardContacts(fullname,`avatar${id}pic${j}`);
-        }else{
-            document.getElementById(idOfContainer).innerHTML += /*html*/`
-            <div class="assignedContact">
-                <div id="avatar${id}pic${j}" class="avatar">${firstNameCharacter}</div> 
-            </div>`
-            renderCardContacts(fullname,`avatar${id}pic${j}`);
-        }
-    }    
-}
 /**
  * renders the current subtaks into the taskoverlay
  * @param {Object} array 

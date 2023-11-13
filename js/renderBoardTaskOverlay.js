@@ -26,7 +26,7 @@ function renderBoardTaskOverlay(array,i){
            
         <p class="grey">Assigned to:</p> 
         <div id="assignedUser" class="cardContact">
-
+           
         </div>
                      
         <h3 id="subHeadline${i}">Subtasks</h3>
