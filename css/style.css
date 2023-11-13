@@ -1,3 +1,9 @@
+@media (max-width: 896px) {
+    .leftSide {
+        display: none;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Inter';
