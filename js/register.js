@@ -14,7 +14,10 @@ async function loadUsers() {
 }
 
 function register() {
-    passwordMatching();
+    if (!passwordMatching()) {
+        return;
+    }
+
     usersPush();
     resetForm();
     successfulRegistration();

@@ -59,7 +59,7 @@ function renderBoard() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
     generateIDs();
-    setActiveNav("board");
+    setActiveNavItem("board");
     filterTodos();
     updateBoardHtml();
 

@@ -29,7 +29,8 @@
 .navItems div {
     display: flex;
     align-items: center;
-    width: 232px;
+    width: 100%;
+    height: 35px;
 }
 
 .navItems div:hover {
@@ -51,6 +52,7 @@
 }
 
 .navFooter div {
+    padding: 5px 0px;
     margin-top: 8px;
     color: #CDCDCD;
     text-decoration: none;
@@ -62,13 +64,29 @@
     color: #29ABE2;
 }
 
-.navItems div:hover,
 .navItems div.active {
     cursor: pointer;
-    background-color: #2a3d59; /* Standard-Hover-Hintergrundfarbe */
+    background-color: #2a3d59;
 }
 
 .navItems div.active {
-    background-color: #091931; /* Hintergrundfarbe im aktiven Zustand */
-    color: #fff; /* Textfarbe im aktiven Zustand */
+    background-color: #091931;
+    color: #fff;
 }
+
+.navFooter div.active {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #091931;
+    color: #CDCDCD;
+}
+
+.navFooter div.active:hover {
+    cursor: pointer;
+    font-weight: normal;
+    background-color: #091931;
+}
+.navItems div.active img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(7497%) hue-rotate(149deg) brightness(105%) contrast(102%)}

@@ -5,13 +5,13 @@ function init() {
     renderSummary();
 }
 
-function setActiveNav(activeId) {
-    const navItems = document.querySelectorAll(".navItems div");
+function setActiveNavItem(activeId) {
+    const navItems = document.querySelectorAll(".navItem");
     navItems.forEach(item => {
         if (item.id === activeId) {
-            item.classList.add("active"); // Füge die "active"-Klasse hinzu
+            item.classList.add("active");
         } else {
-            item.classList.remove("active"); // Entferne die "active"-Klasse
+            item.classList.remove("active");
         }
     });
 }

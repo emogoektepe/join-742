@@ -1,9 +1,11 @@
 let selectedElement = false;
-let selectedContacts = [];
 let searchValue = "";
+let selectedContacts = [];
+let subtasks = [];
 
 function renderAddTask() {
     let content = document.getElementById('content');
+    selectedContacts = [];
     content.innerHTML = /*html*/ `
         <div class="addTaskContent">
             <h1>Add Task</h1>
@@ -38,6 +40,7 @@ function renderAddTask() {
                 <div class="formRightSide">
                     <div class="dateBlock">
                         <span data-end="*">Due Date</span>
+                        <span class="requiredFieldText">This field is required</span>
                     </div>
                     <div class="prioBlock">
                         <span>Prio</span>
@@ -66,14 +69,13 @@ function renderAddTask() {
                     </div>
                     <div class="subtasksBlock">
                         <span>Subtasks</span>
-                        <div class="taskSubtasksContainer" onclick="createSubTask()">
-                            <input type="text" name="" id="taskSubtasks" class="taskSubtasks" placeholder="Add new subtask">
-                            <div class="dropDownArrow mgTop0" id="dropDownArrow">
-                                <img class="addImg" src="./img/addIconBlue.svg" alt="">
+                        <div class="taskSubtasksContainer" id="taskSubtasksContainer">
+                            <input  onclick="createSubTask()" type="text" name="" id="taskSubtasksInput" class="taskSubtasks" placeholder="Add new subtask">
+                            <div id="subtaskIcons">
+                                ${renderSubtaskAddButton()}
                             </div>
                         </div>
-                        <div class="newSubtaskAdded" id="newSubtaskAdded">
-
+                        <div class="newSubtaskAdded" id="newSubtaskAddedList">
                         </div>
                     </div>
                 </div>
@@ -81,24 +83,124 @@ function renderAddTask() {
         </div>
     `;
     content.innerHTML += tempAddContactForm('addTask');
-    setActiveNav("addTask");
+    setActiveNavItem("addTask");
+}
+
+function focusSubtasksInput() {
+    let taskSubtasksInput = document.getElementById('taskSubtasksInput');
+    taskSubtasksInput.focus();
 }
 
 function createSubTask() {
-    let dropDownArrow = document.getElementById('dropDownArrow');
-    dropDownArrow.outerHTML = /*html*/`
+    let subtaskIcons = document.getElementById('subtaskIcons');
+    subtaskIcons.innerHTML = /*html*/`
         <div class="deleteAndCheck">
-            <div>
+            <div onclick="deleteTaskInInput()">
                 <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
             </div>
             <div>
                 <img style="height: 24px" src="./img/borderdash.svg" alt="">
             </div>
-            <div>
+            <div onclick="addSubtaskToList()">
                 <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
             </div>
         </div>
     `;
+}
+
+function addSubtaskToList() {
+    let taskSubtasksInput = document.getElementById('taskSubtasksInput');
+    taskSubtasksInput.focus();
+    if (taskSubtasksInput.value.trim() !== "") {
+        subtasks.push({ name: taskSubtasksInput.value, done: false });
+        renderSubtasksInTask();
+        let subtaskIcons = document.getElementById('subtaskIcons');
+        subtaskIcons.innerHTML = renderSubtaskAddButton();
+        taskSubtasksInput.value = "";
+        taskSubtasksInput.blur();
+    }
+}
+
+function renderSubtasksInTask() {
+    let subtaskList = document.getElementById('newSubtaskAddedList');
+    subtaskList.innerHTML = "";
+    for (let i = 0; i < subtasks.length; i++) {
+        subtaskList.innerHTML +=/*html*/`
+            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasks[i]["name"]}</li><div>
+            <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
+                <div onclick="editSubtasks(${i})">
+                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
+                </div>
+                <div>
+                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
+                </div>
+                <div onclick="deleteSubtask(${i})">
+                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
+                </div>
+            </div>
+        `;
+    }
+}
+
+function editSubtasks(position) {
+    let li = document.getElementById(`li${position}`);
+    let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
+    if (li) {
+        li.parentElement.classList.remove('liContainerHover')
+        li.parentElement.style.backgroundColor = 'white';
+        li.parentElement.style.borderBottom = '1px solid #005DFF';
+        li.style.display = "flex";
+        li.style.paddingLeft = "16px !important";
+        li.contentEditable = "true";
+        li.outline = "none";
+        li.focus();
+        getCursorToEndEdittable(li)
+        editDeleteContainer.classList.remove('dNoneDnC');
+        editDeleteContainer.innerHTML =/*html*/`
+            <div onclick="deleteSubtask(${position})">
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div onclick="confirmEditSubtask(${position})">
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>
+        `;
+    }
+}
+
+function confirmEditSubtask(position) {
+    let li = document.getElementById(`li${position}`);
+    subtasks[position]['name'] = li.innerText;
+    renderSubtasksInTask();
+}
+
+function getCursorToEndEdittable(li) {
+    const range = document.createRange();
+    range.selectNodeContents(li);
+    range.collapse(false);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+}
+
+function deleteSubtask(position) {
+    subtasks.splice(position, 1);
+    renderSubtasksInTask();
+}
+
+function deleteTaskInInput() {
+    let subtaskIcons = document.getElementById('subtaskIcons');
+    let taskSubtasksInput = document.getElementById('taskSubtasksInput');
+    taskSubtasksInput.value = "";
+    subtaskIcons.innerHTML = renderSubtaskAddButton();
+}
+
+function renderSubtaskAddButton() {
+    return `<div onclick="createSubTask(); focusSubtasksInput()" class="addSubTaskBackground" id="dropDownArrow">
+                <img class="addImg" src="./img/addIconBlue.svg" alt="">
+            </div>`;
 }
 
 function getCategory(category) {
@@ -253,8 +355,7 @@ function renderAssignedToImages() {
     let imageFromDropDown = document.getElementById('imageFromDropDown');
     imageFromDropDown.innerHTML = "";
     for (let i = 0; i < selectedContacts.length; i++) {
-        let contactName = selectedContacts[i];
-        let imgColor = contactColorsMap.get(contactName);
+        let imgColor = contactColorsMap.get(selectedContacts[i]);
         if (imgColor) {
             imageFromDropDown.innerHTML += /*html*/ `
                 <div class="contactsInMenuimg marginRight8px" style="background-color: ${imgColor}">${getInitialsTaskSection(i)}</div>
