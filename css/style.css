@@ -1,9 +1,3 @@
-@media (max-width: 896px) {
-    .leftSide {
-        display: none;
-    }
-}
-
 body {
     margin: 0;
     font-family: 'Inter';
@@ -346,7 +340,7 @@ h1 {
 .header {
     position: relative;
     z-index: 999;
-    height: 15vh;
+    height: 13vh;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -399,4 +393,60 @@ h1 {
 .buttonUnfilled:active {
     color: #091931;
     border: 1px solid #091931;
+}
+
+@media (max-width: 760px) {
+ 
+
+    .navBar{
+        position: fixed;
+        bottom: 0px;
+        width: 100vw;
+        height: 88px;
+        background-color: #2A3647;
+        z-index: 10000;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navBarContent.special{
+        height: auto;
+        flex-direction: row;
+    }
+
+    .navLogo img{
+        display: none;
+    }
+
+    .navFooter div{
+        display: none;
+    }
+
+    .navItems.special{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: unset;
+    }
+
+    .navItem.responsive{
+        height: auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 16px;
+        gap: 4px;
+        padding: 16px; ;
+        padding-bottom: 15px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .navItem.responsive img{
+        padding-left: 0px;
+        padding-right: 0px;
+    } 
 }
