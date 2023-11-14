@@ -67,7 +67,7 @@
     background-color: #2a3d59;
 }
 
-@media(max-width: 896px){
+@media(max-width: 760px){
     .headerLeft span {
         display: none;
     }

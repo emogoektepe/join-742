@@ -480,6 +480,7 @@ progress::-webkit-progress-bar {
 
   progress::-webkit-progress-value {
     background-color: #4588ff;
+    animation: progressBarAnimation 2s ease-in-out; /* Hier wird die Animation hinzugefügt */
   }
 
   progress::-moz-progress-bar {
@@ -493,6 +494,11 @@ progress::-webkit-progress-bar {
     align-items: center;
 
   }
+
+@keyframes progressBarAnimation {
+    0% { width: 0%; }
+    100% { width: 60%; }
+}
 
   .notChecked{
     height: 18px;

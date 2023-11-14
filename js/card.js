@@ -15,37 +15,26 @@ function renderCard(todo,array,i){
     renderCardPrio(todo['prio'],`cardPrio${todo['id']}`);
 }
 
-/**
- * calculates the value for the progress bar
- * @param {Object} todo 
- * @param {integer} id 
- */
 function renderProgressbar(todo,id){
+    let subtasks = todo['subtasks']
+    let readySubtask = 0
+    for (let l = 0; l < subtasks.length; l++) {
+        let SbTask = subtasks[l]
+        SbTask['done']? readySubtask++ : ''
+    }
+ 
+    calculateProgress(subtasks,readySubtask,id,todo);
+}
 
-    checkSubtaskStatus(todo);
+function calculateProgress(subtasks,readySubtask,id,todo){
     let percent = subtasks.length / readySubtask 
     result = 100 / percent
-
     if(subtasks.length > 0){
         document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
         <progress id="file" max="100" value="${result}"></progress>
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
 }
-/**
- * checks the status of the subtasks, if they're checked
- * @param {Object} todo 
- */
-function checkSubtaskStatus(todo){
-    let subtasks = todo['subtasks']
-    let readySubtask = 0
-
-    for (let l = 0; l < subtasks.length; l++) {
-        let SbTask = subtasks[l]
-        SbTask['done']? readySubtask++ : ''
-    }
-}
-
 /**
  * renders the accordingly prio to todo cards
  * @param {string} prio 

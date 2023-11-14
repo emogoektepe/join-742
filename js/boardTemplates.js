@@ -119,7 +119,7 @@ function renderBoardHtml(){
 /**
  * @returns the whole Html that is used for the Card
  */
-function renderCardHtml(){
+function renderCardHtml(todo,array,i){
     return/*html*/` <div class="card" id="${todo['id']}" ondragstart="startDragging(${todo['id']}); rotateCard(${todo['id']})">
     <div onclick="renderBoardTaskOverlay(${array} ,${i}); openDialog('dialogShowCard','taskOverlay')">
         <div draggable="true" class="cardContent">
@@ -184,7 +184,7 @@ function renderTaskOverlayHtml(array,i){
     </div>
 
     <div class="closeSection">
-        <div onclick="deleteTask(${array[i]['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
+        <div onclick="deleteBoardTask(${array[i]['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
         <div class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
     </div>
 </div>`

@@ -54,8 +54,10 @@ let currentDraggedElement;
  * loads and renders the content of the Board
  * 
  */
+
+load();
+
 function renderBoard() {
-    load();
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
     generateIDs();
@@ -330,9 +332,10 @@ function renderCategory(category,id){
  * deletes the current task
  * @param {integer} id 
  */
-function deleteTask(id){
+function deleteBoardTask(id){
     task.splice(id,1);
     renderBoard();
+    save();
 }
 
 //test functions

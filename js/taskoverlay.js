@@ -71,14 +71,15 @@ function renderSubtasks(array,i){
     let subtasks = array[i]['subtasks']
     let id = array[i]['id']
 
-    renderSubtaskArray(subtasks,id)
+    renderSubtaskArray(subtasks,i,id)
 }
 /**
  * renders the Subtaskarray from the current task
  * @param {Array} subtasks 
+ * @param {integer} i
  * @param {string} id 
  */
-function renderSubtaskArray(subtasks,id){
+function renderSubtaskArray(subtasks,i,id){
     if(subtasks.length == 0){
         document.getElementById(`subHeadline${i}`).classList.add('d-none')}
     else{
@@ -96,8 +97,11 @@ function renderSubtaskArray(subtasks,id){
 }
 /**
  * if the subtask isn't checked, the right img will be renderd 
+ * @param {integer} id 
+ * @param {integer} k 
+ * @param {array} subtask 
  */
-function renderNotCheckedSubtask(){
+function renderNotCheckedSubtask(id,k,subtask){
     document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
     <div id="box${id,k}" class="subConti">
         <div class="checkBg">
