@@ -2,6 +2,7 @@ let selectedElement = false;
 let searchValue = "";
 let selectedContacts = [];
 let subtasks = [];
+const todaysDate = new Date().toJSON().slice(0, 10);
 
 function renderAddTask() {
     let content = document.getElementById('content');
@@ -40,6 +41,7 @@ function renderAddTask() {
                 <div class="formRightSide">
                     <div class="dateBlock">
                         <span data-end="*">Due Date</span>
+                        <input type="date" id="date" value="${todaysDate}">
                         <span class="requiredFieldText">This field is required</span>
                     </div>
                     <div class="prioBlock">
@@ -82,6 +84,9 @@ function renderAddTask() {
             </div>
         </div>
     `;
+    let date = document.getElementById('date');
+    date.min = new Date().toISOString().split("T")[0];
+    date.max = "2099-01-01";
     content.innerHTML += tempAddContactForm('addTask');
     setActiveNavItem("addTask");
 }

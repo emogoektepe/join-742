@@ -51,7 +51,7 @@
 }
 
 .formLeftSide input {
-    width: calc(440px - 44px);
+    width: 100%;
     margin-top: 8px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -59,6 +59,7 @@
     padding: 12px 21px;
     font-size: 20px;
     font-weight: 400;
+    box-sizing: border-box;
 }
 
 .formLeftSide input::placeholder {
@@ -465,4 +466,34 @@
 
 [contenteditable] {
     outline: 0px solid transparent;
+}
+
+input[type="date"] {
+    margin-top: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 16px;
+    padding-right: 14px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: url(../img/date.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 97%;
+    cursor: pointer;
+    background-color: white;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border: 1px solid #29ABE2;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
 }
