@@ -242,14 +242,14 @@ h1 {
     align-items: flex-end;
 }
 
-.mainDivThree a {
+.mainDivThree div {
     text-decoration: none;
     color: #a8a8a8;
     padding: 8px;
     margin: 40px 8px;
 }
 
-.mainDivThree a:hover {
+.mainDivThree div:hover {
     font-weight: bold;
     color: rgb(46, 185, 255);
 }
