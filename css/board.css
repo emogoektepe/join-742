@@ -587,10 +587,12 @@ progress::-webkit-progress-bar {
     }
 
     .boardHeaderContent{
-        margin-left: 0;
         margin-right: 0;
-        padding-left: 16px;
-        padding-right: 16px;
+    }
+
+    .headBar{
+        justify-content: flex-end;
+        margin-right: 32px;
     }
 
     .formArea{
@@ -604,18 +606,48 @@ progress::-webkit-progress-bar {
         margin-top: 40px;
     }
 
+    .dialogShowCard{
+        width: 66vw;
+    }
+
+}
+
+@media(max-width: 760px){
+
+    .boardHeadline h1{
+        font-size: 47px;
+    }
+
+    .boardHeaderContent{
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-top: 40px;
+    }
+
     .headBar{
-        width: auto;
+        width: 40px;
+        margin-right: 0;
     }
 
     .respBtn{
         margin: 0;
+        padding: 8px;
     }
 
-    .dialogShowCard{
-        width: 66vw;
+    .respBtn img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .respAddTaskHeader{
+        padding: 4px;
+    }
+
+    #done{
+        margin-bottom: 80px;
     }
 }
-
 
 
