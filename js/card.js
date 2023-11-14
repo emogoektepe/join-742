@@ -14,7 +14,11 @@ function renderCard(todo,array,i){
     renderProgressbar(todo,todo['id']);
     renderCardPrio(todo['prio'],`cardPrio${todo['id']}`);
 }
-
+/**
+ * checks the subtask array and renders the progress bar
+ * @param {object} todo 
+ * @param {integer} id 
+ */
 function renderProgressbar(todo,id){
     let subtasks = todo['subtasks']
     let readySubtask = 0
@@ -22,10 +26,15 @@ function renderProgressbar(todo,id){
         let SbTask = subtasks[l]
         SbTask['done']? readySubtask++ : ''
     }
- 
     calculateProgress(subtasks,readySubtask,id,todo);
 }
-
+/**
+ * caculates the progress and renders the bar
+ * @param {array} subtasks 
+ * @param {integer} readySubtask 
+ * @param {integer} id 
+ * @param {object} todo 
+ */
 function calculateProgress(subtasks,readySubtask,id,todo){
     let percent = subtasks.length / readySubtask 
     result = 100 / percent
