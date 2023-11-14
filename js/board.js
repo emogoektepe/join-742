@@ -185,7 +185,7 @@ function searchTask(todo, array, i) {
     let searchCommand = window.innerWidth < 1000 ? responsiveSearchingFor : searchingFor;
     searchCommand = searchCommand.toLowerCase();
     if (serachCommandIsFound(todo,searchCommand)) {
-        renderCardHtml(todo, array, i);
+        renderCard(todo, array, i);
         return true; 
     } else {
         return false; 
@@ -270,7 +270,7 @@ function startDragging(id){
 }
 /**
  * changes the default behaivour of the browser for the drag and drop event
- * @param {*} ev 
+ * @param {Event} ev 
  */
 function allowDrop(ev) {
     ev.preventDefault();
@@ -293,83 +293,6 @@ function rotateCard(id){
     document.getElementById(id).classList.add('rotateCard');
 }
 /**
- * renders the contacts which are assigned to the task into the todo cards 
- * @param {string} idOfContainer 
- * @param {string} todo 
- */
-function renderCardAssignedTo(idOfContainer,todo){
-    let assigned = todo['assignedTo']
-    let id = todo['id']
-
-    for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
-        let names = fullname.split(" ")
-        let firstNameCharacter = names[0].charAt(0)
-        let avatarId = `avatar${id}pic${j}`
-        renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
-        renderCardContacts(fullname,avatarId);
-    }    
-}
-
-function renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter){
-    
-        let secondNameCharacter = names[1].charAt(0)
-        document.getElementById(idOfContainer).innerHTML += /*html*/`
-        <div class="assignedContact">
-            <div id=${avatarId} class="avatar">${firstNameCharacter}${secondNameCharacter}</div>
-        </div>`
-}
-
-function renderOneCharacter(idOfContainer,avatarId,firstNameCharacter){
-    document.getElementById(idOfContainer).innerHTML += /*html*/`
-    <div class="assignedContact">
-        <div id=${avatarId} class="avatar">${firstNameCharacter}</div>
-    </div>`
-}
-
-function renderCharacters(names,idOfContainer,avatarId,firstNameCharacter){
-    if(names.length > 1){
-        renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter)
-    }else{
-        renderOneCharacter(idOfContainer,avatarId,firstNameCharacter)
-    }
-}
-
-
-function renderFullName(){
-    document.getElementById().innerHTML = `${fullname}`
-}
-/**
- * renders the contacts which are assigned to the task into the taskoverlay 
- * @param {Object} array 
- * @param {integer} i 
- * @param {string} idOfContainer 
- */
-function renderAssignedTo(array,i,idOfContainer,avatarConti){
-    
-    let assigned = array[i]['assignedTo']
-
-    for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
-        let names = fullname.split(" ")
-        let firstNameCharacter = names[0].charAt(0)
-        if(names.length > 1){
-            let secondNameCharacter = names[1].charAt(0)
-            document.getElementById(idOfContainer).innerHTML += `
-            <div class="assignedContact">
-                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div><span>${fullname} 
-            </div>`
-            renderCardContacts(fullname,`assignedContact${j}`);
-        }else{
-            document.getElementById(idOfContainer).innerHTML += `
-            <div class="assignedContact">
-                <div id="assignedContact${j}" class="avatar">${firstNameCharacter}</div><span>${fullname}</span> 
-            </div>`
-            renderCardContacts(fullname,`assignedContact${j}`);
-        }
-    }
-}
-/**
  * gets the right color for the avatars 
  * @param {string} name 
  * @param {string} idName 
@@ -385,77 +308,7 @@ function renderCardContacts(name,idName){
 
     let bgColor = contactColorsMap.get(name)
     document.getElementById(idName).style.backgroundColor = `${bgColor}`;
-}
-
-/**
- * renders the current subtaks into the taskoverlay
- * @param {Object} array 
- * @param {integer} i 
- */
-function renderSubtasks(array,i){
-    let subtasks = array[i]['subtasks']
-    let id = array[i]['id']
-
-    if(subtasks.length == 0){
-        document.getElementById(`subHeadline${i}`).classList.add('d-none')}
-    else{
-        for (let k = 0; k < subtasks.length; k++) {
-        const subtask = subtasks[k];
-        
-            if(subtask['done'] == false){
-            document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-            <div id="box${id,k}" class="subConti">
-                <div class="checkBg">
-                    <img onclick="checkBox(${id},${k})" class="notChecked" src="img/checkButton.svg">
-                </div>
-                ${subtask['name']}
-            </div>`}
-            else{
-                document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-                <div id="box${id,k}" class="subConti">
-                    <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
-                    ${subtask['name']}
-                </div>`
-            }
-        }
-    }
-}
-/**
- * onlick the clicked checkbox changes its boolean and renders the accordingly checked box
- * @param {integer} id 
- * @param {integer} k 
- */
-function checkBox(id,k){
-
-    let subtask = task[id]['subtasks'][k]
-
-    subtask['done'] = !subtask['done']
-    save();
-    changeBox(subtask,id,k);
-}
-/**
- * gets the status of the checkbox from the task array and renders the accordingly checkbox
- * @param {Object} subtask 
- * @param {integer} id 
- * @param {integer} k 
- */
-function changeBox(subtask,id,k){
-
-    if(subtask['done']){
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
-        <div class="checkBg">
-            <img onclick="checkBox(${id},${k})" src="img/boxChecked.svg">
-        </div>
-        ${subtask['name']}`  
-    } else {
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
-            <div class="checkBg">
-                <img class="notChecked" onclick="checkBox(${id},${k})" src="img/checkButton.svg">
-            </div>    
-            ${subtask['name']} `
-    }
-    updateBoardHtml();
-}    
+}  
 /**
  * renders the right backgroundcolor for the category
  * @param {string} category 
@@ -471,83 +324,6 @@ function renderCategory(category,id){
         case 'Technical Task': 
         document.getElementById(id).style.backgroundColor = `#1ed7c1`
         break;
-    }
-}
-/**
- * renders the accordingly prio to the tasks
- * @param {string} prio
- * @param {string} id 
- * @param {Object} array 
- * @param {integer} i 
- */
-function renderPrio(prio,id,array,i){
-
-    let img, string;
-
-    switch (prio) {
-        case 'low':
-            string = array[i]['prio']
-            img = '<img src="img/prioLow.svg"></img>'
-            break;
-        
-        case 'medium': 
-            string = array[i]['prio']
-            img = '<img src="img/prioMid.svg"></img>'
-            break;
-
-        case 'urgent':
-            string = array[i]['prio']
-            img = '<img src="img/prioUp.svg"></img>'
-            break;
-    }
-    document.getElementById(id).innerHTML = `${string} ${img}` 
-}
-/**
- * renders the accordingly prio to todo cards
- * @param {string} prio 
- * @param {string} id 
- */
-function renderCardPrio(prio,id){
-
-    let img;
-
-    switch (prio) {
-        case 'low':
-            img = '<img src="img/prioLow.svg"></img>'
-            break;
-        
-        case 'medium': 
-            img = '<img src="img/prioMid.svg"></img>'
-            break;
-
-        case 'urgent':
-            img = '<img src="img/prioUp.svg"></img>'
-            break;
-    }
-    document.getElementById(id).innerHTML = `${img}` 
-}
-/**
- * calculates the value for the progress bar
- * @param {Object} todo 
- * @param {integer} id 
- */
-function renderProgressbar(todo,id){
-
-    let subtasks = todo['subtasks']
-    let readySubtask = 0
-
-    for (let l = 0; l < subtasks.length; l++) {
-        let SbTask = subtasks[l]
-        SbTask['done']? readySubtask++ : ''
-    }
- 
-    let percent = subtasks.length / readySubtask 
-    result = 100 / percent
-
-    if(subtasks.length > 0){
-        document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
-        <progress id="file" max="100" value="${result}"></progress>
-        ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
 }
 /**
