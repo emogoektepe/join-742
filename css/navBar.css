@@ -90,3 +90,8 @@
 }
 .navItems div.active img {
     filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(7497%) hue-rotate(149deg) brightness(105%) contrast(102%)}
+
+@media(max-width:896px){
+    
+
+}

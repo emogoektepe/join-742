@@ -1,15 +1,19 @@
-.header span {
+.headerLeft {
     font-weight: 400;
     font-size: 20px;
-    width: 319px;
-    height: 24px;
     padding-left: 116px;
 }
+
+.respHeaderLogo{
+    display: none;
+    height: 50px;
+    width: auto;
+}
+
+
 .headerRight {
     display: flex;
     align-items: center;
-    width: 104px;
-    height: 56px;
     gap: 16px;
     padding-right: 40px;
 }
@@ -61,4 +65,27 @@
 .headerDropDownButton:hover {
     cursor: pointer;
     background-color: #2a3d59;
+}
+
+@media(max-width: 896px){
+    .headerLeft span {
+        display: none;
+    }
+
+    .headerLeft{
+        padding-left: 16px;
+    }
+
+    .respHeaderLogo{
+        display: flex;
+    }
+
+    .headerRight{
+        padding-right: 16px;
+        width: auto;
+    }
+
+    .headerRight img{
+        display: none;
+    }
 }
