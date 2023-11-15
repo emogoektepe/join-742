@@ -271,7 +271,6 @@
     margin: 0;
 }
 .greetingsBox span {
-    display: none;
     color: var(--Ligth-blue, #29ABE2);
     font-size: 64px;
     font-style: normal;
@@ -279,6 +278,7 @@
     line-height: 120%; /* 76.8px */
 }
 /*RESPONSIVENESS*/
+/*
 @media(max-width: 1430px) {
     .summaryContainer {
         justify-content: center;
@@ -295,7 +295,7 @@
     }
     #content {
        /* display: flex;
-        flex-direction: column;*/
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

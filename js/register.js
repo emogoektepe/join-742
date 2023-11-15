@@ -25,6 +25,7 @@ function register() {
 
 async function usersPush() {
     users.push({
+        name: userNameInput.value,
         email: userEmailInput.value,
         password: userPasswordInput.value,
     });

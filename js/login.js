@@ -1,10 +1,12 @@
+let currentUser = [];
+
 function validateEmail() {
     let emailContainer = document.getElementById("loginMailInputContainer");
     let emailInput = document.getElementById("loginMailInput");
     let email = emailInput.value;
     let emailMsg = document.getElementById("loginMailInputMsg");
 
-    if (!email.includes('@') || email.length < 6) {
+    if (!email.includes('@')) {
         emailContainer.style.borderColor = "red";
         emailMsg.style.display = "block"; // Fehlermeldung anzeigen
         return false;
@@ -21,7 +23,7 @@ function validatePassword() {
     let password = passwordInput.value;
     let passwordMsg = document.getElementById("loginPasswordInputMsg");
 
-    if (password.length < 6) {
+    if (password.length < 3) {
         passwordContainer.style.borderColor = "red";
         passwordMsg.style.display = "block"; // Fehlermeldung anzeigen
         return false;
@@ -38,6 +40,8 @@ function checkUser(email, password) {
     let passwordMsg = document.getElementById("loginPasswordInputMsg");
 
     if (user) {
+        currentUser.push(user)
+        saveCurrentUser();
         console.log('Benutzer gefunden');
         window.location.href = 'application.html'; // Weiterleitung
     } else {
@@ -73,3 +77,4 @@ function toggleCheckBoxRememberMe() {
     uncheckedBox.style.display = "block";
     }
 }
+

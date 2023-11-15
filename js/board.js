@@ -338,20 +338,6 @@ function deleteBoardTask(id){
     save();
 }
 
-//test functions
-
-function save(){
-    let taskAsString = JSON.stringify(task)
-    localStorage.setItem('task',taskAsString);
-}
-
-function load(){
-    let taskAsString = localStorage.getItem('task')
-    if(taskAsString){
-        task = JSON.parse(taskAsString)
-    }else(TASK_Template)
-}
-
 
 
 

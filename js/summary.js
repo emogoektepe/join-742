@@ -68,14 +68,16 @@ function renderSummary() {
             <div class="summaryRightSide">
                 <div class="greetingsBox">
                     <h2 id="greetingMessage"></h2>
-                    <span id="userName" class="userName"></span>
+                    <span id="currentUserName" class="userName">
+        
+                    </span>
                 </div>
             </div>
             
         </section>
     
     `;
-
+    loadCurrentUser();
     setActiveNavItem("summary");
     renderGreetingMessage();
 }
