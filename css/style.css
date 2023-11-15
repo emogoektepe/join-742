@@ -163,6 +163,10 @@ h1 {
     margin-bottom: 16px;
 }
 
+.inputContainer input::placeholder {
+    color: #D1D1D1;
+}
+
 .checkBox {
     display: flex;
     justify-content: flex-start;
@@ -242,7 +246,7 @@ h1 {
     align-items: flex-end;
 }
 
-.mainDivThree div {
+.mainDivThree a {
     text-decoration: none;
     color: #a8a8a8;
     padding: 8px;
@@ -449,4 +453,44 @@ h1 {
         padding-left: 0px;
         padding-right: 0px;
     } 
+
+    .login{
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login form{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .login form div {
+        width: 100%;
+    }
+    .login form div input {
+        width: 100%;
+    }
+    .login form div input::placeholder{
+        font-size: 20px;
+    }
+    .acceptBox {
+        
+    }
+    .loginBtn {
+        width: 180px;
+        height: 51px;
+    }
+}
+
+@media (max-width: 460px) {
+    .SignUpBox {
+        width: 80%;
+        padding: 20px 40px;
+    }
+    .login h1 {
+        font-size: 41px;
+    }
 }
