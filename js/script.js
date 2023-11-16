@@ -45,3 +45,25 @@ function renderCurrentUser(){
     let user = currentUser[0]['name'];
      document.getElementById('currentUserName').innerHTML = user || '';
 }
+
+function renderInitials(){
+    let fullname = currentUser[0]['name'];
+    let names = fullname.split(" ")
+    let firstNameCharacter = names[0].charAt(0)
+    
+    if(names.length > 1){
+        renderDoubleInitials(names,firstNameCharacter);
+    }else{
+        renderSingleinitials(firstNameCharacter);
+    }
+}
+
+function renderDoubleInitials(names,firstNameCharacter){
+
+    let secondNameCharacter = names[1].charAt(0)
+    document.getElementById('initials').innerHTML += `${firstNameCharacter}${secondNameCharacter}`;
+}
+
+function renderSingleinitials(firstNameCharacter){
+    document.getElementById('initials').innerHTML = `${firstNameCharacter}`;
+}
