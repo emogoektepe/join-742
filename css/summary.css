@@ -329,15 +329,15 @@
 
 /*RESPONSIVENESS*/
 
-@media(max-width: 1430px) {
-    .summaryHeader {
-        align-self: center;
-    }
-
+@media (max-width: 1364px) {
     .summaryContainer {
-        justify-content: center;
-        margin-left: 0;
-        margin-right: 0;
+        gap: 0px;
+    }
+}
+
+@media (max-width: 1372px) {
+    .summaryContainer {
+        margin-right: 50px;
     }
 }
 
