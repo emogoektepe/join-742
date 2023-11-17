@@ -3,6 +3,8 @@ function renderSummary() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
 
+    <div class="summaryContent">
+        
         <section class="summaryHeader" >
             <h1>Join 360</h1>
             <div class="separatorHeader"></div>
@@ -75,7 +77,8 @@ function renderSummary() {
             </div>
             
         </section>
-    
+    </div>
+
     `;
     loadCurrentUser();
     setActiveNavItem("summary");
