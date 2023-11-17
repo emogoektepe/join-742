@@ -13,6 +13,34 @@ h1 {
     margin-block: 0;
 }
 
+.logoStart{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f7f8;
+}
+
+.logoStart img{
+    height: 230px;
+    width: auto;
+    animation: changeLogoPosition 1s ease-in-out forwards 500ms;
+
+}
+
+@keyframes changeLogoPosition {
+    from{
+        height: 230px;
+        transform: translateX(0%) translateY(0%);
+    }
+
+    to{
+        height: 122px;
+        transform: translateX(-585%) translateY(-215%);
+    }
+}
+
 /*overlay for SignUp*/
 #overlay {
     position: fixed;
@@ -61,8 +89,10 @@ h1 {
 }
 
 .startPage {
+    display: none;
     height: 100vh;
     background-color: #f6f7f8;
+    animation: fadeInLogin 1s ease-in-out;
 }
 
 .mainDivOne {

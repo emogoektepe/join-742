@@ -18,7 +18,13 @@
 </head>
 
 <body onload="initRegister()">
-   <div class="startPage"> 
+
+
+    <div id="logoStart" class="logoStart">
+        <img id="startLogo" class="capa2" src="img/Capa 2.svg">
+    </div>
+
+   <div id="startPage" class="startPage"> 
     <div class="mainDivOne">
         <img class="capa2" src="img/Capa 2.svg">
         <div class="signUp">
@@ -68,6 +74,18 @@
         <a href="">Privacy Policy</a>
         <a href="">Legal Notice</a>
     </div>
+
+    <script>
+        const animatedElement = document.getElementById('startLogo');
+    
+        animatedElement.addEventListener('animationend', function () {
+            document.getElementById('logoStart').style = 'display:none;';
+            document.getElementById('startPage').style = 'display:block;';
+            
+            
+        });
+    </script>
+    
   
 </body> 
 
