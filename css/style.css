@@ -476,9 +476,7 @@ h1 {
     .login form div input::placeholder{
         font-size: 20px;
     }
-    .acceptBox {
-        
-    }
+    
     .loginBtn {
         width: 180px;
         height: 51px;

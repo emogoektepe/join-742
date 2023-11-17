@@ -8,6 +8,7 @@
     margin-top: 68px;
     margin-bottom: 68px;
 }
+
 .summaryHeader h1 {
     color: #000;
     font-size: 61px;
@@ -15,11 +16,14 @@
     font-weight: 700;
     line-height: 120%;
 }
+
 .separatorHeader {
     height: 59px;
     width: 3px;
     background-color: #29ABE2;
+    border-radius: 5px;
 }
+
 .summaryHeader h3 {
     color: #2A3647;
     font-size: 27px;
@@ -28,6 +32,7 @@
     line-height: 120%;
     /* 32.4px */
 }
+
 /*summaryContainer*/
 .summaryContainer {
     display: flex;
@@ -36,35 +41,43 @@
     margin-left: 87px;
     margin-right: 87px;
 }
+
 .summaryLeftSide {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 28px;
 }
+
 .firstRow {
     display: flex;
     justify-content: center;
     gap: 32px;
 }
+
 .firstRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
 }
+
 .toDo:hover {
     transform: scale(1.05);
-    transition: all 0.2s; 
+    transition: all 0.2s;
 }
+
 .done:hover {
     transform: scale(1.05);
     transition: all 0.2s;
 }
-.firstRow div:hover span{
+
+.firstRow div:hover span {
     color: #ffffff;
 }
+
 .firstRow div:hover img {
     filter: invert(100%) sepia(10%) saturate(0%) hue-rotate(236deg) brightness(117%) contrast(102%);
 }
+
 .toDo {
     display: flex;
     width: 264px;
@@ -79,14 +92,17 @@
     overflow: hidden;
     position: relative;
 }
+
 .toDoLeft {
     pointer-events: none;
 }
+
 .toDoRight {
     display: flex;
     flex-direction: column;
     pointer-events: none;
 }
+
 .done {
     display: flex;
     width: 264px;
@@ -101,25 +117,31 @@
     overflow: hidden;
     position: relative;
 }
+
 .doneLeft {
     pointer-events: none;
 }
+
 .doneRight {
     display: flex;
     flex-direction: column;
     pointer-events: none;
 }
+
 .secondRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
 }
+
 .secondRow div:hover span {
     color: white;
 }
+
 .urgent:hover {
     transform: scale(1.05);
-    transition: all 0.2s; 
+    transition: all 0.2s;
 }
+
 .urgent {
     display: flex;
     width: 560px;
@@ -133,20 +155,24 @@
     overflow: hidden;
     position: relative;
 }
+
 .urgentLeft {
     display: flex;
     gap: 18px;
     pointer-events: none;
 }
+
 .urgentImg {
     display: flex;
 }
+
 .urgentCount {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
 .urgentNumber {
     color: #000;
     text-align: center;
@@ -155,6 +181,7 @@
     font-weight: 600;
     line-height: 120%;
 }
+
 .urgentText {
     color: #2A3647;
     text-align: center;
@@ -164,11 +191,14 @@
     line-height: 120%;
     width: 83px;
 }
+
 .separatorUrgent {
     width: 2px;
     height: 102.023px;
     background-color: #D1D1D1;
+    border-radius: 5px;
 }
+
 .calendar {
     display: flex;
     flex-direction: column;
@@ -176,20 +206,25 @@
     gap: 13px;
     pointer-events: none;
 }
+
 .calendarDate {
     color: #2A3647;
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 25.2px */
+    line-height: 120%;
+    /* 25.2px */
 }
+
 .calendarEvent {
     color: #2A3647;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; /* 19.2px */
+    line-height: 120%;
+    /* 19.2px */
 }
+
 .thirdRow {
     display: flex;
     width: 560px;
@@ -199,6 +234,7 @@
     align-items: flex-start;
     gap: 28px;
 }
+
 .thirdRow div {
     display: flex;
     width: 168px;
@@ -214,13 +250,16 @@
     overflow: hidden;
     position: relative;
 }
-.thirdRow div:hover{
+
+.thirdRow div:hover {
     cursor: pointer;
     background-color: #2A3647;
 }
-.thirdRow div:hover span{
+
+.thirdRow div:hover span {
     color: white;
 }
+
 .taskNumber {
     color: #000;
     text-align: center;
@@ -229,6 +268,7 @@
     font-weight: 600;
     line-height: 120%;
 }
+
 .taskText {
     color: #2A3647;
     text-align: center;
@@ -238,23 +278,28 @@
     line-height: 120%;
     width: 83px;
 }
+
 .tasksInBoard:hover {
     transform: scale(1.05);
-    transition: all 0.2s; 
+    transition: all 0.2s;
 }
+
 .tasksInProgress:hover {
     transform: scale(1.05);
-    transition: all 0.2s; 
+    transition: all 0.2s;
 }
+
 .awaitingFeedback:hover {
     transform: scale(1.05);
-    transition: all 0.2s; 
+    transition: all 0.2s;
 }
+
 .summaryRightSide {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .greetingsBox {
     display: inline-flex;
     flex-direction: column;
@@ -262,41 +307,200 @@
     align-items: flex-start;
     gap: 3px;
 }
+
 .greetingsBox h2 {
     color: #2A3647;
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
-    line-height: 120%; /* 56.4px */
+    line-height: 120%;
+    /* 56.4px */
     margin: 0;
 }
+
 .greetingsBox span {
     color: var(--Ligth-blue, #29ABE2);
     font-size: 64px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 76.8px */
+    line-height: 120%;
+    /* 76.8px */
 }
+
 /*RESPONSIVENESS*/
-/*
+
 @media(max-width: 1430px) {
+    .summaryHeader {
+        align-self: center;
+    }
+
     .summaryContainer {
         justify-content: center;
         margin-left: 0;
         margin-right: 0;
     }
 }
+
 @media(max-width: 1253px) {
     .summaryRightSide {
         display: none;
     }
+
     .summaryHeader {
         margin-left: 0;
     }
-    #content {
-       /* display: flex;
+
+    .summaryContent {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media(max-width: 860px) {
+    .summaryHeader {
+
+        margin-top: 48px;
+        margin-bottom: 40px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .summaryHeader :nth-child(1) {
+        order: 1;
+    }
+
+    .summaryHeader :nth-child(2) {
+        order: 3;
+    }
+
+    .summaryHeader :nth-child(3) {
+        order: 2;
+    }
+
+    .separatorHeader {
+        width: 90px;
+        height: 3px;
+    }
+
+    .summaryHeader h3 {
+        margin: 0px;
+    }
+}
+
+@media(max-width: 760px) {
+    .summaryHeader {
+        align-self: flex-start;
+        margin-left: 16px;
+    }
+
+    .summaryLeftSide {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toDo {
+        display: flex;
+        width: 148px;
+        height: 34px;
+        padding: 38px 19px;
+        justify-content: center;
+        align-items: center;
+        gap: 0px;
+        flex-shrink: 0;
+    }
+
+    .done {
+        display: flex;
+        width: 148px;
+        height: 34px;
+        padding: 38px 19px;
+        justify-content: center;
+        align-items: center;
+        gap: 0px;
+        flex-shrink: 0;
+    }
+
+    .summaryIcons {
+        height: 40px;
+        width: 40px;
+    }
+
+    .taskNumber {
+        font-size: 47px;
+    }
+
+    .taskText {
+        font-size: 14px;
+    }
+
+    .urgent {
+        width: 396px;
+        height: 110px;
+        gap: 20px;
+        flex-shrink: 0;
+    }
+
+    .urgentLeft {
+        align-items: center;
+    }
+
+    .urgentImg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .urgentNumber {
+        font-size: 47px;
+    }
+
+    .urgentText {
+        color: #2A3647;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 120%;
+    }
+
+    .separatorUrgent {
+        width: 2px;
+        height: 68px;
+    }
+
+    .calendarDate {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 19.2px */
+    }
+
+    .calendarEvent {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        /* 16.8px */
+    }
+
+    .thirdRow div {
+        width: 116px;
+        height: 66px;
+        padding: 25px 0px;
+        gap: 0px;
+    }
+
+    .taskNumber {
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .taskText {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
     }
 }
