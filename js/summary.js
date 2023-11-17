@@ -78,6 +78,7 @@ function renderSummary() {
             
         </section>
     </div>
+    <div id="mobileGreeting" class="mobileGreeting">Begrüßung</div>
 
     `;
     loadCurrentUser();
