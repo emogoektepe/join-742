@@ -69,16 +69,17 @@ function renderSummary() {
 
             <div class="summaryRightSide">
                 <div class="greetingsBox">
-                    <h2 id="greetingMessage"></h2>
-                    <span id="currentUserName" class="userName">
-        
-                    </span>
+                    <h2 id="greetingMessage" class="greetingMessage"></h2>
+                    <span id="currentUserName" class="userName"></span>
                 </div>
             </div>
             
         </section>
     </div>
-    <div id="mobileGreeting" class="mobileGreeting">Begrüßung</div>
+    <div id="mobileGreetingBox" class="mobileGreetingBox">
+        <h2 id="mobileGreetingMessage" class="greetingMessage"></h2>
+        <span id="mobileCurrentUserName" class="userName"></span>
+    </div>
 
     `;
     loadCurrentUser();

@@ -32,6 +32,7 @@ function renderGreetingMessage() {
     }
 
     document.getElementById('greetingMessage').innerHTML = greeting;
+    document.getElementById('mobileGreetingMessage').innerHTML = greeting;
     renderCurrentUser();
 };
 
