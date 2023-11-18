@@ -136,6 +136,7 @@ function createTask() {
 
 function clearAddTask() {
     prioLabel = '';
+    subtasksList = [];
     renderAddTask();
 }
 
