@@ -45,6 +45,7 @@ function renderCurrentUser(){
 
     let user = currentUser[0]['name'];
      document.getElementById('currentUserName').innerHTML = user || '';
+     document.getElementById('mobileCurrentUserName').innerHTML = user || '';
 }
 
 function renderInitials(){

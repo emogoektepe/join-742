@@ -330,7 +330,9 @@
 .mobileGreetingBox {
     display: none;
     position: fixed;
+    flex-direction: column;
     margin-top: 140px;
+    margin-bottom: 140px;
     top: 0;
     left: 0;
     width: 100%;
@@ -342,9 +344,9 @@
 
 }
 
-.mobileGreetingBox h2 {
+/* .mobileGreetingBox h2 {
     margin-bottom: 222px;
-}
+} */
 
 /*RESPONSIVENESS*/
 
@@ -529,7 +531,7 @@
         animation: fadeOut 1s ease-in-out 2s forwards;
     }
 
-    @keyframes fadeOut {
+     @keyframes fadeOut {
         0% {
             opacity: 1;
         }
@@ -538,7 +540,7 @@
             opacity: 0;
             display: none;
         }
-    }
+    } 
 
 
 }
