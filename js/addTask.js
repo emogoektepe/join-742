@@ -1,8 +1,11 @@
 let selectedElement = false;
 let searchValue = "";
 let selectedContacts = [];
-let subtasks = [];
+let subtasksList = [];
+let prioLabel = "";
 const todaysDate = new Date().toJSON().slice(0, 10);
+
+const allTasks = [];
 
 function renderAddTask() {
     let content = document.getElementById('content');
@@ -14,13 +17,13 @@ function renderAddTask() {
                 <div class="formLeftSide">
                     <div class="firstBlock">
                         <span data-end="*">Title</span>
-                        <input type="text" name="" id="" placeholder="Enter a title">
-                        <span class="requiredFieldText">This field is required</span>
+                        <input autocomplete="off" type="text" name="" id="addTaskInputTitle" placeholder="Enter a title">
+                        <div id="addTaskInputTitleRequired" class="requiredFieldText">This field is required</div>
                     </div>
                     <div class="secondBlock">
                         <span data-end="*">Description</span>
-                        <textarea placeholder="Enter a Description"></textarea>
-                        <span class="requiredFieldText">This field is required</span>
+                        <textarea id="addTaskTextArea" placeholder="Enter a Description"></textarea>
+                        <div id="addTaskTextAreaRequired" class="requiredFieldText">This field is required</div>
                     </div>
                     <div class="thirdBlock">
                         <span>Assigned to</span>
@@ -36,31 +39,33 @@ function renderAddTask() {
                             </div>
                         </div>
                     </div>
+                    <div class="bottomText" data-start="*">This field is required</div>
                 </div>
                 <div class="formSeparator"></div>
                 <div class="formRightSide">
                     <div class="dateBlock">
                         <span data-end="*">Due Date</span>
-                        <input type="date" id="date" value="${todaysDate}">
+                        <input type="date" id="addTaskDate" value="${todaysDate}">
                         <span class="requiredFieldText">This field is required</span>
                     </div>
                     <div class="prioBlock">
                         <span>Prio</span>
                         <div class="prio">
-                            <div onclick="changePrioColor(this, '#FF3D00')">Urgent<img src="./img/prioUp.svg" alt=""></div>
-                            <div onclick="changePrioColor(this, '#FFA800')">Medium<img src="./img/prioMid.svg" alt=""></div>
-                            <div onclick="changePrioColor(this, '#7AE229')">Low<img src="./img/prioLow.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#FF3D00'); getPrio(this)">Urgent<img src="./img/prioUp.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#FFA800'); getPrio(this)">Medium<img src="./img/prioMid.svg" alt=""></div>
+                            <div onclick="changePrioColor(this, '#7AE229'); getPrio(this)">Low<img src="./img/prioLow.svg" alt=""></div>
                         </div>
                     </div>
                     <div class="categoryBlock">
                         <span data-end="*">Category</span>
                         <div class="categoryBlockDropDown">
                             <div class="selectTaskCategory" id="selectTaskCategory" onclick="openCategoryDropDown()">
-                                <span id="selectTaskCategory">Select task category</span>
+                                <span id="selectTaskCategorySpan">Select task category</span>
                                 <div class="dropDownArrow mgTop0">
                                     <img id="dropDownImageCategory" src="./img/arrow_drop_down_down.svg" alt="">
                                 </div>
                             </div>
+                            <div id="selectTaskCategoryRequired" class="requiredFieldText">This field is required</div>
                             <div class="categoryDropDown" id="categoryDropDown">
                                 <div class="categorysInDropDown">
                                     <div onclick="getCategory('Technical Task')">Technical Task</div>
@@ -72,23 +77,70 @@ function renderAddTask() {
                     <div class="subtasksBlock">
                         <span>Subtasks</span>
                         <div class="taskSubtasksContainer" id="taskSubtasksContainer">
-                            <input  onclick="createSubTask()" type="text" name="" id="taskSubtasksInput" class="taskSubtasks" placeholder="Add new subtask">
+                            <input autocomplete="off" onclick="createSubTask()" type="text" name="" id="taskSubtasksInput" class="taskSubtasks" placeholder="Add new subtask">
                             <div id="subtaskIcons">
                                 ${renderSubtaskAddButton()}
                             </div>
                         </div>
-                        <div class="newSubtaskAdded" id="newSubtaskAddedList">
-                        </div>
+                        <div class="newSubtaskAdded" id="newSubtaskAddedList"></div>
+                    </div>
+                    <div class="clearAndCreateButton">
+                        <div onclick="clearAddTask()" class="buttonUnfilled addTaskClearButton">Clear<img src="./img/del.svg" alt=""></div>
+                        <div onclick="createTask()" class="buttonFilled addTaskCreateButton">Create Task<img src="./img/check-white.svg" alt=""></div>
                     </div>
                 </div>
             </div>
         </div>
     `;
-    let date = document.getElementById('date');
+    let date = document.getElementById('addTaskDate');
     date.min = new Date().toISOString().split("T")[0];
     date.max = "2099-01-01";
     content.innerHTML += tempAddContactForm('addTask');
     setActiveNavItem("addTask");
+}
+
+function createTask() {
+    const elements = {
+        title: document.getElementById('addTaskInputTitle'),
+        description: document.getElementById('addTaskTextArea'),
+        date: document.getElementById('addTaskDate'),
+        category: document.getElementById('selectTaskCategorySpan'),
+        titleRequired: document.getElementById('addTaskInputTitleRequired'),
+        descriptionRequired: document.getElementById('addTaskTextAreaRequired'),
+        categoryRequired: document.getElementById('selectTaskCategoryRequired')
+    };
+
+    const isEmpty = (value) => value.trim() === '';
+    const isCategoryNotSelected = elements.category.innerText === 'Select task category';
+
+    elements.titleRequired.style.cssText = isEmpty(elements.title.value) ? 'display:block !important;' : '';
+    elements.descriptionRequired.style.cssText = isEmpty(elements.description.value) ? 'display:block !important;' : '';
+    elements.categoryRequired.style.cssText = isCategoryNotSelected ? 'display:block !important;' : '';
+
+    if (!isEmpty(elements.title.value) && !isEmpty(elements.description.value) && !isCategoryNotSelected) {
+        const newTask = {
+            id: '',
+            status: 'todo',
+            title: elements.title.value,
+            description: elements.description.value,
+            assignedTo: selectedContacts,
+            dueDate: elements.date.value,
+            prio: prioLabel,
+            category: elements.category.innerText,
+            subtasks: subtasksList
+        };
+        allTasks.push(newTask);
+        renderBoard();
+    }
+}
+
+function clearAddTask() {
+    prioLabel = '';
+    renderAddTask();
+}
+
+function getPrio(selectedPrio) {
+    prioLabel = selectedPrio.innerText;
 }
 
 function focusSubtasksInput() {
@@ -117,7 +169,7 @@ function addSubtaskToList() {
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
     taskSubtasksInput.focus();
     if (taskSubtasksInput.value.trim() !== "") {
-        subtasks.push({ name: taskSubtasksInput.value, done: false });
+        subtasksList.push({ name: taskSubtasksInput.value, done: false });
         renderSubtasksInTask();
         let subtaskIcons = document.getElementById('subtaskIcons');
         subtaskIcons.innerHTML = renderSubtaskAddButton();
@@ -129,9 +181,9 @@ function addSubtaskToList() {
 function renderSubtasksInTask() {
     let subtaskList = document.getElementById('newSubtaskAddedList');
     subtaskList.innerHTML = "";
-    for (let i = 0; i < subtasks.length; i++) {
+    for (let i = 0; i < subtasksList.length; i++) {
         subtaskList.innerHTML +=/*html*/`
-            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasks[i]["name"]}</li><div>
+            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasksList[i]["name"]}</li><div>
             <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
                 <div onclick="editSubtasks(${i})">
                     <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
@@ -177,7 +229,7 @@ function editSubtasks(position) {
 
 function confirmEditSubtask(position) {
     let li = document.getElementById(`li${position}`);
-    subtasks[position]['name'] = li.innerText;
+    subtasksList[position]['name'] = li.innerText;
     renderSubtasksInTask();
 }
 
@@ -191,7 +243,7 @@ function getCursorToEndEdittable(li) {
 }
 
 function deleteSubtask(position) {
-    subtasks.splice(position, 1);
+    subtasksList.splice(position, 1);
     renderSubtasksInTask();
 }
 
