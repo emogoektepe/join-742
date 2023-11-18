@@ -2,8 +2,7 @@ function init() {
     includeHTML();
     loadContactsFromStorage();
     initRegister();
-    // renderSummary();
-    renderAddTask();
+    renderSummary();
 }
 
 function setActiveNavItem(activeId) {
