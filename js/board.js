@@ -334,6 +334,7 @@ function renderCategory(category,id){
  */
 function deleteBoardTask(id){
     allTasks.splice(id,1);
+    setTasksStorage();
     renderBoard();
     save();
 }

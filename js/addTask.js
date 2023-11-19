@@ -5,7 +5,7 @@ let subtasksList = [];
 let prioLabel = "";
 const todaysDate = new Date().toJSON().slice(0, 10);
 
-const allTasks = [];
+let allTasks = [];
 
 function renderAddTask() {
     let content = document.getElementById('content');
@@ -17,6 +17,17 @@ function renderAddTask() {
     content.innerHTML += tempAddContactForm('addTask');
     setActiveNavItem("addTask");
 }
+
+async function loadTasksFromStorage() {
+    let storageParseTasks = await getItem('tasks');
+    allTasks = JSON.parse(storageParseTasks.data.value);
+}
+
+function setTasksStorage() {
+    let allTasksAsString = JSON.stringify(allTasks);
+    setItem('tasks', allTasksAsString);
+}
+
 
 function createTask() {
     const elements = {
@@ -49,6 +60,8 @@ function createTask() {
             subtasks: subtasksList
         };
         allTasks.push(newTask);
+        //TODO: clear on Board
+        setTasksStorage();
         renderBoard();
     }
 }
@@ -57,6 +70,7 @@ function clearAddTask() {
     prioLabel = '';
     subtasksList = [];
     renderAddTask();
+    //TODO: clear on Board
 }
 
 function getPrio(selectedPrio) {
