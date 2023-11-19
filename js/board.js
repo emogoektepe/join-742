@@ -73,8 +73,8 @@ function renderBoard() {
  */
 function generateIDs(){
    
-    for (let x = 0; x < task.length; x++){
-        const tsk = task[x];
+    for (let x = 0; x < allTasks.length; x++){
+        const tsk = allTasks[x];
         tsk['id'] = x
         save();  
     }
@@ -96,10 +96,10 @@ function updateBoardHtml(){
  * 
  */
 function filterTodos(){
-    todo = task.filter(t => t['status']== 'todo');
-    inProgress = task.filter(p => p['status']== 'inProgress');
-    awaitFeedback = task.filter(f => f['status']== 'awaitFeedback');
-    done = task.filter(d => d['status'] == 'done');
+    todo = allTasks.filter(t => t['status']== 'todo');
+    inProgress = allTasks.filter(p => p['status']== 'inProgress');
+    awaitFeedback = allTasks.filter(f => f['status']== 'awaitFeedback');
+    done = allTasks.filter(d => d['status'] == 'done');
 }
 /**
  * renders the todos with the status "todo" into the array 'todo' 
@@ -282,7 +282,7 @@ function allowDrop(ev) {
  * @param {string} category 
  */
 function moveTo(category){
-    task[currentDraggedElement]['status'] = category
+    allTasks[currentDraggedElement]['status'] = category
     save();
     renderBoard();
 }
@@ -333,7 +333,7 @@ function renderCategory(category,id){
  * @param {integer} id 
  */
 function deleteBoardTask(id){
-    task.splice(id,1);
+    allTasks.splice(id,1);
     renderBoard();
     save();
 }

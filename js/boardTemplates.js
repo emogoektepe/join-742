@@ -19,7 +19,7 @@ function renderBoardHtml(){
                 Add Task
                 <img src="./img/add.svg">
             </div>
-            <div class="respBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+            <div class="respBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); renderAddTask()">
                 <img src="./img/responsiveAddButton.svg">
             </div>
             

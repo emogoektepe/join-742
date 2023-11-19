@@ -161,7 +161,7 @@ function renderPrio(prio,id,array,i){
  */
 function checkBox(id,k){
 
-    let subtask = task[id]['subtasks'][k]
+    let subtask = allTasks[id]['subtasks'][k]
 
     subtask['done'] = !subtask['done']
     save();

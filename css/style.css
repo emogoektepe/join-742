@@ -36,7 +36,7 @@ h1 {
     }
 
     to{
-        transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 30%));
+        transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 37%));
         height: 122px;
     }
 }
