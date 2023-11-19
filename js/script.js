@@ -47,7 +47,6 @@ function renderCurrentUser(){
      document.getElementById('currentUserName').innerHTML = user || '';
      document.getElementById('mobileCurrentUserName').innerHTML = user || '';
     
-     renderInitials();
 }
 
 function renderInitials(){
