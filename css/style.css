@@ -401,7 +401,7 @@ h1 {
 
 #content {
     background-color: #F6F7F8;
-    height: calc(100vh - 96px);
+    height: calc(100vh - 13vh);
     overflow: auto;
 }
 

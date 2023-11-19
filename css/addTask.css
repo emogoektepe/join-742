@@ -102,8 +102,8 @@
 
 .formLeftSide textarea {
     margin-top: 8px;
-    height: calc(120px - 38px);
-    width: calc(440px - 34px);
+    height: 120px;
+    width: 100%;
     padding: 18px 16px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -112,6 +112,7 @@
     font-weight: 400;
     font-size: 21px;
     line-height: 25.2px;
+    box-sizing: border-box;
 }
 
 .formLeftSide textarea::placeholder {
@@ -549,4 +550,58 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .addTaskClearButton:active {
     filter: invert(0%) sepia(96%) saturate(0%) hue-rotate(42deg) brightness(104%) contrast(103%);
+}
+
+@media (max-width: 1325px) {
+    .addTaskContent {
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .formSeparator {
+        margin-left: 10.25px;
+        margin-right: 10.25px;
+    }
+}
+
+@media (max-width: 1175px) {
+    .formRightSide {
+        width: 350px;
+    }
+    .formLeftSide {
+        width: 350px;
+    }
+    .addTaskContent {
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .prio div {
+         font-size: 18px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .form {
+        display: block;
+    }
+    .formSeparator {
+        display: none;
+    }
+    .bottomText {
+        display: none;
+    }
+    .formRightSide {
+        padding-top: 30px;
+    }
+    .addTaskContent h1{
+        padding-top: 20px;
+    }
+    .clearAndCreateButton {
+        justify-content: center;
+        margin-top: 110px;
+        padding-bottom: 20px;
+    }
 }
