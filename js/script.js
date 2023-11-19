@@ -44,13 +44,17 @@ function logOutUser(){
 
 function renderCurrentUser(){
 
+    if(currentUser.length > 0){
+
     let user = currentUser[0]['name'];
      document.getElementById('currentUserName').innerHTML = user || '';
      document.getElementById('mobileCurrentUserName').innerHTML = user || '';
-    
+    }
 }
 
 function renderInitials(){
+
+    if(currentUser.length > 0){
     let fullname = currentUser[0]['name'];
     let names = fullname.split(" ")
     let firstNameCharacter = names[0].charAt(0)
@@ -60,12 +64,13 @@ function renderInitials(){
     }else{
         renderSingleinitials(firstNameCharacter);
     }
+    }
 }
 
 function renderDoubleInitials(names,firstNameCharacter){
 
     let secondNameCharacter = names[1].charAt(0)
-    document.getElementById('initials').innerHTML += `${firstNameCharacter}${secondNameCharacter}`;
+    document.getElementById('initials').innerHTML = `${firstNameCharacter}${secondNameCharacter}`;
 }
 
 function renderSingleinitials(firstNameCharacter){
