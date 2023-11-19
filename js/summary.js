@@ -19,7 +19,7 @@ function renderSummary() {
                             <img class="summaryIcons" src="../img/summaryPencil.svg" alt="">
                         </div>
                         <div class="toDoRight">
-                            <span class="taskNumber">1</span>
+                            <span id="toDoNumber" class="taskNumber"></span>
                             <span class="taskText">To-do</span>
                         </div>
                     </div>
@@ -28,7 +28,7 @@ function renderSummary() {
                             <img class="summaryIcons" src="../img/summaryCheck.svg" alt="">
                         </div>
                         <div class="doneRight">
-                            <span class="taskNumber">1</span>
+                            <span id="doneNumber" class="taskNumber"></span>
                             <span class="taskText">Done</span>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ function renderSummary() {
                                 <img src="../img/summaryUrgent.svg" alt="">
                             </div>
                             <div class="urgentCount"> 
-                                <span class="urgentNumber">1</span>
+                                <span id="urgentNumber" class="urgentNumber"></span>
                                 <span class="urgentText">Urgent</span>
                             </div>
                         </div>
@@ -53,15 +53,15 @@ function renderSummary() {
                 </div>
                 <div class="thirdRow">
                     <div class="tasksInBoard" onclick="renderBoard()">
-                        <span class="taskNumber">5</span>
+                        <span id="TasksInBoardNumber" class="taskNumber"></span>
                         <span class="taskText">Tasks in Board</span>
                     </div>
                     <div class="tasksInProgress" onclick="renderBoard()">
-                        <span class="taskNumber">2</span>
+                        <span id="TasksInProgressNumber" class="taskNumber"></span>
                         <span class="taskText">Tasks in Progress</span>
                     </div>
                     <div class="awaitingFeedback" onclick="renderBoard()">
-                        <span class="taskNumber">2</span>
+                        <span id="awaitingFeedbackNumber" class="taskNumber"></span>
                         <span class="taskText">Awaiting Feedback</span>
                     </div>
                 </div>
@@ -85,4 +85,22 @@ function renderSummary() {
     loadCurrentUser();
     setActiveNavItem("summary");
     renderGreetingMessage();
+    updateSummaryNumbers();
 }
+
+function updateSummaryNumbers() {
+
+    const toDoNumber = task.filter(item => item.status === 'todo').length;
+    const doneNumber = task.filter(item => item.status === 'done').length;
+    const urgentNumber = task.filter(item => item.prio === 'urgent').length;
+    const TasksInBoardNumber = task.length;
+    const TasksInProgressNumber = task.filter(item => item.status === 'inProgress').length;
+    const awaitingFeedbackNumber = task.filter(item => item.status === 'awaitFeedback').length;
+  
+    document.getElementById('toDoNumber').innerText = toDoNumber;
+    document.getElementById('doneNumber').innerText = doneNumber;
+    document.getElementById('urgentNumber').innerText = urgentNumber;
+    document.getElementById('TasksInBoardNumber').innerText = TasksInBoardNumber;
+    document.getElementById('TasksInProgressNumber').innerText = TasksInProgressNumber;
+    document.getElementById('awaitingFeedbackNumber').innerText = awaitingFeedbackNumber;
+  }
