@@ -331,8 +331,6 @@
     display: none;
     position: fixed;
     flex-direction: column;
-    margin-top: 140px;
-    margin-bottom: 140px;
     top: 0;
     left: 0;
     width: 100%;
@@ -340,13 +338,9 @@
     background: rgba(246, 247, 248);
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 998;
 
 }
-
-/* .mobileGreetingBox h2 {
-    margin-bottom: 222px;
-} */
 
 /*RESPONSIVENESS*/
 
@@ -531,7 +525,7 @@
         animation: fadeOut 1s ease-in-out 2s forwards;
     }
 
-     @keyframes fadeOut {
+      @keyframes fadeOut {
         0% {
             opacity: 1;
         }
@@ -541,6 +535,4 @@
             display: none;
         }
     } 
-
-
 }
