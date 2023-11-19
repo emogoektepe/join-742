@@ -54,15 +54,15 @@ function renderCardPrio(prio,id){
     let img;
 
     switch (prio) {
-        case 'low':
+        case 'Low':
             img = '<img src="img/prioLow.svg"></img>'
             break;
         
-        case 'medium': 
+        case 'Medium': 
             img = '<img src="img/prioMid.svg"></img>'
             break;
 
-        case 'urgent':
+        case 'Urgent':
             img = '<img src="img/prioUp.svg"></img>'
             break;
     }
