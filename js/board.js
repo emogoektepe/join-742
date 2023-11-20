@@ -9,8 +9,6 @@ let currentDraggedElement;
  * 
  */
 
-load();
-
 function renderBoard() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;

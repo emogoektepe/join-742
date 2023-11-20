@@ -39,13 +39,11 @@ function renderGreetingMessage() {
 
 function logOutUser(){
     currentUser.splice(0,1)
-    saveCurrentUser();
+    // saveCurrentUserStorage();
 }  
 
 function renderCurrentUser(){
-
     if(currentUser.length > 0){
-
     let user = currentUser[0]['name'];
      document.getElementById('currentUserName').innerHTML = user || '';
      document.getElementById('mobileCurrentUserName').innerHTML = user || '';

@@ -21,6 +21,7 @@ function renderAddTask() {
 async function loadTasksFromStorage() {
     let storageParseTasks = await getItem('tasks');
     allTasks = JSON.parse(storageParseTasks.data.value);
+    updateSummaryNumbers();
 }
 
 function setTasksStorage() {

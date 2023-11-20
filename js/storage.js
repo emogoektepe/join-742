@@ -13,28 +13,12 @@ async function getItem(key) {
     return fetch(url).then(res => res.json());
 }
 
-//local saves
+// async function saveCurrentUserStorage(){
+//     let storageParse = await getItem('currentUser');
+//     storageParse = JSON.parse(storageParse.data.value);
+// }
 
-function saveCurrentUser(){
-    let currentUserAsString = JSON.stringify(currentUser);
-    localStorage.setItem('currentUser',currentUserAsString );
-}
-
-function save(){
-
-    let taskAsString = JSON.stringify(task);
-    localStorage.setItem('task',taskAsString);
-}
-
-function loadCurrentUser(){
-    let currentUserAsString = localStorage.getItem('currentUser')
-    currentUser = JSON.parse(currentUserAsString)
-}
-
-function load(){
-    let taskAsString = localStorage.getItem('task')
-    if(taskAsString){
-        task = JSON.parse(taskAsString)
-    }else(TASK_Template)
-}
-
+// async function loadCurrentUserStorage(){
+//     let currentUserAsString = JSON.stringify(currentUser);
+//     setItem('currentUser', currentUserAsString);
+// }

@@ -1,4 +1,5 @@
 function renderSummary() {
+    
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
 
@@ -81,25 +82,23 @@ function renderSummary() {
     </div>
 
     `;
-    loadCurrentUser();
+    // loadCurrentUser();
     setActiveNavItem("summary");
     renderGreetingMessage();
-    updateSummaryNumbers();
 }
 
 function updateSummaryNumbers() {
+    const toDoNumber = allTasks.filter(item => item.status === 'todo').length;
+    const doneNumber = allTasks.filter(item => item.status === 'done').length;
+    const urgentNumber = allTasks.filter(item => item.prio === 'urgent').length;
+    const TasksInBoardNumber = allTasks.length;
+    const TasksInProgressNumber = allTasks.filter(item => item.status === 'inProgress').length;
+    const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;
 
-    const toDoNumber = task.filter(item => item.status === 'todo').length;
-    const doneNumber = task.filter(item => item.status === 'done').length;
-    const urgentNumber = task.filter(item => item.prio === 'urgent').length;
-    const TasksInBoardNumber = task.length;
-    const TasksInProgressNumber = task.filter(item => item.status === 'inProgress').length;
-    const awaitingFeedbackNumber = task.filter(item => item.status === 'awaitFeedback').length;
-  
     document.getElementById('toDoNumber').innerText = toDoNumber;
     document.getElementById('doneNumber').innerText = doneNumber;
     document.getElementById('urgentNumber').innerText = urgentNumber;
     document.getElementById('TasksInBoardNumber').innerText = TasksInBoardNumber;
     document.getElementById('TasksInProgressNumber').innerText = TasksInProgressNumber;
     document.getElementById('awaitingFeedbackNumber').innerText = awaitingFeedbackNumber;
-  }
+}
