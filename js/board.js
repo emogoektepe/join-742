@@ -1,49 +1,3 @@
-let TASK_Template = [{   'id': '',
-                'status': 'todo',
-                'title': 'Build Drag and Drop',
-                'description': 'using turtorial an js to build it',
-                'assignedTo' : ['Johannes Braun','Emre','Simon','Jo'],
-                'dueDate': 14.05,
-                'prio': 'urgent',
-                'category': 'User Story',
-                'subtasks': [],
-               },
-                
-                {'id': '',
-                'status': 'todo',
-                'title': 'Set variables',
-                'description': 'gets the Html Code dynamic',
-                'assignedTo' : ['Emre','Simon'],
-                'dueDate': 15.05,
-                'prio':'medium',
-                'category': 'Technical Task',
-                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false},{'name':'Aufgabe 3','done':false}],
-                },
-                
-                {'id': '',
-                'status': 'todo',
-                'title': 'Ready CV',
-                'description': 'write a CV an import projects',
-                'assignedTo' : ['Emre','Jo'],
-                'dueDate': 16.05,
-                'prio': 'low', 
-                'category': 'User Story',
-                'subtasks': [{'name':'Aufgabe 1','done':false},{'name':'Aufgabe 2','done':false}],
-                },
-
-                {'id': '',
-                'status': 'todo',
-                'title': 'Layout',
-                'description': 'use CSS to build a layout for the Project',
-                'assignedTo' :['Simon','Jo'],
-                'dueDate': 17.05,
-                'prio': 'urgent',
-                'category': 'Technical Task',
-                'subtasks': [{'name':'Aufgabe 1','done':false}],
-                }
-]
-
-let task = TASK_Template
 let todo = []
 let inProgress = []
 let awaitFeedback = []
@@ -64,7 +18,6 @@ function renderBoard() {
     setActiveNavItem("board");
     filterTodos();
     updateBoardHtml();
-
 }
 
 /**
@@ -76,7 +29,7 @@ function generateIDs(){
     for (let x = 0; x < allTasks.length; x++){
         const tsk = allTasks[x];
         tsk['id'] = x
-        save();  
+        setTasksStorage();  
     }
 }
 /**
@@ -89,7 +42,7 @@ function updateBoardHtml(){
     renderInProgressContent();
     renderAwaitFeedbackContent();
     renderDoneContent();
-    save();
+    setTasksStorage();
 }
 /**
  * filters the tasks into the individually arrays
@@ -283,7 +236,7 @@ function allowDrop(ev) {
  */
 function moveTo(category){
     allTasks[currentDraggedElement]['status'] = category
-    save();
+    setTasksStorage();
     renderBoard();
 }
 /**
@@ -336,7 +289,7 @@ function deleteBoardTask(id){
     allTasks.splice(id,1);
     setTasksStorage();
     renderBoard();
-    save();
+    setTasksStorage();
 }
 
 
