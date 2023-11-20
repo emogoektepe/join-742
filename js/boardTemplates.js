@@ -185,8 +185,26 @@ function renderTaskOverlayHtml(array,i){
 
     <div class="closeSection">
         <div onclick="deleteBoardTask(${array[i]['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
-        <div class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
+        <div onclick="renderBoardEditForm()" class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
     </div>
 </div>`
 }
+function renderBoardEditForm(){
 
+    document.getElementById('taskOverlay').innerHTML = /*html*/ `
+
+    <div class="headerEditForm">
+        <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">    
+    </div>
+    <div class="editTemplate">
+        ${tempRenderAddTask()}
+    </div>
+    <div class="editSubmitButton">
+        <div class="buttonFilled saveEditButton">
+            Ok <img src="./img/check-white.svg">
+        <div>
+    </div> 
+
+    `
+
+}
