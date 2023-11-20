@@ -39,7 +39,6 @@ function renderGreetingMessage() {
 
 function logOutUser(){
     currentUser.splice(0,1)
-    // saveCurrentUserStorage();
 }  
 
 function renderCurrentUser(){
@@ -51,7 +50,6 @@ function renderCurrentUser(){
 }
 
 function renderInitials(){
-
     if(currentUser.length > 0){
     let fullname = currentUser[0]['name'];
     let names = fullname.split(" ")

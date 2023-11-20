@@ -40,8 +40,7 @@ function checkUser(email, password) {
     let passwordMsg = document.getElementById("loginPasswordInputMsg");
 
     if (user) {
-        currentUser.push(user)
-        // saveCurrentUserStorage();
+        currentUser.push(user);
         console.log('Benutzer gefunden');
         window.location.href = 'application.html'; // Weiterleitung
     } else {
@@ -77,4 +76,3 @@ function toggleCheckBoxRememberMe() {
     uncheckedBox.style.display = "block";
     }
 }
-

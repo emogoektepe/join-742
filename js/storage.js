@@ -12,13 +12,3 @@ async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json());
 }
-
-// async function saveCurrentUserStorage(){
-//     let storageParse = await getItem('currentUser');
-//     storageParse = JSON.parse(storageParse.data.value);
-// }
-
-// async function loadCurrentUserStorage(){
-//     let currentUserAsString = JSON.stringify(currentUser);
-//     setItem('currentUser', currentUserAsString);
-// }
