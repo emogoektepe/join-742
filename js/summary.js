@@ -1,3 +1,6 @@
+/**
+ * This function renders the content of the summary 
+ */
 async function renderSummary() {
 
     let content = document.getElementById('content');
@@ -90,6 +93,9 @@ async function renderSummary() {
     renderInitials();
 }
 
+/**
+ * This function is utilized to display the amount of different tasks in their category
+ */
 function updateSummaryNumbers() {
     const toDoNumber = allTasks.filter(item => item.status === 'todo').length;
     const doneNumber = allTasks.filter(item => item.status === 'done').length;

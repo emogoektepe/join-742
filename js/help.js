@@ -1,3 +1,6 @@
+/**
+ * This function is used to render the help page
+ */
 function renderHelp() {
 
     let content = document.getElementById('content');
