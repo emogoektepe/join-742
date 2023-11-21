@@ -41,6 +41,7 @@ function checkUser(email, password) {
 
     if (user) {
         currentUser.push(user);
+        setCurrentUserAtStorage();
         console.log('Benutzer gefunden');
         window.location.href = 'application.html'; // Weiterleitung
     } else {

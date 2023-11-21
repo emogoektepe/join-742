@@ -1,5 +1,5 @@
-function renderSummary() {
-    
+async function renderSummary() {
+
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
 
@@ -82,9 +82,10 @@ function renderSummary() {
     </div>
 
     `;
-    // loadCurrentUser();
+    await getCurrentUserFromStorage();
     setActiveNavItem("summary");
     renderGreetingMessage();
+    updateSummaryNumbers();
 }
 
 function updateSummaryNumbers() {

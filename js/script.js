@@ -35,10 +35,12 @@ function renderGreetingMessage() {
     document.getElementById('greetingMessage').innerHTML = greeting;
     document.getElementById('mobileGreetingMessage').innerHTML = greeting;
     renderCurrentUser();
+    renderInitials();
 };
 
 function logOutUser(){
     currentUser.splice(0,1)
+    setCurrentUserAtStorage();
 }  
 
 function renderCurrentUser(){
@@ -71,4 +73,15 @@ function renderDoubleInitials(names,firstNameCharacter){
 
 function renderSingleinitials(firstNameCharacter){
     document.getElementById('initials').innerHTML = `${firstNameCharacter}`;
+}
+
+function setCurrentUserAtStorage(){
+    let userAsString = JSON.stringify(currentUser);
+    setItem('currentUser',userAsString);
+}
+
+async function getCurrentUserFromStorage(){
+    let parseUser = await getItem('currentUser');
+    currentUser = JSON.parse(parseUser.data.value)
+    console.log(currentUser)
 }
