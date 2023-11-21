@@ -86,6 +86,8 @@ async function renderSummary() {
     setActiveNavItem("summary");
     renderGreetingMessage();
     updateSummaryNumbers();
+    renderCurrentUser();
+    renderInitials();
 }
 
 function updateSummaryNumbers() {

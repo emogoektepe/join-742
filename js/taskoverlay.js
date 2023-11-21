@@ -164,7 +164,6 @@ function checkBox(id,k){
     let subtask = allTasks[id]['subtasks'][k]
 
     subtask['done'] = !subtask['done']
-    save();
     changeBox(subtask,id,k);
 }
 /**
@@ -240,9 +239,9 @@ function renderBoardEditForm(idFromTask) {
             <div class="prioBlock">
                 <span>Prio</span>
                 <div class="prio">
-                    <div onclick="changePrioColor(this, '#FF3D00'); getPrio(this)">Urgent<img src="./img/prioUp.svg" alt=""></div>
-                    <div onclick="changePrioColor(this, '#FFA800'); getPrio(this)">Medium<img src="./img/prioMid.svg" alt=""></div>
-                    <div onclick="changePrioColor(this, '#7AE229'); getPrio(this)">Low<img src="./img/prioLow.svg" alt=""></div>
+                    <div id="editPrioUrgent" onclick="changePrioColor(this, '#FF3D00'); getPrio(this)">Urgent<img src="./img/prioUp.svg" alt=""></div>
+                    <div id="editPrioMedium" onclick="changePrioColor(this, '#FFA800'); getPrio(this)">Medium<img src="./img/prioMid.svg" alt=""></div>
+                    <div id="editPrioLow" onclick="changePrioColor(this, '#7AE229'); getPrio(this)">Low<img src="./img/prioLow.svg" alt=""></div>
                 </div>
             </div>
             <div class="categoryBlock">
@@ -271,7 +270,7 @@ function renderBoardEditForm(idFromTask) {
                         ${renderSubtaskAddButton()}
                     </div>
                 </div>
-                <div class="newSubtaskAdded" id="newSubtaskAddedList"></div>
+                <div class="newSubtaskAdded" id="newSubtaskAddedListEdit"></div>
             </div>
             <div class="clearAndCreateButton">
                 <div onclick="clearAddTask()" class="buttonUnfilled addTaskClearButton">Clear<img src="./img/del.svg" alt=""></div>
@@ -294,10 +293,100 @@ function renderBoardEditForm(idFromTask) {
 function renderEditContent(idFromTask){
 
     let actuellyTask = allTasks[idFromTask]
+    let editPrio = actuellyTask['prio']
     document.getElementById('addTaskInputTitleEdit').value =  `${actuellyTask['title']}`
     document.getElementById('addTaskTextAreaEdit').value = `${actuellyTask['description']}`
     document.getElementById('selectTaskCategorySpan').innerText = `${actuellyTask['category']}`
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
+    renderEditPrio(editPrio);
+    renderEditSubtasks(actuellyTask);
+}
+
+function renderEditPrio(prio){    
+        switch (prio) {
+            case 'Urgent':
+                changePrioColor(editPrioUrgent, '#FF3D00')
+                break;
+            
+            case 'Medium': 
+                changePrioColor(editPrioMedium, '#FFA800')
+                break;
+    
+            case 'Low':
+                changePrioColor(editPrioLow, '#7AE229')            
+                break;
+        }
+}
+//überarbeiten mit Emre || Code Sparen
+function renderEditSubtasks(actuellyTask){
+    let subtasks = actuellyTask['subtasks']
+
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i]['name'];
+        subtasksList.push({ name: subtask, done: false });
+    }
+
+    renderEditSubtasksInTask();
+}
+
+function renderEditSubtasksInTask() {
+    let subtaskList = document.getElementById('newSubtaskAddedListEdit');
+    subtaskList.innerHTML = "";
+    for (let i = 0; i < subtasksList.length; i++) {
+        subtaskList.innerHTML +=/*html*/`
+            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="editLi${i}">${subtasksList[i]["name"]}</li><div>
+            <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
+                <div onclick="editBoardSubtasks(${i})">
+                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
+                </div>
+                <div>
+                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
+                </div>
+                <div onclick="deleteBoardSubtask(${i})">
+                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
+                </div>
+            </div>
+        `;
+    }
+}
+
+function editBoardSubtasks(position) {
+    let li = document.getElementById(`editLi${position}`);
+    let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
+    if (li) {
+        li.parentElement.classList.remove('liContainerHover')
+        li.parentElement.style.backgroundColor = 'white';
+        li.parentElement.style.borderBottom = '1px solid #005DFF';
+        li.style.display = "flex";
+        li.style.paddingLeft = "16px !important";
+        li.contentEditable = "true";
+        li.outline = "none";
+        li.focus();
+        getCursorToEndEdittable(li)
+        editDeleteContainer.classList.remove('dNoneDnC');
+        editDeleteContainer.innerHTML =/*html*/`
+            <div onclick="deleteBoardSubtask(${position})">
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div onclick="confirmEditBoardSubtask(${position})">
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>
+        `;
+    }
+}
+
+function confirmEditBoardSubtask(position) {
+    let li = document.getElementById(`editLi${position}`);
+    subtasksList[position]['name'] = li.innerText;
+    renderEditSubtasksInTask();
+}
+
+function deleteBoardSubtask(position) {
+    subtasksList.splice(position, 1);
+    renderEditSubtasksInTask();
 }
 
 
