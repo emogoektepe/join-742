@@ -308,7 +308,13 @@ h1 {
     margin: 40px 8px;
 }
 
-.mainDivThree div:hover {
+.loginLinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginLinks > a:hover {
     font-weight: bold;
     color: rgb(46, 185, 255);
 }
@@ -478,13 +484,6 @@ h1 {
 .respSignUpBtn:hover {
     background: rgb(46, 185, 255);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-}
-
-
-.loginLinks{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 @media(max-width:1300px){
