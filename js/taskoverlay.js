@@ -299,7 +299,7 @@ function renderEditContent(idFromTask){
     document.getElementById('selectTaskCategorySpan').innerText = `${actuellyTask['category']}`
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
     renderEditPrio(editPrio);
-    renderEditSubtasks(actuellyTask);
+    renderEditSubtasksInTask(actuellyTask,idFromTask);
 }
 
 function renderEditPrio(prio){    
@@ -318,31 +318,23 @@ function renderEditPrio(prio){
         }
 }
 //überarbeiten mit Emre || Code Sparen
-function renderEditSubtasks(actuellyTask){
+
+
+function renderEditSubtasksInTask(actuellyTask,idFromTask) {
     let subtasks = actuellyTask['subtasks']
-
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i]['name'];
-        subtasksList.push({ name: subtask, done: false });
-    }
-
-    renderEditSubtasksInTask();
-}
-
-function renderEditSubtasksInTask() {
     let subtaskList = document.getElementById('newSubtaskAddedListEdit');
     subtaskList.innerHTML = "";
-    for (let i = 0; i < subtasksList.length; i++) {
+    for (let i = 0; i < subtasks.length; i++) {
         subtaskList.innerHTML +=/*html*/`
-            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="editLi${i}">${subtasksList[i]["name"]}</li><div>
+            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="editLi${i}">${subtasks[i]["name"]}</li><div>
             <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
-                <div onclick="editBoardSubtasks(${i})">
+                <div onclick="editBoardSubtasks(${i},${idFromTask})">
                     <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
                 </div>
                 <div>
                     <img style="height: 24px" src="./img/borderdash.svg" alt="">
                 </div>
-                <div onclick="deleteBoardSubtask(${i})">
+                <div onclick="deleteBoardSubtask(${i},${idFromTask})">
                     <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
                 </div>
             </div>
@@ -350,7 +342,7 @@ function renderEditSubtasksInTask() {
     }
 }
 
-function editBoardSubtasks(position) {
+function editBoardSubtasks(position,idFromTask) {
     let li = document.getElementById(`editLi${position}`);
     let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
     if (li) {
@@ -365,28 +357,31 @@ function editBoardSubtasks(position) {
         getCursorToEndEdittable(li)
         editDeleteContainer.classList.remove('dNoneDnC');
         editDeleteContainer.innerHTML =/*html*/`
-            <div onclick="deleteBoardSubtask(${position})">
+            <div onclick="deleteBoardSubtask(${position},${idFromTask})">
                 <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
             </div>
             <div>
                 <img style="height: 24px" src="./img/borderdash.svg" alt="">
             </div>
-            <div onclick="confirmEditBoardSubtask(${position})">
+            <div onclick="confirmEditBoardSubtask(${position},${idFromTask})">
                 <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
             </div>
         `;
     }
 }
 
-function confirmEditBoardSubtask(position) {
+function confirmEditBoardSubtask(position,idFromTask) {
+    let actuellyTask = allTasks[idFromTask]
     let li = document.getElementById(`editLi${position}`);
-    subtasksList[position]['name'] = li.innerText;
-    renderEditSubtasksInTask();
+    actuellyTask['subtasks'][position]['name'] = li.innerText;
+    renderEditSubtasksInTask(actuellyTask,idFromTask);
 }
 
-function deleteBoardSubtask(position) {
-    subtasksList.splice(position, 1);
-    renderEditSubtasksInTask();
+function deleteBoardSubtask(position,idFromTask) {
+    let actuellyTask = allTasks[idFromTask]
+    let subtasks = actuellyTask['subtasks']
+    subtasks.splice(position, 1);
+    renderEditSubtasksInTask(actuellyTask,idFromTask);
 }
 
 
