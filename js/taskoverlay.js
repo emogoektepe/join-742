@@ -265,8 +265,8 @@ function renderBoardEditForm(idFromTask) {
             <div class="subtasksBlock">
                 <span>Subtasks</span>
                 <div class="taskSubtasksContainer" id="taskSubtasksContainer">
-                    <input autocomplete="off" onclick="createSubTask()" type="text" name="" id="taskSubtasksInputEdit" class="taskSubtasks" placeholder="Add new subtask">
-                    <div id="subtaskIcons">
+                    <input autocomplete="off" onclick="createSubTaskAtEditBoard(${idFromTask})" type="text" name="" id="taskSubtasksInputEdit" class="taskSubtasks" placeholder="Add new subtask">
+                    <div id="subtaskIconsEditBoard">
                         ${renderSubtaskAddButton()}
                     </div>
                 </div>
@@ -384,6 +384,44 @@ function deleteBoardSubtask(position,idFromTask) {
     renderEditSubtasksInTask(actuellyTask,idFromTask);
 }
 
+function createSubTaskAtEditBoard(idFromTask) {
+    let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
+    subtaskIcons.innerHTML = /*html*/`
+        <div class="deleteAndCheck">
+            <div onclick="deleteTaskInInputEditBoard()">
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div onclick="addSubtaskToBoardList(${idFromTask})">
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>
+        </div>
+    `;
+}
+
+function deleteTaskInInputEditBoard() {
+    let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
+    let taskSubtasksInput = document.getElementById('taskSubtasksInputEdit');
+    taskSubtasksInput.value = "";
+    subtaskIcons.innerHTML = renderSubtaskAddButton();
+}
+
+function addSubtaskToBoardList(idFromTask) {
+    let actuellyTask = allTasks[idFromTask]
+    let subtasks = actuellyTask['subtasks']
+    let taskSubtasksInput = document.getElementById('taskSubtasksInputEdit');
+    taskSubtasksInput.focus();
+    if (taskSubtasksInput.value.trim() !== "") {
+        subtasks.push({ name: taskSubtasksInput.value, done: false });
+        renderEditSubtasksInTask(actuellyTask,idFromTask);
+        let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
+        subtaskIcons.innerHTML = renderSubtaskAddButton();
+        taskSubtasksInput.value = "";
+        taskSubtasksInput.blur();
+    }
+}
 
 
 
