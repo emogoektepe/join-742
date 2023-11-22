@@ -1,4 +1,4 @@
-async function renderSummary() {
+function renderSummary() {
 
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
@@ -82,11 +82,9 @@ async function renderSummary() {
     </div>
 
     `;
-    await getCurrentUserFromStorage();
     setActiveNavItem("summary");
     renderGreetingMessage();
     updateSummaryNumbers();
-    renderCurrentUser();
     renderInitials();
 }
 

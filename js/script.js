@@ -1,9 +1,11 @@
-function init() {
-    includeHTML();
+async function init() {
+    await includeHTML();
     loadContactsFromStorage();
     loadTasksFromStorage();
     initRegister();
     renderSummary();
+    renderInitials();
+    
 }
 
 function setActiveNavItem(activeId) {
@@ -34,34 +36,21 @@ function renderGreetingMessage() {
 
     document.getElementById('greetingMessage').innerHTML = greeting;
     document.getElementById('mobileGreetingMessage').innerHTML = greeting;
-    renderCurrentUser();
-    renderInitials();
+    getCurrentUserName();
 };
 
-function logOutUser(){
-    currentUser.splice(0,1)
-    setCurrentUserAtStorage();
-}  
-
-function renderCurrentUser(){
-    if(currentUser.length > 0){
-    let user = currentUser[0]['name'];
-     document.getElementById('currentUserName').innerHTML = user || '';
-     document.getElementById('mobileCurrentUserName').innerHTML = user || '';
-    }
-}
-
 function renderInitials(){
-    if(currentUser.length > 0){
-    let fullname = currentUser[0]['name'];
-    let names = fullname.split(" ")
-    let firstNameCharacter = names[0].charAt(0)
-    
-    if(names.length > 1){
-        renderDoubleInitials(names,firstNameCharacter);
-    }else{
-        renderSingleinitials(firstNameCharacter);
-    }
+    let params = new URLSearchParams(window.location.search);
+    let username = params.get('username');
+ 
+    if(username ==! null){
+        let names = username.split(" ")
+        let firstNameCharacter = names[0].charAt(0)
+        if(names.length > 1){
+            renderDoubleInitials(names,firstNameCharacter);
+        }else{
+            renderSingleinitials(firstNameCharacter);
+        }
     }
 }
 
@@ -75,13 +64,10 @@ function renderSingleinitials(firstNameCharacter){
     document.getElementById('initials').innerHTML = `${firstNameCharacter}`;
 }
 
-function setCurrentUserAtStorage(){
-    let userAsString = JSON.stringify(currentUser);
-    setItem('currentUser',userAsString);
+function getCurrentUserName(){
+    let params = new URLSearchParams(window.location.search);
+    let username = params.get('username');
+    document.getElementById('currentUserName').innerHTML = username
+    document.getElementById('mobileCurrentUserName').innerHTML = username
 }
 
-async function getCurrentUserFromStorage(){
-    let parseUser = await getItem('currentUser');
-    currentUser = JSON.parse(parseUser.data.value)
-    console.log(currentUser)
-}

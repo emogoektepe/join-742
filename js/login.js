@@ -1,4 +1,4 @@
-let currentUser = [];
+let currentName;
 
 function validateEmail() {
     let emailContainer = document.getElementById("loginMailInputContainer");
@@ -38,12 +38,11 @@ function checkUser(email, password) {
     let user = users.find(u => u.email === email && u.password === password);
     let passwordContainer = document.getElementById("loginPasswordInputContainer");
     let passwordMsg = document.getElementById("loginPasswordInputMsg");
+    let index = users.indexOf(user);
+    let currentName = index !== -1 ? users[index]['name'] : null;
 
     if (user) {
-        currentUser.push(user);
-        setCurrentUserAtStorage();
-        console.log('Benutzer gefunden');
-        window.location.href = 'application.html'; // Weiterleitung
+        window.location.href = 'application.html?username=' + encodeURIComponent(currentName);
     } else {
         console.log('Benutzer nicht gefunden');
         passwordContainer.style.borderColor = "red";
@@ -51,6 +50,7 @@ function checkUser(email, password) {
         return false; // Das Formular wird nicht gesendet
     }
 }
+
 
 function login() {
     // Überprüfung der E-Mail und des Passworts mit den Validierungsfunktionen
