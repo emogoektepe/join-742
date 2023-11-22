@@ -1,5 +1,9 @@
 let currentName;
 
+/**
+ * This function is used to validate the email input
+ * @returns error if validation does not succeed
+ */
 function validateEmail() {
     let emailContainer = document.getElementById("loginMailInputContainer");
     let emailInput = document.getElementById("loginMailInput");
@@ -17,6 +21,10 @@ function validateEmail() {
     }
 }
 
+/**
+ * This function is used to validate the password input
+ * @returns error if validation does not succeed
+ */
 function validatePassword() {
     let passwordContainer = document.getElementById("loginPasswordInputContainer");
     let passwordInput = document.getElementById("loginPasswordInput");
@@ -34,6 +42,12 @@ function validatePassword() {
     }
 }
 
+/**
+ * This function is used to compare email and password
+ * @param {string} email - this is the email of the user 
+ * @param {string} password - this is the password of the user
+ * @returns error if email and password don't match
+ */
 function checkUser(email, password) {
     let user = users.find(u => u.email === email && u.password === password);
     let passwordContainer = document.getElementById("loginPasswordInputContainer");
@@ -50,7 +64,10 @@ function checkUser(email, password) {
         return false; // Das Formular wird nicht gesendet
     }
 }
-
+/**
+ * This function is used to validate email and password and checks if the user is already signed up
+ * @returns error if validation doesn't succeed
+ */
 
 function login() {
     // Überprüfung der E-Mail und des Passworts mit den Validierungsfunktionen
@@ -65,6 +82,9 @@ function login() {
     return checkUser(email, password);
 }
 
+/**
+ * This function is used to toggle a checkbox for the user to decide, wether to be remembered by the website or not
+ */
 function toggleCheckBoxRememberMe() {
     let checkedBox = document.getElementById('checkBoxChecked');
     let uncheckedBox = document.getElementById('checkBoxUnchecked');

@@ -1,3 +1,6 @@
+/**
+ * This function is used to open/close the drop down menu onclick of the initials div element
+ */
 function toggleDropdown() {
     let dropdown = document.getElementById("dropdown");
     if (dropdown.style.display === "block") {
@@ -7,6 +10,9 @@ function toggleDropdown() {
     }
 }
 
+/**
+ * This function is used to close the drop down menu onclick anywhere outside the menu
+ */
 function closeDropdown(event) {
     let dropdown = document.getElementById("dropdown");
     let initials = document.getElementById("initials");
