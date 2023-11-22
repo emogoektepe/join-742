@@ -43,7 +43,7 @@ function renderInitials(){
     let params = new URLSearchParams(window.location.search);
     let username = params.get('username');
  
-    if(username ==! null){
+    if(username !== null){
         let names = username.split(" ")
         let firstNameCharacter = names[0].charAt(0)
         if(names.length > 1){
