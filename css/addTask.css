@@ -282,7 +282,7 @@
     background-color: white;
     position: absolute;
     top: 46px;
-    z-index: 0;
+    z-index: 1;
     width: 100%;
     border-radius: 10px;
 }
@@ -588,6 +588,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width: 1000px) {
     .addTaskContainer .form {
         display: block;
+        width: 90%;
     }
 
     .addTaskContainer .formSeparator {
@@ -598,8 +599,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         display: none;
     }
 
+    .addTaskContainer .formLeftSide {
+        width: 100%;
+    }
+
     .addTaskContainer .formRightSide {
         padding-top: 30px;
+        width: 100%;
     }
 
     .addTaskContainer .addTaskContent h1 {
@@ -612,3 +618,62 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         padding-bottom: 20px;
     }
 }
+
+@media (max-width: 760px) {
+    .addTaskContainer .addTaskContent h1 {
+        width: 100%;
+        text-align: center;
+        background-color: #f6f7f8;
+        position: fixed;
+        z-index: 99999;
+    }
+    .addTaskContainer .form {
+        margin-top: 110px;
+    }
+    .addTaskContainer .clearAndCreateButton {
+        right: 0;
+        position: absolute;
+        height: 80px;
+        width: 100%;
+        margin-top: 0;
+        padding-bottom: 0;
+        bottom: 0;
+        z-index: 99999;
+        background-color: #f6f7f8;
+        align-items: center;
+        justify-content: end;
+        padding-right: 20px;
+    }
+    .addTaskContainer .addTaskClearButton {
+        display: none;
+    }
+    .addTaskContainer .bottomText {
+        display: block;
+        position: absolute;
+        bottom: 28px;
+        z-index: 9999999;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .addTaskContainer .bottomText {
+        display: block;
+        position: absolute;
+        bottom: 28px;
+        z-index: 9999999;
+        font-size: 16px;
+    }
+    .addTaskContainer .addTaskCreateButton {
+        width: 100px;
+        font-size: 14px;
+    }
+    .addTaskContainer .clearAndCreateButton img {
+        display: none;
+    }
+    .addTaskContainer .form {
+        height: 100%;
+        margin-bottom: 200px;
+    }
+ }
+
