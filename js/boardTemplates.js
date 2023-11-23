@@ -37,7 +37,6 @@ function renderBoardHtml(){
 
     <div id="dialogAddTaskBoard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogAddTaskBoard','addTaskWindow')">
                 <div id="addTaskWindow" style="transform: translateX(200%);" class="dialogAddTaskBoard" onclick="doNotClose(event)">
-                        ${tempRenderAddTask()}
                 </div>
     </div>
 
@@ -116,6 +115,7 @@ function renderBoardHtml(){
             </div>
         </div>`
 }
+
 /**
  * @param {object} todo
  * @param {string} array 

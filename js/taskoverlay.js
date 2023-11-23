@@ -3,15 +3,15 @@
  * @param {object} array 
  * @param {integer} i 
  */
-function renderBoardTaskOverlay(idFromTask){
+function renderBoardTaskOverlay(idFromTask) {
 
     let actuellyTask = allTasks[idFromTask]
 
-    document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(idFromTask,actuellyTask)}`
-    renderCategory(actuellyTask['category'],`ctgry${idFromTask}`);
-    renderAssignedTo(idFromTask,'assignedUser');
+    document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(idFromTask, actuellyTask)}`
+    renderCategory(actuellyTask['category'], `ctgry${idFromTask}`);
+    renderAssignedTo(idFromTask, 'assignedUser');
     renderSubtasks(idFromTask);
-    renderPrio(actuellyTask['prio'],`prio${idFromTask}`,actuellyTask);
+    renderPrio(actuellyTask['prio'], `prio${idFromTask}`, actuellyTask);
 }
 /**
  * renders the contacts which are assigned to the task into the taskoverlay 
@@ -19,18 +19,18 @@ function renderBoardTaskOverlay(idFromTask){
  * @param {integer} i 
  * @param {string} idOfContainer 
  */
-function renderAssignedTo(idFromTask,idOfContainer){
-    
+function renderAssignedTo(idFromTask, idOfContainer) {
+
     let assigned = allTasks[idFromTask]['assignedTo']
 
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]
         let names = fullname.split(" ")
         let firstNameCharacter = names[0].charAt(0)
-        if(names.length > 1){
-            renderDoubleName(names,idOfContainer,j,firstNameCharacter,fullname)
-        }else{
-            renderSingleName(idOfContainer,j,firstNameCharacter,fullname)
+        if (names.length > 1) {
+            renderDoubleName(names, idOfContainer, j, firstNameCharacter, fullname)
+        } else {
+            renderSingleName(idOfContainer, j, firstNameCharacter, fullname)
         }
     }
 }
@@ -42,13 +42,13 @@ function renderAssignedTo(idFromTask,idOfContainer){
  * @param {string} firstNameCharacter 
  * @param {string} fullname 
  */
-function renderDoubleName(names,idOfContainer,j,firstNameCharacter,fullname){
+function renderDoubleName(names, idOfContainer, j, firstNameCharacter, fullname) {
     let secondNameCharacter = names[1].charAt(0)
     document.getElementById(idOfContainer).innerHTML += /*html*/`
     <div class="assignedContact">
         <div id="assignedContact${j}" class="avatar">${firstNameCharacter}${secondNameCharacter}</div>${fullname} 
     </div>`
-    renderCardContacts(fullname,`assignedContact${j}`);
+    renderCardContacts(fullname, `assignedContact${j}`);
 }
 /**
  *  renders the name of the contact to which the task is assigned, if the contact has got only one names
@@ -57,41 +57,42 @@ function renderDoubleName(names,idOfContainer,j,firstNameCharacter,fullname){
  * @param {string} firstNameCharacter 
  * @param {string} fullname 
  */
-function renderSingleName(idOfContainer,j,firstNameCharacter,fullname){
+function renderSingleName(idOfContainer, j, firstNameCharacter, fullname) {
     document.getElementById(idOfContainer).innerHTML += /*html*/ `
             <div class="assignedContact">
                 <div id="assignedContact${j}" class="avatar">${firstNameCharacter}</div><span>${fullname}</span> 
             </div>`
-            renderCardContacts(fullname,`assignedContact${j}`);
+    renderCardContacts(fullname, `assignedContact${j}`);
 }
 /**
  * renders the current subtaks into the taskoverlay
  * @param {Object} array 
  * @param {integer} i 
  */
-function renderSubtasks(idFromTask){
+function renderSubtasks(idFromTask) {
     let subtasks = allTasks[idFromTask]['subtasks']
     let id = idFromTask;
 
-    renderSubtaskArray(subtasks,id)
+    renderSubtaskArray(subtasks, id)
 }
 /**
  * renders the Subtaskarray from the current task
  * @param {Array} subtasks 
  * @param {integer} id 
  */
-function renderSubtaskArray(subtasks,id){
-    if(subtasks.length == 0){
-        document.getElementById(`subHeadline${id}`).classList.add('d-none')}
-    else{
+function renderSubtaskArray(subtasks, id) {
+    if (subtasks.length == 0) {
+        document.getElementById(`subHeadline${id}`).classList.add('d-none')
+    }
+    else {
         for (let k = 0; k < subtasks.length; k++) {
-        const subtask = subtasks[k];
-        
-            if(subtask['done'] == false){
-                renderNotCheckedSubtask(id,k,subtask)
+            const subtask = subtasks[k];
+
+            if (subtask['done'] == false) {
+                renderNotCheckedSubtask(id, k, subtask)
             }
-            else{
-                renderCheckedSubtask(id,k,subtask)
+            else {
+                renderCheckedSubtask(id, k, subtask)
             }
         }
     }
@@ -102,9 +103,9 @@ function renderSubtaskArray(subtasks,id){
  * @param {integer} k 
  * @param {array} subtask 
  */
-function renderNotCheckedSubtask(id,k,subtask){
+function renderNotCheckedSubtask(id, k, subtask) {
     document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-    <div id="box${id,k}" class="subConti">
+    <div id="box${id, k}" class="subConti">
         <div class="checkBg">
             <img onclick="checkBox(${id},${k})" class="notChecked" src="img/checkButton.svg">
         </div>
@@ -117,9 +118,9 @@ function renderNotCheckedSubtask(id,k,subtask){
  * @param {integer} k 
  * @param {array} subtask 
  */
-function renderCheckedSubtask(id,k,subtask){
+function renderCheckedSubtask(id, k, subtask) {
     document.getElementById(`subtask${id}`).innerHTML += /*html*/` 
-    <div id="box${id,k}" class="subConti">
+    <div id="box${id, k}" class="subConti">
         <div class="checkBg"><img onclick="checkBox(${id},${k})" src="img/boxChecked.svg"></div>
         ${subtask['name']}
     </div>`
@@ -131,18 +132,18 @@ function renderCheckedSubtask(id,k,subtask){
  * @param {string} id 
  * @param {Object} actuellyTask 
  */
-function renderPrio(prio,id,actuellyTask){
+function renderPrio(prio, id, actuellyTask) {
 
     let img;
     let string = actuellyTask['prio']
 
     switch (prio) {
         case 'Low':
-            string 
+            string
             img = '<img src="img/prioLow.svg"></img>'
             break;
-        
-        case 'Medium': 
+
+        case 'Medium':
             string = actuellyTask['prio']
             img = '<img src="img/prioMid.svg"></img>'
             break;
@@ -152,19 +153,19 @@ function renderPrio(prio,id,actuellyTask){
             img = '<img src="img/prioUp.svg"></img>'
             break;
     }
-    document.getElementById(id).innerHTML = `${string} ${img}` 
+    document.getElementById(id).innerHTML = `${string} ${img}`
 }
 /**
  * onlick the clicked checkbox changes its boolean and renders the accordingly checked box
  * @param {integer} id 
  * @param {integer} k 
  */
-function checkBox(id,k){
+function checkBox(id, k) {
 
     let subtask = allTasks[id]['subtasks'][k]
 
     subtask['done'] = !subtask['done']
-    changeBox(subtask,id,k);
+    changeBox(subtask, id, k);
 }
 /**
  * gets the status of the checkbox from the task array and renders the accordingly checkbox
@@ -172,142 +173,31 @@ function checkBox(id,k){
  * @param {integer} id 
  * @param {integer} k 
  */
-function changeBox(subtask,id,k){
+function changeBox(subtask, id, k) {
 
-    if(subtask['done']){
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
+    if (subtask['done']) {
+        document.getElementById(`box${id, k}`).innerHTML = /*html*/ `
         <div class="checkBg">
             <img onclick="checkBox(${id},${k})" src="img/boxChecked.svg">
         </div>
-        ${subtask['name']}`  
+        ${subtask['name']}`
     } else {
-        document.getElementById(`box${id,k}`).innerHTML = /*html*/ `
+        document.getElementById(`box${id, k}`).innerHTML = /*html*/ `
             <div class="checkBg">
                 <img class="notChecked" onclick="checkBox(${id},${k})" src="img/checkButton.svg">
             </div>    
             ${subtask['name']} `
     }
     updateBoardHtml();
-}  
-
-function renderBoardEditForm(idFromTask) {
-    document.getElementById('taskOverlay').innerHTML = /*html*/`
-
-    <div class="headerEditForm">
-        <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">    
-    </div>
-
-
-    <div class="editTemplate">
-    <div class="addTaskContent">
-    <h1>Add Task</h1>
-    <div class="form">
-        <div class="formLeftSide">
-            <div class="firstBlock">
-                <span data-end="*">Title</span>
-                <input autocomplete="off" type="text" name="" id="addTaskInputTitleEdit" placeholder="Enter a title">
-                <div id="addTaskInputTitleRequired" class="requiredFieldText">This field is required</div>
-            </div>
-            <div class="secondBlock">
-                <span data-end="*">Description</span>
-                <textarea id="addTaskTextAreaEdit" placeholder="Enter a Description"></textarea>
-                <div id="addTaskTextAreaRequired" class="requiredFieldText">This field is required</div>
-            </div>
-            <div class="thirdBlock">
-                <span>Assigned to</span>
-                <div class="dropDownWithInput">
-                    <div class="assignedTo">
-                        <input type="text" onclick="openEditContactDropDown()" placeholder="Select contacts to assign" id="assignedToInputEdit" onkeyup="searchContactInDropDown()">
-                        <div class="dropDownArrow" onclick="toggleDropDown()">
-                            <img id="editDropDownImage" src="./img/arrow_drop_down_down.svg">
-                        </div>
-                    </div>
-                    <div id="editImageFromDropDown"></div>
-                    <div id="editDropDownContact">
-                    </div>
-                </div>
-            </div>
-            <div class="bottomText" data-start="*">This field is required</div>
-        </div>
-        <div class="formSeparator"></div>
-        <div class="formRightSide">
-            <div class="dateBlock">
-                <span data-end="*">Due Date</span>
-                <input type="date" id="addTaskDateEdit" value="${todaysDate}">
-                <span class="requiredFieldText">This field is required</span>
-            </div>
-            <div class="prioBlock">
-                <span>Prio</span>
-                <div class="prio">
-                    <div id="editPrioUrgent" onclick="changeEditPrioColor(this, '#FF3D00'); getEditPrio(this,${idFromTask})">Urgent<img src="./img/prioUp.svg" alt=""></div>
-                    <div id="editPrioMedium" onclick="changeEditPrioColor(this, '#FFA800'); getEditPrio(this,${idFromTask})">Medium<img src="./img/prioMid.svg" alt=""></div>
-                    <div id="editPrioLow" onclick="changeEditPrioColor(this, '#7AE229'); getEditPrio(this,${idFromTask})">Low<img src="./img/prioLow.svg" alt=""></div>
-                </div>
-            </div>
-            <div class="categoryBlock">
-                <span data-end="*">Category</span>
-                <div class="categoryBlockDropDown">
-                    <div class="selectTaskCategory" id="selectTaskCategory" onclick="openCategoryDropDown()">
-                        <span id="selectTaskCategorySpan">Select task category</span>
-                        <div class="dropDownArrow mgTop0">
-                            <img id="dropDownImageCategory" src="./img/arrow_drop_down_down.svg" alt="">
-                        </div>
-                    </div>
-                    <div id="selectTaskCategoryRequired" class="requiredFieldText">This field is required</div>
-                    <div class="categoryDropDown" id="categoryDropDown">
-                        <div class="categorysInDropDown">
-                            <div onclick="getCategory('Technical Task')">Technical Task</div>
-                            <div onclick="getCategory('User Story')">User Story</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="subtasksBlock">
-                <span>Subtasks</span>
-                <div class="taskSubtasksContainer" id="taskSubtasksContainer">
-                    <input autocomplete="off" onclick="createSubTaskAtEditBoard(${idFromTask})" type="text" name="" id="taskSubtasksInputEdit" class="taskSubtasks" placeholder="Add new subtask">
-                    <div id="subtaskIconsEditBoard">
-                        ${renderSubtaskAddButton()}
-                    </div>
-                </div>
-                <div class="newSubtaskAdded" id="newSubtaskAddedListEdit"></div>
-            </div>
-            <div class="clearAndCreateButton">
-                <div onclick="clearAddTask()" class="buttonUnfilled addTaskClearButton">Clear<img src="./img/del.svg" alt=""></div>
-                <div onclick="createTask()" class="buttonFilled addTaskCreateButton">Create Task<img src="./img/check-white.svg" alt=""></div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-<div onclick="closeEditContent(${idFromTask})" class="editSubmitButton">
-        <div class="buttonFilled saveEditButton">
-            Ok <img src="./img/check-white.svg">
-        <div>
-    </div> `;
-
-    renderEditContent(idFromTask);
 }
 
-function openEditContactDropDown() {
-    document.getElementById('assignedToInputEdit').placeholder = "";
-    let dropDownImage = document.getElementById('editDropDownImage');
-    let dropDownContact = document.getElementById('editDropDownContact');
-    if (dropDownImage.src.includes('down_down')) {
-        dropDownImage.src = './img/arrow_drop_down_up.svg';
-        dropDownContact.innerHTML = /*html*/ `
-            <div class="dropDownSection" id="editDropDownSection"></div>
-            <div class="addContactButtonDropDown">
-                <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
-                    Add new contact
-                    <img src="../img/person_add.svg" alt="">
-                </div>
-            </div>
-                `;
-        renderDropDownEditContacts();
-        dropDownContact.style.display = "block";
-    }
+function renderBoardEditForm(idFromTask) {
+    let taskOverlay = document.getElementById('taskOverlay');
+    let tempRenderAddTaskHTMLEdit = tempRenderAddTask();
+    let tempRenderAddTaskDivEdit = document.createElement('div');
+    tempRenderAddTaskDivEdit.innerHTML = tempRenderAddTaskHTMLEdit;
+    tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';
+    taskOverlay.replaceChildren(tempRenderAddTaskDivEdit);
 }
 
 function renderDropDownEditContacts() {
@@ -335,60 +225,60 @@ function renderDropDownEditContacts() {
     }
 }
 
-function renderEditContent(idFromTask){
+function renderEditContent(idFromTask) {
 
     let actuellyTask = allTasks[idFromTask]
     let editPrio = actuellyTask['prio']
-    document.getElementById('addTaskInputTitleEdit').value =  `${actuellyTask['title']}`
+    document.getElementById('addTaskInputTitleEdit').value = `${actuellyTask['title']}`
     document.getElementById('addTaskTextAreaEdit').value = `${actuellyTask['description']}`
     document.getElementById('selectTaskCategorySpan').innerText = `${actuellyTask['category']}`
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
-    renderEditPrio(editPrio,idFromTask);
-    renderEditSubtasksInTask(actuellyTask,idFromTask);
+    renderEditPrio(editPrio, idFromTask);
+    renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
 
-function closeEditContent(idFromTask){
+function closeEditContent(idFromTask) {
     saveInputChanges(idFromTask);
-    openDialog('dialogShowCard','taskOverlay');
+    openDialog('dialogShowCard', 'taskOverlay');
     loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
 }
 
-function getEditPrio(selectedPrio,idFromTask) {
+function getEditPrio(selectedPrio, idFromTask) {
     prioLabel = selectedPrio.innerText;
     saveEditChanges(idFromTask)
 }
 
-function saveEditChanges(idFromTask){
+function saveEditChanges(idFromTask) {
     allTasks[idFromTask]['prio'] = prioLabel;
     setTasksStorage();
 }
- function saveInputChanges(idFromTask){
+function saveInputChanges(idFromTask) {
     let actuellyTask = allTasks[idFromTask]
-    actuellyTask['title'] =  document.getElementById('addTaskInputTitleEdit').value
+    actuellyTask['title'] = document.getElementById('addTaskInputTitleEdit').value
     actuellyTask['description'] = document.getElementById('addTaskTextAreaEdit').value
     actuellyTask['dueDate'] = document.getElementById('addTaskDateEdit').value
     setTasksStorage();
- }
-
-
-function renderEditPrio(prio,idFromTask){    
-        switch (prio){
-            case 'Urgent':
-                changeEditPrioColor(editPrioUrgent, '#FF3D00',idFromTask)
-                break;
-            
-            case 'Medium': 
-                changeEditPrioColor(editPrioMedium, '#FFA800',idFromTask)
-                break;
-    
-            case 'Low':
-                changeEditPrioColor(editPrioLow, '#7AE229',idFromTask)            
-                break;
-        }
 }
 
-function changeEditPrioColor(element,color,idFromTask) {
+
+function renderEditPrio(prio, idFromTask) {
+    switch (prio) {
+        case 'Urgent':
+            changeEditPrioColor(editPrioUrgent, '#FF3D00', idFromTask)
+            break;
+
+        case 'Medium':
+            changeEditPrioColor(editPrioMedium, '#FFA800', idFromTask)
+            break;
+
+        case 'Low':
+            changeEditPrioColor(editPrioLow, '#7AE229', idFromTask)
+            break;
+    }
+}
+
+function changeEditPrioColor(element, color, idFromTask) {
 
     if (selectedElement === element) {
         element.style = '';
@@ -412,7 +302,7 @@ function changeEditPrioColor(element,color,idFromTask) {
 
 //überarbeiten mit Emre || Code Sparen
 
-function renderEditSubtasksInTask(actuellyTask,idFromTask) {
+function renderEditSubtasksInTask(actuellyTask, idFromTask) {
     let subtasks = actuellyTask['subtasks']
     let subtaskList = document.getElementById('newSubtaskAddedListEdit');
     subtaskList.innerHTML = "";
@@ -434,7 +324,7 @@ function renderEditSubtasksInTask(actuellyTask,idFromTask) {
     }
 }
 
-function editBoardSubtasks(position,idFromTask) {
+function editBoardSubtasks(position, idFromTask) {
     let li = document.getElementById(`editLi${position}`);
     let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
     if (li) {
@@ -462,18 +352,18 @@ function editBoardSubtasks(position,idFromTask) {
     }
 }
 
-function confirmEditBoardSubtask(position,idFromTask) {
+function confirmEditBoardSubtask(position, idFromTask) {
     let actuellyTask = allTasks[idFromTask]
     let li = document.getElementById(`editLi${position}`);
     actuellyTask['subtasks'][position]['name'] = li.innerText;
-    renderEditSubtasksInTask(actuellyTask,idFromTask);
+    renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
 
-function deleteBoardSubtask(position,idFromTask) {
+function deleteBoardSubtask(position, idFromTask) {
     let actuellyTask = allTasks[idFromTask]
     let subtasks = actuellyTask['subtasks']
     subtasks.splice(position, 1);
-    renderEditSubtasksInTask(actuellyTask,idFromTask);
+    renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
 
 function createSubTaskAtEditBoard(idFromTask) {
@@ -507,7 +397,7 @@ function addSubtaskToBoardList(idFromTask) {
     taskSubtasksInput.focus();
     if (taskSubtasksInput.value.trim() !== "") {
         subtasks.push({ name: taskSubtasksInput.value, done: false });
-        renderEditSubtasksInTask(actuellyTask,idFromTask);
+        renderEditSubtasksInTask(actuellyTask, idFromTask);
         let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
         subtaskIcons.innerHTML = renderSubtaskAddButton();
         taskSubtasksInput.value = "";
