@@ -239,9 +239,9 @@ function renderBoardEditForm(idFromTask) {
             <div class="prioBlock">
                 <span>Prio</span>
                 <div class="prio">
-                    <div id="editPrioUrgent" onclick="changePrioColor(this, '#FF3D00'); getPrio(this)">Urgent<img src="./img/prioUp.svg" alt=""></div>
-                    <div id="editPrioMedium" onclick="changePrioColor(this, '#FFA800'); getPrio(this)">Medium<img src="./img/prioMid.svg" alt=""></div>
-                    <div id="editPrioLow" onclick="changePrioColor(this, '#7AE229'); getPrio(this)">Low<img src="./img/prioLow.svg" alt=""></div>
+                    <div id="editPrioUrgent" onclick="changeEditPrioColor(this, '#FF3D00'); getEditPrio(this,${idFromTask})">Urgent<img src="./img/prioUp.svg" alt=""></div>
+                    <div id="editPrioMedium" onclick="changeEditPrioColor(this, '#FFA800'); getEditPrio(this,${idFromTask})">Medium<img src="./img/prioMid.svg" alt=""></div>
+                    <div id="editPrioLow" onclick="changeEditPrioColor(this, '#7AE229'); getEditPrio(this,${idFromTask})">Low<img src="./img/prioLow.svg" alt=""></div>
                 </div>
             </div>
             <div class="categoryBlock">
@@ -298,30 +298,73 @@ function renderEditContent(idFromTask){
     document.getElementById('addTaskTextAreaEdit').value = `${actuellyTask['description']}`
     document.getElementById('selectTaskCategorySpan').innerText = `${actuellyTask['category']}`
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
-    renderEditPrio(editPrio);
+    renderEditPrio(editPrio,idFromTask);
     renderEditSubtasksInTask(actuellyTask,idFromTask);
 }
 
 function closeEditContent(idFromTask){
+    saveInputChanges(idFromTask);
     openDialog('dialogShowCard','taskOverlay');
+    loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
 }
 
-function renderEditPrio(prio){    
-        switch (prio) {
+function getEditPrio(selectedPrio,idFromTask) {
+    prioLabel = selectedPrio.innerText;
+    saveEditChanges(idFromTask)
+}
+
+function saveEditChanges(idFromTask){
+    allTasks[idFromTask]['prio'] = prioLabel;
+    setTasksStorage();
+}
+ function saveInputChanges(idFromTask){
+    let actuellyTask = allTasks[idFromTask]
+    actuellyTask['title'] =  document.getElementById('addTaskInputTitleEdit').value
+    actuellyTask['description'] = document.getElementById('addTaskTextAreaEdit').value
+    actuellyTask['dueDate'] = document.getElementById('addTaskDateEdit').value
+    setTasksStorage();
+ }
+
+
+function renderEditPrio(prio,idFromTask){    
+        switch (prio){
             case 'Urgent':
-                changePrioColor(editPrioUrgent, '#FF3D00')
+                changeEditPrioColor(editPrioUrgent, '#FF3D00',idFromTask)
                 break;
             
             case 'Medium': 
-                changePrioColor(editPrioMedium, '#FFA800')
+                changeEditPrioColor(editPrioMedium, '#FFA800',idFromTask)
                 break;
     
             case 'Low':
-                changePrioColor(editPrioLow, '#7AE229')            
+                changeEditPrioColor(editPrioLow, '#7AE229',idFromTask)            
                 break;
         }
 }
+
+function changeEditPrioColor(element,color,idFromTask) {
+
+    if (selectedElement === element) {
+        element.style = '';
+        element.lastChild.style = '';
+        selectedElement = false;
+    } else {
+        if (selectedElement) {
+            selectedElement.style = '';
+            selectedElement.lastChild.style = '';
+        }
+        element.style.backgroundColor = color;
+        element.style.boxShadow = 'none';
+        element.style.color = '#ffffff';
+        element.lastChild.style.filter = "brightness(0) invert(1)";
+        element.style.fontWeight = '700';
+        element.style.fontSize = '21px';
+        selectedElement = element;
+    }
+
+}
+
 //überarbeiten mit Emre || Code Sparen
 
 

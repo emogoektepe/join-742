@@ -156,7 +156,7 @@ function renderCardHtml(todo){
  */
 function renderTaskOverlayHtml(idFromTask,actuellyTask){
 
-    return /*html*/ `<div id="taskOverlay" style="transform: translateX(200%);"  class="dialogShowCard" onclick="doNotClose(event);">
+    return /*html*/ `<div id="taskOverlay" class="dialogShowCard" onclick="doNotClose(event);">
     <div class="cardHead">
         <p id="ctgry${idFromTask}" class="category">${actuellyTask['category']}</p> 
         <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">

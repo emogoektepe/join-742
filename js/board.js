@@ -9,9 +9,10 @@ let currentDraggedElement;
  * 
  */
 
-function renderBoard() {
+ function renderBoard() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
+    loadTasksFromStorage();
     generateIDs();
     setActiveNavItem("board");
     filterTodos();
@@ -33,9 +34,8 @@ function generateIDs(){
 /**
  * upadtes the Content of the Board
  * 
- */
-function updateBoardHtml(){
-    
+ */ 
+ function updateBoardHtml(){
     renderTodoContent();
     renderInProgressContent();
     renderAwaitFeedbackContent();
