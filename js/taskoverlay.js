@@ -222,7 +222,7 @@ function renderBoardEditForm(idFromTask) {
                             <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
                         </div>
                     </div>
-                    <div id="imageFromDropDown"></div>
+                    <div id="editImageFromDropDown"></div>
                     <div id="dropDownContact">
                     </div>
                 </div>
@@ -300,6 +300,7 @@ function renderEditContent(idFromTask){
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
     renderEditPrio(editPrio,idFromTask);
     renderEditSubtasksInTask(actuellyTask,idFromTask);
+    renderEditAssignedToImages(idFromTask);
 }
 
 function closeEditContent(idFromTask){
@@ -366,7 +367,6 @@ function changeEditPrioColor(element,color,idFromTask) {
 }
 
 //überarbeiten mit Emre || Code Sparen
-
 
 function renderEditSubtasksInTask(actuellyTask,idFromTask) {
     let subtasks = actuellyTask['subtasks']
