@@ -117,11 +117,16 @@ function renderBoardHtml(){
         </div>`
 }
 /**
+ * @param {object} todo
+ * @param {string} array 
+ * @param {integer} i 
  * @returns the whole Html that is used for the Card
  */
-function renderCardHtml(todo,array,i){
+function renderCardHtml(todo){
+
+    let idFromTask = todo['id']
     return/*html*/` <div class="card" id="${todo['id']}" ondragstart="startDragging(${todo['id']}); rotateCard(${todo['id']})">
-    <div onclick="renderBoardTaskOverlay(${array} ,${i}); openDialog('dialogShowCard','taskOverlay')">
+    <div onclick="renderBoardTaskOverlay(${idFromTask}); openDialog('dialogShowCard','taskOverlay')">
         <div draggable="true" class="cardContent">
             <div id="category${todo['id']}" class="category">
                 ${todo['category']}
@@ -146,29 +151,29 @@ function renderCardHtml(todo,array,i){
 }
 /**
  * 
- * @param {object} array 
- * @param {integer} i 
+ * @param {integer} idFromTask 
  * @returns the Html for the content of the taskoverlay
  */
-function renderTaskOverlayHtml(array,i){
+function renderTaskOverlayHtml(idFromTask,actuellyTask){
+
     return /*html*/ `<div id="taskOverlay" style="transform: translateX(200%);"  class="dialogShowCard" onclick="doNotClose(event);">
     <div class="cardHead">
-        <p id="ctgry${i}" class="category">${array[i]['category']}</p> 
+        <p id="ctgry${idFromTask}" class="category">${actuellyTask['category']}</p> 
         <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">
     </div>
-    <h1 class="headline">${array[i]['title']}</h1>
+    <h1 class="headline">${actuellyTask['title']}</h1>
     <span>
-        <p>${array[i]['description']}</p>
+        <p>${actuellyTask['description']}</p>
     </span>
    
     <div class="dueDate"> 
         <span class="grey">Due date:</span>
-        <span>${array[i]['dueDate']}</span>
+        <span>${actuellyTask['dueDate']}</span>
     </div>
 
     <div class="dueDate">
        <span class="grey">Priority:</span>  
-        <div id="prio${array[i]['id']}" class="cardPrio">
+        <div id="prio${actuellyTask['id']}" class="cardPrio">
     
         </div>
     </div>
@@ -178,14 +183,14 @@ function renderTaskOverlayHtml(array,i){
        
     </div>
                  
-    <h3 id="subHeadline${i}">Subtasks</h3>
-    <div id="subtask${array[i]['id']}" class="subtask">
+    <h3 id="subHeadline${idFromTask}">Subtasks</h3>
+    <div id="subtask${actuellyTask['id']}" class="subtask">
        
     </div>
 
     <div class="closeSection">
-        <div onclick="deleteBoardTask(${array[i]['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
-        <div onclick="renderBoardEditForm(${array[i]['id']})" class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
+        <div onclick="deleteBoardTask(${actuellyTask['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
+        <div onclick="renderBoardEditForm(${actuellyTask['id']})" class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    
     </div>
 </div>`
 }

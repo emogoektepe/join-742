@@ -7,8 +7,7 @@
 function renderCard(todo,array,i){
 
     document.getElementById(todo['status']).innerHTML+= /*html*/`
-    ${renderCardHtml(todo,array,i)}
-   `
+    ${renderCardHtml(todo,array,i)}`
     renderCategory(todo['category'],`category${todo['id']}`);
     renderCardAssignedTo(`assignedBox${todo['id']}`,todo);
     renderProgressbar(todo,todo['id']);

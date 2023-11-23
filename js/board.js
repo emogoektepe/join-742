@@ -129,7 +129,7 @@ function emptyCategory(foundMatchingElement,array){
  * searchs for the value of the input field and renders the accordingly content
  * @param {Object} todo 
  * @param {string} serachCommand 
- * @param {Object} array 
+ * @param {string} array 
  * @param {integer} i 
  */
 function searchTask(todo, array, i) {

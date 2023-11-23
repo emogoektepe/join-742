@@ -1,15 +1,17 @@
 /**
  * renders the whole taskoverlay
- * @param {string} array 
+ * @param {object} array 
  * @param {integer} i 
  */
-function renderBoardTaskOverlay(array,i){
- 
-    document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(array,i)}`
-    renderCategory(array[i]['category'],`ctgry${i}`);
-    renderAssignedTo(array,i,'assignedUser');
-    renderSubtasks(array,i);
-    renderPrio(array[i]['prio'],`prio${array[i]['id']}`,array,i);
+function renderBoardTaskOverlay(idFromTask){
+
+    let actuellyTask = allTasks[idFromTask]
+
+    document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(idFromTask,actuellyTask)}`
+    renderCategory(actuellyTask['category'],`ctgry${idFromTask}`);
+    renderAssignedTo(idFromTask,'assignedUser');
+    renderSubtasks(idFromTask);
+    renderPrio(actuellyTask['prio'],`prio${idFromTask}`,actuellyTask);
 }
 /**
  * renders the contacts which are assigned to the task into the taskoverlay 
@@ -17,9 +19,9 @@ function renderBoardTaskOverlay(array,i){
  * @param {integer} i 
  * @param {string} idOfContainer 
  */
-function renderAssignedTo(array,i,idOfContainer,avatarConti){
+function renderAssignedTo(idFromTask,idOfContainer){
     
-    let assigned = array[i]['assignedTo']
+    let assigned = allTasks[idFromTask]['assignedTo']
 
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]
@@ -67,21 +69,20 @@ function renderSingleName(idOfContainer,j,firstNameCharacter,fullname){
  * @param {Object} array 
  * @param {integer} i 
  */
-function renderSubtasks(array,i){
-    let subtasks = array[i]['subtasks']
-    let id = array[i]['id']
+function renderSubtasks(idFromTask){
+    let subtasks = allTasks[idFromTask]['subtasks']
+    let id = idFromTask;
 
-    renderSubtaskArray(subtasks,i,id)
+    renderSubtaskArray(subtasks,id)
 }
 /**
  * renders the Subtaskarray from the current task
  * @param {Array} subtasks 
- * @param {integer} i
- * @param {string} id 
+ * @param {integer} id 
  */
-function renderSubtaskArray(subtasks,i,id){
+function renderSubtaskArray(subtasks,id){
     if(subtasks.length == 0){
-        document.getElementById(`subHeadline${i}`).classList.add('d-none')}
+        document.getElementById(`subHeadline${id}`).classList.add('d-none')}
     else{
         for (let k = 0; k < subtasks.length; k++) {
         const subtask = subtasks[k];
@@ -128,13 +129,12 @@ function renderCheckedSubtask(id,k,subtask){
  * renders the accordingly prio to the tasks
  * @param {string} prio
  * @param {string} id 
- * @param {Object} array 
- * @param {integer} i 
+ * @param {Object} actuellyTask 
  */
-function renderPrio(prio,id,array,i){
+function renderPrio(prio,id,actuellyTask){
 
     let img;
-    let string = array[i]['prio']
+    let string = actuellyTask['prio']
 
     switch (prio) {
         case 'Low':
@@ -143,12 +143,12 @@ function renderPrio(prio,id,array,i){
             break;
         
         case 'Medium': 
-            string = array[i]['prio']
+            string = actuellyTask['prio']
             img = '<img src="img/prioMid.svg"></img>'
             break;
 
         case 'Urgent':
-            string = array[i]['prio']
+            string = actuellyTask['prio']
             img = '<img src="img/prioUp.svg"></img>'
             break;
     }
@@ -281,7 +281,7 @@ function renderBoardEditForm(idFromTask) {
 </div>
 </div>
 
-<div class="editSubmitButton">
+<div onclick="closeEditContent(${idFromTask})" class="editSubmitButton">
         <div class="buttonFilled saveEditButton">
             Ok <img src="./img/check-white.svg">
         <div>
@@ -300,6 +300,11 @@ function renderEditContent(idFromTask){
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
     renderEditPrio(editPrio);
     renderEditSubtasksInTask(actuellyTask,idFromTask);
+}
+
+function closeEditContent(idFromTask){
+    openDialog('dialogShowCard','taskOverlay');
+    renderBoardTaskOverlay(idFromTask);
 }
 
 function renderEditPrio(prio){    

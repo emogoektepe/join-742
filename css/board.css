@@ -227,7 +227,7 @@
     width: 100%;
 }
 
-.dialogShowCard h1{
+.dialogShowCard .addTaskContent h1{
     display: none;
 }
 
