@@ -217,13 +217,13 @@ function renderBoardEditForm(idFromTask) {
                 <span>Assigned to</span>
                 <div class="dropDownWithInput">
                     <div class="assignedTo">
-                        <input type="text" onclick="openContactDropDown()" placeholder="Select contacts to assign" id="assignedToInputEdit" onkeyup="searchContactInDropDown()">
+                        <input type="text" onclick="openEditContactDropDown()" placeholder="Select contacts to assign" id="assignedToInputEdit" onkeyup="searchContactInDropDown()">
                         <div class="dropDownArrow" onclick="toggleDropDown()">
-                            <img id="dropDownImage" src="./img/arrow_drop_down_down.svg" alt="">
+                            <img id="editDropDownImage" src="./img/arrow_drop_down_down.svg">
                         </div>
                     </div>
                     <div id="editImageFromDropDown"></div>
-                    <div id="dropDownContact">
+                    <div id="editDropDownContact">
                     </div>
                 </div>
             </div>
@@ -290,6 +290,51 @@ function renderBoardEditForm(idFromTask) {
     renderEditContent(idFromTask);
 }
 
+function openEditContactDropDown() {
+    document.getElementById('assignedToInputEdit').placeholder = "";
+    let dropDownImage = document.getElementById('editDropDownImage');
+    let dropDownContact = document.getElementById('editDropDownContact');
+    if (dropDownImage.src.includes('down_down')) {
+        dropDownImage.src = './img/arrow_drop_down_up.svg';
+        dropDownContact.innerHTML = /*html*/ `
+            <div class="dropDownSection" id="editDropDownSection"></div>
+            <div class="addContactButtonDropDown">
+                <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
+                    Add new contact
+                    <img src="../img/person_add.svg" alt="">
+                </div>
+            </div>
+                `;
+        renderDropDownEditContacts();
+        dropDownContact.style.display = "block";
+    }
+}
+
+function renderDropDownEditContacts() {
+    let dropDownSection = document.getElementById('editDropDownSection');
+    dropDownSection.innerHTML = '';
+    for (let i = 0; i < contactsJson.length; i++) {
+        if (contactsJson[i].fullName.toLowerCase().includes(searchValue.toLowerCase())) {
+            dropDownSection.innerHTML += /*html*/ `
+            <div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
+                <div class="imgAndName">
+                    <div class="contactsInMenuimg" id="contactInListImg${i}">
+                        ${getInitials(i)}
+                    </div>
+                    <p>${contactsJson[i].fullName}</p>
+                </div>
+                <img src="./img/checkboxEmpty.svg" alt="checkbox">
+            </div>
+        `;
+            let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
+            if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) > -1) {
+                selectContactInDropDown(i);
+            }
+            setContactListImgColor(i);
+        }
+    }
+}
+
 function renderEditContent(idFromTask){
 
     let actuellyTask = allTasks[idFromTask]
@@ -300,7 +345,6 @@ function renderEditContent(idFromTask){
     document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
     renderEditPrio(editPrio,idFromTask);
     renderEditSubtasksInTask(actuellyTask,idFromTask);
-    renderEditAssignedToImages(idFromTask);
 }
 
 function closeEditContent(idFromTask){
