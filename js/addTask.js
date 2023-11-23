@@ -18,10 +18,14 @@ function renderAddTask() {
     setActiveNavItem("addTask");
 }
 
+let summaryNumbersUpdated = false;
 async function loadTasksFromStorage() {
     let storageParseTasks = await getItem('tasks');
     allTasks = JSON.parse(storageParseTasks.data.value);
-    updateSummaryNumbers();
+    if (!summaryNumbersUpdated) {
+        updateSummaryNumbers();
+        summaryNumbersUpdated = true;
+    }
 }
 
 function setTasksStorage() {
