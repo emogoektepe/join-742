@@ -1,5 +1,4 @@
 function renderPrivacyPolicy() {
-
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
 

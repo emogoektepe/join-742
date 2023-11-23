@@ -13,6 +13,9 @@
 
 .lnHeader img{
     cursor: pointer;
+    position: fixed;
+    top: 200px;
+    right: 50px;
 }
 
 .lnHeader img:hover{

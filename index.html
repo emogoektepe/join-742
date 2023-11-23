@@ -11,6 +11,7 @@
     <script src="./js/login.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/summary.js"></script>
+    <script src="./js/privacyPolicy.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="icon" type="image/x-icon" href="./img/logo.svg">
@@ -26,85 +27,96 @@
         </div>
     </div>
 
-   <div id="startPage" class="startPage"> 
-    <div class="mainDivOne">
-        <img class="capa2" src="img/Capa 2.svg">
-        <div class="signUp">
-            Not a Join user? 
-            <button onclick="window.location.href='signUp.html'" class="loginBtn">Sign Up</button>
+    <div id="startPage" class="startPage">
+        <div class="mainDivOne">
+            <img class="capa2" src="img/Capa 2.svg">
+            <div class="signUp">
+                Not a Join user?
+                <button onclick="window.location.href='signUp.html'" class="loginBtn">Sign Up</button>
+            </div>
         </div>
-    </div>
 
 
-   <div class="mainDivTwo">
-    <div class="loginBox">
-        <div class="login">
-            <h1>Log in</h1>
-            <img id="loginUnderline" src="img/loginUnderline.svg">
-            <form class="loginForm" autocomplete="off" id="loginForm" onsubmit="login(); return false;">
-                <div id="loginMailInputContainer" class="inputContainer">
-                    <input id="loginMailInput" class="loginInput" placeholder="Email" type="email" name="email" required>
-                    <img src="img/mail-grey.svg">
+        <div class="mainDivTwo">
+            <div class="loginBox">
+                <div class="login">
+                    <h1>Log in</h1>
+                    <img id="loginUnderline" src="img/loginUnderline.svg">
+                    <form class="loginForm" autocomplete="off" id="loginForm" onsubmit="login(); return false;">
+                        <div id="loginMailInputContainer" class="inputContainer">
+                            <input id="loginMailInput" class="loginInput" placeholder="Email" type="email" name="email"
+                                required>
+                            <img src="img/mail-grey.svg">
+                        </div>
+                        <div id="loginMailInputMsg" class="loginMailInputMsg">
+                            Wrong email Ups! Try again.
+                        </div>
+                        <div id="loginPasswordInputContainer" class="inputContainer">
+                            <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password"
+                                name="password" required>
+                            <img src="img/lock.svg">
+                        </div>
+                        <div id="loginPasswordInputMsg" class="loginPasswordInputMsg">
+                            Wrong password Ups! Try again.
+                        </div>
+                        <div class="checkBox" onclick="toggleCheckBoxRememberMe()">
+                            <img id="checkBoxUnchecked" class="checkBoxUnchecked" src="img/checkboxEmpty.svg" alt="">
+                            <img id="checkBoxChecked" class="checkBoxChecked" src="img/checkboxChecked.svg" alt="">
+                            Remember me
+                        </div>
+                        <div class="logBtns">
+                            <button class="loginBtn">Log in</button>
+                            <button class="loginGuestBtn" onclick="window.location.href='application.html'">Guest Log
+                                in</button>
+                        </div>
+                    </form>
                 </div>
-                <div id="loginMailInputMsg" class="loginMailInputMsg">
-                    Wrong email Ups! Try again.
-                </div>
-                <div id="loginPasswordInputContainer" class="inputContainer">
-                    <input id="loginPasswordInput" class="loginInput" placeholder="Password" type="password" name="password" required>
-                    <img src="img/lock.svg">
-                </div>
-                <div id="loginPasswordInputMsg" class="loginPasswordInputMsg">
-                    Wrong password Ups! Try again.
-                </div>
-                <div class="checkBox" onclick="toggleCheckBoxRememberMe()">
-                    <img id="checkBoxUnchecked" class="checkBoxUnchecked" src="img/checkboxEmpty.svg" alt="">
-                    <img id="checkBoxChecked" class="checkBoxChecked" src="img/checkboxChecked.svg" alt="">
-                    Remember me
-                </div>
-                <div class="logBtns">
-                    <button class="loginBtn">Log in</button>
-                    <button class="loginGuestBtn" onclick="window.location.href='application.html'">Guest Log in</button>
-                </div>
-            </form>
+            </div>
+
         </div>
-    </div>
-    
-    </div>
 
-    <div class="mainDivThree">
-        <div class="respSignUp">
-            Not a Join user? 
-            <button onclick="window.location.href='signUp.html'" class="respSignUpBtn">Sign Up</button>
+        <div class="mainDivThree">
+            <div class="respSignUp">
+                Not a Join user?
+                <button onclick="window.location.href='signUp.html'" class="respSignUpBtn">Sign Up</button>
+            </div>
+            <div class="loginLinks">
+                <a onclick="renderPrivacyPolicyFromLogin()">Privacy Policy</a>
+                <a onclick="renderLegalNoticeFromLogin()">Legal Notice</a>
+            </div>
         </div>
-        <div class="loginLinks">
-            <a href="">Privacy Policy</a>
-            <a href="">Legal Notice</a>
-        </div>
-    </div>
 
-    <script>
+        <script>
 
-     const hasAnimationPlayed = sessionStorage.getItem('animationPlayed');
+            function renderPrivacyPolicyFromLogin() {
+                window.location.href='application.html?parameter=privacyPolicy';
+            }
 
-if (!hasAnimationPlayed) {
+            function renderLegalNoticeFromLogin() {
+                window.location.href='application.html?parameter=legalNotice';
+            }
 
-  document.getElementById('startLogo').style.animationPlayState = 'running';
+            const hasAnimationPlayed = sessionStorage.getItem('animationPlayed');
 
-  const animatedElement = document.getElementById('startLogo');
-  animatedElement.addEventListener('animationend', function () {
+            if (!hasAnimationPlayed) {
 
-    document.getElementById('logoStart').style = 'display:none;';
-    document.getElementById('startPage').style = 'display:block;';
-    sessionStorage.setItem('animationPlayed', 'true');
+                document.getElementById('startLogo').style.animationPlayState = 'running';
 
-  });
-} else {
-  document.getElementById('logoStart').style = 'display:none;';
-  document.getElementById('startPage').style = 'display:block;';
-}
-    </script>
-    
-  
-</body> 
+                const animatedElement = document.getElementById('startLogo');
+                animatedElement.addEventListener('animationend', function () {
+
+                    document.getElementById('logoStart').style = 'display:none;';
+                    document.getElementById('startPage').style = 'display:block;';
+                    sessionStorage.setItem('animationPlayed', 'true');
+
+                });
+            } else {
+                document.getElementById('logoStart').style = 'display:none;';
+                document.getElementById('startPage').style = 'display:block;';
+            }
+        </script>
+
+
+</body>
 
 </html>

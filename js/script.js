@@ -1,11 +1,37 @@
+let urlParams = new URLSearchParams(window.location.search);
+let parameterWert = urlParams.get('parameter');
+
 async function init() {
     await includeHTML();
     loadContactsFromStorage();
     loadTasksFromStorage();
     initRegister();
-    renderSummary();
-    renderInitials();
-    
+    if (parameterWert == 'privacyPolicy') {
+        renderPrivacyPolicy();
+        hideElements();
+    } else if (parameterWert == 'legalNotice') {
+        renderLegalNotice();
+        hideElements();
+    } else {
+        renderSummary();
+        renderInitials();
+    }
+}
+
+function hideElements() {
+    let headerRight = document.getElementById('headerRight');
+    let summary = document.getElementById('summary');
+    let addTask = document.getElementById('addTask');
+    let board = document.getElementById('board');
+    let contacts = document.getElementById('contacts');
+    let navLogo = document.getElementById('navLogo');
+    navLogo.onclick = null;
+    navLogo.style.cursor = 'default';
+    headerRight.style.display = 'none';
+    summary.style.display = 'none';
+    addTask.style.display = 'none';
+    board.style.display = 'none';
+    contacts.style.display = 'none';
 }
 
 function setActiveNavItem(activeId) {
@@ -39,35 +65,44 @@ function renderGreetingMessage() {
     getCurrentUserName();
 };
 
-function renderInitials(){
+function renderInitials() {
     let params = new URLSearchParams(window.location.search);
     let username = params.get('username');
- 
-    if(username !== null){
+
+    if (username !== null) {
         let names = username.split(" ")
         let firstNameCharacter = names[0].charAt(0)
-        if(names.length > 1){
-            renderDoubleInitials(names,firstNameCharacter);
-        }else{
+        if (names.length > 1) {
+            renderDoubleInitials(names, firstNameCharacter);
+        } else {
             renderSingleinitials(firstNameCharacter);
         }
     }
 }
 
-function renderDoubleInitials(names,firstNameCharacter){
+function renderDoubleInitials(names, firstNameCharacter) {
 
     let secondNameCharacter = names[1].charAt(0)
     document.getElementById('initials').innerHTML = `${firstNameCharacter}${secondNameCharacter}`;
 }
 
-function renderSingleinitials(firstNameCharacter){
+function renderSingleinitials(firstNameCharacter) {
     document.getElementById('initials').innerHTML = `${firstNameCharacter}`;
 }
 
-function getCurrentUserName(){
+function getCurrentUserName() {
     let params = new URLSearchParams(window.location.search);
     let username = params.get('username');
     document.getElementById('currentUserName').innerHTML = username
     document.getElementById('mobileCurrentUserName').innerHTML = username
 }
 
+function loadJoinSummery(){
+    if (parameterWert == 'privacyPolicy') {
+        window.location.href = 'index.html';
+    } else if (parameterWert == 'legalNotice') {
+        window.location.href = 'index.html';
+    } else {
+        renderSummary();
+    }
+}

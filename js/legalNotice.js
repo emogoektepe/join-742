@@ -45,8 +45,3 @@ function renderLegalNotice() {
         `;
     setActiveNavItem("legalNotice");
 }
-
-function loadJoinSummery(){
-    renderSummary();
-}
-
