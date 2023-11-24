@@ -19,7 +19,7 @@ function renderBoardHtml(){
                 Add Task
                 <img src="./img/add.svg">
             </div>
-            <div class="respBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); renderAddTask()">
+            <div class="respBtn" onclick="renderAddTask()">
                 <img src="./img/responsiveAddButton.svg">
             </div>
             
@@ -52,7 +52,7 @@ function renderBoardHtml(){
                     <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>
@@ -69,7 +69,7 @@ function renderBoardHtml(){
                     <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>
@@ -86,7 +86,7 @@ function renderBoardHtml(){
                     <div class="addTaskHeader filterBlue"  onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>
@@ -100,12 +100,6 @@ function renderBoardHtml(){
             <div class="todoSection">
                 <div class="statusheader">
                     <h3>Done</h3>
-                    <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
-                        <img src="img/plusB.svg">
-                    </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
-                        <img src="./img/responsiveAddPlus.svg">
-                    </div>
                 </div>
                 <div id="done" class="todos" ondrop="moveTo('done')" ondragover="allowDrop(event); highlight('done')" ondragleave="removeHighlight('done')">
                     <div class="noTasks">

@@ -280,25 +280,27 @@ function pushEditAssignedTo(idFromTask){
     setTasksStorage();
 }
 
-function renderEditPrio(prio, idFromTask) {
+function renderEditPrio(prio) {
     switch (prio) {
         case 'Urgent':
+            prioLabel = 'Urgent'
             changePrioColor(editPrioUrgent, '#FF3D00')
             break;
 
         case 'Medium':
+            prioLabel = 'Medium'
             changePrioColor(editPrioMediun, '#FFA800')
             break;
 
         case 'Low':
+            prioLabel = 'Low'
             changePrioColor(editPrioLow, '#7AE229')
             break;
     }
 }
 
-function renderEditSubtasksInTask(actuellyTask, idFromTask) {
+function renderEditSubtasksInTask(actuellyTask) {
     let subtasks = actuellyTask['subtasks']
-    let subtaskList = document.getElementById('newSubtaskAddedList');
     subtasksList = [];
     for (let i = 0; i < subtasks.length; i++) {
             const subtask = subtasks[i]

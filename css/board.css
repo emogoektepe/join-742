@@ -241,6 +241,12 @@
     max-height: 110px;
 }
 
+.dialogShowCard .dateBlock {
+    height: 96px;
+    position: relative;
+    margin-top: 100px;
+}
+
 .dialogShowCard .formSeparator {
     display: none;
 }
