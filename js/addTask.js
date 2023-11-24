@@ -67,7 +67,7 @@ function createTask() {
         allTasks.push(newTask);
         //TODO: clear on Board
         setTasksStorage();
-        loadTasksFromStorage();//hinzugefügt damit das todo direkt anklickbar ist
+        loadTasksFromStorage();
         renderBoard();
     }
 }

@@ -500,21 +500,42 @@
     background-color: #29abe2;
 }
 
-@media (max-width: 1350px){
+.contactSection::-webkit-scrollbar {
+    width: 5px;
+}
+
+.contactSection::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 20px;
+}
+
+.contactSection::-webkit-scrollbar-thumb {
+    background: #2a3647;
+    border-radius: 10px;
+}
+
+.contactSection::-webkit-scrollbar-thumb:hover {
+    background: #8f8f8f;
+}
+
+@media (max-width: 1350px) {
     .infoSectionHeader {
         flex-direction: column;
         align-items: unset;
         width: auto;
         margin-top: 50px;
     }
+
     .infoSectionHeader h3 {
         margin-left: 0px;
         margin-top: 5px;
     }
+
     .separator {
         height: 0px;
         width: 77px;
     }
+
     .infoSectionContact {
         margin-top: 100px;
     }
@@ -526,33 +547,41 @@
         min-height: 70px;
         font-size: 36px;
     }
+
     .contactName p {
         font-size: 36px;
     }
+
     .contactName {
         margin-left: 20px;
     }
 }
 
-@media (max-width: 1050px){
+@media (max-width: 1050px) {
     .contactsSectionRight {
         display: none;
     }
+
     .contactSection {
         width: 100%;
     }
-    .contactSectionHeader{
+
+    .contactSectionHeader {
         display: none;
     }
+
     .contactsUnderButton {
         margin-top: 10px;
     }
+
     .contacts {
         width: 90%;
     }
+
     .backToContactList {
         display: block;
     }
+
     .responsiveAddContactButton {
         display: flex;
     }
@@ -562,6 +591,7 @@
     .contactsSectionRight {
         display: block !important;
     }
+
     .contactSection {
         display: block !important;
     }
