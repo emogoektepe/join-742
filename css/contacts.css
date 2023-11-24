@@ -1,10 +1,11 @@
 .contactsContent {
     height: 100%;
     display: flex;
+    position: relative;
 }
 
 .contactSection {
-    width: 456px;
+    min-width: 456px;
     background-color: white;
     box-shadow: 4px 0px 6px 0px #00000014;
     overflow-y: auto;
@@ -84,8 +85,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 70px;
-    width: 120px;
-    height: 120px;
+    min-width: 120px;
+    min-height: 120px;
     border: 3px solid #FFFFFF;
     box-shadow: 0px 0px 4px 0px #0000001A;
     font-size: 47px;
@@ -469,4 +470,77 @@
 
 .contactInListHover:hover {
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+}
+
+.backToContactList {
+    position: absolute;
+    right: 30px;
+    top: 67px;
+    cursor: pointer;
+    height: 44px;
+    display: none;
+}
+
+@media (max-width: 1350px){
+    .infoSectionHeader {
+        flex-direction: column;
+        align-items: unset;
+        width: auto;
+        margin-top: 50px;
+    }
+    .infoSectionHeader h3 {
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+    .separator {
+        height: 0px;
+        width: 77px;
+    }
+    .infoSectionContact {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contactPicture {
+        min-width: 70px;
+        min-height: 70px;
+        font-size: 36px;
+    }
+    .contactName p {
+        font-size: 36px;
+    }
+    .contactName {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 1050px){
+    .contactsSectionRight {
+        display: none;
+    }
+    .contactSection {
+        width: 100%;
+    }
+    .contactSectionHeader{
+        display: none;
+    }
+    .contactsUnderButton {
+        margin-top: 10px;
+    }
+    .contacts {
+        width: 90%;
+    }
+    .backToContactList {
+        display: block;
+    }
+}
+
+@media (width > 1050px) {
+    .contactsSectionRight {
+        display: block !important;
+    }
+    .contactSection {
+        display: block !important;
+    }
 }

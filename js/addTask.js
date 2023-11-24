@@ -228,7 +228,7 @@ function closeCategoryDropDown() {
     selectTaskCategory.style.border = '';
 }
 
-/*document.addEventListener('click', function (event) {
+document.addEventListener('click', function (event) {
     const thirdBlock = document.querySelector('.dropDownWithInput');
     const categoryBlockDropDown = document.querySelector('.categoryBlockDropDown');
     if (thirdBlock && !thirdBlock.contains(event.target)) {
@@ -237,7 +237,7 @@ function closeCategoryDropDown() {
     if (categoryBlockDropDown && !categoryBlockDropDown.contains(event.target)) {
         closeCategoryDropDown();
     }
-});*/
+});
 
 function toggleDropDown() {
     let dropDownImage = document.getElementById('dropDownImage');
