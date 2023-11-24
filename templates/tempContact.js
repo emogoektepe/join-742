@@ -98,6 +98,9 @@ function tempRenderContactContent() {
                     <div class="contactsUnderButton">
                         <div class="contacts" id="contactsList"></div>
                     </div>
+                    <div class="responsiveAddContactButton">
+                        <img src="" alt="">
+                    </div>
                 </div>
                 <div class="contactsSectionRight" id="contactSectionRight">
                     <div class="infoSectionHeader">
