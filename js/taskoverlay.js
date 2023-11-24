@@ -198,50 +198,59 @@ function renderBoardEditForm(idFromTask) {
     tempRenderAddTaskDivEdit.innerHTML = tempRenderAddTaskHTMLEdit;
     tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';
     taskOverlay.replaceChildren(tempRenderAddTaskDivEdit);
-}
-
-function renderDropDownEditContacts() {
-    let dropDownSection = document.getElementById('editDropDownSection');
-    dropDownSection.innerHTML = '';
-    for (let i = 0; i < contactsJson.length; i++) {
-        if (contactsJson[i].fullName.toLowerCase().includes(searchValue.toLowerCase())) {
-            dropDownSection.innerHTML += /*html*/ `
-            <div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
-                <div class="imgAndName">
-                    <div class="contactsInMenuimg" id="contactInListImg${i}">
-                        ${getInitials(i)}
-                    </div>
-                    <p>${contactsJson[i].fullName}</p>
-                </div>
-                <img src="./img/checkboxEmpty.svg" alt="checkbox">
-            </div>
-        `;
-            let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
-            if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) > -1) {
-                selectContactInDropDown(i);
-            }
-            setContactListImgColor(i);
-        }
-    }
+    renderEditContent(idFromTask);
+    renderAssignedToEditBoard(idFromTask);
 }
 
 function renderEditContent(idFromTask) {
 
     let actuellyTask = allTasks[idFromTask]
     let editPrio = actuellyTask['prio']
-    document.getElementById('addTaskInputTitleEdit').value = `${actuellyTask['title']}`
-    document.getElementById('addTaskTextAreaEdit').value = `${actuellyTask['description']}`
+    document.getElementById('addTaskInputTitle').value = `${actuellyTask['title']}`
+    document.getElementById('addTaskTextArea').value = `${actuellyTask['description']}`
     document.getElementById('selectTaskCategorySpan').innerText = `${actuellyTask['category']}`
-    document.getElementById('addTaskDateEdit').value = `${actuellyTask['dueDate']}`
+    document.getElementById('addTaskDate').value = `${actuellyTask['dueDate']}`
     renderEditPrio(editPrio, idFromTask);
     renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
 
 function closeEditContent(idFromTask) {
     saveInputChanges(idFromTask);
+    saveSubtaskChanges();
     openDialog('dialogShowCard', 'taskOverlay');
     loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
+}
+
+function saveEditChanges(idFromTask) {
+    allTasks[idFromTask]['prio'] = prioLabel;
+    setTasksStorage();
+}
+
+function saveInputChanges(idFromTask) {
+    let actuellyTask = allTasks[idFromTask]
+    actuellyTask['title'] = document.getElementById('addTaskInputTitleEdit').value
+    actuellyTask['description'] = document.getElementById('addTaskTextAreaEdit').value
+    actuellyTask['dueDate'] = document.getElementById('addTaskDateEdit').value
+    actuellyTask['category'] = document.getElementById('selectTaskCategorySpan').innerText 
+    setTasksStorage();
+}
+
+function saveSubtaskChanges(){
+    pushEditSubtasks(idFromTask);
+}
+
+function renderAssignedToEditBoard(idFromTask){
+
+    let assignedTo = allTasks[idFromTask]['assignedTo']
+
+    for (let i = 0; i < assignedTo.length; i++) {
+
+        const contact = assignedTo[i]
+        selectedContacts.push(contact)
+
+    }
+    renderAssignedToImages();
 }
 
 function getEditPrio(selectedPrio, idFromTask) {
@@ -249,159 +258,41 @@ function getEditPrio(selectedPrio, idFromTask) {
     saveEditChanges(idFromTask)
 }
 
-function saveEditChanges(idFromTask) {
-    allTasks[idFromTask]['prio'] = prioLabel;
-    setTasksStorage();
-}
-function saveInputChanges(idFromTask) {
-    let actuellyTask = allTasks[idFromTask]
-    actuellyTask['title'] = document.getElementById('addTaskInputTitleEdit').value
-    actuellyTask['description'] = document.getElementById('addTaskTextAreaEdit').value
-    actuellyTask['dueDate'] = document.getElementById('addTaskDateEdit').value
-    setTasksStorage();
-}
-
 
 function renderEditPrio(prio, idFromTask) {
     switch (prio) {
         case 'Urgent':
-            changeEditPrioColor(editPrioUrgent, '#FF3D00', idFromTask)
+            changePrioColor(editPrioUrgent, '#FF3D00')
             break;
 
         case 'Medium':
-            changeEditPrioColor(editPrioMedium, '#FFA800', idFromTask)
+            changePrioColor(editPrioMediun, '#FFA800')
             break;
 
         case 'Low':
-            changeEditPrioColor(editPrioLow, '#7AE229', idFromTask)
+            changePrioColor(editPrioLow, '#7AE229')
             break;
     }
 }
 
-function changeEditPrioColor(element, color, idFromTask) {
-
-    if (selectedElement === element) {
-        element.style = '';
-        element.lastChild.style = '';
-        selectedElement = false;
-    } else {
-        if (selectedElement) {
-            selectedElement.style = '';
-            selectedElement.lastChild.style = '';
-        }
-        element.style.backgroundColor = color;
-        element.style.boxShadow = 'none';
-        element.style.color = '#ffffff';
-        element.lastChild.style.filter = "brightness(0) invert(1)";
-        element.style.fontWeight = '700';
-        element.style.fontSize = '21px';
-        selectedElement = element;
-    }
-
-}
-
-//überarbeiten mit Emre || Code Sparen
-
 function renderEditSubtasksInTask(actuellyTask, idFromTask) {
     let subtasks = actuellyTask['subtasks']
-    let subtaskList = document.getElementById('newSubtaskAddedListEdit');
-    subtaskList.innerHTML = "";
+    let subtaskList = document.getElementById('newSubtaskAddedList');
     for (let i = 0; i < subtasks.length; i++) {
-        subtaskList.innerHTML +=/*html*/`
-            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="editLi${i}">${subtasks[i]["name"]}</li><div>
-            <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
-                <div onclick="editBoardSubtasks(${i},${idFromTask})">
-                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
-                </div>
-                <div>
-                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
-                </div>
-                <div onclick="deleteBoardSubtask(${i},${idFromTask})">
-                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
-                </div>
-            </div>
-        `;
+            const subtask = subtasks[i]
+            subtasksList.push(subtask)
     }
+
+    renderSubtasksInTask();
 }
 
-function editBoardSubtasks(position, idFromTask) {
-    let li = document.getElementById(`editLi${position}`);
-    let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
-    if (li) {
-        li.parentElement.classList.remove('liContainerHover')
-        li.parentElement.style.backgroundColor = 'white';
-        li.parentElement.style.borderBottom = '1px solid #005DFF';
-        li.style.display = "flex";
-        li.style.paddingLeft = "16px !important";
-        li.contentEditable = "true";
-        li.outline = "none";
-        li.focus();
-        getCursorToEndEdittable(li)
-        editDeleteContainer.classList.remove('dNoneDnC');
-        editDeleteContainer.innerHTML =/*html*/`
-            <div onclick="deleteBoardSubtask(${position},${idFromTask})">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="confirmEditBoardSubtask(${position},${idFromTask})">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        `;
-    }
-}
+function pushEditSubtasks(idFromTask){
+ 
+    let subtasks = allTasks[idFromTask]['subtasks']
 
-function confirmEditBoardSubtask(position, idFromTask) {
-    let actuellyTask = allTasks[idFromTask]
-    let li = document.getElementById(`editLi${position}`);
-    actuellyTask['subtasks'][position]['name'] = li.innerText;
-    renderEditSubtasksInTask(actuellyTask, idFromTask);
-}
-
-function deleteBoardSubtask(position, idFromTask) {
-    let actuellyTask = allTasks[idFromTask]
-    let subtasks = actuellyTask['subtasks']
-    subtasks.splice(position, 1);
-    renderEditSubtasksInTask(actuellyTask, idFromTask);
-}
-
-function createSubTaskAtEditBoard(idFromTask) {
-    let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
-    subtaskIcons.innerHTML = /*html*/`
-        <div class="deleteAndCheck">
-            <div onclick="deleteTaskInInputEditBoard()">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="addSubtaskToBoardList(${idFromTask})">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        </div>
-    `;
-}
-
-function deleteTaskInInputEditBoard() {
-    let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
-    let taskSubtasksInput = document.getElementById('taskSubtasksInputEdit');
-    taskSubtasksInput.value = "";
-    subtaskIcons.innerHTML = renderSubtaskAddButton();
-}
-
-function addSubtaskToBoardList(idFromTask) {
-    let actuellyTask = allTasks[idFromTask]
-    let subtasks = actuellyTask['subtasks']
-    let taskSubtasksInput = document.getElementById('taskSubtasksInputEdit');
-    taskSubtasksInput.focus();
-    if (taskSubtasksInput.value.trim() !== "") {
-        subtasks.push({ name: taskSubtasksInput.value, done: false });
-        renderEditSubtasksInTask(actuellyTask, idFromTask);
-        let subtaskIcons = document.getElementById('subtaskIconsEditBoard');
-        subtaskIcons.innerHTML = renderSubtaskAddButton();
-        taskSubtasksInput.value = "";
-        taskSubtasksInput.blur();
+    for (let i = 0; i < subtasksList.length; i++) {
+        const subtask = subtasksList[i];
+        subtasks.push(subtask)       
     }
 }
 

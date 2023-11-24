@@ -249,6 +249,14 @@
     display: none;
 }
 
+.dialogShowCard #imageFromDropDown{
+    display: flex;
+    background-color: white;
+    padding-top: 16px;
+    margin-top: 0;
+    height: 66px;
+}
+
 .editSubmitButton{
     position: fixed;
     bottom: 0px;
