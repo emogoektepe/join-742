@@ -597,6 +597,14 @@ h1 {
 
 @media(max-width: 600px){
 
+    .logoStart{
+        background-color: #2a3647;
+    }
+
+    .logoStart img{
+        filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(1797%) hue-rotate(347deg) brightness(104%) contrast(104%);
+    }
+
 
     .mainDivOne{
         height: 20vh;
@@ -667,11 +675,14 @@ h1 {
         from{
             height: 230px;
             transform: translateX(0%) translateY(0%);
+            filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(1797%) hue-rotate(347deg) brightness(104%) contrast(104%);
+            
         }
     
         to{
             transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 20%));
             height: 56px;
+            filter: brightness(0) saturate(100%) invert(18%) sepia(14%) saturate(1317%) hue-rotate(176deg) brightness(91%) contrast(89%);
         }
     }
 }
