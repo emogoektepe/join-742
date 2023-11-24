@@ -12,7 +12,9 @@ let currentDraggedElement;
 function renderBoard() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
-    loadTasksFromStorage();
+    setTimeout(()=> {
+        loadTasksFromStorage();
+    },1000)
     generateIDs();
     setActiveNavItem("board");
     filterTodos();
@@ -214,15 +216,18 @@ function closeDialog(id, idOfSlideConti) {
         if (idOfSlideConti == 'addTaskWindow') {
             let addTaskWindow = document.getElementById('addTaskWindow');
             let tempRenderAddTaskDiv = document.getElementById('tempRenderAddTaskDiv');
-            addTaskWindow.removeChild(tempRenderAddTaskDiv);
+            //addTaskWindow.removeChild(tempRenderAddTaskDiv);
         } else if (idOfSlideConti == 'taskOverlay') {
             let taskOverlay = document.getElementById('taskOverlay');
             let tempRenderAddTaskDivEdit = document.getElementById('tempRenderAddTaskDivEdit');
-            taskOverlay.removeChild(tempRenderAddTaskDivEdit);
+            //taskOverlay.removeChild(tempRenderAddTaskDivEdit);
         }
     }, 225)
     slideOut(idOfSlideConti);
-    updateBoardHtml();
+    setTimeout(()=> {
+        renderBoard();
+    },150)
+    
 }
 /**
  * Prevents the event from being propagated in the event phase and stops propagation

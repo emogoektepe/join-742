@@ -166,6 +166,7 @@ function checkBox(id, k) {
 
     subtask['done'] = !subtask['done']
     changeBox(subtask, id, k);
+    updateBoardHtml();
 }
 /**
  * gets the status of the checkbox from the task array and renders the accordingly checkbox
@@ -191,19 +192,37 @@ function changeBox(subtask, id, k) {
     updateBoardHtml();
 }
 
+function renderEditContainer(idFromTask){
+    return /*html*/ `
+     <div class="headerEditForm">
+        <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">    
+    </div>
+    
+    <div id="editTemplate" class="editTemplate">
+        ${tempRenderAddTask()}
+    </div>
+    
+    <div onclick="closeEditContent(${idFromTask})" class="editSubmitButton">
+        <div class="buttonFilled saveEditButton">
+            Ok <img src="./img/check-white.svg">
+        <div>
+    </div>`
+}
+
 function renderBoardEditForm(idFromTask) {
     let taskOverlay = document.getElementById('taskOverlay');
-    let tempRenderAddTaskHTMLEdit = tempRenderAddTask();
-    let tempRenderAddTaskDivEdit = document.createElement('div');
-    tempRenderAddTaskDivEdit.innerHTML = tempRenderAddTaskHTMLEdit;
-    tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';
-    taskOverlay.replaceChildren(tempRenderAddTaskDivEdit);
+    let tempRenderAddTaskDivEdit = document.createElement('div'); // div wo der content rein gerendert wird
+
+    tempRenderAddTaskDivEdit.innerHTML = renderEditContainer(idFromTask); // hier wird die Form in den div gerendert
+    tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';  // der div bekommt eine
+    taskOverlay.replaceChildren(tempRenderAddTaskDivEdit); 
     renderEditContent(idFromTask);
     renderAssignedToEditBoard(idFromTask);
 }
 
 function renderEditContent(idFromTask) {
 
+    selectedContacts = [];
     let actuellyTask = allTasks[idFromTask]
     let editPrio = actuellyTask['prio']
     document.getElementById('addTaskInputTitle').value = `${actuellyTask['title']}`
@@ -215,29 +234,22 @@ function renderEditContent(idFromTask) {
 }
 
 function closeEditContent(idFromTask) {
-    saveInputChanges(idFromTask);
-    saveSubtaskChanges();
+    saveEditChanges(idFromTask);
     openDialog('dialogShowCard', 'taskOverlay');
     loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
 }
 
 function saveEditChanges(idFromTask) {
-    allTasks[idFromTask]['prio'] = prioLabel;
-    setTasksStorage();
-}
-
-function saveInputChanges(idFromTask) {
     let actuellyTask = allTasks[idFromTask]
-    actuellyTask['title'] = document.getElementById('addTaskInputTitleEdit').value
-    actuellyTask['description'] = document.getElementById('addTaskTextAreaEdit').value
-    actuellyTask['dueDate'] = document.getElementById('addTaskDateEdit').value
+    actuellyTask['title'] = document.getElementById('addTaskInputTitle').value
+    actuellyTask['description'] = document.getElementById('addTaskTextArea').value
+    actuellyTask['dueDate'] = document.getElementById('addTaskDate').value
     actuellyTask['category'] = document.getElementById('selectTaskCategorySpan').innerText 
-    setTasksStorage();
-}
-
-function saveSubtaskChanges(){
+    actuellyTask['prio'] = prioLabel;
     pushEditSubtasks(idFromTask);
+    pushEditAssignedTo(idFromTask);
+    setTasksStorage();
 }
 
 function renderAssignedToEditBoard(idFromTask){
@@ -253,11 +265,20 @@ function renderAssignedToEditBoard(idFromTask){
     renderAssignedToImages();
 }
 
-function getEditPrio(selectedPrio, idFromTask) {
-    prioLabel = selectedPrio.innerText;
-    saveEditChanges(idFromTask)
-}
+function pushEditAssignedTo(idFromTask){
 
+    let assignedTo = allTasks[idFromTask]['assignedTo']
+
+    assignedTo = [];
+
+    for (let i = 0; i < selectedContacts.length; i++) {
+        const contact = selectedContacts[i];
+
+        assignedTo.push(contact)
+    }
+    allTasks[idFromTask]['assignedTo'] = assignedTo
+    setTasksStorage();
+}
 
 function renderEditPrio(prio, idFromTask) {
     switch (prio) {
@@ -278,6 +299,7 @@ function renderEditPrio(prio, idFromTask) {
 function renderEditSubtasksInTask(actuellyTask, idFromTask) {
     let subtasks = actuellyTask['subtasks']
     let subtaskList = document.getElementById('newSubtaskAddedList');
+    subtasksList = [];
     for (let i = 0; i < subtasks.length; i++) {
             const subtask = subtasks[i]
             subtasksList.push(subtask)
@@ -290,10 +312,17 @@ function pushEditSubtasks(idFromTask){
  
     let subtasks = allTasks[idFromTask]['subtasks']
 
+    subtasks = [];
+
     for (let i = 0; i < subtasksList.length; i++) {
         const subtask = subtasksList[i];
         subtasks.push(subtask)       
     }
+
+    subtasksList = [];
+    allTasks[idFromTask]['subtasks'] = subtasks;
+    setTasksStorage();
+
 }
 
 
