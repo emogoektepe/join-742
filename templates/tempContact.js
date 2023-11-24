@@ -92,14 +92,14 @@ function tempRenderContactContent() {
                     <div class="contactSectionHeader">
                         <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
                             Add new contact
-                            <img src="../img/person_add.svg" alt="">
+                            <img src="./img/person_add.svg" alt="">
                         </div>
                     </div>
                     <div class="contactsUnderButton">
                         <div class="contacts" id="contactsList"></div>
                     </div>
-                    <div class="responsiveAddContactButton">
-                        <img src="" alt="">
+                    <div class="responsiveAddContactButton" onclick="addNewContact()">
+                        <img src="./img/person_add.svg" alt="">
                     </div>
                 </div>
                 <div class="contactsSectionRight" id="contactSectionRight">
