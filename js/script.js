@@ -14,7 +14,6 @@ async function init() {
         hideElements();
     } else {
         renderSummary();
-        // renderContacts();
         renderInitials();
     }
 }
