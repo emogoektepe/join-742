@@ -211,20 +211,12 @@ function openDialog(id, idOfSlideConti) {
 function closeDialog(id, idOfSlideConti) {
     setTasksStorage();
     loadTasksFromStorage();
-    setTimeout(500,() => {
-        document.getElementById(id).classList.add('d-none')
-        if (idOfSlideConti == 'addTaskWindow') {
-            let addTaskWindow = document.getElementById('addTaskWindow');
-            let tempRenderAddTaskDiv = document.getElementById('tempRenderAddTaskDiv');
-            //addTaskWindow.removeChild(tempRenderAddTaskDiv);
-        } else if (idOfSlideConti == 'taskOverlay') {
-            let taskOverlay = document.getElementById('taskOverlay');
-            let tempRenderAddTaskDivEdit = document.getElementById('tempRenderAddTaskDivEdit');
-            //taskOverlay.removeChild(tempRenderAddTaskDivEdit);
-        }
-    }, 500)
     slideOut(idOfSlideConti);
-    renderBoard();
+    setTimeout(() => {
+        document.getElementById(id).classList.add('d-none')
+        renderBoard();
+    }, 100)
+
 }
 /**
  * Prevents the event from being propagated in the event phase and stops propagation

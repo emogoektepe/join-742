@@ -194,6 +194,19 @@
     
     }
 
+.dialog-bgAddTask{
+     background-color: rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+}
+
 .dialogAddTaskBoard {
         border-radius: 24px;
         width: 80vw;
@@ -207,15 +220,25 @@
 .dialogShowCard {
     border-radius: 24px;
     background-color: white;
-    max-height: 90vh;
+    max-height: 85vh;
     min-width: 33vw;
-    max-width: 50vw;
+    max-width: 70vw;
     padding: 32px 24px;
     border-radius: 24px;
     overflow-y: auto;
     transform: translateX(200%);
     transition: transform 250ms ease-in-out;
     position: relative;
+}
+
+.dialogShowCard .formLeftSide{
+    padding-right: 8px;
+    width: unset;
+}
+
+.dialogShowCard .formRightSide{
+    padding-right: 8px;
+    width: unset;
 }
 
 .dialogShowCard .addTaskContent{
@@ -625,10 +648,18 @@ progress::-webkit-progress-bar {
     .addTaskBtn{
         display: none;
     }
+
+    .dialogShowCard{
+        min-width: 50vw;
+    }
     
     .board{
        display: unset;
         width: 100%;
+    }
+
+    .dialog-bgAddTask{
+        display: none;
     }
     
     .card{
@@ -703,7 +734,7 @@ progress::-webkit-progress-bar {
     }
 
     .dialogShowCard{
-        width: 66vw;
+        max-width: 80vw;
     }
 
 }
@@ -720,6 +751,24 @@ progress::-webkit-progress-bar {
         padding-left: 16px;
         padding-right: 16px;
         margin-top: 40px;
+    }
+
+    .dialogShowCard{
+        min-width: 80vw;
+    }
+
+    .dialog-bgBoard {
+        z-index: 10000;
+    }
+
+
+
+    .dialogShowCard prio div img{
+        width: 20px;
+    }
+
+    .dialogShowCard prio div{
+        font-size: 16px;
     }
 
     .headBar{

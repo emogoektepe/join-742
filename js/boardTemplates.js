@@ -35,7 +35,7 @@ function renderBoardHtml(){
             <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
     </form>
 
-    <div id="dialogAddTaskBoard" class="dialog-bgBoard d-none" onclick="closeDialog('dialogAddTaskBoard','addTaskWindow')">
+    <div id="dialogAddTaskBoard" class="dialog-bgAddTask d-none" onclick="closeDialog('dialogAddTaskBoard','addTaskWindow')">
                 <div id="addTaskWindow" style="transform: translateX(200%);" class="dialogAddTaskBoard" onclick="doNotClose(event)">
                 </div>
     </div>
