@@ -536,3 +536,27 @@
         }
     } 
 }
+@media(max-width: 420px) {
+    .firstRow {
+        width: 320px;
+        gap: 5px;
+    }
+    .toDo {
+        padding: 38px 5px
+    }
+    .done {
+        padding: 38px 5px
+    }
+    .urgent {
+        width: 320px
+    }
+    .thirdRow {
+        width: 320px;
+        gap: 5px;
+    }
+    .thirdRow div{
+        width: 103px;
+        height: 103px;
+        padding: 0;
+    }
+}
