@@ -97,7 +97,7 @@ function renderSummary() {
 function updateSummaryNumbers() {
     const toDoNumber = allTasks.filter(item => item.status === 'todo').length;
     const doneNumber = allTasks.filter(item => item.status === 'done').length;
-    const urgentNumber = allTasks.filter(item => item.prio === 'urgent').length;
+    const urgentNumber = allTasks.filter(item => item.prio === 'Urgent').length;
     const TasksInBoardNumber = allTasks.length;
     const TasksInProgressNumber = allTasks.filter(item => item.status === 'inProgress').length;
     const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;

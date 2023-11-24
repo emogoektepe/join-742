@@ -109,6 +109,19 @@ function renderContactInfoSection(i) {
     let infoSectionContact = document.getElementById('infoSectionContact');
     let imgColor = document.getElementById(`contactInListImg${i}`);
     infoSectionContact.innerHTML = tempRenderContact(i, imgColor);
+    let contactSection = document.getElementById('contactSection');
+    let contactSectionRight = document.getElementById('contactSectionRight');
+    if(window.innerWidth <= 1050) {
+        contactSection.style.display = 'none';
+        contactSectionRight.style.display = 'block';
+    }
+}
+
+function backToContacts() {
+    let contactSection = document.getElementById('contactSection');
+    let contactSectionRight = document.getElementById('contactSectionRight');
+    contactSection.style.display = 'block';
+    contactSectionRight.style.display = 'none';
 }
 
 let activeElement = false;

@@ -88,7 +88,7 @@ function tempRenderContact(i, imgColor) {
 
 function tempRenderContactContent() {
     return /*html*/`<div class="contactsContent">
-                <div class="contactSection">
+                <div class="contactSection" id="contactSection">
                     <div class="contactSectionHeader">
                         <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
                             Add new contact
@@ -99,13 +99,14 @@ function tempRenderContactContent() {
                         <div class="contacts" id="contactsList"></div>
                     </div>
                 </div>
-                <div>
+                <div class="contactsSectionRight" id="contactSectionRight">
                     <div class="infoSectionHeader">
                         <h1>Contacts</h1>
                         <div class="separator"></div>
                         <h3>Better with a team</h3>
                     </div>
                     <div class="infoSectionContact" id="infoSectionContact"></div>
+                    <img onclick="backToContacts()" class="backToContactList" src="./img/arrow-left-line.svg" alt="">
                 </div>
             </div>`;
 }
