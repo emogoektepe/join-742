@@ -599,7 +599,7 @@ h1 {
 
 
     .mainDivOne{
-        height: 25vh;
+        height: 20vh;
     }
 
     .mainDivOne img{
@@ -616,8 +616,8 @@ h1 {
 
     .loginBox{
         height: 50vh;
-        width: 95vw;
-        padding: 0px;
+        width: 85vw;
+        padding: 12px;
     }
 
     .loginInput{
@@ -670,8 +670,8 @@ h1 {
         }
     
         to{
-            transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 25%));
-            height: 70px;
+            transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 20%));
+            height: 56px;
         }
     }
 }
