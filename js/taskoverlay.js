@@ -4,7 +4,6 @@
  * @param {integer} i 
  */
 function renderBoardTaskOverlay(idFromTask) {
-
     let actuellyTask = allTasks[idFromTask]
 
     document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(idFromTask, actuellyTask)}`

@@ -66,7 +66,6 @@ function createTask() {
         };
         allTasks.push(newTask);
         setTasksStorage();
-        loadTasksFromStorage();
         clearAddTask();
         renderBoard();
     }

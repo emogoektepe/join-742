@@ -28,7 +28,6 @@ function generateIDs() {
     for (let x = 0; x < allTasks.length; x++) {
         const tsk = allTasks[x];
         tsk['id'] = x
-        setTasksStorage();
     }
 }
 /**
@@ -36,11 +35,11 @@ function generateIDs() {
  * 
  */
 function updateBoardHtml() {
+    loadTasksFromStorage();
     renderTodoContent();
     renderInProgressContent();
     renderAwaitFeedbackContent();
     renderDoneContent();
-    setTasksStorage();
 }
 /**
  * filters the tasks into the individually arrays
@@ -214,7 +213,6 @@ function openDialog(id, idOfSlideConti) {
  */
 function closeDialog(id, idOfSlideConti) {
     setTasksStorage();
-    loadTasksFromStorage();
     slideOut(idOfSlideConti);
     setTimeout(() => {
         document.getElementById(id).classList.add('d-none')
@@ -298,11 +296,11 @@ function renderCategory(category, id) {
  * deletes the current task
  * @param {integer} id 
  */
-function deleteBoardTask(id) {
+async function deleteBoardTask(id) {
     allTasks.splice(id, 1);
+    generateIDs();
     setTasksStorage();
     renderBoard();
-    setTasksStorage();
 }
 
 
