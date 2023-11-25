@@ -65,9 +65,9 @@ function createTask() {
             subtasks: subtasksList
         };
         allTasks.push(newTask);
-        //TODO: clear on Board
         setTasksStorage();
         loadTasksFromStorage();
+        clearAddTask();
         renderBoard();
     }
 }
@@ -75,8 +75,29 @@ function createTask() {
 function clearAddTask() {
     prioLabel = '';
     subtasksList = [];
-    renderAddTask();
-    //TODO: clear on Board
+    selectedElement = false;
+    searchValue = "";
+    selectedContacts = [];
+    const addTaskInputTitle = document.getElementById('addTaskInputTitle');
+    const addTaskTextArea = document.getElementById('addTaskTextArea');
+    const selectTaskCategory = document.getElementById('selectTaskCategory');
+    addTaskInputTitle.value = '';
+    addTaskTextArea.value = '';
+    selectTaskCategory.children[0].innerText = 'Select task category';
+    clearPrioButtons();
+    renderSubtasksInTask();
+}
+
+function clearPrioButtons() {
+    const buttons = document.querySelectorAll('.prio div'); // Ersetze 'deine-button-klasse' mit der Klasse deiner Buttons
+    buttons.forEach(button => {
+        button.style.backgroundColor = ''; // Setze die Hintergrundfarbe zurück
+        button.style.boxShadow = ''; // Setze den Schatten zurück
+        button.style.color = ''; // Setze die Textfarbe zurück
+        button.lastChild.style.filter = ''; // Setze den Filter zurück
+        button.style.fontWeight = ''; // Setze die Schriftstärke zurück
+        button.style.fontSize = ''; // Setze die Schriftgröße zurück
+    });
 }
 
 function getPrio(selectedPrio) {
@@ -276,14 +297,7 @@ function openContactDropDown() {
     if (dropDownImage.src.includes('down_down')) {
         dropDownImage.src = './img/arrow_drop_down_up.svg';
         dropDownContact.innerHTML = /*html*/ `
-            <div class="dropDownSection" id="dropDownSection"></div>
-            <div class="addContactButtonDropDown">
-                <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
-                    Add new contact
-                    <img src="../img/person_add.svg" alt="">
-                </div>
-            </div>
-                `;
+            <div class="dropDownSection" id="dropDownSection"></div>`;
         renderDropDownContacts();
         dropDownContact.style.display = "block";
     }
