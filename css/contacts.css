@@ -715,6 +715,9 @@
     .contactSection {
         display: block !important;
     }
+    .contactButton {
+        display: flex !important;
+    }
 }
 
 @media (max-width: 425px) {
