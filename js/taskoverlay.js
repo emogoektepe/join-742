@@ -191,6 +191,11 @@ function changeBox(subtask, id, k) {
     }
     updateBoardHtml();
 }
+/**
+ * renders the form of edit with "x" and "OK"-Button
+ * @param {integer} idFromTask 
+ * @returns 
+ */
 
 function renderEditContainer(idFromTask){
     return /*html*/ `
@@ -208,7 +213,10 @@ function renderEditContainer(idFromTask){
         <div>
     </div>`
 }
-
+/**
+ * renders the complete edit container
+ * @param {integer} idFromTask 
+ */
 function renderBoardEditForm(idFromTask) {
     let taskOverlay = document.getElementById('taskOverlay');
     let tempRenderAddTaskDivEdit = document.createElement('div'); // div wo der content rein gerendert wird
@@ -219,6 +227,10 @@ function renderBoardEditForm(idFromTask) {
     renderEditContent(idFromTask);
     renderAssignedToEditBoard(idFromTask);
 }
+/**
+ * renders the content to edit
+ * @param {integer} idFromTask 
+ */
 
 function renderEditContent(idFromTask) {
 
@@ -232,14 +244,20 @@ function renderEditContent(idFromTask) {
     renderEditPrio(editPrio, idFromTask);
     renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
-
+/**
+ * closes the edit option and renders the taskoverlay
+ * @param {integer} idFromTask 
+ */
 function closeEditContent(idFromTask) {
     saveEditChanges(idFromTask);
     openDialog('dialogShowCard', 'taskOverlay');
     loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
 }
-
+/**
+ * saves the changes that are done into the edit form
+ * @param {integer} idFromTask 
+ */
 function saveEditChanges(idFromTask) {
     let actuellyTask = allTasks[idFromTask]
     actuellyTask['title'] = document.getElementById('addTaskInputTitle').value
@@ -251,7 +269,10 @@ function saveEditChanges(idFromTask) {
     pushEditAssignedTo(idFromTask);
     setTasksStorage();
 }
-
+/**
+ * redners the assignedto-contacts into the edit board
+ * @param {integer} idFromTask 
+ */
 function renderAssignedToEditBoard(idFromTask){
 
     let assignedTo = allTasks[idFromTask]['assignedTo']
@@ -264,7 +285,10 @@ function renderAssignedToEditBoard(idFromTask){
     }
     renderAssignedToImages();
 }
-
+/**
+ * pushs the assignedto conatcs into the array from add task, so that they're work with the same array
+ * @param {integer} idFromTask 
+ */
 function pushEditAssignedTo(idFromTask){
 
     let assignedTo = allTasks[idFromTask]['assignedTo']
@@ -279,7 +303,10 @@ function pushEditAssignedTo(idFromTask){
     allTasks[idFromTask]['assignedTo'] = assignedTo
     setTasksStorage();
 }
-
+/**
+ * renders the choosen prio into the edit form
+ * @param {string} prio 
+ */
 function renderEditPrio(prio) {
     switch (prio) {
         case 'Urgent':
@@ -298,7 +325,10 @@ function renderEditPrio(prio) {
             break;
     }
 }
-
+/**
+ * renders the current subtasks into the edit form
+ * @param {object} actuellyTask 
+ */
 function renderEditSubtasksInTask(actuellyTask) {
     let subtasks = actuellyTask['subtasks']
     subtasksList = [];
@@ -309,11 +339,13 @@ function renderEditSubtasksInTask(actuellyTask) {
 
     renderSubtasksInTask();
 }
-
+/**
+* pushs the current subtasks into the same array from add task, so that they're work with the same array
+ * @param {integer} idFromTask 
+ */
 function pushEditSubtasks(idFromTask){
  
     let subtasks = allTasks[idFromTask]['subtasks']
-
     subtasks = [];
 
     for (let i = 0; i < subtasksList.length; i++) {
@@ -324,7 +356,6 @@ function pushEditSubtasks(idFromTask){
     subtasksList = [];
     allTasks[idFromTask]['subtasks'] = subtasks;
     setTasksStorage();
-
 }
 
 

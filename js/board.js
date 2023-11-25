@@ -144,7 +144,11 @@ function searchTask(todo, array, i) {
         return false;
     }
 }
-
+/**
+ * @param {Object} todo 
+ * @param {string*} searchCommand 
+ * @returns the result, if the search command is found
+ */
 function serachCommandIsFound(todo, searchCommand) {
     return (todo.title.toLowerCase().includes(searchCommand) ||
         todo.description.toLowerCase().includes(searchCommand) ||
