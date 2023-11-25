@@ -280,10 +280,11 @@
 
 .dialogShowCard #imageFromDropDown{
     display: flex;
+    flex-wrap: wrap;
     background-color: white;
-    padding-top: 16px;
+    padding-top: 8px;
     margin-top: 0;
-    height: 66px;
+   
 }
 
 .editSubmitButton{
@@ -763,13 +764,14 @@ progress::-webkit-progress-bar {
 
 
 
-    .dialogShowCard prio div img{
+    .dialogShowCard .prio div img{
         width: 20px;
     }
 
-    .dialogShowCard prio div{
+    .dialogShowCard .prio div{
         font-size: 16px;
     }
+
 
     .headBar{
         width: 40px;

@@ -19,20 +19,25 @@
 <body onload="initRegister(); checkAcceptance();">
 
     <div class="signUpPage">
-        <div class="mainDivOne">
+        <div class="mainDivOne signUpSpecial">
             <img class="capa2" src="img/Capa 2.svg">
         </div>
 
 
         <div class="mainDivTwo">
-            <img class="backArrow" onclick="window.location.href='index.html' " src="img/arrow-left-line.svg">
-            <div class="SignUpBox">
+           
+            <div class="signUpBox">
 
                 <div class="login">
-                    <h1>Sign Up</h1>
+                    <div class="signUpHeader">
+                        <img onclick="window.location.href='index.html' " src="img/arrow-left-line.svg">
+                        <h1 class="signUpH1">Sign Up</h1>
+                        <div style="height: 32px; width: 32px;"></div>
+                    </div>
+          
                     <img id="loginUnderline" src="img/loginUnderline.svg">
 
-                    <form autocomplete="off" onsubmit="register(); return false;">
+                    <form class="signUpForm" autocomplete="off" onsubmit="register(); return false;">
                         <div class="inputContainer">
                             <input id="userNameInput" class="loginInput" placeholder="Name" type="text" required>
                             <img src="img/person-grey.svg">
