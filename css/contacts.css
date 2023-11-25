@@ -519,6 +519,40 @@
     background: #8f8f8f;
 }
 
+.threeDots {
+    width: 56px;
+    height: 56px;
+    background-color: #2A3647;
+    position: absolute;
+    right: 50px;
+    bottom: 60px;
+    border-radius: 56px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.threeDots:hover {
+    background-color: #29abe2;
+}
+
+.responsiveEditDelete {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    width: 116px;
+    height: 100px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: white;
+    position: absolute;
+    bottom: 50px;
+    right: 45px;
+    display: none;
+}
+
 @media (max-width: 1350px) {
     .infoSectionHeader {
         flex-direction: column;
@@ -588,7 +622,7 @@
     }
 
     .contactSection {
-        width: 100%;
+        min-width: 100%;
     }
 
     .contactSectionHeader {
@@ -660,6 +694,17 @@
     .formCloseImg {
         filter: invert(94%) sepia(6%) saturate(23%) hue-rotate(259deg) brightness(105%) contrast(106%);
     }
+    .contactButton {
+        flex-direction: column;
+        position: absolute;
+        bottom: 70px;
+        right: 83px;
+        z-index: 99999;
+        display: none;
+    }
+    .threeDots {
+        display: flex;
+    }
 }
 
 @media (width > 1050px) {
@@ -669,5 +714,27 @@
 
     .contactSection {
         display: block !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .infoSectionHeader {
+        margin-left: 10px;
+    }
+    .infoSectionContact {
+        margin-left: 10px;
+    }
+    .contactsSectionRight {
+        margin-top: 50px;
+    }
+    .contactInListName  {
+        font-size: 14px;
+    }
+    .contactInListMail {
+        font-size: 14px;
+    }
+    .contactInListImg {
+        width: 30px;
+        height: 30px;
     }
 }

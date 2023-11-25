@@ -13,6 +13,25 @@ function renderContacts() {
     setActiveNavItem("contacts"); //für Navbar
 }
 
+function openEditDeleteResponsive() {
+    let responsiveEditDelete = document.getElementById('responsiveEditDelete');
+    let contactButton = document.getElementById('contactButton');
+    responsiveEditDelete.style.display = 'block';
+    contactButton.style.display = 'flex';
+}
+
+document.addEventListener('click', function(event) {
+    let responsiveEditDelete = document.getElementById('responsiveEditDelete');
+    let threeDots = document.getElementById('threeDots');
+    let contactButton = document.getElementById('contactButton');
+    if (responsiveEditDelete && threeDots && contactButton) {
+        if (!responsiveEditDelete.contains(event.target) && event.target !== threeDots) {
+            responsiveEditDelete.style.display = 'none';
+            contactButton.style.display = 'none';
+        }
+    }
+});
+
 function addNewContact() {
     document.getElementById('addNewContactForm').style.display = "block";
 }
@@ -111,7 +130,7 @@ function renderContactInfoSection(i) {
     infoSectionContact.innerHTML = tempRenderContact(i, imgColor);
     let contactSection = document.getElementById('contactSection');
     let contactSectionRight = document.getElementById('contactSectionRight');
-    if(window.innerWidth <= 1050) {
+    if (window.innerWidth <= 1050) {
         contactSection.style.display = 'none';
         contactSectionRight.style.display = 'block';
     }

@@ -71,7 +71,7 @@ function tempRenderContact(i, imgColor) {
                 <div class="contactPicture" style="background: ${imgColor.style.backgroundColor}">${getInitials(i)}</div>
                 <div class="contactName">
                     <p style="text-transform: capitalize;">${contactsJson[i].fullName}</p>
-                    <div class="contactButton">
+                    <div class="contactButton" id="contactButton">
                         <div onclick="renderEditForm(${i})"><img src="../img/edit.svg" alt="">Edit</div>
                         <div onclick="deleteContact(${i})"><img src="../img/delete.svg" alt="">Delete</div>
                     </div>
@@ -110,6 +110,10 @@ function tempRenderContactContent() {
                     </div>
                     <div class="infoSectionContact" id="infoSectionContact"></div>
                     <img onclick="backToContacts()" class="backToContactList" src="./img/arrow-left-line.svg" alt="">
+                    <div class="threeDots" id="threeDots" onclick="openEditDeleteResponsive()">
+                        <img src="./img/more_vert.svg" alt="">
+                    </div>
+                    <div class="responsiveEditDelete" id="responsiveEditDelete"></div>
                 </div>
             </div>`;
 }
