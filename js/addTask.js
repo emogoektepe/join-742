@@ -33,7 +33,6 @@ function setTasksStorage() {
     setItem('tasks', allTasksAsString);
 }
 
-
 function createTask() {
     const elements = {
         title: document.getElementById('addTaskInputTitle'),
@@ -88,14 +87,14 @@ function clearAddTask() {
 }
 
 function clearPrioButtons() {
-    const buttons = document.querySelectorAll('.prio div'); // Ersetze 'deine-button-klasse' mit der Klasse deiner Buttons
+    const buttons = document.querySelectorAll('.prio div');
     buttons.forEach(button => {
-        button.style.backgroundColor = ''; // Setze die Hintergrundfarbe zurück
-        button.style.boxShadow = ''; // Setze den Schatten zurück
-        button.style.color = ''; // Setze die Textfarbe zurück
-        button.lastChild.style.filter = ''; // Setze den Filter zurück
-        button.style.fontWeight = ''; // Setze die Schriftstärke zurück
-        button.style.fontSize = ''; // Setze die Schriftgröße zurück
+        button.style.backgroundColor = '';
+        button.style.boxShadow = '';
+        button.style.color = '';
+        button.lastChild.style.filter = '';
+        button.style.fontWeight = '';
+        button.style.fontSize = '';
     });
 }
 
@@ -283,8 +282,13 @@ function changePrioColor(element, color) {
         element.style.boxShadow = 'none';
         element.style.color = '#ffffff';
         element.lastChild.style.filter = "brightness(0) invert(1)";
-        element.style.fontWeight = '700';
-        element.style.fontSize = '21px';
+        if (window.innerWidth <= 1050) {
+            element.style.fontWeight = '400';
+            element.style.fontSize = '14px';
+        } else {
+            element.style.fontWeight = '700';
+            element.style.fontSize = '21px';
+        }
         selectedElement = element;
     }
 }

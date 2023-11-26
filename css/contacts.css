@@ -524,8 +524,8 @@
     height: 56px;
     background-color: #2A3647;
     position: absolute;
-    right: 50px;
-    bottom: 60px;
+    right: 15px;
+    bottom: 15px;
     border-radius: 56px;
     box-shadow: 0px 4px 4px 0px #00000040;
     cursor: pointer;
@@ -548,8 +548,8 @@
     border-bottom-left-radius: 20px;
     background-color: white;
     position: absolute;
-    bottom: 50px;
-    right: 45px;
+    bottom: 10px;
+    right: 15px;
     display: none;
 }
 
@@ -697,8 +697,8 @@
     .contactButton {
         flex-direction: column;
         position: absolute;
-        bottom: 70px;
-        right: 83px;
+        bottom: 25px;
+        right: 55px;
         z-index: 99999;
         display: none;
     }

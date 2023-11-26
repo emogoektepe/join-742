@@ -111,7 +111,7 @@ function tempRenderContactContent() {
                     <div class="infoSectionContact" id="infoSectionContact"></div>
                     <img onclick="backToContacts()" class="backToContactList" src="./img/arrow-left-line.svg" alt="">
                     <div class="threeDots" id="threeDots" onclick="openEditDeleteResponsive()">
-                        <img src="./img/more_vert.svg" alt="">
+                        <img src="./img/more_vert.svg" alt="threeDots" id="moreVert">
                     </div>
                     <div class="responsiveEditDelete" id="responsiveEditDelete"></div>
                 </div>

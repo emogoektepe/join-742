@@ -25,7 +25,7 @@ document.addEventListener('click', function(event) {
     let threeDots = document.getElementById('threeDots');
     let contactButton = document.getElementById('contactButton');
     if (responsiveEditDelete && threeDots && contactButton) {
-        if (!responsiveEditDelete.contains(event.target) && event.target !== threeDots) {
+        if (!responsiveEditDelete.contains(event.target) && event.target !== threeDots && event.target !== threeDots.querySelector('img')) {
             responsiveEditDelete.style.display = 'none';
             contactButton.style.display = 'none';
         }
