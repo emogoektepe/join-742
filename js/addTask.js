@@ -32,6 +32,9 @@ function setTasksStorage() {
     setItem('tasks', allTasksAsString);
 }
 
+/**
+ * This function creates a Task and verifies the mandatory fields.
+ */
 function createTask() {
     const elements = {
         title: document.getElementById('addTaskInputTitle'),
@@ -132,6 +135,11 @@ function renderSubtasksInTask() {
     }
 }
 
+/**
+ * This function enables editing a subtask.
+ * 
+ * @param {int} position - Position of the li element
+ */
 function editSubtasks(position) {
     let li = document.getElementById(`li${position}`);
     let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
@@ -177,6 +185,11 @@ function deleteTaskInInput() {
     subtaskIcons.innerHTML = tempRenderSubtaskAddButton();
 }
 
+/**
+ * This function retrieves the clicked category.
+ * 
+ * @param {string} category - The category's name.
+ */
 function getCategory(category) {
     let selectTaskCategory = document.getElementById('selectTaskCategory');
     selectTaskCategory.children[0].innerText = category;
@@ -226,6 +239,13 @@ function toggleDropDown() {
     }
 }
 
+/**
+ * 
+ * This function changes the priority buttons that are clicked and modifies their CSS.
+ * 
+ * @param {HTML element} element - The HTML element representing the priority button.
+ * @param {hex} color - Setting the background color upon calling a function.
+ */
 function changePrioColor(element, color) {
     if (selectedElement === element) {
         element.style = '';
@@ -287,6 +307,11 @@ function renderDropDownContacts() {
     }
 }
 
+/**
+ * This function modifies the checkboxes and the CSS of the selected contact in the dropdown when clicked.
+ * 
+ * @param {int} i - The position of the contact refers to where it's located within a list or display of contacts, indicating its order relative to other contacts.  
+ */
 function selectContactInDropDown(i) {
     let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
     let isSelected = contactsInMenu.classList.contains('selected');

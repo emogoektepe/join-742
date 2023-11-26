@@ -50,6 +50,11 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
+/**
+ * This function is an onclick event handler for a contact. It opens a form that retrieves the contact's information for editing purposes.
+ * 
+ * @param {int} i - Represents the position ID of the clicked contact.
+ */
 function renderEditForm(i) {
     contactPosition = i;
     document.getElementById('editForm').style.display = "block"
@@ -65,6 +70,9 @@ function renderEditForm(i) {
     inputPhoneEdit.value = contactsJson[i].phone;
 }
 
+/**
+ * This function is used to save the edited contact.
+ */
 function saveEdit() {
     let inputNameEdit = document.getElementById('inputNameEdit').value;
     let inputEmailEdit = document.getElementById('inputEmailEdit').value;
@@ -115,6 +123,11 @@ function getInitials(i) {
     }
 }
 
+/**
+ * This function sets the Background Image color for each Contact. Using Mapping for temporary matchin contact with a color.
+ * 
+ * @param {int} - Contact Position 
+ */
 function setContactListImgColor(i) {
     const color = ["#ff7a00", "#ff5eb3", "#6e52ff", "#9327ff", "#00bee8", "#1fd7c1", "#ff745e", "#ffa35e", "#fc71ff", "#ffc701", "#0038ff", "#c3ff2b", "#ffe62b", "#ff4646", "#ffbb2b"];
     i = i % color.length;
@@ -124,6 +137,11 @@ function setContactListImgColor(i) {
     contactColorsMap.set(contactsJson[i].fullName, contactColor);
 }
 
+/**
+ * This function displays the contact information section to the right of the contact list.
+ * 
+ * @param {int} i - Contact Position 
+ */
 function renderContactInfoSection(i) {
     let infoSectionContact = document.getElementById('infoSectionContact');
     let imgColor = document.getElementById(`contactInListImg${i}`);
@@ -144,6 +162,11 @@ function backToContacts() {
 }
 
 let activeElement = false;
+/**
+ * This function modifies the background of an active contact in the list.
+ * 
+ * @param {HTML element} element - Contact in List
+*/
 function setActiveBackgroundColor(element) {
     if (activeElement === element) {
         element.style.backgroundColor = '';
@@ -163,6 +186,11 @@ function setActiveBackgroundColor(element) {
     activeElement = element;
 }
 
+/**
+ * This function opens the "Create Contact" form on the current page.
+ * 
+ * @param {String} page - Located Page Name
+ */
 function createContact(page) {
     const inputName = document.getElementById('inputName').value;
     const inputEmail = document.getElementById('inputEmail').value;
@@ -200,6 +228,11 @@ function deleteContactInForm() {
     renderContacts();
 }
 
+/**
+ * This function shows a new Created Contact and Scroll in List to the Position
+ * 
+ * @param {int} position  - contact Positon
+ */
 function setActualContact(position) {
     document.getElementById('infoSectionContact').innerHTML = tempRenderContact(position, document.getElementById(`contactInListImg${position}`));
     setActiveBackgroundColor(document.getElementById(`contactInList${position}`));
