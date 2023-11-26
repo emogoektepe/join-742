@@ -134,23 +134,26 @@ function renderCheckedSubtask(id, k, subtask) {
 function renderPrio(prio, id, actuellyTask) {
 
     let img;
-    let string = actuellyTask['prio']
+    let string; 
 
     switch (prio) {
         case 'Low':
-            string
+            string = actuellyTask['prio'];
             img = '<img src="img/prioLow.svg"></img>'
             break;
 
         case 'Medium':
-            string = actuellyTask['prio']
+            string = actuellyTask['prio'];
             img = '<img src="img/prioMid.svg"></img>'
             break;
 
         case 'Urgent':
-            string = actuellyTask['prio']
+            string = actuellyTask['prio'];
             img = '<img src="img/prioUp.svg"></img>'
             break;
+        default:
+            string = 'No Priority Set';
+            img = '';
     }
     document.getElementById(id).innerHTML = `${string} ${img}`
 }

@@ -64,6 +64,8 @@ function renderCardPrio(prio,id){
         case 'Urgent':
             img = '<img src="img/prioUp.svg"></img>'
             break;
+        default:
+            img = '';
     }
     document.getElementById(id).innerHTML = `${img}` 
 }
@@ -79,7 +81,7 @@ function renderCardAssignedTo(idOfContainer,todo){
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]
         let names = fullname.split(" ")
-        let firstNameCharacter = names[0].charAt(0)
+        let firstNameCharacter = names[0].charAt(0).toUpperCase();
         let avatarId = `avatar${id}pic${j}`
         renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
         renderCardContacts(fullname,avatarId);
@@ -94,7 +96,7 @@ function renderCardAssignedTo(idOfContainer,todo){
  */
 function renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter){
     
-        let secondNameCharacter = names[1].charAt(0)
+        let secondNameCharacter = names[1].charAt(0).toUpperCase();
         document.getElementById(idOfContainer).innerHTML += /*html*/`
         <div class="assignedContact">
             <div id=${avatarId} class="avatar">${firstNameCharacter}${secondNameCharacter}</div>
