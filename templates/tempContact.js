@@ -1,5 +1,5 @@
 function tempAddContactForm(page) {
-    return /*html*/`<div class="addNewContactForm" id="addNewContactForm" onclick="closePopup()">
+    return `<div class="addNewContactForm" id="addNewContactForm" onclick="closePopup()">
                 <div class="addNewContactFormContent" onclick="doNotClose(event)">
                     <div class="formLeftSideContact">
                         <img src="../img/logo-white.svg" alt="">
@@ -35,7 +35,7 @@ function tempAddContactForm(page) {
 }
 
 function tempEditForm() {
-    return /*html*/`<div class="addNewContactForm" id="editForm" onclick="closePopup()">
+    return `<div class="addNewContactForm" id="editForm" onclick="closePopup()">
                 <div class="addNewContactFormContent" onclick="doNotClose(event)">
                     <div class="formLeftSideContact">
                         <img src="../img/logo-white.svg" alt="">
@@ -67,7 +67,7 @@ function tempEditForm() {
 }
 
 function tempRenderContact(i, imgColor) {
-    return /*html*/`<div class="infoSectionProfile">
+    return `<div class="infoSectionProfile">
                 <div class="contactPicture" style="background: ${imgColor.style.backgroundColor}">${getInitials(i)}</div>
                 <div class="contactName">
                     <p style="text-transform: capitalize;">${contactsJson[i].fullName}</p>
@@ -87,7 +87,7 @@ function tempRenderContact(i, imgColor) {
 }
 
 function tempRenderContactContent() {
-    return /*html*/`<div class="contactsContent">
+    return `<div class="contactsContent">
                 <div class="contactSection" id="contactSection">
                     <div class="contactSectionHeader">
                         <div class="buttonFilled addNewContactButton" onclick="addNewContact()">
@@ -119,7 +119,7 @@ function tempRenderContactContent() {
 }
 
 function tempRenderContactsUnderHeader(i) {
-    return /*html*/`<div class="contactInList contactInListHover" id="contactInList${i}" onclick="renderContactInfoSection(${i}), setActiveBackgroundColor(this)">
+    return `<div class="contactInList contactInListHover" id="contactInList${i}" onclick="renderContactInfoSection(${i}), setActiveBackgroundColor(this)">
                     <div class="contactInListImg" id="contactInListImg${i}">${getInitials(i)}</div>
                     <div class="contactInListInfo">
                         <div class="contactInListName">${contactsJson[i].fullName.charAt(0).toUpperCase() + contactsJson[i].fullName.substring(1)}</div>
@@ -129,7 +129,7 @@ function tempRenderContactsUnderHeader(i) {
 }
 
 function tempRenderContactsList(i) {
-    return /*html*/`<div class="contactsHeader">
+    return `<div class="contactsHeader">
                 <span>${contactsFirstLetter[i]}</span>
             </div>
             <div class="contactsUnderHeader" id="contactsUnderHeader${contactsFirstLetter[i]}"></div>`;
