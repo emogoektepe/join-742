@@ -14,7 +14,6 @@ function renderAddTask() {
     let date = document.getElementById('addTaskDate');
     date.min = new Date().toISOString().split("T")[0];
     date.max = "2099-01-01";
-    content.innerHTML += tempAddContactForm('addTask');
     setActiveNavItem("addTask");
 }
 
@@ -109,19 +108,7 @@ function focusSubtasksInput() {
 
 function createSubTask() {
     let subtaskIcons = document.getElementById('subtaskIcons');
-    subtaskIcons.innerHTML = /*html*/`
-        <div class="deleteAndCheck">
-            <div onclick="deleteTaskInInput()">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="addSubtaskToList()">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        </div>
-    `;
+    subtaskIcons.innerHTML = tempRenderCreateSubtask();
 }
 
 function addSubtaskToList() {
@@ -131,7 +118,7 @@ function addSubtaskToList() {
         subtasksList.push({ name: taskSubtasksInput.value, done: false });
         renderSubtasksInTask();
         let subtaskIcons = document.getElementById('subtaskIcons');
-        subtaskIcons.innerHTML = renderSubtaskAddButton();
+        subtaskIcons.innerHTML = tempRenderSubtaskAddButton();
         taskSubtasksInput.value = "";
         taskSubtasksInput.blur();
     }
@@ -141,20 +128,7 @@ function renderSubtasksInTask() {
     let subtaskList = document.getElementById('newSubtaskAddedList');
     subtaskList.innerHTML = "";
     for (let i = 0; i < subtasksList.length; i++) {
-        subtaskList.innerHTML +=/*html*/`
-            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasksList[i]["name"]}</li><div>
-            <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
-                <div onclick="editSubtasks(${i})">
-                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
-                </div>
-                <div>
-                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
-                </div>
-                <div onclick="deleteSubtask(${i})">
-                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
-                </div>
-            </div>
-        `;
+        subtaskList.innerHTML += tempRenderSubtaskList(i);
     }
 }
 
@@ -172,17 +146,7 @@ function editSubtasks(position) {
         li.focus();
         getCursorToEndEdittable(li)
         editDeleteContainer.classList.remove('dNoneDnC');
-        editDeleteContainer.innerHTML =/*html*/`
-            <div onclick="deleteSubtask(${position})">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="confirmEditSubtask(${position})">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        `;
+        editDeleteContainer.innerHTML = tempRenderEditDeleteContainer(position);
     }
 }
 
@@ -210,13 +174,7 @@ function deleteTaskInInput() {
     let subtaskIcons = document.getElementById('subtaskIcons');
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
     taskSubtasksInput.value = "";
-    subtaskIcons.innerHTML = renderSubtaskAddButton();
-}
-
-function renderSubtaskAddButton() {
-    return `<div onclick="createSubTask(); focusSubtasksInput()" class="addSubTaskBackground" id="dropDownArrow">
-                <img class="addImg" src="./img/addIconBlue.svg" alt="">
-            </div>`;
+    subtaskIcons.innerHTML = tempRenderSubtaskAddButton();
 }
 
 function getCategory(category) {
@@ -299,8 +257,7 @@ function openContactDropDown() {
     let dropDownContact = document.getElementById('dropDownContact');
     if (dropDownImage.src.includes('down_down')) {
         dropDownImage.src = './img/arrow_drop_down_up.svg';
-        dropDownContact.innerHTML = /*html*/ `
-            <div class="dropDownSection" id="dropDownSection"></div>`;
+        dropDownContact.innerHTML = tempRenderOpenContactDropDownSection();
         renderDropDownContacts();
         dropDownContact.style.display = "block";
     }
@@ -320,17 +277,7 @@ function renderDropDownContacts() {
     dropDownSection.innerHTML = '';
     for (let i = 0; i < contactsJson.length; i++) {
         if (contactsJson[i].fullName.toLowerCase().includes(searchValue.toLowerCase())) {
-            dropDownSection.innerHTML += /*html*/ `
-            <div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
-                <div class="imgAndName">
-                    <div class="contactsInMenuimg" id="contactInListImg${i}">
-                        ${getInitials(i)}
-                    </div>
-                    <p>${contactsJson[i].fullName}</p>
-                </div>
-                <img src="./img/checkboxEmpty.svg" alt="checkbox">
-            </div>
-        `;
+            dropDownSection.innerHTML += tempRenderDopwDownContacts(i);
             let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
             if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) > -1) {
                 selectContactInDropDown(i);
@@ -371,9 +318,7 @@ function renderAssignedToImages() {
     for (let i = 0; i < selectedContacts.length; i++) {
         let imgColor = contactColorsMap.get(selectedContacts[i]);
         if (imgColor) {
-            imageFromDropDown.innerHTML += /*html*/ `
-                <div class="contactsInMenuimg marginRight8px" style="background-color: ${imgColor}">${getInitialsTaskSection(i)}</div>
-            `;
+            imageFromDropDown.innerHTML += tempRenderAssignedToImages(i, imgColor);
         }
     }
 }
