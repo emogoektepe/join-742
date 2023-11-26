@@ -10,7 +10,6 @@ let currentDraggedElement;
  */
 
 function renderBoard() {
-    // loadTasksFromStorage(); <- an der stelle nicht nötig weil wir die task nur bei start laden alle in der init onload body
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
     generateIDs();
@@ -35,7 +34,6 @@ function generateIDs() {
  * 
  */
 function updateBoardHtml() {
-    // loadTasksFromStorage(); <- hier auch nicht nötig da wir die tasks abspeichern und nur bei neu laden sowieso die tasks in der init onload body
     renderTodoContent();
     renderInProgressContent();
     renderAwaitFeedbackContent();
