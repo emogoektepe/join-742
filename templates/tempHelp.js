@@ -1,7 +1,7 @@
 function tempRenderHelp() {
 return `<div class="helpContainer">
 
-    <button class="backButton" onclick="renderSummary()"><img src="../img/arrow-left-line.svg" alt="back"></button>
+    <button class="backButton" onclick="renderSummary()"><img src="./img/arrow-left-line.svg" alt="back"></button>
 
     <div class="headline">
         <h1 class="helpH1">Help</h1>
