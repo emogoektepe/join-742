@@ -67,7 +67,7 @@ function tempRenderAddTask() {
                 <div class="taskSubtasksContainer" id="taskSubtasksContainer">
                     <input autocomplete="off" onclick="createSubTask()" type="text" name="" id="taskSubtasksInput" class="taskSubtasks" placeholder="Add new subtask">
                     <div id="subtaskIcons">
-                        ${renderSubtaskAddButton()}
+                        ${tempRenderSubtaskAddButton()}
                     </div>
                 </div>
                 <div class="newSubtaskAdded" id="newSubtaskAddedList"></div>
@@ -79,4 +79,71 @@ function tempRenderAddTask() {
         </div>
     </div>
 </div>`;
+}
+
+function tempRenderCreateSubtask() {
+    return `<div class="deleteAndCheck">
+                <div onclick="deleteTaskInInput()">
+                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
+                </div>
+                <div>
+                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
+                </div>
+                <div onclick="addSubtaskToList()">
+                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+                </div>
+            </div>`;
+}
+
+function tempRenderSubtaskList(i) {
+    return `<div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasksList[i]["name"]}</li><div>
+                <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
+                <div onclick="editSubtasks(${i})">
+                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
+                </div>
+                <div>
+                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
+                </div>
+                <div onclick="deleteSubtask(${i})">
+                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
+                </div>
+            </div>`;
+}
+
+function tempRenderEditDeleteContainer(position) {
+    return `<div onclick="deleteSubtask(${position})">
+                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
+            </div>
+            <div>
+                <img style="height: 24px" src="./img/borderdash.svg" alt="">
+            </div>
+            <div onclick="confirmEditSubtask(${position})">
+                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
+            </div>`;
+}
+
+function tempRenderSubtaskAddButton() {
+    return `<div onclick="createSubTask(); focusSubtasksInput()" class="addSubTaskBackground" id="dropDownArrow">
+                <img class="addImg" src="./img/addIconBlue.svg" alt="">
+            </div>`;
+}
+
+function tempRenderOpenContactDropDownSection() {
+    return `<div class="dropDownSection" id="dropDownSection"></div>`;
+}
+
+function tempRenderDopwDownContacts(i) {
+    return `<div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
+                <div class="imgAndName">
+                    <div class="contactsInMenuimg" id="contactInListImg${i}">
+                        ${getInitials(i)}
+                    </div>
+                    <p>${contactsJson[i].fullName}</p>
+                </div>
+                <img src="./img/checkboxEmpty.svg" alt="checkbox">
+            </div>`;
+}
+
+function tempRenderAssignedToImages(i, imgColor) {
+    return `<div class="contactsInMenuimg marginRight8px" style="background-color: ${imgColor}">${getInitialsTaskSection(i)}</div>`;
 }

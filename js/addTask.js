@@ -14,7 +14,6 @@ function renderAddTask() {
     let date = document.getElementById('addTaskDate');
     date.min = new Date().toISOString().split("T")[0];
     date.max = "2099-01-01";
-    content.innerHTML += tempAddContactForm('addTask');
     setActiveNavItem("addTask");
 }
 
@@ -33,6 +32,9 @@ function setTasksStorage() {
     setItem('tasks', allTasksAsString);
 }
 
+/**
+ * This function creates a Task and verifies the mandatory fields.
+ */
 function createTask() {
     const elements = {
         title: document.getElementById('addTaskInputTitle'),
@@ -109,19 +111,7 @@ function focusSubtasksInput() {
 
 function createSubTask() {
     let subtaskIcons = document.getElementById('subtaskIcons');
-    subtaskIcons.innerHTML = /*html*/`
-        <div class="deleteAndCheck">
-            <div onclick="deleteTaskInInput()">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/del.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="addSubtaskToList()">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        </div>
-    `;
+    subtaskIcons.innerHTML = tempRenderCreateSubtask();
 }
 
 function addSubtaskToList() {
@@ -131,7 +121,7 @@ function addSubtaskToList() {
         subtasksList.push({ name: taskSubtasksInput.value, done: false });
         renderSubtasksInTask();
         let subtaskIcons = document.getElementById('subtaskIcons');
-        subtaskIcons.innerHTML = renderSubtaskAddButton();
+        subtaskIcons.innerHTML = tempRenderSubtaskAddButton();
         taskSubtasksInput.value = "";
         taskSubtasksInput.blur();
     }
@@ -141,23 +131,15 @@ function renderSubtasksInTask() {
     let subtaskList = document.getElementById('newSubtaskAddedList');
     subtaskList.innerHTML = "";
     for (let i = 0; i < subtasksList.length; i++) {
-        subtaskList.innerHTML +=/*html*/`
-            <div class="liContainer liContainerHover" ondblclick="editSubtasks(${i})"><li class="subtaskLi" id="li${i}">${subtasksList[i]["name"]}</li><div>
-            <div class="deleteAndCheck dNoneDnC" id="editDeleteContainer${i}">
-                <div onclick="editSubtasks(${i})">
-                    <img class="delNCheckHover" style="margin-right: 4px" src="./img/edit.svg" alt="">
-                </div>
-                <div>
-                    <img style="height: 24px" src="./img/borderdash.svg" alt="">
-                </div>
-                <div onclick="deleteSubtask(${i})">
-                    <img class="delNCheckHover" style="margin-left: 4px" src="./img/delete.svg" alt="">
-                </div>
-            </div>
-        `;
+        subtaskList.innerHTML += tempRenderSubtaskList(i);
     }
 }
 
+/**
+ * This function enables editing a subtask.
+ * 
+ * @param {int} position - Position of the li element
+ */
 function editSubtasks(position) {
     let li = document.getElementById(`li${position}`);
     let editDeleteContainer = document.getElementById(`editDeleteContainer${position}`);
@@ -172,17 +154,7 @@ function editSubtasks(position) {
         li.focus();
         getCursorToEndEdittable(li)
         editDeleteContainer.classList.remove('dNoneDnC');
-        editDeleteContainer.innerHTML =/*html*/`
-            <div onclick="deleteSubtask(${position})">
-                <img class="delNCheckHover" style="margin-right: 4px" src="./img/delete.svg" alt="">
-            </div>
-            <div>
-                <img style="height: 24px" src="./img/borderdash.svg" alt="">
-            </div>
-            <div onclick="confirmEditSubtask(${position})">
-                <img class="delNCheckHover" style="margin-left: 4px" src="./img/check.svg" alt="">
-            </div>
-        `;
+        editDeleteContainer.innerHTML = tempRenderEditDeleteContainer(position);
     }
 }
 
@@ -210,15 +182,14 @@ function deleteTaskInInput() {
     let subtaskIcons = document.getElementById('subtaskIcons');
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
     taskSubtasksInput.value = "";
-    subtaskIcons.innerHTML = renderSubtaskAddButton();
+    subtaskIcons.innerHTML = tempRenderSubtaskAddButton();
 }
 
-function renderSubtaskAddButton() {
-    return `<div onclick="createSubTask(); focusSubtasksInput()" class="addSubTaskBackground" id="dropDownArrow">
-                <img class="addImg" src="./img/addIconBlue.svg" alt="">
-            </div>`;
-}
-
+/**
+ * This function retrieves the clicked category.
+ * 
+ * @param {string} category - The category's name.
+ */
 function getCategory(category) {
     let selectTaskCategory = document.getElementById('selectTaskCategory');
     selectTaskCategory.children[0].innerText = category;
@@ -268,6 +239,13 @@ function toggleDropDown() {
     }
 }
 
+/**
+ * 
+ * This function changes the priority buttons that are clicked and modifies their CSS.
+ * 
+ * @param {HTML element} element - The HTML element representing the priority button.
+ * @param {hex} color - Setting the background color upon calling a function.
+ */
 function changePrioColor(element, color) {
     if (selectedElement === element) {
         element.style = '';
@@ -299,8 +277,7 @@ function openContactDropDown() {
     let dropDownContact = document.getElementById('dropDownContact');
     if (dropDownImage.src.includes('down_down')) {
         dropDownImage.src = './img/arrow_drop_down_up.svg';
-        dropDownContact.innerHTML = /*html*/ `
-            <div class="dropDownSection" id="dropDownSection"></div>`;
+        dropDownContact.innerHTML = tempRenderOpenContactDropDownSection();
         renderDropDownContacts();
         dropDownContact.style.display = "block";
     }
@@ -320,17 +297,7 @@ function renderDropDownContacts() {
     dropDownSection.innerHTML = '';
     for (let i = 0; i < contactsJson.length; i++) {
         if (contactsJson[i].fullName.toLowerCase().includes(searchValue.toLowerCase())) {
-            dropDownSection.innerHTML += /*html*/ `
-            <div class="contactsInMenu" id="contactsInMenu${i}" onclick="selectContactInDropDown(${i})">
-                <div class="imgAndName">
-                    <div class="contactsInMenuimg" id="contactInListImg${i}">
-                        ${getInitials(i)}
-                    </div>
-                    <p>${contactsJson[i].fullName}</p>
-                </div>
-                <img src="./img/checkboxEmpty.svg" alt="checkbox">
-            </div>
-        `;
+            dropDownSection.innerHTML += tempRenderDopwDownContacts(i);
             let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
             if (selectedContacts.indexOf(contactsInMenu.children[0].children[1].innerHTML) > -1) {
                 selectContactInDropDown(i);
@@ -340,6 +307,11 @@ function renderDropDownContacts() {
     }
 }
 
+/**
+ * This function modifies the checkboxes and the CSS of the selected contact in the dropdown when clicked.
+ * 
+ * @param {int} i - The position of the contact refers to where it's located within a list or display of contacts, indicating its order relative to other contacts.  
+ */
 function selectContactInDropDown(i) {
     let contactsInMenu = document.getElementById(`contactsInMenu${i}`);
     let isSelected = contactsInMenu.classList.contains('selected');
@@ -371,9 +343,7 @@ function renderAssignedToImages() {
     for (let i = 0; i < selectedContacts.length; i++) {
         let imgColor = contactColorsMap.get(selectedContacts[i]);
         if (imgColor) {
-            imageFromDropDown.innerHTML += /*html*/ `
-                <div class="contactsInMenuimg marginRight8px" style="background-color: ${imgColor}">${getInitialsTaskSection(i)}</div>
-            `;
+            imageFromDropDown.innerHTML += tempRenderAssignedToImages(i, imgColor);
         }
     }
 }

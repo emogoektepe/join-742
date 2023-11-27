@@ -10,7 +10,6 @@ let currentDraggedElement;
  */
 
 function renderBoard() {
-    loadTasksFromStorage();
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `${renderBoardHtml()}`;
     generateIDs();
@@ -35,7 +34,6 @@ function generateIDs() {
  * 
  */
 function updateBoardHtml() {
-    loadTasksFromStorage();
     renderTodoContent();
     renderInProgressContent();
     renderAwaitFeedbackContent();

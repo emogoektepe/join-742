@@ -27,7 +27,6 @@ h1 {
 
 .logoStart{
     height: 100vh;
-    width: 100vw;
     background-color: #f6f7f8;
     display: flex;
     justify-content: center;
@@ -35,7 +34,8 @@ h1 {
 }
 
 .logoStart img{
-    height: 230px;
+    padding-top: 16px;
+    padding-left: 5%;
     width: auto;
     animation: changeLogoPosition 1s ease-in-out forwards 500ms;
 
@@ -43,13 +43,11 @@ h1 {
 
 @keyframes changeLogoPosition {
     from{
-        height: 230px;
         transform: translateX(0%) translateY(0%);
     }
 
     to{
-        transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 30%));
-        height: 84px;
+        transform: translateX(calc(-630px + 50%)) translateY(calc(-432px + 30%));
     }
 }
 

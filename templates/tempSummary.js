@@ -12,7 +12,7 @@ return `<div class="summaryContent">
         <div class="firstRow">
             <div class="toDo" onclick="renderBoard()">
                 <div class="toDoLeft">
-                    <img class="summaryIcons" src="../img/summaryPencil.svg" alt="">
+                    <img class="summaryIcons" src="./img/summaryPencil.svg" alt="">
                 </div>
                 <div class="toDoRight">
                     <span id="toDoNumber" class="taskNumber"></span>
@@ -21,7 +21,7 @@ return `<div class="summaryContent">
             </div>
             <div class="done" onclick="renderBoard()">
                 <div class="doneLeft">
-                    <img class="summaryIcons" src="../img/summaryCheck.svg" alt="">
+                    <img class="summaryIcons" src="./img/summaryCheck.svg" alt="">
                 </div>
                 <div class="doneRight">
                     <span id="doneNumber" class="taskNumber"></span>
@@ -33,7 +33,7 @@ return `<div class="summaryContent">
             <div class="urgent" onclick="renderBoard()">
                 <div class="urgentLeft">
                     <div class="urgentImg">
-                        <img src="../img/summaryUrgent.svg" alt="">
+                        <img src="./img/summaryUrgent.svg" alt="">
                     </div>
                     <div class="urgentCount"> 
                         <span id="urgentNumber" class="urgentNumber"></span>

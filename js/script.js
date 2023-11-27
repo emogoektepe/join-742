@@ -5,6 +5,7 @@ async function init() {
     await includeHTML();
     loadContactsFromStorage();
     initRegister();
+    loadTasksFromStorage();
     if (parameterWert == 'privacyPolicy') {
         renderPrivacyPolicy();
         hideElements();
@@ -12,7 +13,6 @@ async function init() {
         renderLegalNotice();
         hideElements();
     } else {
-        loadTasksFromStorage();
         renderSummary();
         renderInitials();
     }
