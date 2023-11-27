@@ -1,21 +1,18 @@
 /**
- * renders the whole taskoverlay
- * @param {object} array 
- * @param {integer} i 
+ * renders the whole taskoverlay 
+ * @param {integer} idFromTask 
  */
 function renderBoardTaskOverlay(idFromTask) {
     let actuellyTask = allTasks[idFromTask]
-
     document.getElementById('dialogShowCard').innerHTML =  /*html*/ `${renderTaskOverlayHtml(idFromTask, actuellyTask)}`
+    renderSubtasks(idFromTask);
     renderCategory(actuellyTask['category'], `ctgry${idFromTask}`);
     renderAssignedTo(idFromTask, 'assignedUser');
-    renderSubtasks(idFromTask);
     renderPrio(actuellyTask['prio'], `prio${idFromTask}`, actuellyTask);
 }
 /**
  * renders the contacts which are assigned to the task into the taskoverlay 
- * @param {Object} array 
- * @param {integer} i 
+ * @param {integer} idFromTask 
  * @param {string} idOfContainer 
  */
 function renderAssignedTo(idFromTask, idOfContainer) {
@@ -65,8 +62,7 @@ function renderSingleName(idOfContainer, j, firstNameCharacter, fullname) {
 }
 /**
  * renders the current subtaks into the taskoverlay
- * @param {Object} array 
- * @param {integer} i 
+ * @param {integer} idFromTask 
  */
 function renderSubtasks(idFromTask) {
     let subtasks = allTasks[idFromTask]['subtasks']
