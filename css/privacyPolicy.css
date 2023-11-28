@@ -36,3 +36,31 @@
 .ppContent a:hover{
     text-decoration: underline;
 }
+
+@media(max-width:760px){
+
+    .ppHeader{
+        font-size: 47px;
+        margin-left: 16px;
+        margin-right: unset;
+        margin-top: 48px;
+    }
+
+    .ppHeader img{
+        top: 129.5px;
+    }
+
+    .ppContent{
+        margin-left: 16px;
+        margin-right: 16px;
+    } 
+
+    .navFooter div.active {
+        width: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: #091931;
+        color: #CDCDCD;
+    }
+}
