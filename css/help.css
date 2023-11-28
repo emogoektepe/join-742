@@ -83,3 +83,11 @@
     margin: 0;
     /* 24px */
 }
+
+@media (max-width:760px) {
+    .helpContainer {
+        margin-left: 46px;
+        margin-right: 48px;
+        margin-top: 50px;
+    }
+}
