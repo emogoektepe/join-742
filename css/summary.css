@@ -548,7 +548,16 @@
         padding: 38px 5px
     }
     .urgent {
-        width: 320px
+        width: 320px;
+        gap: 0px;
+    }
+    .urgentLeft {
+        gap: 0px;
+        padding-left: 12px;
+    }
+    .calendar {
+        padding-right: 10px;
+        padding-left: 18px;
     }
     .thirdRow {
         width: 320px;
