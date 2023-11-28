@@ -80,16 +80,33 @@ function renderCardPrio(prio,id){
  */
 function renderCardAssignedTo(idOfContainer,todo){
     let assigned = todo['assignedTo']
+    let remainingContacts =  assigned.length - 3
     let id = todo['id']
 
+
+    
     for (let j = 0; j < assigned.length; j++) {
         const fullname = assigned[j]
         let names = fullname.split(" ")
         let firstNameCharacter = names[0].charAt(0).toUpperCase();
         let avatarId = `avatar${id}pic${j}`
+        console.log(remainingContacts)
         renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
         renderCardContacts(fullname,avatarId);
-    }    
+        if(assigned.length > 3){
+            renderRemainingContacts(idOfContainer,avatarId,remainingContacts)
+        }
+    }
+
+   
+
+}
+
+function renderRemainingContacts(idOfContainer,avatarId,remainingContacts){
+    document.getElementById(idOfContainer).innerHTML += /*html*/`
+    <div class="assignedContact">
+        <div id=${avatarId} class="avatar">${remainingContacts}+</div>
+    </div>`
 }
 
 /**
