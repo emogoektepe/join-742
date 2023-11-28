@@ -116,18 +116,18 @@ function togglePopup(idFromTask) {
         // Öffne das Popup, wenn es geschlossen ist
         popup.style.display = 'block';
         // Füge einen Event-Listener für Klicks auf das Dokument hinzu, um das Popup zu schließen
-        document.addEventListener('click', function(event){
-            closePopupOutsideClick(event, idFromTask);
-        });
+        //document.addEventListener('click', function(event){
+        //   closePopupOutsideClick(event, idFromTask);
+      //  });
     } else {
         // Schließe das Popup, wenn es geöffnet ist
         popup.style.display = 'none';
         // Entferne den Event-Listener für Klicks auf das Dokument
-        document.removeEventListener('click', closePopupOutsideClick);
+        //document.removeEventListener('click', closePopupOutsideClick);
     }
 }
 
-function closePopupOutsideClick(event,idFromTask) {
+/*function closePopupOutsideClick(event,idFromTask) {
     var popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
     var clickElement = document.getElementById(`openPopUp${idFromTask}`);
     
@@ -138,7 +138,7 @@ function closePopupOutsideClick(event,idFromTask) {
         // Entferne den Event-Listener für Klicks auf das Dokument
         document.removeEventListener('click', closePopupOutsideClick);
     }
-}
+}*/
 
 /**
  * @param {object} todo

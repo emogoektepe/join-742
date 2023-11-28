@@ -36,3 +36,19 @@
 .lnContent a:hover{
     text-decoration: underline;
 }
+
+@media(max-width:760px){
+    .lnContent{
+        margin-left: 32px;
+        margin-right: 32px;
+    } 
+
+    .navFooter div.active {
+        width: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: #091931;
+        color: #CDCDCD;
+    }
+}
