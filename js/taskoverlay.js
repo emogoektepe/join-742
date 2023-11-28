@@ -10,6 +10,7 @@ function renderBoardTaskOverlay(idFromTask) {
     renderAssignedTo(idFromTask, 'assignedUser');
     renderPrio(actuellyTask['prio'], `prio${idFromTask}`, actuellyTask);
 }
+
 /**
  * renders the contacts which are assigned to the task into the taskoverlay 
  * @param {integer} idFromTask 
@@ -30,6 +31,7 @@ function renderAssignedTo(idFromTask, idOfContainer) {
         }
     }
 }
+
 /**
  * renders the name of the contact to which the task is assigned, if the contact has got two names
  * @param {array} names 
@@ -46,6 +48,7 @@ function renderDoubleName(names, idOfContainer, j, firstNameCharacter, fullname)
     </div>`
     renderCardContacts(fullname, `assignedContact${j}`);
 }
+
 /**
  *  renders the name of the contact to which the task is assigned, if the contact has got only one names
  * @param {string} idOfContainer 
@@ -60,6 +63,7 @@ function renderSingleName(idOfContainer, j, firstNameCharacter, fullname) {
             </div>`
     renderCardContacts(fullname, `assignedContact${j}`);
 }
+
 /**
  * renders the current subtaks into the taskoverlay
  * @param {integer} idFromTask 
@@ -70,6 +74,7 @@ function renderSubtasks(idFromTask) {
 
     renderSubtaskArray(subtasks, id)
 }
+
 /**
  * renders the Subtaskarray from the current task
  * @param {Array} subtasks 
@@ -92,6 +97,7 @@ function renderSubtaskArray(subtasks, id) {
         }
     }
 }
+
 /**
  * if the subtask isn't checked, the right img will be renderd 
  * @param {integer} id 
@@ -107,6 +113,7 @@ function renderNotCheckedSubtask(id, k, subtask) {
         ${subtask['name']}
     </div>`
 }
+
 /**
  * renders the accordingly img if the subtask is checked
  * @param {integer} id 
@@ -153,6 +160,7 @@ function renderPrio(prio, id, actuellyTask) {
     }
     document.getElementById(id).innerHTML = `${string} ${img}`
 }
+
 /**
  * onlick the clicked checkbox changes its boolean and renders the accordingly checked box
  * @param {integer} id 
@@ -166,6 +174,7 @@ function checkBox(id, k) {
     changeBox(subtask, id, k);
     updateBoardHtml();
 }
+
 /**
  * gets the status of the checkbox from the task array and renders the accordingly checkbox
  * @param {Object} subtask 
@@ -189,6 +198,7 @@ function changeBox(subtask, id, k) {
     }
     updateBoardHtml();
 }
+
 /**
  * renders the form of edit with "x" and "OK"-Button
  * @param {integer} idFromTask 
@@ -211,6 +221,7 @@ function renderEditContainer(idFromTask){
         <div>
     </div>`
 }
+
 /**
  * renders the complete edit container
  * @param {integer} idFromTask 
@@ -225,6 +236,7 @@ function renderBoardEditForm(idFromTask) {
     renderEditContent(idFromTask);
     renderAssignedToEditBoard(idFromTask);
 }
+
 /**
  * renders the content to edit
  * @param {integer} idFromTask 
@@ -242,6 +254,7 @@ function renderEditContent(idFromTask) {
     renderEditPrio(editPrio, idFromTask);
     renderEditSubtasksInTask(actuellyTask, idFromTask);
 }
+
 /**
  * closes the edit option and renders the taskoverlay
  * @param {integer} idFromTask 
@@ -252,6 +265,7 @@ function closeEditContent(idFromTask) {
     loadTasksFromStorage();
     renderBoardTaskOverlay(idFromTask);
 }
+
 /**
  * saves the changes that are done into the edit form
  * @param {integer} idFromTask 
@@ -267,6 +281,7 @@ function saveEditChanges(idFromTask) {
     pushEditAssignedTo(idFromTask);
     setTasksStorage();
 }
+
 /**
  * redners the assignedto-contacts into the edit board
  * @param {integer} idFromTask 
@@ -283,6 +298,7 @@ function renderAssignedToEditBoard(idFromTask){
     }
     renderAssignedToImages();
 }
+
 /**
  * pushs the assignedto conatcs into the array from add task, so that they're work with the same array
  * @param {integer} idFromTask 
@@ -301,6 +317,7 @@ function pushEditAssignedTo(idFromTask){
     allTasks[idFromTask]['assignedTo'] = assignedTo
     setTasksStorage();
 }
+
 /**
  * renders the choosen prio into the edit form
  * @param {string} prio 
@@ -323,6 +340,7 @@ function renderEditPrio(prio) {
             break;
     }
 }
+
 /**
  * renders the current subtasks into the edit form
  * @param {object} actuellyTask 
@@ -337,6 +355,7 @@ function renderEditSubtasksInTask(actuellyTask) {
 
     renderSubtasksInTask();
 }
+
 /**
 * pushs the current subtasks into the same array from add task, so that they're work with the same array
  * @param {integer} idFromTask 

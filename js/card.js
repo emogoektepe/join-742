@@ -13,6 +13,7 @@ function renderCard(todo,array,i){
     renderProgressbar(todo,todo['id']);
     renderCardPrio(todo['prio'],`cardPrio${todo['id']}`);
 }
+
 /**
  * checks the subtask array and renders the progress bar
  * @param {object} todo 
@@ -27,6 +28,7 @@ function renderProgressbar(todo,id){
     }
     calculateProgress(subtasks,readySubtask,id,todo);
 }
+
 /**
  * caculates the progress and renders the bar
  * @param {array} subtasks 
@@ -43,6 +45,7 @@ function calculateProgress(subtasks,readySubtask,id,todo){
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
     }
 }
+
 /**
  * renders the accordingly prio to todo cards
  * @param {string} prio 
@@ -69,6 +72,7 @@ function renderCardPrio(prio,id){
     }
     document.getElementById(id).innerHTML = `${img}` 
 }
+
 /**
  * renders the contacts which are assigned to the task into the todo cards 
  * @param {string} idOfContainer 
@@ -87,6 +91,7 @@ function renderCardAssignedTo(idOfContainer,todo){
         renderCardContacts(fullname,avatarId);
     }    
 }
+
 /**
  * renders the the first characters of the names from the contact to which the task is assigned to into the avatar
  * @param {string} names 
@@ -115,6 +120,7 @@ function renderOneCharacter(idOfContainer,avatarId,firstNameCharacter){
         <div id=${avatarId} class="avatar">${firstNameCharacter}</div>
     </div>`
 }
+
 /**
  * checks the length from the "names" array and renders the accordingly function for the contact names
  * @param {string} names 

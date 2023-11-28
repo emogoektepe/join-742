@@ -29,6 +29,7 @@ function generateIDs() {
         tsk['id'] = x
     }
 }
+
 /**
  * upadtes the Content of the Board
  * 
@@ -39,6 +40,7 @@ function updateBoardHtml() {
     renderAwaitFeedbackContent();
     renderDoneContent();
 }
+
 /**
  * filters the tasks into the individually arrays
  * 
@@ -49,6 +51,7 @@ function filterTodos() {
     awaitFeedback = allTasks.filter(f => f['status'] == 'awaitFeedback');
     done = allTasks.filter(d => d['status'] == 'done');
 }
+
 /**
  * renders the todos with the status "todo" into the array 'todo' 
  * 
@@ -58,6 +61,7 @@ function renderTodoContent() {
     let array = 'todo'
     renderStatusArray(statusArray, array);
 }
+
 /**
  * renders the acccordingly content into the indivudually array
  * @param {Object} statusArray 
@@ -78,6 +82,7 @@ function renderStatusArray(statusArray, array) {
     }
     emptyCategory(foundMatchingElement, array)
 }
+
 /**
  * renders the todos with the status "inProgress" into the array 'inProgress' 
  * 
@@ -87,6 +92,7 @@ function renderInProgressContent() {
     let array = 'inProgress'
     renderStatusArray(statusArray, array);
 }
+
 /**
  * renders the todos with the status "awaitFeedback" into the array 'awaitFeedback' 
  * 
@@ -96,6 +102,7 @@ function renderAwaitFeedbackContent() {
     let array = 'awaitFeedback'
     renderStatusArray(statusArray, array);
 }
+
 /**
  * renders the todos with the status "done" into the array 'done' 
  * 
@@ -105,12 +112,14 @@ function renderDoneContent() {
     let array = 'done'
     renderStatusArray(statusArray, array);
 }
+
 /**
  * @returns the HTML if the filter array is empty
  */
 function renderEmptyCategory() {
     return /*html*/`<div class="noTasks">No Tasks to do</div>`
 }
+
 /**
  * renders the accordingly content if the boolean is true
  * @param {Boolean} foundMatchingElement 
@@ -141,6 +150,7 @@ function searchTask(todo, array, i) {
         return false;
     }
 }
+
 /**
  * @param {Object} todo 
  * @param {string*} searchCommand 
@@ -166,6 +176,7 @@ function slideIn(idOfSlideConti) {
         document.getElementById(idOfSlideConti).style = 'transform: translateX(0%)';
     }, 5)
 }
+
 /**
  * changes the position of the taskoverlay with an animation at closing the overlay
  * @param {string} idOfSlideConti 
@@ -173,6 +184,7 @@ function slideIn(idOfSlideConti) {
 function slideOut(idOfSlideConti) {
     document.getElementById(idOfSlideConti).style = 'transform: translateX(200%)';
 }
+
 /**
  * highlights the container where the todo cards are dragged over
  * @param {string} id 
@@ -180,6 +192,7 @@ function slideOut(idOfSlideConti) {
 function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight')
 }
+
 /**
  * removes the highlight from container
  * @param {string} id 
@@ -187,6 +200,7 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight')
 }
+
 /**
  * opens the dialog window 
  * @param {string} id 
@@ -204,6 +218,7 @@ function openDialog(id, idOfSlideConti) {
     document.getElementById(id).classList.remove('d-none');
     slideIn(idOfSlideConti);
 }
+
 /**
  * closes the dialog window
  * @param {string} id 
@@ -218,6 +233,7 @@ function closeDialog(id, idOfSlideConti) {
     }, 100)
 
 }
+
 /**
  * Prevents the event from being propagated in the event phase and stops propagation
  * @param {Event} event 
@@ -225,6 +241,7 @@ function closeDialog(id, idOfSlideConti) {
 function doNotClose(event) {
     event.stopPropagation();
 }
+
 /**
  * gets the id of the dragged element
  * @param {integer} id 
@@ -232,6 +249,7 @@ function doNotClose(event) {
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
 /**
  * changes the default behaivour of the browser for the drag and drop event
  * @param {Event} ev 
@@ -239,6 +257,7 @@ function startDragging(id) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 /**
  * changes the category of a task, so it can change the array 
  * @param {string} category 
@@ -248,6 +267,7 @@ function moveTo(category) {
     setTasksStorage();
     renderBoard();
 }
+
 /**
  * at dragging the element, a class is added to the element so that the card rotates 
  * @param {integer} id 
@@ -256,6 +276,7 @@ function rotateCard(id) {
     document.getElementById(id).classList.remove('card');
     document.getElementById(id).classList.add('rotateCard');
 }
+
 /**
  * gets the right color for the avatars 
  * @param {string} name 
@@ -273,6 +294,7 @@ function renderCardContacts(name, idName) {
     let bgColor = contactColorsMap.get(name)
     document.getElementById(idName).style.backgroundColor = `${bgColor}`;
 }
+
 /**
  * renders the right backgroundcolor for the category
  * @param {string} category 
@@ -290,6 +312,7 @@ function renderCategory(category, id) {
             break;
     }
 }
+
 /**
  * deletes the current task
  * @param {integer} id 

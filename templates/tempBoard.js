@@ -143,6 +143,7 @@ function renderCardHtml(todo){
     </div>
 </div>`
 }
+
 /**
  * 
  * @param {integer} idFromTask 
