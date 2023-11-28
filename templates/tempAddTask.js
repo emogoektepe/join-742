@@ -33,7 +33,7 @@ function tempRenderAddTask() {
         <div class="formRightSide">
             <div class="dateBlock">
                 <span data-end="*">Due Date</span>
-                <input type="date" id="addTaskDate" value="${todaysDate}">
+                <input type="date" id="addTaskDate" value="${todaysDate}" min=${new Date().toISOString().split("T")[0]} max="2099-01-01">
                 <span class="requiredFieldText">This field is required</span>
             </div>
             <div class="prioBlock">

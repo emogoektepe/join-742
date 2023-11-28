@@ -11,9 +11,6 @@ function renderAddTask() {
     let content = document.getElementById('content');
     selectedContacts = [];
     content.innerHTML = `<div class="addTaskContainer">${tempRenderAddTask()}</div>`;
-    let date = document.getElementById('addTaskDate');
-    date.min = new Date().toISOString().split("T")[0];
-    date.max = "2099-01-01";
     setActiveNavItem("addTask");
 }
 
