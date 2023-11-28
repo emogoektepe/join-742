@@ -618,6 +618,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         margin-top: 110px;
         padding-bottom: 20px;
     }
+    .dateBlock {
+        margin-top: 40px;
+    }
 }
 
 @media (max-width: 760px) {
