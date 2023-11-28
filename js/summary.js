@@ -23,6 +23,7 @@ function updateSummaryNumbers() {
     const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;
     const urgentTasksWithDueDates = allTasks.filter(item => item.prio === 'Urgent' && item.dueDate !== '');
     let closestDate = '';
+    let upcomingDeadline = '';
 
     if (urgentTasksWithDueDates.length > 0) {
         const dates = urgentTasksWithDueDates.map(item => new Date(item.dueDate));
