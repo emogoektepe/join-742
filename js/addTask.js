@@ -340,22 +340,20 @@ function searchContactInDropDown() {
 function renderAssignedToImages() {
     let imageFromDropDown = document.getElementById('imageFromDropDown');
     imageFromDropDown.innerHTML = "";
-    let htmlToAdd = ""; // Neue Variable, um den HTML-String zu sammeln
-    let numberToAdd = ""; // Variable für die Zahl
-
+    let htmlToAdd = "";
+    let numberToAdd = "";
     for (let i = 0; i < selectedContacts.length; i++) {
         let imgColor = contactColorsMap.get(selectedContacts[i]);
         if (imgColor) {
             if (i < 4) {
-                htmlToAdd += tempRenderAssignedToImages(i, imgColor); // Sammle den HTML-String für die Bilder
+                htmlToAdd += tempRenderAssignedToImages(i, imgColor);
             } else {
-                numberToAdd = `<div class="contactsInMenuimg marginRight8px" style="background-color: grey">+${i-3}</div>`; // Aktualisiere die Zahl außerhalb der Schleife
+                numberToAdd = `<div class="contactsInMenuimg marginRight8px" style="background-color: grey">+${i-3}</div>`;
             }
         }
     }
-
-    htmlToAdd += numberToAdd; // Füge die Zahl einmalig dem HTML-String hinzu
-    imageFromDropDown.innerHTML += htmlToAdd; // Füge den gesammelten HTML-String dem HTML hinzu
+    htmlToAdd += numberToAdd;
+    imageFromDropDown.innerHTML += htmlToAdd;
 }
 
 function getInitialsTaskSection(i) {
