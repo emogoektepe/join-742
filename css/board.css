@@ -207,6 +207,7 @@
         align-items: center; 
 }
 
+
 .dialogAddTaskBoard {
         border-radius: 24px;
         width: 80vw;
@@ -330,6 +331,56 @@
     padding: 12px;
 }
 
+.changeStatus{
+    height: 24px;
+    width: 24px;
+    border-radius: 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #42526E;
+    background-color: white;
+    font-size: 32px;
+}
+
+.changeStatusPopUp{
+    display: none;
+    position: static;
+    margin-top: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 12px;
+}
+
+.changeStatusPopUp p{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding: 2px;
+}
+
+.changeStatusPopUp p:hover{
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #f6f7f8;
+    color: #2A3647;
+}
+
+.popUpBackground{
+    z-index: 1000;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+.cardHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .editTemplate::-webkit-scrollbar {
     width: 6px;
@@ -647,6 +698,10 @@ progress::-webkit-progress-bar {
 
     .addTaskBtn{
         display: none;
+    }
+
+    .changeStatus{
+        display: flex;
     }
 
     .dialogShowCard{

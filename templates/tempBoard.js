@@ -110,6 +110,36 @@ function renderBoardHtml(){
         </div>`
 }
 
+function togglePopup(idFromTask) {
+    var popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
+    if (popup.style.display === 'none' || popup.style.display === '') {
+        // Öffne das Popup, wenn es geschlossen ist
+        popup.style.display = 'block';
+        // Füge einen Event-Listener für Klicks auf das Dokument hinzu, um das Popup zu schließen
+        document.addEventListener('click', function(event){
+            closePopupOutsideClick(event, idFromTask);
+        });
+    } else {
+        // Schließe das Popup, wenn es geöffnet ist
+        popup.style.display = 'none';
+        // Entferne den Event-Listener für Klicks auf das Dokument
+        document.removeEventListener('click', closePopupOutsideClick);
+    }
+}
+
+function closePopupOutsideClick(event,idFromTask) {
+    var popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
+    var clickElement = document.getElementById(`openPopUp${idFromTask}`);
+    
+    // Überprüfe, ob das geklickte Element nicht das Popup oder das Click-Element ist
+    if (event.target !== popup  && event.target !== clickElement) {
+        // Schließe das Popup
+        popup.style.display = 'none';
+        // Entferne den Event-Listener für Klicks auf das Dokument
+        document.removeEventListener('click', closePopupOutsideClick);
+    }
+}
+
 /**
  * @param {object} todo
  * @param {string} array 
@@ -122,9 +152,25 @@ function renderCardHtml(todo){
     return/*html*/` <div class="card" id="${todo['id']}" ondragstart="startDragging(${todo['id']}); rotateCard(${todo['id']})">
     <div onclick="renderBoardTaskOverlay(${idFromTask}); openDialog('dialogShowCard','taskOverlay')">
         <div draggable="true" class="cardContent">
-            <div id="category${todo['id']}" class="category">
-                ${todo['category']}
+            <div class="cardHeader">
+                <div id="category${todo['id']}" class="category">
+                    ${todo['category']}
+                </div>
+                <div class="changeStatus" id="openPopUp${idFromTask}" onclick="doNotClose(event);togglePopup(${idFromTask})">
+                    ...
+                </div>
             </div>
+      
+                <div onclick="doNotClose(event)" id="changeStatusPopUp${idFromTask}" class="changeStatusPopUp">
+                    Move to:
+                    <p onclick="changeStatusInPopUp(${idFromTask},'todo')">todo</p>
+                    <p onclick="changeStatusInPopUp(${idFromTask},'inProgress')">in Progress</p>
+                    <p onclick="changeStatusInPopUp(${idFromTask},'awaitFeedback')">await feedback</p>
+                    <p onclick="changeStatusInPopUp(${idFromTask},'done')">Done</p>
+                </div>    
+
+
+             
             <h4>${todo['title']}</h4>
             <p>${todo['description']}</p>
 

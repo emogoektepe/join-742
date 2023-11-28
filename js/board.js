@@ -158,12 +158,12 @@ function searchTask(todo, array, i) {
  */
 function serachCommandIsFound(todo, searchCommand) {
     return (todo.title.toLowerCase().includes(searchCommand) ||
-        todo.description.toLowerCase().includes(searchCommand) ||
-        todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
-        todo.dueDate.toString().includes(searchCommand) ||
-        todo.prio.toLowerCase().includes(searchCommand) ||
-        todo.category.toString().toLowerCase().includes(searchCommand) ||
-        todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
+        todo.description.toLowerCase().includes(searchCommand) )
+        //todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
+        //todo.dueDate.toString().includes(searchCommand) ||
+        //todo.prio.toLowerCase().includes(searchCommand) ||
+        //todo.category.toString().toLowerCase().includes(searchCommand) ||
+        //todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
 }
 
 /**
@@ -264,6 +264,12 @@ function allowDrop(ev) {
  */
 function moveTo(category) {
     allTasks[currentDraggedElement]['status'] = category
+    setTasksStorage();
+    renderBoard();
+}
+
+function changeStatusInPopUp(idFromTask,status){
+    allTasks[idFromTask]['status'] = status
     setTasksStorage();
     renderBoard();
 }
