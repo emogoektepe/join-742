@@ -32,6 +32,15 @@ function register() {
     if (!passwordMatching()) {
         return;
     }
+    if (!checkAcceptance()) {
+        acceptMsg.style.display = "flex";
+        
+        setTimeout(function () {
+            acceptMsg.style.display = ""; 
+        }, 2000);
+
+        return;
+    }
 
     usersPush();
     resetForm();
@@ -66,17 +75,16 @@ function successfulRegistration() {
 }
 
 /**
- * This function checks the acceptance box status and enables or disables
- * the registration button accordingly
+ * This function checks the acceptance box status and displays a message for the user
+ * to accept the privacy policy
  */
 function checkAcceptance() {
-    let registerBtn = document.getElementById('registerBtn');
     let acceptBoxChecked = document.getElementById('acceptBoxChecked');
 
     if (acceptBoxChecked.style.display === "block") {
-        registerBtn.disabled = false;
+        return true;
     } else {
-        registerBtn.disabled = true;
+        return false;
     }
 }
 

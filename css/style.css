@@ -375,6 +375,18 @@ h1 {
     height: 35px;
 }
 
+.acceptMsg {
+    display: none;
+    justify-content: center;
+}
+.acceptMsg span {
+    color: #FF8190;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
 .acceptBox {
     display: flex;
     justify-content: center;
@@ -383,6 +395,7 @@ h1 {
     margin: 3%;
     cursor: pointer;
     color: #a8a8a8;
+    
 }
 .acceptBoxUnchecked {
     height: 24px;
