@@ -1,10 +1,10 @@
 let selectedElement = false;
+let summaryNumbersUpdated = false;
 let searchValue = "";
 let selectedContacts = [];
 let subtasksList = [];
 let prioLabel = "";
 const todaysDate = new Date().toJSON().slice(0, 10);
-
 let allTasks = [];
 
 function renderAddTask() {
@@ -17,7 +17,6 @@ function renderAddTask() {
     setActiveNavItem("addTask");
 }
 
-let summaryNumbersUpdated = false;
 async function loadTasksFromStorage() {
     let storageParseTasks = await getItem('tasks');
     allTasks = JSON.parse(storageParseTasks.data.value);
