@@ -21,11 +21,13 @@ function updateSummaryNumbers() {
     const TasksInBoardNumber = allTasks.length;
     const TasksInProgressNumber = allTasks.filter(item => item.status === 'inProgress').length;
     const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;
-    const upcomingUrgentTask = allTasks.find(item => item.prio === 'Urgent' && item.dueDate !== '');
+    const urgentTasksWithDueDates = allTasks.filter(item => item.prio === 'Urgent' && item.dueDate !== '');
+    let closestDate = '';
 
-    let upcomingDeadline = '';
-    if (upcomingUrgentTask) {
-        upcomingDeadline = upcomingUrgentTask.dueDate;
+    if (urgentTasksWithDueDates.length > 0) {
+        const dates = urgentTasksWithDueDates.map(item => new Date(item.dueDate));
+        closestDate = new Date(Math.min.apply(null, dates));
+        upcomingDeadline = closestDate.toISOString().split('T')[0];
     }
     const formattedDate = upcomingDeadline.replace(/(\d{4})-(\d{2})-(\d{2})/, function (match, year, month, day) {
         const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
