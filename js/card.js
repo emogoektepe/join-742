@@ -83,29 +83,43 @@ function renderCardAssignedTo(idOfContainer,todo){
     let remainingContacts =  assigned.length - 3
     let id = todo['id']
 
+    if(assigned.length > 3){
+        for (let j = 0; j < 3; j++) {
+            const fullname = assigned[j]
+            let names = fullname.split(" ")
+            let firstNameCharacter = names[0].charAt(0).toUpperCase();
+            let avatarId = `avatar${id}pic${j}`
+            console.log(remainingContacts)
+            renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
+            renderCardContacts(fullname,avatarId);
+        }
 
-    
-    for (let j = 0; j < assigned.length; j++) {
-        const fullname = assigned[j]
-        let names = fullname.split(" ")
-        let firstNameCharacter = names[0].charAt(0).toUpperCase();
-        let avatarId = `avatar${id}pic${j}`
-        console.log(remainingContacts)
-        renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
-        renderCardContacts(fullname,avatarId);
-        if(assigned.length > 3){
-            renderRemainingContacts(idOfContainer,avatarId,remainingContacts)
+        renderRemainingContacts(idOfContainer,remainingContacts)
+        
+    }else{
+        for (let i = 0; i < assigned.length; i++) {
+            const fullName = assigned[i];
+            let names = fullName.split(" ")
+            let firstNameCharacter = names[0].charAt(0).toUpperCase();
+            let avatarId = `avatar${id}pic${i}`
+            console.log(remainingContacts)
+            renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
+            renderCardContacts(fullName,avatarId);
+            
         }
     }
+
+    
+ 
 
    
 
 }
 
-function renderRemainingContacts(idOfContainer,avatarId,remainingContacts){
+function renderRemainingContacts(idOfContainer,remainingContacts){
     document.getElementById(idOfContainer).innerHTML += /*html*/`
     <div class="assignedContact">
-        <div id=${avatarId} class="avatar">${remainingContacts}+</div>
+        <div class="avatar">${remainingContacts}+</div>
     </div>`
 }
 
