@@ -3,6 +3,9 @@ let contactsFirstLetter = [];
 let contactPosition = 0;
 let contactColorsMap = new Map();
 
+/**
+ * This function renders the 'Contacts' page.
+ */
 function renderContacts() {
     let content = document.getElementById('content');
     content.innerHTML = tempRenderContactContent();
@@ -13,6 +16,9 @@ function renderContacts() {
     setActiveNavItem("contacts");
 }
 
+/**
+ * This function opens the responsive edit and delete section
+ */
 function openEditDeleteResponsive() {
     let responsiveEditDelete = document.getElementById('responsiveEditDelete');
     let contactButton = document.getElementById('contactButton');
@@ -20,6 +26,9 @@ function openEditDeleteResponsive() {
     contactButton.style.display = 'flex';
 }
 
+/**
+ * Event listener that handles click events to close responsive sections.
+ */
 document.addEventListener('click', function(event) {
     let responsiveEditDelete = document.getElementById('responsiveEditDelete');
     let threeDots = document.getElementById('threeDots');
@@ -32,10 +41,16 @@ document.addEventListener('click', function(event) {
     }
 });
 
+/**
+ * This function displays the form to add a new contact.
+ */
 function addNewContact() {
     document.getElementById('addNewContactForm').style.display = "block";
 }
 
+/**
+ * Closes the popup form for adding or editing a contact.
+ */
 function closePopup() {
     let form = document.getElementById('addNewContactForm');
     let formEdit = document.getElementById('editForm');
@@ -46,6 +61,11 @@ function closePopup() {
     resetInputFields();
 }
 
+/**
+ * This function prevents the propagation of the provided event.
+ * 
+ * @param {Event} event 
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
@@ -87,6 +107,9 @@ function saveEdit() {
     closePopup();
 }
 
+/**
+ * This function retrieves the first letter of each contact's full name and populates an array.
+ */
 function getFirstLetter() {
     contactsFirstLetter = [];
     for (let i = 0; i < contactsJson.length; i++) {
@@ -97,6 +120,9 @@ function getFirstLetter() {
     }
 }
 
+/**
+ * This function fills the contact list header based on available first letters of contacts.
+ */
 function fillContactListHeader() {
     let contactsList = document.getElementById('contactsList');
     for (let i = 0; i < contactsFirstLetter.length; i++) {
@@ -105,6 +131,11 @@ function fillContactListHeader() {
     }
 }
 
+/**
+ * This function fills the contacts under the specified header with contacts sharing the initial letter.
+ * 
+ * @param {int} i - the index indicating the header
+ */
 function fillContactWithHeader(i) {
     let contactsUnderHeader = document.getElementById(`contactsUnderHeader${i}`);
     for (let i = 0; i < contactsJson.length; i++) {
@@ -115,6 +146,12 @@ function fillContactWithHeader(i) {
     }
 }
 
+/**
+ * This function retrieves the initials of a contact's full name.
+ * 
+ * @param {int} i - The index of the contact in the contacts array 
+ * @returns - The initials of the contact's full name
+ */
 function getInitials(i) {
     if (contactsJson[i].fullName.split(' ').length > 1) {
         return contactsJson[i].fullName.split(' ')[0].charAt(0).toUpperCase() + contactsJson[i].fullName.split(' ')[1].charAt(0).toUpperCase();
@@ -154,6 +191,9 @@ function renderContactInfoSection(i) {
     }
 }
 
+/**
+ * This function navigates back to the contacts section by displaying it and hiding the right section.
+ */
 function backToContacts() {
     let contactSection = document.getElementById('contactSection');
     let contactSectionRight = document.getElementById('contactSectionRight');
@@ -209,18 +249,31 @@ function createContact(page) {
     closePopup();
 }
 
+/**
+ * This function resets the input fields by clearing their values.
+ */
 function resetInputFields() {
     inputName.value = '';
     inputEmail.value = '';
     inputPhone.value = '';
 }
 
+/**
+ * This function deletes a contact from the contacts array based on the provided index.
+ * Updates the contacts storage and re-renders the contacts.
+ *
+ *  @param {int} i - the index of the contact to be deleted
+ */
 function deleteContact(i) {
     contactsJson.splice(i, 1);
     setContactsStorage();
     renderContacts();
 }
 
+/**
+ * This function deletes a contact from the contacts array using the stored contact position.
+ * Updates the contacts storage, closes the popup, and re-renders the contacts.
+ */
 function deleteContactInForm() {
     contactsJson.splice(contactPosition, 1);
     setContactsStorage();
@@ -239,22 +292,38 @@ function setActualContact(position) {
     document.getElementById(`contactInList${position}`).scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+/**
+ * This function loads contacts from storage asynchronously and updates the contacts array.
+ */
 async function loadContactsFromStorage() {
     let storageParse = await getItem('contacts');
     contactsJson = JSON.parse(storageParse.data.value);
 }
 
+/**
+ * This function sets the contacts array in storage after converting it to a string.
+ */
 function setContactsStorage() {
     let contactAsString = JSON.stringify(contactsJson);
     setItem('contacts', contactAsString);
 }
 
+/**
+ * This funciton validates input by removing unwanted characters and leading spaces.
+ * 
+ * @param {HTMLInputElement} input - the input element to validate.
+ */
 function validateInputChars(input) {
-    input.value = input.value.replace(/[^a-zA-ZäöüÄÖÜ\s]+/g, ''); // Alle unerwünschten Zeichen entfernen
-    input.value = input.value.replace(/^[\s]+/, ''); // Leerzeichen am Anfang entfernen
+    input.value = input.value.replace(/[^a-zA-ZäöüÄÖÜ\s]+/g, '');
+    input.value = input.value.replace(/^[\s]+/, '');
 }
 
+/**
+ * This function validates input by allowing only numbers and removing leading spaces.
+ * 
+ * @param {HTMLInputElement} input - the input element to validate.
+ */
 function validateInputNumbers(input) {
-    input.value = input.value.replace(/[^0-9\s]+/g, ''); // Nur Zahlen und Leerzeichen erlauben
-    input.value = input.value.replace(/^[\s]+/, ''); // Leerzeichen am Anfang entfernen
+    input.value = input.value.replace(/[^0-9\s]+/g, '');
+    input.value = input.value.replace(/^[\s]+/, '');
 }

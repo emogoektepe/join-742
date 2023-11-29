@@ -1,4 +1,4 @@
-.ppHeader{
+.ppHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,20 +11,20 @@
     margin-bottom: 32px;
 }
 
-.ppHeader img{
+.ppHeader img {
     cursor: pointer;
     position: absolute;
     top: 200px;
     right: 50px;
 }
 
-.ppHeader img:hover{
+.ppHeader img:hover {
     background-color: #ecedee;
     border-radius: 50%;
 }
 
-.ppContent{
-    margin-left:98.5px;
+.ppContent {
+    margin-left: 98.5px;
     margin-right: 98.5px;
 }
 
@@ -33,27 +33,27 @@
     color: #00afef;
 }
 
-.ppContent a:hover{
+.ppContent a:hover {
     text-decoration: underline;
 }
 
-@media(max-width:760px){
+@media(max-width:760px) {
 
-    .ppHeader{
+    .ppHeader {
         font-size: 47px;
         margin-left: 16px;
         margin-right: unset;
         margin-top: 48px;
     }
 
-    .ppHeader img{
+    .ppHeader img {
         top: 129.5px;
     }
 
-    .ppContent{
+    .ppContent {
         margin-left: 16px;
         margin-right: 16px;
-    } 
+    }
 
     .navFooter div.active {
         width: 100%;

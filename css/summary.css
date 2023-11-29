@@ -377,6 +377,7 @@
     .summaryContainer {
         margin: 0;
     }
+
     .summaryHeader {
         align-self: flex-start;
         margin-left: 16px;
@@ -525,7 +526,7 @@
         animation: fadeOut 1s ease-in-out 2s forwards;
     }
 
-      @keyframes fadeOut {
+    @keyframes fadeOut {
         0% {
             opacity: 1;
         }
@@ -534,36 +535,44 @@
             opacity: 0;
             display: none;
         }
-    } 
+    }
 }
+
 @media(max-width: 420px) {
     .firstRow {
         width: 320px;
         gap: 5px;
     }
+
     .toDo {
         padding: 38px 5px
     }
+
     .done {
         padding: 38px 5px
     }
+
     .urgent {
         width: 320px;
         gap: 0px;
     }
+
     .urgentLeft {
         gap: 0px;
         padding-left: 12px;
     }
+
     .calendar {
         padding-right: 10px;
         padding-left: 18px;
     }
+
     .thirdRow {
         width: 320px;
         gap: 5px;
     }
-    .thirdRow div{
+
+    .thirdRow div {
         width: 103px;
         height: 103px;
         padding: 0;

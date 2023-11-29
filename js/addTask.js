@@ -8,6 +8,11 @@ const todaysDate = new Date().toJSON().slice(0, 10);
 let allTasks = [];
 let taskStatus = 'todo';
 
+/**
+ * This function renders the 'Add task' page.
+ * 
+ * @param {string} taskStatusFromResponsive - Taskname Variable to render in the right Section
+ */
 function renderAddTask(taskStatusFromResponsive) {
     let content = document.getElementById('content');
     selectedContacts = [];
@@ -16,6 +21,9 @@ function renderAddTask(taskStatusFromResponsive) {
     taskStatus = taskStatusFromResponsive;
 }
 
+/**
+ * This function loads all tasks from remote storage.
+ */
 async function loadTasksFromStorage() {
     let storageParseTasks = await getItem('tasks');
     allTasks = JSON.parse(storageParseTasks.data.value);
@@ -25,6 +33,9 @@ async function loadTasksFromStorage() {
     }
 }
 
+/**
+ * This function loads all tasks into the storage.
+ */
 function setTasksStorage() {
     let allTasksAsString = JSON.stringify(allTasks);
     setItem('tasks', allTasksAsString);
@@ -70,10 +81,18 @@ function createTask() {
     }
 }
 
+/**
+ * This function sets the variable 'taskStatus' to the one clicked on the board.
+ * 
+ * @param {string} status - Status Section from Board
+ */
 function setStatus(status) {
     taskStatus = status;
 }
 
+/**
+ * This function clears the Add Task Form
+ */
 function clearAddTask() {
     prioLabel = '';
     subtasksList = [];
@@ -91,6 +110,9 @@ function clearAddTask() {
     renderAssignedToImages();
 }
 
+/**
+ * This function sets the Prio Buttons to default
+ */
 function clearPrioButtons() {
     const buttons = document.querySelectorAll('.prio div');
     buttons.forEach(button => {
@@ -103,20 +125,34 @@ function clearPrioButtons() {
     });
 }
 
+/**
+ * This function sets the 'prioLabel' variable from the parameter.
+ * 
+ * @param {string} selectedPrio - Selected Priority
+ */
 function getPrio(selectedPrio) {
     prioLabel = selectedPrio.innerText;
 }
 
+/**
+ * This function is used to get the focus of the input field.
+ */
 function focusSubtasksInput() {
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
     taskSubtasksInput.focus();
 }
 
+/**
+ * This function sets the selected contacts under the section as images.
+ */
 function createSubTask() {
     let subtaskIcons = document.getElementById('subtaskIcons');
     subtaskIcons.innerHTML = tempRenderCreateSubtask();
 }
 
+/**
+ * This function adds the subtasks to the list.
+ */
 function addSubtaskToList() {
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
     taskSubtasksInput.focus();
@@ -130,6 +166,9 @@ function addSubtaskToList() {
     }
 }
 
+/**
+ * This function renders the Subtask in List
+ */
 function renderSubtasksInTask() {
     let subtaskList = document.getElementById('newSubtaskAddedList');
     subtaskList.innerHTML = "";
@@ -161,12 +200,22 @@ function editSubtasks(position) {
     }
 }
 
+/**
+ * This function is used for edit Subtask in list
+ * 
+ * @param {int} position - Subtask position in list
+ */
 function confirmEditSubtask(position) {
     let li = document.getElementById(`li${position}`);
     subtasksList[position]['name'] = li.innerText;
     renderSubtasksInTask();
 }
 
+/**
+ * This function allows to edit the li item
+ * 
+ * @param {int} li - Subtask position in list
+ */
 function getCursorToEndEdittable(li) {
     const range = document.createRange();
     range.selectNodeContents(li);
@@ -176,11 +225,19 @@ function getCursorToEndEdittable(li) {
     selection.addRange(range);
 }
 
+/**
+ * This function delete the subtask in list without edit
+ * 
+ * @param {int} position - Subtask position in list
+ */
 function deleteSubtask(position) {
     subtasksList.splice(position, 1);
     renderSubtasksInTask();
 }
 
+/**
+ * The function is on the delete icon when editing the list item.
+ */
 function deleteTaskInInput() {
     let subtaskIcons = document.getElementById('subtaskIcons');
     let taskSubtasksInput = document.getElementById('taskSubtasksInput');
@@ -199,6 +256,9 @@ function getCategory(category) {
     closeCategoryDropDown();
 }
 
+/**
+ * This function opens the Category Dropdown
+ */
 function openCategoryDropDown() {
     let categoryDropDown = document.getElementById('categoryDropDown');
     let dropDownImageCategory = document.getElementById('dropDownImageCategory');
@@ -212,6 +272,9 @@ function openCategoryDropDown() {
     }
 }
 
+/**
+ * This function closes the Dropdown 
+ */
 function closeCategoryDropDown() {
     let categoryDropDown = document.getElementById('categoryDropDown');
     let dropDownImageCategory = document.getElementById('dropDownImageCategory');
@@ -221,6 +284,9 @@ function closeCategoryDropDown() {
     selectTaskCategory.style.border = '';
 }
 
+/**
+ * Added eventListener to close dropdown if u click out of the div
+ */
 document.addEventListener('click', function (event) {
     const thirdBlock = document.querySelector('.dropDownWithInput');
     const categoryBlockDropDown = document.querySelector('.categoryBlockDropDown');
@@ -232,6 +298,9 @@ document.addEventListener('click', function (event) {
     }
 });
 
+/**
+ * This function allows to toggle the Dropdown
+ */
 function toggleDropDown() {
     let dropDownImage = document.getElementById('dropDownImage');
     if (dropDownImage.src.includes('down_down')) {
@@ -274,6 +343,9 @@ function changePrioColor(element, color) {
     }
 }
 
+/**
+ * This function opens the contact drop down
+ */
 function openContactDropDown() {
     document.getElementById('assignedToInput').placeholder = "";
     let dropDownImage = document.getElementById('dropDownImage');
@@ -286,6 +358,9 @@ function openContactDropDown() {
     }
 }
 
+/**
+ * This function closes the contact drop down
+ */
 function closeDropDown() {
     dropDownImage.src = './img/arrow_drop_down_down.svg';
     dropDownContact.style.display = "none";
@@ -295,6 +370,9 @@ function closeDropDown() {
     renderAssignedToImages();
 }
 
+/**
+ * This function displays all created contacts in the dropdown list.
+ */
 function renderDropDownContacts() {
     let dropDownSection = document.getElementById('dropDownSection');
     dropDownSection.innerHTML = '';
@@ -335,11 +413,17 @@ function selectContactInDropDown(i) {
     contactsInMenu.classList.toggle('selected');
 }
 
+/**
+ * This functin allows the Search function in dropdown contacts
+ */
 function searchContactInDropDown() {
     searchValue = document.getElementById('assignedToInput').value;
     renderDropDownContacts();
 }
 
+/**
+ * This function renders the Images below the dropdown contact
+ */
 function renderAssignedToImages() {
     let imageFromDropDown = document.getElementById('imageFromDropDown');
     imageFromDropDown.innerHTML = "";
@@ -359,6 +443,12 @@ function renderAssignedToImages() {
     imageFromDropDown.innerHTML += htmlToAdd;
 }
 
+/**
+ * This function get the first char of first name and last name
+ * 
+ * @param {int} i - contact position in selected Contacts
+ * @returns - initials of contacts name
+ */
 function getInitialsTaskSection(i) {
     if (selectedContacts[i].split(' ').length > 1) {
         return selectedContacts[i].split(' ')[0].charAt(0).toUpperCase() + selectedContacts[i].split(' ')[1].charAt(0).toUpperCase();

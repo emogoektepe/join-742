@@ -25,7 +25,7 @@ h1 {
     margin-block: 0;
 }
 
-.logoStart{
+.logoStart {
     height: 100vh;
     background-color: #f6f7f8;
     display: flex;
@@ -33,7 +33,7 @@ h1 {
     align-items: center;
 }
 
-.logoStart img{
+.logoStart img {
     padding-top: 16px;
     padding-left: 5%;
     width: auto;
@@ -42,11 +42,11 @@ h1 {
 }
 
 @keyframes changeLogoPosition {
-    from{
+    from {
         transform: translateX(0%) translateY(0%);
     }
 
-    to{
+    to {
         transform: translateX(calc(-630px + 50%)) translateY(calc(-432px + 30%));
     }
 }
@@ -95,7 +95,7 @@ h1 {
 
     to {
         transform: translate(0, 100%);
-        
+
     }
 }
 
@@ -106,7 +106,7 @@ h1 {
     animation: fadeInLogin 1s ease-in-out;
 }
 
-.signUpPage{
+.signUpPage {
     display: block;
     height: 100vh;
     background-color: #f6f7f8;
@@ -123,7 +123,7 @@ h1 {
     padding-top: 16px;
 }
 
-.mainDivOne img{
+.mainDivOne img {
     height: 80%;
 }
 
@@ -163,7 +163,7 @@ h1 {
     border-radius: 30px;
 }
 
-.loginH1  {
+.loginH1 {
     font-size: 61px;
 }
 
@@ -298,7 +298,7 @@ h1 {
     flex-direction: column;
 }
 
-.mainDivThree div{
+.mainDivThree div {
     margin: 8px;
 }
 
@@ -309,14 +309,14 @@ h1 {
     margin: 40px 8px;
 }
 
-.loginLinks{
+.loginLinks {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
 
-.loginLinks > a:hover {
+.loginLinks>a:hover {
     font-weight: bold;
     color: rgb(46, 185, 255);
 }
@@ -333,22 +333,22 @@ h1 {
     border-radius: 30px;
 }
 
-.d-none{
+.d-none {
     display: none;
 }
 
-.signUpHeader{
+.signUpHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.signUpH1{
+.signUpH1 {
     font-size: 40px;
 }
 
-.signUpForm{
+.signUpForm {
     width: 100%;
 }
 
@@ -379,6 +379,7 @@ h1 {
     display: none;
     justify-content: center;
 }
+
 .acceptMsg span {
     color: #FF8190;
     font-size: 13px;
@@ -395,18 +396,21 @@ h1 {
     margin: 3%;
     cursor: pointer;
     color: #a8a8a8;
-    
+
 }
+
 .acceptBoxUnchecked {
     height: 24px;
     width: 24px;
     display: block;
 }
+
 .acceptBoxChecked {
     height: 24px;
     width: 24px;
     display: none;
 }
+
 .acceptBox a {
     text-decoration: none;
     color: rgb(46, 185, 255);
@@ -496,7 +500,7 @@ h1 {
     border: 1px solid #091931;
 }
 
-.respSignUp{
+.respSignUp {
     display: none;
     justify-content: center;
     align-items: center;
@@ -522,60 +526,60 @@ h1 {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-@media(max-width:1300px){
+@media(max-width:1300px) {
 
-    .signUp{
+    .signUp {
         display: none;
     }
 
-    .signUpBox{
+    .signUpBox {
         width: 50vw;
     }
 
-    .respSignUp{
+    .respSignUp {
         display: flex;
     }
 
-    .loginBox{
+    .loginBox {
         height: 40vh;
     }
 
-    .mainDivThree a{
+    .mainDivThree a {
         margin: 8px;
     }
 
-    .checkBox{
+    .checkBox {
         margin: 16px;
     }
 
     @keyframes changeLogoPosition {
-        from{
+        from {
             height: 230px;
             transform: translateX(0%) translateY(0%);
         }
-    
-        to{
+
+        to {
             transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 36%));
             height: 122px;
         }
     }
 }
 
-@media(max-width: 1000px){
+@media(max-width: 1000px) {
 
-    .mainDivOne{
+    .mainDivOne {
         height: 15vh;
     }
 
-    .mainDivOne img{
+    .mainDivOne img {
         height: 70%;
     }
 
-    .loginBox{
+    .loginBox {
         height: 60vh;
     }
 
-    .loginForm{
+    .loginForm {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -588,11 +592,11 @@ h1 {
         height: 100%;
     }
 
-    .inputContainer{
+    .inputContainer {
         width: 90%;
     }
 
-    .loginInput{
+    .loginInput {
         width: 90%;
     }
 
@@ -601,65 +605,65 @@ h1 {
     }
 
     @keyframes changeLogoPosition {
-        from{
+        from {
             height: 230px;
             transform: translateX(0%) translateY(0%);
         }
-    
-        to{
+
+        to {
             transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 27%));
             height: 73.5px;
         }
     }
-    
-    .loginBox{
+
+    .loginBox {
         padding: 0px 8px;
         width: 65vw;
     }
 
-    .logBtns{
+    .logBtns {
         flex-direction: column;
     }
-    
-    .loginBtn{
+
+    .loginBtn {
         width: 50%;
         margin: 4px;
         font-size: 16px;
     }
 
-    .loginGuestBtn{
+    .loginGuestBtn {
         width: 50%;
         margin: 4px;
         font-size: 16px;
     }
 }
 
-@media(max-width: 780px){
-    .signUpBox{
+@media(max-width: 780px) {
+    .signUpBox {
         width: 70vw;
     }
 }
 
-@media(max-width: 600px){
+@media(max-width: 600px) {
 
-    .logoStart{
+    .logoStart {
         background-color: #2a3647;
     }
 
-    .logoStart img{
+    .logoStart img {
         filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(1797%) hue-rotate(347deg) brightness(104%) contrast(104%);
     }
 
 
-    .mainDivOne{
+    .mainDivOne {
         height: 20vh;
     }
 
-    .mainDivOne img{
+    .mainDivOne img {
         height: 40%;
     }
 
-    .login{
+    .login {
         height: auto;
     }
 
@@ -667,26 +671,27 @@ h1 {
         font-size: 32px;
     }
 
-    .loginBox{
+    .loginBox {
         height: 50vh;
         width: 85vw;
         padding: 12px;
     }
 
-    .loginInput{
+    .loginInput {
         width: 90%;
         height: auto;
     }
 
-    .inputContainer{
+    .inputContainer {
         width: 90%;
     }
-    .inputContainer{
+
+    .inputContainer {
         width: 90%;
         margin-bottom: 4%;
     }
 
-    .respSignUpBtn{
+    .respSignUpBtn {
         font-size: 16px;
         padding: 5% 16px;
     }
@@ -696,11 +701,11 @@ h1 {
         margin-top: 2%;
     }
 
-    .loginBtn{
+    .loginBtn {
         padding: 2% 4%;
     }
 
-    .loginGuestBtn{
+    .loginGuestBtn {
         padding: 2% 4%;
     }
 
@@ -708,31 +713,32 @@ h1 {
         margin-top: 4%;
         margin-bottom: 4%;
     }
-    .loginMailInputMsg{
+
+    .loginMailInputMsg {
         margin-bottom: 0;
     }
 
     @keyframes changeLogoPosition {
-        from{
+        from {
             height: 230px;
             transform: translateX(0%) translateY(0%);
             filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(1797%) hue-rotate(347deg) brightness(104%) contrast(104%);
-            
+
         }
-    
-        to{
+
+        to {
             transform: translateX(calc(-45vw + 50%)) translateY(calc(-45vh + 20%));
             height: 56px;
             filter: brightness(0) saturate(100%) invert(18%) sepia(14%) saturate(1317%) hue-rotate(176deg) brightness(91%) contrast(89%);
         }
     }
 
-    .signUpBox{
+    .signUpBox {
         width: 80vw;
         height: 60vh;
     }
 
-    .acceptBox{
+    .acceptBox {
         font-size: small;
     }
 }

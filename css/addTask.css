@@ -618,6 +618,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         margin-top: 110px;
         padding-bottom: 20px;
     }
+
     .dateBlock {
         margin-top: 40px;
     }
@@ -631,9 +632,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         position: fixed;
         z-index: 99999;
     }
+
     .addTaskContainer .form {
         margin-top: 110px;
     }
+
     .addTaskContainer .clearAndCreateButton {
         right: 0;
         position: absolute;
@@ -648,9 +651,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         justify-content: end;
         padding-right: 20px;
     }
+
     .addTaskContainer .addTaskClearButton {
         display: none;
     }
+
     .addTaskContainer .bottomText {
         display: block;
         position: absolute;
@@ -668,16 +673,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         z-index: 9999999;
         font-size: 16px;
     }
+
     .addTaskContainer .addTaskCreateButton {
         width: 100px;
         font-size: 14px;
     }
+
     .addTaskContainer .clearAndCreateButton img {
         display: none;
     }
+
     .addTaskContainer .form {
         height: 100%;
         margin-bottom: 200px;
     }
- }
-
+}

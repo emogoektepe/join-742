@@ -17,24 +17,28 @@
 }
 
 .backButton:hover {
-    background-color: rgb(225,230,236);
+    background-color: rgb(225, 230, 236);
     border-radius: 50%;
 }
+
 .headline {
     margin-bottom: 32px;
     margin-right: 16px;
 }
+
 .paragraphContainer {
     margin-top: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
+
 .paragraph {
     display: flex;
     justify-content: center;
-    
+
 }
+
 .paragraphNumber {
     display: flex;
     justify-content: flex-start;
@@ -47,10 +51,12 @@
     line-height: 120%;
     /* 32.4px */
 }
+
 .paragraphText {
     display: flex;
     flex-direction: column;
 }
+
 .helpParagraph {
     color: var(--black, #000);
     font-size: 16px;
@@ -59,6 +65,7 @@
     line-height: 120%;
     margin: 0;
 }
+
 .helpH1 {
     color: #000;
     font-size: 47px;
@@ -67,6 +74,7 @@
     line-height: 120%;
     /* 56.4px */
 }
+
 .helpH2 {
     color: var(--black, #000);
     font-size: 27px;
@@ -75,6 +83,7 @@
     line-height: 120%;
     /* 32.4px */
 }
+
 .helpH3 {
     color: var(--black, #000);
     font-size: 20px;
