@@ -6,7 +6,7 @@ function renderLegalNotice() {
 
     <header class="lnHeader">    
         Legal Notice
-        <img onclick="loadJoinSummery()" src="./img/arrow-left-line.svg">
+        <img onclick="loadJoinSummary()" src="./img/arrow-left-line.svg">
     </header>
 
     <div class="lnContent">

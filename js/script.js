@@ -132,7 +132,7 @@ function getCurrentUserName() {
  * Loads the join summary, redirects to 'index.html' for privacy policy and legal notice,
  * or renders the summary based on the URL parameters.
  */
-function loadJoinSummery() {
+function loadJoinSummary() {
     if (parameterWert == 'privacyPolicy') {
         window.location.href = 'index.html';
     } else if (parameterWert == 'legalNotice') {

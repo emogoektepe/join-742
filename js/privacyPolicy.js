@@ -4,7 +4,7 @@ function renderPrivacyPolicy() {
 
     <header class="ppHeader">    
         Privacy Policy
-        <img onclick="loadJoinSummery()" src="./img/arrow-left-line.svg">
+        <img onclick="loadJoinSummary()" src="./img/arrow-left-line.svg">
     </header>
 
     <div class="ppContent"> 
