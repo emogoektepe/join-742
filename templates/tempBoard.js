@@ -9,7 +9,7 @@ function renderBoardHtml(){
         </div>
         <div class="headBar">
             <form class="formArea" action="#">
-                <input id="searchBoard" class="inputArea" onkeydown="updateBoardHtml()"  type="text" placeholder="Find Task">
+                <input id="searchBoard" class="inputArea" onkeyup="updateBoardHtml()"  type="text" placeholder="Find Task">
                 <div>
                     <img src="./img/borderdash.svg">
                 </div> 
@@ -110,36 +110,6 @@ function renderBoardHtml(){
         </div>`
 }
 
-function togglePopup(idFromTask) {
-    var popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
-    if (popup.style.display === 'none' || popup.style.display === '') {
-        // Öffne das Popup, wenn es geschlossen ist
-        popup.style.display = 'block';
-        // Füge einen Event-Listener für Klicks auf das Dokument hinzu, um das Popup zu schließen
-        //document.addEventListener('click', function(event){
-        //   closePopupOutsideClick(event, idFromTask);
-      //  });
-    } else {
-        // Schließe das Popup, wenn es geöffnet ist
-        popup.style.display = 'none';
-        // Entferne den Event-Listener für Klicks auf das Dokument
-        //document.removeEventListener('click', closePopupOutsideClick);
-    }
-}
-
-/*function closePopupOutsideClick(event,idFromTask) {
-    var popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
-    var clickElement = document.getElementById(`openPopUp${idFromTask}`);
-    
-    // Überprüfe, ob das geklickte Element nicht das Popup oder das Click-Element ist
-    if (event.target !== popup  && event.target !== clickElement) {
-        // Schließe das Popup
-        popup.style.display = 'none';
-        // Entferne den Event-Listener für Klicks auf das Dokument
-        document.removeEventListener('click', closePopupOutsideClick);
-    }
-}*/
-
 /**
  * @param {object} todo
  * @param {string} array 
@@ -198,10 +168,12 @@ function renderCardHtml(todo){
 function renderTaskOverlayHtml(idFromTask,actuellyTask){
 
     return /*html*/ `<div id="taskOverlay" class="dialogShowCard" onclick="doNotClose(event);">
-    <div class="cardHead">
+    <div class="taskHeader">
         <p id="ctgry${idFromTask}" class="category">${actuellyTask['category']}</p> 
         <img onclick="closeDialog('dialogShowCard','taskOverlay')" class="editCard" src="img/close.svg">
     </div>
+
+    <div class="taskTemplate">
     <h1 class="headline">${actuellyTask['title']}</h1>
     <span>
         <p>${actuellyTask['description']}</p>
@@ -229,6 +201,8 @@ function renderTaskOverlayHtml(idFromTask,actuellyTask){
        
     </div>
 
+    </div>
+    
     <div class="closeSection">
         <div onclick="deleteBoardTask(${actuellyTask['id']})" class="closeSectionItem filterBlue">Delete <img src="./img/delete.svg"></div>  
         <div onclick="renderBoardEditForm(${actuellyTask['id']})" class="closeSectionItem filterBlue">Edit <img src="./img/edit.svg"></div>    

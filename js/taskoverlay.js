@@ -231,7 +231,7 @@ function renderBoardEditForm(idFromTask) {
     let tempRenderAddTaskDivEdit = document.createElement('div'); // div wo der content rein gerendert wird
 
     tempRenderAddTaskDivEdit.innerHTML = renderEditContainer(idFromTask); // hier wird die Form in den div gerendert
-    tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';  // der div bekommt eine
+    tempRenderAddTaskDivEdit.id = 'tempRenderAddTaskDivEdit';  // der div bekommt eine ID
     taskOverlay.replaceChildren(tempRenderAddTaskDivEdit); 
     renderEditContent(idFromTask);
     renderAssignedToEditBoard(idFromTask);

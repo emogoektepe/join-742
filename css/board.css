@@ -214,13 +214,14 @@
         height: 90vh;
         background-color: white;
         transition: transform 250ms ease-in-out;
+        overflow-y: scroll;
      
     }
 
 .dialogShowCard {
     border-radius: 24px;
     background-color: white;
-    max-height: 85vh;
+    height: 85vh;
     min-width: 33vw;
     max-width: 70vw;
     padding: 32px 24px;
@@ -256,7 +257,7 @@
 }
 
 .dialogShowCard .clearAndCreateButton{
-  display: none;
+    display: none;
 }
 
 .dialogShowCard .newSubtaskAdded {
@@ -315,13 +316,34 @@
     z-index: 2;
 }
 
+.taskHeader{
+    position: fixed;
+    top:0px;
+    right: 0px;
+    left: 16px;
+    width: 90%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    z-index: 2;
+}
+
 .editTemplate{
     margin-top: 32px;
     margin-bottom: 40px;
-    max-height: 80%;
+    max-height: 70vh;
     flex: 1;
     overflow-y: auto;
+}
 
+.taskTemplate{
+    margin-top: 65px;
+    margin-bottom: 40px;
+    max-height: 70vh;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .saveEditButton{
@@ -570,7 +592,7 @@
     flex-direction: column;
     padding-top:4px;
     padding-right: 16px; 
-
+    margin-bottom: 16px;
 }
 
 
@@ -603,10 +625,17 @@
 }
  
 .closeSection{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    width: 90%;
+    background-color: white;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 8px;
+    padding: 24px;
+    z-index: 12000;
 }
 
 .closeSectionItem{

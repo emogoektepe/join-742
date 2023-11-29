@@ -233,6 +233,18 @@ function closeDialog(id, idOfSlideConti) {
     }, 100)
 
 }
+/**
+ * accordingly the status from the poupup, the popup for changing the task status in responsivly, opens or closes onclick
+ * @param {integer} idFromTask 
+ */
+function togglePopup(idFromTask) {
+    let popup = document.getElementById(`changeStatusPopUp${idFromTask}`);
+    if (popup.style.display === 'none' || popup.style.display === '') {
+        popup.style.display = 'block';
+    } else {
+        popup.style.display = 'none';
+    }
+}
 
 /**
  * Prevents the event from being propagated in the event phase and stops propagation
