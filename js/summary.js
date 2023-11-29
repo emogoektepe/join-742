@@ -12,15 +12,37 @@ function renderSummary() {
 }
 
 /**
- * This function is utilized to display the amount of different tasks in their category
+ * This function utilizes two nested functions to display the amount of different tasks in their category and the nearest deadline.
  */
 function updateSummaryNumbers() {
+    showNumbers();
+    showDate();
+
+}
+
+/**
+ * This function is utilized to display the amount of different tasks in their category.
+ */
+function showNumbers() {
     const toDoNumber = allTasks.filter(item => item.status === 'todo').length;
     const doneNumber = allTasks.filter(item => item.status === 'done').length;
     const urgentNumber = allTasks.filter(item => item.prio === 'Urgent').length;
     const TasksInBoardNumber = allTasks.length;
     const TasksInProgressNumber = allTasks.filter(item => item.status === 'inProgress').length;
     const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;
+
+    document.getElementById('toDoNumber').innerText = toDoNumber;
+    document.getElementById('doneNumber').innerText = doneNumber;
+    document.getElementById('urgentNumber').innerText = urgentNumber;
+    document.getElementById('TasksInBoardNumber').innerText = TasksInBoardNumber;
+    document.getElementById('TasksInProgressNumber').innerText = TasksInProgressNumber;
+    document.getElementById('awaitingFeedbackNumber').innerText = awaitingFeedbackNumber;
+}
+
+/**
+ * This function is utilized to filter and display the closest deadline.
+ */
+function showDate() {
     const urgentTasksWithDueDates = allTasks.filter(item => item.prio === 'Urgent' && item.dueDate !== '');
     let closestDate = '';
     let upcomingDeadline = '';
@@ -35,11 +57,5 @@ function updateSummaryNumbers() {
         return months[parseInt(month, 10) - 1] + ' ' + parseInt(day, 10) + ', ' + year;
     });
 
-    document.getElementById('toDoNumber').innerText = toDoNumber;
-    document.getElementById('doneNumber').innerText = doneNumber;
-    document.getElementById('urgentNumber').innerText = urgentNumber;
-    document.getElementById('TasksInBoardNumber').innerText = TasksInBoardNumber;
-    document.getElementById('TasksInProgressNumber').innerText = TasksInProgressNumber;
-    document.getElementById('awaitingFeedbackNumber').innerText = awaitingFeedbackNumber;
     document.getElementById('calendarDate').innerText = formattedDate;
 }
