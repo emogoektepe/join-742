@@ -2,7 +2,6 @@
  * This function renders the content of the summary 
  */
 function renderSummary() {
-
     let content = document.getElementById('content');
     content.innerHTML = tempRenderSummary();
     setActiveNavItem("summary");
@@ -17,7 +16,6 @@ function renderSummary() {
 function updateSummaryNumbers() {
     showNumbers();
     showDate();
-
 }
 
 /**
@@ -31,12 +29,25 @@ function showNumbers() {
     const TasksInProgressNumber = allTasks.filter(item => item.status === 'inProgress').length;
     const awaitingFeedbackNumber = allTasks.filter(item => item.status === 'awaitFeedback').length;
 
-    document.getElementById('toDoNumber').innerText = toDoNumber;
-    document.getElementById('doneNumber').innerText = doneNumber;
-    document.getElementById('urgentNumber').innerText = urgentNumber;
-    document.getElementById('TasksInBoardNumber').innerText = TasksInBoardNumber;
-    document.getElementById('TasksInProgressNumber').innerText = TasksInProgressNumber;
-    document.getElementById('awaitingFeedbackNumber').innerText = awaitingFeedbackNumber;
+    updateElementText('toDoNumber', toDoNumber);
+    updateElementText('doneNumber', doneNumber);
+    updateElementText('urgentNumber', urgentNumber);
+    updateElementText('TasksInBoardNumber', TasksInBoardNumber);
+    updateElementText('TasksInProgressNumber', TasksInProgressNumber);
+    updateElementText('awaitingFeedbackNumber', awaitingFeedbackNumber);
+}
+
+/**
+ * This function checks the existense of the Elements
+ * 
+ * @param {String} id - document Id
+ * @param {any} text - filtered Text from showNumbers
+ */
+function updateElementText(id, text) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.innerText = text;
+    }
 }
 
 /**
@@ -57,5 +68,5 @@ function showDate() {
         return months[parseInt(month, 10) - 1] + ' ' + parseInt(day, 10) + ', ' + year;
     });
 
-    document.getElementById('calendarDate').innerText = formattedDate;
+    updateElementText('calendarDate', formattedDate);
 }
