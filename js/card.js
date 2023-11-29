@@ -4,14 +4,13 @@
  * @param {string} array 
  * @param {integer} i 
  */
-function renderCard(todo,array,i){
-
-    document.getElementById(todo['status']).innerHTML+= /*html*/`
-    ${renderCardHtml(todo,array,i)}`
-    renderCategory(todo['category'],`category${todo['id']}`);
-    renderCardAssignedTo(`assignedBox${todo['id']}`,todo);
-    renderProgressbar(todo,todo['id']);
-    renderCardPrio(todo['prio'],`cardPrio${todo['id']}`);
+function renderCard(todo, array, i) {
+    document.getElementById(todo['status']).innerHTML += /*html*/`
+    ${renderCardHtml(todo, array, i)}`
+    renderCategory(todo['category'], `category${todo['id']}`);
+    renderCardAssignedTo(`assignedBox${todo['id']}`, todo);
+    renderProgressbar(todo, todo['id']);
+    renderCardPrio(todo['prio'], `cardPrio${todo['id']}`);
 }
 
 /**
@@ -19,14 +18,14 @@ function renderCard(todo,array,i){
  * @param {object} todo 
  * @param {integer} id 
  */
-function renderProgressbar(todo,id){
+function renderProgressbar(todo, id) {
     let subtasks = todo['subtasks']
     let readySubtask = 0
     for (let l = 0; l < subtasks.length; l++) {
         let SbTask = subtasks[l]
-        SbTask['done']? readySubtask++ : ''
+        SbTask['done'] ? readySubtask++ : ''
     }
-    calculateProgress(subtasks,readySubtask,id,todo);
+    calculateProgress(subtasks, readySubtask, id, todo);
 }
 
 /**
@@ -36,10 +35,10 @@ function renderProgressbar(todo,id){
  * @param {integer} id 
  * @param {object} todo 
  */
-function calculateProgress(subtasks,readySubtask,id,todo){
-    let percent = subtasks.length / readySubtask 
+function calculateProgress(subtasks, readySubtask, id, todo) {
+    let percent = subtasks.length / readySubtask
     result = 100 / percent
-    if(subtasks.length > 0){
+    if (subtasks.length > 0) {
         document.getElementById(`progressBar${id}`).innerHTML = /*html*/`
         <progress id="file" max="100" value="${result}"></progress>
         ${readySubtask}/${todo['subtasks'].length} Subtasks`
@@ -51,16 +50,15 @@ function calculateProgress(subtasks,readySubtask,id,todo){
  * @param {string} prio 
  * @param {string} id 
  */
-function renderCardPrio(prio,id){
-
+function renderCardPrio(prio, id) {
     let img;
 
     switch (prio) {
         case 'Low':
             img = '<img src="img/prioLow.svg"></img>'
             break;
-        
-        case 'Medium': 
+
+        case 'Medium':
             img = '<img src="img/prioMid.svg"></img>'
             break;
 
@@ -70,7 +68,7 @@ function renderCardPrio(prio,id){
         default:
             img = '';
     }
-    document.getElementById(id).innerHTML = `${img}` 
+    document.getElementById(id).innerHTML = `${img}`
 }
 
 /**
@@ -78,45 +76,35 @@ function renderCardPrio(prio,id){
  * @param {string} idOfContainer 
  * @param {string} todo 
  */
-function renderCardAssignedTo(idOfContainer,todo){
+function renderCardAssignedTo(idOfContainer, todo) {
     let assigned = todo['assignedTo']
-    let remainingContacts =  assigned.length - 3
+    let remainingContacts = assigned.length - 3
     let id = todo['id']
 
-    if(assigned.length > 3){
+    if (assigned.length > 3) {
         for (let j = 0; j < 3; j++) {
             const fullname = assigned[j]
             let names = fullname.split(" ")
             let firstNameCharacter = names[0].charAt(0).toUpperCase();
             let avatarId = `avatar${id}pic${j}`
-            console.log(remainingContacts)
-            renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
-            renderCardContacts(fullname,avatarId);
+            renderCharacters(names, idOfContainer, avatarId, firstNameCharacter);
+            renderCardContacts(fullname, avatarId);
         }
+        renderRemainingContacts(idOfContainer, remainingContacts)
 
-        renderRemainingContacts(idOfContainer,remainingContacts)
-        
-    }else{
+    } else {
         for (let i = 0; i < assigned.length; i++) {
             const fullName = assigned[i];
             let names = fullName.split(" ")
             let firstNameCharacter = names[0].charAt(0).toUpperCase();
             let avatarId = `avatar${id}pic${i}`
-            console.log(remainingContacts)
-            renderCharacters(names,idOfContainer,avatarId,firstNameCharacter);
-            renderCardContacts(fullName,avatarId);
-            
+            renderCharacters(names, idOfContainer, avatarId, firstNameCharacter);
+            renderCardContacts(fullName, avatarId);
         }
     }
-
-    
- 
-
-   
-
 }
 
-function renderRemainingContacts(idOfContainer,remainingContacts){
+function renderRemainingContacts(idOfContainer, remainingContacts) {
     document.getElementById(idOfContainer).innerHTML += /*html*/`
     <div class="assignedContact">
         <div class="avatar">${remainingContacts}+</div>
@@ -130,10 +118,10 @@ function renderRemainingContacts(idOfContainer,remainingContacts){
  * @param {string} avatarId 
  * @param {string} firstNameCharacter 
  */
-function renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter){
-    
-        let secondNameCharacter = names[1].charAt(0).toUpperCase();
-        document.getElementById(idOfContainer).innerHTML += /*html*/`
+function renderTwoCharacters(names, idOfContainer, avatarId, firstNameCharacter) {
+
+    let secondNameCharacter = names[1].charAt(0).toUpperCase();
+    document.getElementById(idOfContainer).innerHTML += /*html*/`
         <div class="assignedContact">
             <div id=${avatarId} class="avatar">${firstNameCharacter}${secondNameCharacter}</div>
         </div>`
@@ -145,7 +133,7 @@ function renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter){
  * @param {string} avatarId 
  * @param {string} firstNameCharacter 
  */
-function renderOneCharacter(idOfContainer,avatarId,firstNameCharacter){
+function renderOneCharacter(idOfContainer, avatarId, firstNameCharacter) {
     document.getElementById(idOfContainer).innerHTML += /*html*/`
     <div class="assignedContact">
         <div id=${avatarId} class="avatar">${firstNameCharacter}</div>
@@ -159,10 +147,10 @@ function renderOneCharacter(idOfContainer,avatarId,firstNameCharacter){
  * @param {string} avatarId 
  * @param {string} firstNameCharacter 
  */
-function renderCharacters(names,idOfContainer,avatarId,firstNameCharacter){
-    if(names.length > 1){
-        renderTwoCharacters(names,idOfContainer,avatarId,firstNameCharacter)
-    }else{
-        renderOneCharacter(idOfContainer,avatarId,firstNameCharacter)
+function renderCharacters(names, idOfContainer, avatarId, firstNameCharacter) {
+    if (names.length > 1) {
+        renderTwoCharacters(names, idOfContainer, avatarId, firstNameCharacter)
+    } else {
+        renderOneCharacter(idOfContainer, avatarId, firstNameCharacter)
     }
 }

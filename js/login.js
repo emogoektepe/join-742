@@ -10,11 +10,11 @@ function validateEmail() {
 
     if (!email.includes('@')) {
         emailContainer.style.borderColor = "red";
-        emailMsg.style.display = "block"; // Fehlermeldung anzeigen
+        emailMsg.style.display = "block";
         return false;
     } else {
         emailContainer.style.borderColor = "";
-        emailMsg.style.display = "none"; // Fehlermeldung ausblenden
+        emailMsg.style.display = "none";
         return true;
     }
 }
@@ -31,11 +31,11 @@ function validatePassword() {
 
     if (password.length < 3) {
         passwordContainer.style.borderColor = "red";
-        passwordMsg.style.display = "block"; // Fehlermeldung anzeigen
+        passwordMsg.style.display = "block";
         return false;
     } else {
         passwordContainer.style.borderColor = "";
-        passwordMsg.style.display = "none"; // Fehlermeldung ausblenden
+        passwordMsg.style.display = "none";
         return true;
     }
 }
@@ -56,10 +56,9 @@ function checkUser(email, password) {
     if (user) {
         window.location.href = 'application.html?username=' + encodeURIComponent(currentName);
     } else {
-        console.log('Benutzer nicht gefunden');
         passwordContainer.style.borderColor = "red";
-        passwordMsg.style.display = "block"; // Fehlermeldung anzeigen
-        return false; // Das Formular wird nicht gesendet
+        passwordMsg.style.display = "block";
+        return false;
     }
 }
 /**
@@ -68,15 +67,12 @@ function checkUser(email, password) {
  */
 
 function login() {
-    // Überprüfung der E-Mail und des Passworts mit den Validierungsfunktionen
     if (!validateEmail() || !validatePassword()) {
-        return false; // Das Formular wird nicht gesendet, wenn die Validierung fehlschlägt
+        return false;
     }
 
     let email = document.getElementById("loginMailInput").value;
     let password = document.getElementById("loginPasswordInput").value;
-
-    // Benutzerüberprüfung
     return checkUser(email, password);
 }
 

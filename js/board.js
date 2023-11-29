@@ -23,7 +23,6 @@ function renderBoard() {
  * 
  */
 function generateIDs() {
-
     for (let x = 0; x < allTasks.length; x++) {
         const tsk = allTasks[x];
         tsk['id'] = x
@@ -158,12 +157,12 @@ function searchTask(todo, array, i) {
  */
 function serachCommandIsFound(todo, searchCommand) {
     return (todo.title.toLowerCase().includes(searchCommand) ||
-        todo.description.toLowerCase().includes(searchCommand) )
-        //todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
-        //todo.dueDate.toString().includes(searchCommand) ||
-        //todo.prio.toLowerCase().includes(searchCommand) ||
-        //todo.category.toString().toLowerCase().includes(searchCommand) ||
-        //todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
+        todo.description.toLowerCase().includes(searchCommand))
+    //todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
+    //todo.dueDate.toString().includes(searchCommand) ||
+    //todo.prio.toLowerCase().includes(searchCommand) ||
+    //todo.category.toString().toLowerCase().includes(searchCommand) ||
+    //todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
 }
 
 /**
@@ -280,7 +279,7 @@ function moveTo(category) {
     renderBoard();
 }
 
-function changeStatusInPopUp(idFromTask,status){
+function changeStatusInPopUp(idFromTask, status) {
     allTasks[idFromTask]['status'] = status
     setTasksStorage();
     renderBoard();
