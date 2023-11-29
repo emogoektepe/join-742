@@ -6,12 +6,14 @@ let subtasksList = [];
 let prioLabel = "";
 const todaysDate = new Date().toJSON().slice(0, 10);
 let allTasks = [];
+let taskStatus = 'todo';
 
-function renderAddTask() {
+function renderAddTask(taskStatusFromResponsive) {
     let content = document.getElementById('content');
     selectedContacts = [];
     content.innerHTML = `<div class="addTaskContainer">${tempRenderAddTask()}</div>`;
     setActiveNavItem("addTask");
+    taskStatus = taskStatusFromResponsive;
 }
 
 async function loadTasksFromStorage() {
@@ -52,7 +54,7 @@ function createTask() {
     if (!isEmpty(elements.title.value) && !isEmpty(elements.description.value) && !isCategoryNotSelected) {
         const newTask = {
             id: '',
-            status: 'todo',
+            status: taskStatus || 'todo',
             title: elements.title.value,
             description: elements.description.value,
             assignedTo: selectedContacts,
@@ -66,6 +68,10 @@ function createTask() {
         clearAddTask();
         renderBoard();
     }
+}
+
+function setStatus(status) {
+    taskStatus = status;
 }
 
 function clearAddTask() {
@@ -82,6 +88,7 @@ function clearAddTask() {
     selectTaskCategory.children[0].innerText = 'Select task category';
     clearPrioButtons();
     renderSubtasksInTask();
+    renderAssignedToImages();
 }
 
 function clearPrioButtons() {
@@ -344,7 +351,7 @@ function renderAssignedToImages() {
             if (i < 4) {
                 htmlToAdd += tempRenderAssignedToImages(i, imgColor);
             } else {
-                numberToAdd = `<div class="contactsInMenuimg marginRight8px" style="background-color: grey">+${i-3}</div>`;
+                numberToAdd = `<div class="contactsInMenuimg marginRight8px" style="background-color: grey">+${i - 3}</div>`;
             }
         }
     }

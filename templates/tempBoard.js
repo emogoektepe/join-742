@@ -15,11 +15,11 @@ function renderBoardHtml(){
                 </div> 
                 <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
             </form>
-            <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+            <div class="addTaskBtn" onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); setStatus('todo')">
                 Add Task
                 <img src="./img/add.svg">
             </div>
-            <div class="respBtn" onclick="renderAddTask()">
+            <div class="respBtn" onclick="renderAddTask('todo')">
                 <img src="./img/responsiveAddButton.svg">
             </div>
             
@@ -49,10 +49,10 @@ function renderBoardHtml(){
             <div class="todoSection">
                 <div class="statusheader">
                     <h3>To do</h3>
-                    <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); setStatus('todo')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask('todo')">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>
@@ -66,10 +66,10 @@ function renderBoardHtml(){
             <div class="todoSection">
                 <div class="statusheader">
                     <h3>In progress</h3>
-                    <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="addTaskHeader filterBlue" onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); setStatus('inProgress')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask('inProgress')">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>
@@ -83,10 +83,10 @@ function renderBoardHtml(){
             <div class="todoSection">
                 <div class="statusheader">
                     <h3>Await feedback</h3>
-                    <div class="addTaskHeader filterBlue"  onclick="openDialog('dialogAddTaskBoard','addTaskWindow')">
+                    <div class="addTaskHeader filterBlue"  onclick="openDialog('dialogAddTaskBoard','addTaskWindow'); setStatus('awaitFeedback')">
                         <img src="img/plusB.svg">
                     </div>
-                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask()">
+                    <div class="respAddTaskHeader filterBlue" onclick="renderAddTask('awaitFeedback')">
                         <img src="./img/responsiveAddPlus.svg">
                     </div>
                 </div>

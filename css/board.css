@@ -1,11 +1,11 @@
-
 /*Induvidually tags*/
-.h3{
+.h3 {
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+
 /*header*/
-.boardHeaderContent{
+.boardHeaderContent {
     display: flex;
     margin-left: 64px;
     margin-right: 88px;
@@ -15,14 +15,14 @@
     align-items: center;
 }
 
-.headBar{
+.headBar {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.board{
+.board {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -31,7 +31,7 @@
     margin-top: 64px;
 }
 
-.boardHeadline{
+.boardHeadline {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -43,7 +43,7 @@
 .todoSection h1 {
     margin-block-start: 0em;
     margin-block-end: 0em;
-    
+
 }
 
 
@@ -56,7 +56,7 @@
     padding-left: 13px;
 }
 
-.statusheader{
+.statusheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +65,7 @@
     padding-left: 13px;
 }
 
-.respBtn{
+.respBtn {
     border-radius: 10px;
     border: 1px solid #2A3647;
     background: #2A3647;
@@ -74,15 +74,15 @@
     justify-content: center;
     padding: 6px;
     margin: 32px;
-    
+
 }
 
-.respBtn img{
+.respBtn img {
     width: 34px;
     height: 34px;
 }
 
-.respBtn:hover{
+.respBtn:hover {
     background: rgb(46, 185, 255);
     border: 1px solid rgb(46, 185, 255);
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
@@ -90,7 +90,7 @@
     cursor: pointer;
 }
 
-.addTaskBtn{
+.addTaskBtn {
     border-radius: 10px;
     border: 1px solid #2A3647;
     background: #2A3647;
@@ -98,7 +98,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left:16px ;
+    padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -107,44 +107,47 @@
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
-    
+
 }
 
-.addTaskBtn:hover{
+.addTaskBtn:hover {
     background: rgb(46, 185, 255);
     border: 1px solid rgb(46, 185, 255);
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
     animation: changeColor 150ms ease-in-out;
 }
 
-@keyframes changeColor{
-    from{
-        background-color: #2A3647;;
+@keyframes changeColor {
+    from {
+        background-color: #2A3647;
+        ;
     }
-    to{
-       background-color:  rgb(46, 185, 255);
-       border: 1px solid rgb(46, 185, 255);
+
+    to {
+        background-color: rgb(46, 185, 255);
+        border: 1px solid rgb(46, 185, 255);
     }
 }
 
-.addTaskHeader{
+.addTaskHeader {
     border-radius: 8px;
-    border: 2px solid  #2A3647;
+    border: 2px solid #2A3647;
     padding-left: 4px;
     padding-right: 4px;
     cursor: pointer;
 }
 
-.respAddTaskHeader{
+.respAddTaskHeader {
     display: none;
     border-radius: 8px;
-    border: 2px solid  #2A3647;
+    border: 2px solid #2A3647;
     padding: 8px;
     cursor: pointer;
 }
+
 /*board content*/
 
-.todos{
+.todos {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -156,12 +159,12 @@
     min-height: 1000px;
 }
 
-.dragAreaHighlight{
+.dragAreaHighlight {
     border-style: dotted;
-    border-radius: 24px ;
+    border-radius: 24px;
 }
 
-.noTasks{
+.noTasks {
     background-color: #e7e7e7;
     color: #b0b0b0;
     border-style: dotted;
@@ -179,44 +182,43 @@
 
 /*dialog*/
 
-.dialog-bgBoard{
+.dialog-bgBoard {
 
-        background-color: rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        top: 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-    
-    }
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.dialog-bgAddTask{
-     background-color: rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        top: 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center; 
+}
+
+.dialog-bgAddTask {
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .dialogAddTaskBoard {
-        border-radius: 24px;
-        width: 80vw;
-        height: 90vh;
-        background-color: white;
-        transition: transform 250ms ease-in-out;
-        overflow-y: scroll;
-     
-    }
+    border-radius: 24px;
+    width: 80vw;
+    height: 90vh;
+    background-color: white;
+    transition: transform 250ms ease-in-out;
+
+}
 
 .dialogShowCard {
     border-radius: 24px;
@@ -231,31 +233,31 @@
     position: relative;
 }
 
-.dialogShowCard .formLeftSide{
+.dialogShowCard .formLeftSide {
     padding-right: 8px;
     width: unset;
 }
 
-.dialogShowCard .formRightSide{
+.dialogShowCard .formRightSide {
     padding-right: 8px;
     width: unset;
 }
 
-.dialogShowCard .addTaskContent{
-   margin-left: unset;
+.dialogShowCard .addTaskContent {
+    margin-left: unset;
 }
 
-.dialogShowCard .form{
+.dialogShowCard .form {
     display: block;
     margin-top: unset;
     width: 100%;
 }
 
-.dialogShowCard .addTaskContent h1{
+.dialogShowCard .addTaskContent h1 {
     display: none;
 }
 
-.dialogShowCard .clearAndCreateButton{
+.dialogShowCard .clearAndCreateButton {
     display: none;
 }
 
@@ -278,16 +280,16 @@
     display: none;
 }
 
-.dialogShowCard #imageFromDropDown{
+.dialogShowCard #imageFromDropDown {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
     padding-top: 8px;
     margin-top: 0;
-   
+
 }
 
-.editSubmitButton{
+.editSubmitButton {
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -301,9 +303,9 @@
     z-index: 12000;
 }
 
-.headerEditForm{
+.headerEditForm {
     position: fixed;
-    top:0px;
+    top: 0px;
     right: 0px;
     left: 0px;
     width: 90%;
@@ -315,9 +317,9 @@
     z-index: 2;
 }
 
-.taskHeader{
+.taskHeader {
     position: fixed;
-    top:0px;
+    top: 0px;
     right: 0px;
     left: 16px;
     width: 90%;
@@ -329,7 +331,7 @@
     z-index: 2;
 }
 
-.editTemplate{
+.editTemplate {
     margin-top: 32px;
     margin-bottom: 40px;
     max-height: 70vh;
@@ -337,7 +339,7 @@
     overflow-y: auto;
 }
 
-.taskTemplate{
+.taskTemplate {
     margin-top: 65px;
     margin-bottom: 40px;
     max-height: 70vh;
@@ -345,14 +347,14 @@
     overflow-y: auto;
 }
 
-.saveEditButton{
+.saveEditButton {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     padding: 12px;
 }
 
-.changeStatus{
+.changeStatus {
     height: 24px;
     width: 24px;
     border-radius: 4px;
@@ -364,7 +366,7 @@
     font-size: 32px;
 }
 
-.changeStatusPopUp{
+.changeStatusPopUp {
     display: none;
     position: static;
     margin-top: 4px;
@@ -375,20 +377,20 @@
     font-size: 12px;
 }
 
-.changeStatusPopUp p{
+.changeStatusPopUp p {
     margin-block-start: 0em;
     margin-block-end: 0em;
     padding: 2px;
 }
 
-.changeStatusPopUp p:hover{
+.changeStatusPopUp p:hover {
     cursor: pointer;
     border-radius: 2px;
     background-color: #f6f7f8;
     color: #2A3647;
 }
 
-.popUpBackground{
+.popUpBackground {
     z-index: 1000;
     position: fixed;
     left: 0px;
@@ -397,7 +399,7 @@
     top: 0px;
 }
 
-.cardHeader{
+.cardHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -419,11 +421,12 @@
 .editTemplate::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
 .d-none {
     display: none;
 }
 
-.card{
+.card {
     height: auto;
     width: 100%;
     border-radius: 24px;
@@ -436,9 +439,9 @@
 }
 
 
- 
 
-.rotateCard{
+
+.rotateCard {
     width: 100%;
     height: auto;
     border-radius: 24px;
@@ -448,43 +451,43 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: rotate(5deg);  
+    transform: rotate(5deg);
 }
 
-.cardContent{
+.cardContent {
     padding: 16px;
     cursor: pointer;
 }
 
-.dueDate{
+.dueDate {
     display: flex;
     align-items: center;
     gap: 25px;
     align-self: stretch;
-    
+
 }
 
-.grey{
+.grey {
     color: #42526E;
 }
 
-.editCard{
+.editCard {
     height: 24px;
     width: 24px;
     padding: 4px;
     cursor: pointer;
 }
 
-.editCard:hover{
+.editCard:hover {
     background-color: #e4e4e4;
     border-radius: 50%;
 }
 
-.cardContent p{
+.cardContent p {
     color: #A8A8A8;
 }
 
-.cardPrio{
+.cardPrio {
     display: flex;
     padding: 4px 18px;
     justify-content: center;
@@ -494,7 +497,7 @@
     margin-bottom: 16px;
 }
 
-.cardContact{
+.cardContact {
     display: flex;
     padding: 7px 16px;
     justify-content: center;
@@ -502,17 +505,17 @@
     align-self: stretch;
     gap: 16px;
     flex-direction: column;
-    
+
 }
 
-.assignedContact{
+.assignedContact {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
 }
 
-.avatar{
+.avatar {
     background-color: grey;
     height: 32px;
     width: 32px;
@@ -525,22 +528,22 @@
 }
 
 .formArea {
-        flex-direction:row;
-        border:1px solid #bebebe;
-        border-radius: 10px;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-        padding: 8px 16px;
-        cursor: pointer;
-        flex-grow: 1;
+    flex-direction: row;
+    border: 1px solid #bebebe;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 8px 16px;
+    cursor: pointer;
+    flex-grow: 1;
 }
 
-.respFormArea{
-    flex-direction:row;
-    border:1px solid #bebebe;
+.respFormArea {
+    flex-direction: row;
+    border: 1px solid #bebebe;
     border-radius: 10px;
     background-color: white;
     display: none;
@@ -553,49 +556,49 @@
 }
 
 .inputArea {
-    flex-grow:2;
-    border:none;
-  }
-  
-  .inputArea:focus {
-    outline: none;
-  }
-  
-  .formArea:focus-within { 
-    border: 1px solid rgb(255, 255, 255);
-    outline: 1px solid rgb(46, 185, 255) 
-  }
+    flex-grow: 2;
+    border: none;
+}
 
-  .buttonBoard{
+.inputArea:focus {
+    outline: none;
+}
+
+.formArea:focus-within {
+    border: 1px solid rgb(255, 255, 255);
+    outline: 1px solid rgb(46, 185, 255)
+}
+
+.buttonBoard {
     background-color: white;
     border: none;
     padding: 0px;
-  }
+}
 
-  .searchBoard{
+.searchBoard {
     width: 32px;
     height: 32px;
     margin-left: 16px;
     cursor: pointer;
 }
 
-.searchBoard:hover{
+.searchBoard:hover {
     background-color: #e4e4e4;
     border-radius: 50%;
 }
 
-.subtask{
+.subtask {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    padding-top:4px;
-    padding-right: 16px; 
+    padding-top: 4px;
+    padding-right: 16px;
     margin-bottom: 16px;
 }
 
 
-.subConti{
+.subConti {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -604,13 +607,13 @@
 
 }
 
-.subConti:hover{
+.subConti:hover {
     background-color: #e5e5e5;
     border-radius: 8px;
     cursor: pointer;
 }
 
-.checkBg{
+.checkBg {
     height: 24px;
     width: 24px;
     display: flex;
@@ -618,12 +621,12 @@
     justify-content: center;
 }
 
-.checkBg:hover{
+.checkBg:hover {
     background-color: #d1d1d1;
     border-radius: 16px;
 }
- 
-.closeSection{
+
+.closeSection {
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -637,7 +640,7 @@
     z-index: 12000;
 }
 
-.closeSectionItem{
+.closeSectionItem {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -645,11 +648,11 @@
     cursor: pointer;
 }
 
-.closeSectionItem:hover{
-   font-weight: bold;
+.closeSectionItem:hover {
+    font-weight: bold;
 }
 
-.category{
+.category {
     display: inline;
     padding: 4px 16px;
     border-radius: 8px;
@@ -657,13 +660,13 @@
     width: auto;
 }
 
-.cardHead{
+.cardHead {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-progress{
+progress {
     height: 16px;
     width: 60%;
     border: none;
@@ -673,163 +676,164 @@ progress{
 }
 
 progress::-webkit-progress-bar {
-    background-color: #f4f4f4 ;
-  }
+    background-color: #f4f4f4;
+}
 
-  progress::-webkit-progress-value {
+progress::-webkit-progress-value {
     background-color: #4588ff;
-    animation: progressBarAnimation 2s ease-in-out; /* Hier wird die Animation hinzugefügt */
-  }
+    animation: progressBarAnimation 2s ease-in-out;
+    /* Hier wird die Animation hinzugefügt */
+}
 
-  progress::-moz-progress-bar {
+progress::-moz-progress-bar {
     background-color: #4caf50;
-  }
+}
 
-  .progressBar{
+.progressBar {
     display: flex;
     font-size: 12px;
     justify-content: space-between;
     align-items: center;
 
-  }
+}
 
-  .notChecked{
+.notChecked {
     height: 18px;
     width: 19px;
-  }
+}
 
-  .endSection{
+.endSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 32px;
     margin-top: 24px;
-  }
+}
 
-.avatars{
+.avatars {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.avatars img{
+.avatars img {
     padding: -10px;
 }
 
-.filterBlue:hover{
+.filterBlue:hover {
     filter: invert(55%) sepia(26%) saturate(4412%) hue-rotate(160deg) brightness(96%) contrast(102%);
 }
 
-@media(max-width: 1380px){
-    .respBtn{
+@media(max-width: 1380px) {
+    .respBtn {
         display: flex;
     }
 
-    .addTaskBtn{
+    .addTaskBtn {
         display: none;
     }
 
-    .changeStatus{
+    .changeStatus {
         display: flex;
     }
 
-    .dialogShowCard{
+    .dialogShowCard {
         min-width: 50vw;
     }
-    
-    .board{
-       display: unset;
+
+    .board {
+        display: unset;
         width: 100%;
     }
 
-    .dialog-bgAddTask{
+    .dialog-bgAddTask {
         display: none;
     }
-    
-    .card{
+
+    .card {
         max-width: 240px;
     }
 
-    .addTaskHeader{
-     display: none;
+    .addTaskHeader {
+        display: none;
     }
 
-    .respAddTaskHeader{
+    .respAddTaskHeader {
         display: flex;
     }
 
-    .rotateCard{
+    .rotateCard {
         max-width: 240px;
     }
 
-    .todoSection{
+    .todoSection {
         width: unset;
         display: flex;
     }
 
-    .todos{
+    .todos {
         width: 100%;
         flex-direction: unset;
         flex-wrap: wrap;
         min-height: unset;
     }
 
-    .statusheader{
+    .statusheader {
         width: 90%;
         justify-content: space-between;
         font-size: 27px;
         font-weight: 700;
     }
 
-    .statusheader h3{
+    .statusheader h3 {
         margin-block-start: 0em;
         margin-block-end: 0em;
     }
 
-    .noTasks{
+    .noTasks {
         margin-bottom: 26px;
     }
 }
 
-@media(max-width: 1000px){
+@media(max-width: 1000px) {
 
-    .board{
+    .board {
         margin: 0;
     }
 
-    .boardHeaderContent{
+    .boardHeaderContent {
         margin-right: 0;
     }
 
-    .headBar{
+    .headBar {
         justify-content: flex-end;
         margin-right: 32px;
     }
 
-    .formArea{
+    .formArea {
         display: none;
     }
 
-    .respFormArea{
+    .respFormArea {
         display: flex;
         margin-left: 16px;
         margin-right: 16px;
         margin-top: 40px;
     }
 
-    .dialogShowCard{
+    .dialogShowCard {
         max-width: 80vw;
     }
 
 }
 
-@media(max-width: 760px){
+@media(max-width: 760px) {
 
-    .boardHeadline h1{
+    .boardHeadline h1 {
         font-size: 47px;
     }
 
-    .boardHeaderContent{
+    .boardHeaderContent {
         margin-left: 0;
         margin-right: 0;
         padding-left: 16px;
@@ -837,7 +841,7 @@ progress::-webkit-progress-bar {
         margin-top: 40px;
     }
 
-    .dialogShowCard{
+    .dialogShowCard {
         min-width: 80vw;
     }
 
@@ -845,15 +849,15 @@ progress::-webkit-progress-bar {
         z-index: 10000;
     }
 
-    .dialogShowCard .formLeftSide input::placeholder{
+    .dialogShowCard .formLeftSide input::placeholder {
         font-size: 16px;
     }
 
-    .dialogShowCard .prio div img{
+    .dialogShowCard .prio div img {
         width: 16px;
     }
 
-    .closeSection{
+    .closeSection {
         padding: 15px;
     }
 
@@ -861,7 +865,7 @@ progress::-webkit-progress-bar {
         padding: 4px;
     }
 
-    .dialogShowCard .prio div{
+    .dialogShowCard .prio div {
         font-size: 14px;
     }
 
@@ -870,26 +874,26 @@ progress::-webkit-progress-bar {
     }
 
 
-    .headBar{
+    .headBar {
         width: 40px;
         margin-right: 0;
     }
 
-    .respBtn{
+    .respBtn {
         margin: 0;
         padding: 8px;
     }
 
-    .respBtn img{
+    .respBtn img {
         width: 20px;
         height: 20px;
     }
 
-    .respAddTaskHeader{
+    .respAddTaskHeader {
         padding: 4px;
     }
 
-    #done{
+    #done {
         margin-bottom: 80px;
     }
 }
