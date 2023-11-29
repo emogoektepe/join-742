@@ -34,9 +34,9 @@ function register() {
     }
     if (!checkAcceptance()) {
         acceptMsg.style.display = "flex";
-        
+
         setTimeout(function () {
-            acceptMsg.style.display = ""; 
+            acceptMsg.style.display = "";
         }, 2000);
 
         return;
@@ -70,7 +70,7 @@ function successfulRegistration() {
 
     setTimeout(function () {
         overlay.style.display = "none";
-        window.location.href = 'index.html'; //weiterleitung//
+        window.location.href = 'index.html';
     }, 700);
 }
 
@@ -104,11 +104,11 @@ function passwordMatching() {
 
     if (password !== confirmPassword) {
         confirmPasswordContainer.style.borderColor = "red";
-        confirmMsg.style.display = "block"; // Fehlermeldung anzeigen
+        confirmMsg.style.display = "block";
         return false;
     } else {
         confirmPasswordContainer.style.borderColor = "";
-        confirmMsg.style.display = "none"; // Fehlermeldung ausblenden
+        confirmMsg.style.display = "none";
         return true;
     }
 }
