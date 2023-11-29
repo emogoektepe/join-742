@@ -1,7 +1,7 @@
-let todo = [];
-let inProgress = [];
-let awaitFeedback = [];
-let done = [];
+let todo = []
+let inProgress = []
+let awaitFeedback = []
+let done = []
 let currentDraggedElement;
 
 /** 
@@ -23,9 +23,10 @@ function renderBoard() {
  * 
  */
 function generateIDs() {
-    for (let x = 0; x < allTasks.length; x++); {
+
+    for (let x = 0; x < allTasks.length; x++) {
         const tsk = allTasks[x];
-        tsk['id'] = x;
+        tsk['id'] = x
     }
 }
 
@@ -57,7 +58,7 @@ function filterTodos() {
  */
 function renderTodoContent() {
     let statusArray = todo;
-    let array = 'todo';
+    let array = 'todo'
     renderStatusArray(statusArray, array);
 }
 
@@ -79,7 +80,7 @@ function renderStatusArray(statusArray, array) {
             }
         }
     }
-    emptyCategory(foundMatchingElement, array);
+    emptyCategory(foundMatchingElement, array)
 }
 
 /**
@@ -87,8 +88,8 @@ function renderStatusArray(statusArray, array) {
  * 
  */
 function renderInProgressContent() {
-    let statusArray = inProgress;
-    let array = 'inProgress';
+    let statusArray = inProgress
+    let array = 'inProgress'
     renderStatusArray(statusArray, array);
 }
 
@@ -97,8 +98,8 @@ function renderInProgressContent() {
  * 
  */
 function renderAwaitFeedbackContent() {
-    let statusArray = awaitFeedback;
-    let array = 'awaitFeedback';
+    let statusArray = awaitFeedback
+    let array = 'awaitFeedback'
     renderStatusArray(statusArray, array);
 }
 
@@ -107,8 +108,8 @@ function renderAwaitFeedbackContent() {
  * 
  */
 function renderDoneContent() {
-    let statusArray = done;
-    let array = 'done';
+    let statusArray = done
+    let array = 'done'
     renderStatusArray(statusArray, array);
 }
 
@@ -116,7 +117,7 @@ function renderDoneContent() {
  * @returns the HTML if the filter array is empty
  */
 function renderEmptyCategory() {
-    return /*html*/`<div class="noTasks">No Tasks to do</div>`;
+    return /*html*/`<div class="noTasks">No Tasks to do</div>`
 }
 
 /**
@@ -157,7 +158,12 @@ function searchTask(todo, array, i) {
  */
 function serachCommandIsFound(todo, searchCommand) {
     return (todo.title.toLowerCase().includes(searchCommand) ||
-        todo.description.toLowerCase().includes(searchCommand))
+        todo.description.toLowerCase().includes(searchCommand) )
+        //todo.assignedTo.some((name) => name.toString().toLowerCase().includes(searchCommand)) ||
+        //todo.dueDate.toString().includes(searchCommand) ||
+        //todo.prio.toLowerCase().includes(searchCommand) ||
+        //todo.category.toString().toLowerCase().includes(searchCommand) ||
+        //todo.subtasks.some((subtask) => subtask.name.toLowerCase().includes(searchCommand)))
 }
 
 /**
@@ -274,7 +280,7 @@ function moveTo(category) {
     renderBoard();
 }
 
-function changeStatusInPopUp(idFromTask, status) {
+function changeStatusInPopUp(idFromTask,status){
     allTasks[idFromTask]['status'] = status
     setTasksStorage();
     renderBoard();
