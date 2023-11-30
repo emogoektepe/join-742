@@ -156,7 +156,7 @@
     padding-left: 13px;
     height: 100%;
     width: 100%;
-    min-height: 1000px;
+    min-height:250px;
 }
 
 .dragAreaHighlight {
@@ -217,7 +217,7 @@
     height: 90vh;
     background-color: white;
     transition: transform 250ms ease-in-out;
-
+    overflow-y: scroll;
 }
 
 .dialogShowCard {
