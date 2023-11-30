@@ -11,7 +11,7 @@ function renderBoardHtml(){
             <form class="formArea" action="#">
                 <input id="searchBoard" class="inputArea" onkeyup="updateBoardHtml()"  type="text" placeholder="Find Task">
                 <div>
-                    <img src="./img/borderdash.svg">
+                    <img src="./img/borderDash.svg">
                 </div> 
                 <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
             </form>
@@ -30,7 +30,7 @@ function renderBoardHtml(){
     <form class="respFormArea" action="#">
         <input id="respSearchBoard" class="inputArea" onkeydown="updateBoardHtml()"  type="text" placeholder="Find Task">
         <div>
-            <img src="./img/borderdash.svg">
+            <img src="./img/borderDash.svg">
         </div> 
             <img onclick="updateBoardHtml()" class="searchBoard" src="./img/search.svg">
     </form>
