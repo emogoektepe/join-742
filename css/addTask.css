@@ -630,7 +630,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         text-align: center;
         background-color: #f6f7f8;
         position: fixed;
-        z-index: 99999;
+        z-index: 1;
     }
 
     .addTaskContainer .form {
