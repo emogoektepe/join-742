@@ -349,9 +349,12 @@
 
 .saveEditButton {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    width: 56px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .changeStatus {
@@ -752,6 +755,7 @@ progress::-moz-progress-bar {
 
     .card {
         max-width: 240px;
+        min-width: 230px;
     }
 
     .addTaskHeader {
@@ -772,10 +776,11 @@ progress::-moz-progress-bar {
     }
 
     .todos {
-        width: 100%;
+        width: calc(100vw - 280px);
         flex-direction: unset;
-        flex-wrap: wrap;
         min-height: unset;
+        overflow-x: auto;
+        margin-bottom: 8px;
     }
 
     .statusheader {

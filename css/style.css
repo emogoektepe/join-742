@@ -422,6 +422,7 @@ h1 {
 
 .applicationBody {
     display: flex;
+    overflow-x: hidden;
 }
 
 .leftSide {

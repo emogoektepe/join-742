@@ -74,6 +74,12 @@
     background-color: #2a3d59;
 }
 
+@media(max-width: 1000px){
+    .headerLeft{
+        padding-left: 64px;
+    }
+}
+
 @media(max-width: 760px) {
     .headerLeft span {
         display: none;
