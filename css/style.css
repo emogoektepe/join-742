@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: 'Inter';
-    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
     overflow-y: hidden;
@@ -31,9 +30,11 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 5%;
 }
 
 .logoStart img {
+    height: 80%;
     padding-top: 16px;
     padding-left: 5%;
     width: auto;
@@ -47,7 +48,7 @@ h1 {
     }
 
     to {
-        transform: translateX(calc(-630px + 50%)) translateY(calc(-432px + 30%));
+        transform: translateX(calc(-50vw + 50%)) translateY(calc(-432px + 30%));
     }
 }
 
