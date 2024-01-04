@@ -8,6 +8,7 @@ const todaysDate = new Date().toJSON().slice(0, 10);
 let allTasks = [];
 let taskStatus = 'todo';
 
+
 /**
  * This function renders the 'Add task' page.
  * 
@@ -19,6 +20,8 @@ function renderAddTask(taskStatusFromResponsive) {
     content.innerHTML = `<div class="addTaskContainer">${tempRenderAddTask()}</div>`;
     setActiveNavItem("addTask");
     taskStatus = taskStatusFromResponsive;
+    const medium = document.getElementById('editPrioMediun');
+    changePrioColor(medium, '#FFA800');
 }
 
 /**

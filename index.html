@@ -89,31 +89,24 @@
         <script>
 
             function renderPrivacyPolicyFromLogin() {
-                window.location.href='application.html?parameter=privacyPolicy';
+                window.location.href = 'application.html?parameter=privacyPolicy';
             }
 
             function renderLegalNoticeFromLogin() {
-                window.location.href='application.html?parameter=legalNotice';
+                window.location.href = 'application.html?parameter=legalNotice';
             }
 
             const hasAnimationPlayed = sessionStorage.getItem('animationPlayed');
 
-            if (!hasAnimationPlayed) {
-
+            document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('startLogo').style.animationPlayState = 'running';
 
                 const animatedElement = document.getElementById('startLogo');
                 animatedElement.addEventListener('animationend', function () {
-
-                    document.getElementById('logoStart').style = 'display:none;';
-                    document.getElementById('startPage').style = 'display:block;';
-                    sessionStorage.setItem('animationPlayed', 'true');
-
+                    document.getElementById('logoStart').style.display = 'none';
+                    document.getElementById('startPage').style.display = 'block';
                 });
-            } else {
-                document.getElementById('logoStart').style = 'display:none;';
-                document.getElementById('startPage').style = 'display:block;';
-            }
+            });
         </script>
 
 
